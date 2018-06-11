@@ -100,13 +100,13 @@ body
       <header class="header item">
         <i id="toc" class="sitemap icon"></i>
         <a href="../index.html">
-          Introduction 
+          On-Site Workshop: June 15 
         </a>
       </header>
       <div class="right tab-menu menu">
         
-          <a class="item" data-tab="Lab-01">
-            Lab-01
+          <a class="item" data-tab="Lab-01 Installation">
+            Lab-01 Installation
           </a>
         
           <a class="item" data-tab="01">
@@ -125,18 +125,6 @@ body
             04
           </a>
         
-          <a class="item" data-tab="05">
-            05
-          </a>
-        
-          <a class="item" data-tab="06">
-            06
-          </a>
-        
-          <a class="item" data-tab="Exercises">
-            Exercises
-          </a>
-        
         <div class="item">
           
         </div>
@@ -148,8 +136,8 @@ body
         <br><br>
         
           
-            <a class="active item" href="../../topic-01-introduction/book-a/index.html">
-              Lab-01
+            <a class="active item" href="../../topic-00-On-Site/book-a/index.html">
+              Lab-01 Installation
             </a>
           
         
@@ -158,43 +146,73 @@ body
         <div class="ui basic segment" id="labchat">
           <br>
           
-            <div  class="ui tab segment lab" data-tab="Lab-01">
+            <div  class="ui tab segment lab" data-tab="Lab-01 Installation">
               <h1>Objectives</h1>
+<p>In this lab, you will install MySQL and log in to MySQL Workbench.</p>
 
             </div>
           
             <div  class="ui tab segment lab" data-tab="01">
-              <p>#</p>
+              <h1>MySQL and MySQL Workbench</h1>
+<p>MySQL is an open-source relational database management system (RDBMS). The acronym &quot;SQL&quot; (sometimes pronounced &quot;sequel&quot;) stands for Structured Query Language. SQL is a standard computer language for relational database management and data manipulation. SQL is used to query, insert, update and modify data in a database.</p>
+<p>MySQL Workbench is a visual database design tool that integrates SQL development, administration, database design, creation and maintenance into a single integrated development environment for the MySQL database system.</p>
+<p>In this lab, you will install the various components that make up a MySQL database, including the MySQL server and the MySQL Workbench application.</p>
 
             </div>
           
             <div  class="ui tab segment lab" data-tab="02">
-              <p>#</p>
+              <h1>Download the installer</h1>
+<p>You can download the MySQL installer here: <a href="https://dev.mysql.com/downloads/installer/" target="_ blank"><code>https://dev.mysql.com/downloads/installer/</code></a></p>
+<p>Select the second of the two options shown in the image below:</p>
+<p><img src="img/01.png" alt=""></p>
+<p>Note that you do not need to sign up for an Oracle Web account - just select &quot;No thanks, just start my download&quot; which can be found under the grey box with the Login and Sign up buttons.</p>
+<p><img src="img/02.png" alt=""></p>
 
             </div>
           
             <div  class="ui tab segment lab" data-tab="03">
-              <p>#</p>
+              <h1>Run the installation</h1>
+<p>Once you have downloaded the MySQL installer, carry out the following steps to install MySQL:</p>
+<ul>
+<li>Double click the installer and click &quot;Run&quot;.</li>
+<li>Accept the license terms and select &quot;Next&quot;.</li>
+<li>Leave the Setup type as the Developer Default and click &quot;Next&quot;.</li>
+<li>The Check Requirements step will install any additional software that you need to run MySQL. Click &quot;Execute&quot; on this step, and then &quot;Next&quot;.</li>
+<li>Now, click on &quot;Execute&quot; to run the MySQL installation; then click &quot;Next&quot; to continue.</li>
+<li><p>Click &quot;Next&quot; on the Product Configuration and Type and Networking steps.</p>
+</li>
+<li><p><strong>Important</strong>: Accounts and Roles:</p>
+<ul>
+<li>In this step, you need to set a password to use when logging into MySQL Workbench. It is crucial that you note and remember this password.</li>
+<li>Often, we use the password &quot;root&quot; as a default password for the root user account. If you want to keep it simple and easy to remember, use &quot;root&quot; as your password here.</li>
+</ul>
+</li>
+</ul>
+<p><img src="img/03.png" alt=""></p>
+<ul>
+<li>Click &quot;Next&quot; on the Windows Service step, and &quot;Execute&quot; on the Server Configuration step; then click &quot;Finish&quot;.</li>
+<li>The next step installs Samples and Examples. Click &quot;Next&quot; again.</li>
+<li>Then you will be prompted for your password, as shown below. Enter the password you set and click &quot;Check&quot;.</li>
+</ul>
+<p><img src="img/04.png" alt=""></p>
+<ul>
+<li>Once it is confirmed that the password is correct, click &quot;Next&quot;.</li>
+<li>Continue through the next few steps clicking either &quot;Execute&quot; or &quot;Next&quot;, and lastly, click &quot;Finish&quot; once the installation is complete.</li>
+<li>MySQL Workbench should launch automatically. In step 4, we will log in to MySQL Workbench.</li>
+</ul>
 
             </div>
           
             <div  class="ui tab segment lab" data-tab="04">
-              <p>#</p>
-
-            </div>
-          
-            <div  class="ui tab segment lab" data-tab="05">
-              <p>#</p>
-
-            </div>
-          
-            <div  class="ui tab segment lab" data-tab="06">
-              <p>#</p>
-
-            </div>
-          
-            <div  class="ui tab segment lab" data-tab="Exercises">
-              <h1>Solution</h1>
+              <h1>Log in to MySQL Workbench</h1>
+<p>Once the MySQL installation is complete, MySQL Workbench should launch automatically.</p>
+<p><img src="img/05.png" alt=""></p>
+<p>Under &quot;MySQL Connections&quot; you should see one connection: Local instance MySQL56. This is the default connection; you can see it uses the default &quot;root&quot; user, the localhost server and port 3306.</p>
+<p>Click on the Local instance MySQL56 connection. You will be asked for a password; this is the password that you set during the installation process.</p>
+<p><img src="img/06.png" alt=""></p>
+<p>After entering the correct password, you should see the following view:</p>
+<p><img src="img/07.png" alt=""></p>
+<p>You are now logged in to the MySQL Workbench application. In our next lab (the onsite workshop on Friday 15th June) we will create a database and perform some simple queries on the data. </p>
 
             </div>
           
