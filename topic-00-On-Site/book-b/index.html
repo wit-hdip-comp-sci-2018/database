@@ -7,10 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.4/css/uikit.min.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.4/js/uikit.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.4/js/uikit-icons.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/railscasts.min.css" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.6/css/uikit.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.6/js/uikit.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.6/js/uikit-icons.min.js"></script>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/railscasts.min.css"/>
     <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>
@@ -60,9 +62,10 @@ h3 {
 
 
   </style>
-<body>
 
-  
+  <body class="lab">
+
+    
   <div class="uk-offcanvas-content">
     <div id="offcanvas-usage" uk-offcanvas>
       <div class="uk-offcanvas-bar">
@@ -93,49 +96,51 @@ Lab-01 SQL Introduction
   </div>
 
 
-  <div uk-sticky>
-    <nav uk-navbar>
-      <div class="uk-navbar-left">
-        <ul class="uk-subnav uk-background-secondary uk-subnav-pill">
-          <li><a href="#offcanvas-usage" uk-icon="icon: menu", uk-toggle title="Switch Lab" pos="bottom" uk-tooltip></a></li>
-          <li class="uk-active"><a href="../index.html">On-Site Workshop: June 15 </a></li>
-        </ul>
-      </div>
+    <div uk-sticky>
+      <nav class="uk-navbar">
+        <div class="uk-navbar-left">
+          <ul class="uk-subnav uk-background-secondary uk-subnav-pill">
+            <li><a href="#offcanvas-usage" uk-icon="icon: menu" , uk-toggle title="Switch Lab" pos="bottom"
+                   uk-tooltip></a></li>
+            <li class="uk-active"><a href="../index.html" uk-icon="icon: chevron-up" uk-toggle title="Parent Topic"
+                                     pos="bottom" uk-tooltip>On-Site Workshop: June 15 </a></li>
+          </ul>
+        </div>
+        <div class="uk-navbar-right">
+          <ul class="uk-subnav uk-background-secondary uk-subnav-pill"
+              uk-switcher="connect: .switcher-container">
+            
+              <li><a href="#">Lab-01 SQL Introduction</a></li>
+            
+              <li><a href="#">01</a></li>
+            
+              <li><a href="#">02</a></li>
+            
+              <li><a href="#">03</a></li>
+            
+              <li><a href="#">04</a></li>
+            
+              <li><a href="#">05</a></li>
+            
+              <li><a href="#">06</a></li>
+            
+              <li><a href="#">07</a></li>
+            
+              <li><a href="#">Exercises</a></li>
+            
+          </ul>
+        </div>
+      </nav>
+    </div>
 
-
-      <div class="uk-navbar-right">
-        <ul class="uk-subnav uk-background-secondary uk-subnav-pill uk-subnav-divider" uk-switcher="connect: .switcher-container">
-          
-            <li><a href="#">Lab-01 SQL Introduction</a></li>
-          
-            <li><a href="#">01</a></li>
-          
-            <li><a href="#">02</a></li>
-          
-            <li><a href="#">03</a></li>
-          
-            <li><a href="#">04</a></li>
-          
-            <li><a href="#">05</a></li>
-          
-            <li><a href="#">06</a></li>
-          
-            <li><a href="#">07</a></li>
-          
-            <li><a href="#">Exercises</a></li>
-          
-        </ul>
-      </div>
-    </nav>
-  </div>
-  <div class="uk-container uk-container-expand">
-    <ul class="uk-switcher switcher-container">
-      
-        <li> <h1>Objectives</h1>
+    <div class="uk-container uk-container-expand">
+      <ul class="uk-switcher switcher-container">
+        
+          <li> <h1>Objectives</h1>
 <p>In this lab we will become familiar with using MySQL Workbench.</p>
 </li>
-      
-        <li> <h1>What is SQL?</h1>
+        
+          <li> <h1>What is SQL?</h1>
 <p>SQL (sometimes pronounced SEQUEL) stands for Structured Query Language. SQL is used to communicate with a database. </p>
 <h2>Table Basics</h2>
 <p>A relational database system contains one or more objects called <em>tables</em>. The data or information for the database are stored in these tables. 
@@ -144,8 +149,8 @@ for the column. Rows contain the records or data for the columns. Here is a samp
 The values city, state, high, and low are the columns. The rows contain the data for this table:</p>
 <p><img src="img/table.png" alt=""></p>
 </li>
-      
-        <li> <h1>Our example - Suppliers and Products</h1>
+        
+          <li> <h1>Our example - Suppliers and Products</h1>
 <p>We have built a <a href="archives/supplierproducts.zip">Suppliers and Products database</a> with the following tables: <em>supplier</em>  and <em>product</em>. </p>
 <p>The tables are populated and we will use this data in this lab. The schema is stored in <strong>supplierproducts.sql</strong>.</p>
 <ul>
@@ -167,8 +172,8 @@ The values city, state, high, and low are the columns. The rows contain the data
 </ul>
 <p><img src="img/dialog.png" alt=""></p>
 </li>
-      
-        <li> <h1>Getting Started</h1>
+        
+          <li> <h1>Getting Started</h1>
 <p>First, we will open a new tab. Select <em>File</em> and then <em>New Query Tab</em>.</p>
 <p>To execute a single command, choose the fourth option on the window.  </p>
 <p><img src="img/dialog2.PNG" alt=""></p>
@@ -182,8 +187,8 @@ enter (and execute) the following command:</p>
 <h2>To do</h2>
 <p>Output the defintion of the product table.</p>
 </li>
-      
-        <li> <h1>Simple Selection</h1>
+        
+          <li> <h1>Simple Selection</h1>
 <p>To see all the rows (records) and columns (data fields) from the supplier table, enter (and execute) the following command:</p>
 <pre><code> select * from supplier;</code></pre>
 <p>To select a subset of the columns, you need to specify the columns by name. For example, to return the columns (fname and lname) from the supplier
@@ -201,8 +206,8 @@ condition would be location = &#39;Dublin&#39;. Enter (and execute) the followin
 <li>Return the name and description for the product identified by productCode &#39;p13111&#39;;</li>
 </ol>
 </li>
-      
-        <li> <h1>The WHERE clause</h1>
+        
+          <li> <h1>The WHERE clause</h1>
 <p>As we saw already, conditions in the <code>WHERE</code> clause can contain the <code>=</code> operator, as in the following command:</p>
 <pre><code> select * from product where price = 70;</code></pre>
 <p>To return all product details for products that are price at 70 euro or more, enter (and execute) the following command:</p>
@@ -218,8 +223,8 @@ condition would be location = &#39;Dublin&#39;. Enter (and execute) the followin
 <li>Return all product details for products that have a stock quantity in the range 100 - 400 inclusive.</li>
 </ol>
 </li>
-      
-        <li> <h1>More on the WHERE clause</h1>
+        
+          <li> <h1>More on the WHERE clause</h1>
 <p>To return all red products, enter (and execute) the following command:</p>
 <pre><code> select * from product where colour = &#39;red&#39;;</code></pre>
 <p>To return all red, grey or white products, enter (and execute) the following command:</p>
@@ -238,8 +243,8 @@ need to use <code>LIKE</code> for pattern matching.</p>
 <li>Return all products whose name includes the term Munster.</li>
 </ol>
 </li>
-      
-        <li> <h1>The JOIN clause</h1>
+        
+          <li> <h1>The JOIN clause</h1>
 <p>If we want to return data from both tables we will need to join the tables together using the <code>JOIN</code> clause. The join we will use is the <code>Natural Join</code>. This
 joins tables where there is a match between the primary key value of one table and the foreign key value of the other.</p>
 <p>In the following example we join the tables together and return all columns. Enter (and execute) the following command:</p>
@@ -252,14 +257,33 @@ joins tables where there is a match between the primary key value of one table a
 <h2>To do</h2>
 <p>Return the name and description of all products supplied by all suppliers from London.</p>
 </li>
-      
-        <li> <h1>Exercises</h1>
+        
+          <li> <h1>Exercises</h1>
 <ol>
 <li>Try to think of other queries that you would like to execute and write the SQL for them.</li>
 <li>Have a look at <a href = "http://www.w3schools.com/sql" target = "_blank">SQL Tutorial</a></li>
 </ol>
 </li>
-      
-    </ul>
-  </div>
-</body>
+        
+      </ul>
+    </div>
+
+    <script>
+      $(document).ready(function() {
+  const $images = $('.lab img');
+  jQuery.each($images, function(i) {
+    if ($images[i].alt.length > 0) {
+      const divImg = $(document.createElement('div')).addClass('');
+      $($images[i]).wrap(divImg);
+      const divLabel = $(document.createElement('div')).addClass(
+          'uk-label',
+      );
+      divLabel.append($images[i].alt);
+      $(divLabel).insertBefore($images[i]);
+    }
+  });
+});
+
+    </script>
+  </body>
+</html>

@@ -7,10 +7,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.4/css/uikit.min.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.4/js/uikit.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.4/js/uikit-icons.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/railscasts.min.css" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.6/css/uikit.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.6/js/uikit.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.6/js/uikit-icons.min.js"></script>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/railscasts.min.css"/>
     <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>
@@ -60,9 +62,10 @@ h3 {
 
 
   </style>
-<body>
 
-  
+  <body class="lab">
+
+    
   <div class="uk-offcanvas-content">
     <div id="offcanvas-usage" uk-offcanvas>
       <div class="uk-offcanvas-bar">
@@ -93,55 +96,57 @@ Lab-01 SQL Introduction
   </div>
 
 
-  <div uk-sticky>
-    <nav uk-navbar>
-      <div class="uk-navbar-left">
-        <ul class="uk-subnav uk-background-secondary uk-subnav-pill">
-          <li><a href="#offcanvas-usage" uk-icon="icon: menu", uk-toggle title="Switch Lab" pos="bottom" uk-tooltip></a></li>
-          <li class="uk-active"><a href="../index.html">On-Site Workshop: June 15 </a></li>
-        </ul>
-      </div>
+    <div uk-sticky>
+      <nav class="uk-navbar">
+        <div class="uk-navbar-left">
+          <ul class="uk-subnav uk-background-secondary uk-subnav-pill">
+            <li><a href="#offcanvas-usage" uk-icon="icon: menu" , uk-toggle title="Switch Lab" pos="bottom"
+                   uk-tooltip></a></li>
+            <li class="uk-active"><a href="../index.html" uk-icon="icon: chevron-up" uk-toggle title="Parent Topic"
+                                     pos="bottom" uk-tooltip>On-Site Workshop: June 15 </a></li>
+          </ul>
+        </div>
+        <div class="uk-navbar-right">
+          <ul class="uk-subnav uk-background-secondary uk-subnav-pill"
+              uk-switcher="connect: .switcher-container">
+            
+              <li><a href="#">Lab-01 Installation</a></li>
+            
+              <li><a href="#">01</a></li>
+            
+              <li><a href="#">02</a></li>
+            
+              <li><a href="#">03</a></li>
+            
+              <li><a href="#">04</a></li>
+            
+          </ul>
+        </div>
+      </nav>
+    </div>
 
-
-      <div class="uk-navbar-right">
-        <ul class="uk-subnav uk-background-secondary uk-subnav-pill uk-subnav-divider" uk-switcher="connect: .switcher-container">
-          
-            <li><a href="#">Lab-01 Installation</a></li>
-          
-            <li><a href="#">01</a></li>
-          
-            <li><a href="#">02</a></li>
-          
-            <li><a href="#">03</a></li>
-          
-            <li><a href="#">04</a></li>
-          
-        </ul>
-      </div>
-    </nav>
-  </div>
-  <div class="uk-container uk-container-expand">
-    <ul class="uk-switcher switcher-container">
-      
-        <li> <h1>Objectives</h1>
+    <div class="uk-container uk-container-expand">
+      <ul class="uk-switcher switcher-container">
+        
+          <li> <h1>Objectives</h1>
 <p>In this lab, you will install MySQL and log in to MySQL Workbench.</p>
 </li>
-      
-        <li> <h1>MySQL and MySQL Workbench</h1>
+        
+          <li> <h1>MySQL and MySQL Workbench</h1>
 <p>MySQL is an open-source relational database management system (RDBMS). The acronym &quot;SQL&quot; (sometimes pronounced &quot;sequel&quot;) stands for Structured Query Language. SQL is a standard computer language for relational database management and data manipulation. SQL is used to query, insert, update and modify data in a database.</p>
 <p>MySQL Workbench is a visual database design tool that integrates SQL development, administration, database design, creation and maintenance into a single integrated development environment for the MySQL database system.</p>
 <p>In this lab, you will install the various components that make up a MySQL database, including the MySQL server and the MySQL Workbench application.</p>
 </li>
-      
-        <li> <h1>Download the installer</h1>
+        
+          <li> <h1>Download the installer</h1>
 <p>You can download the MySQL installer here: <a href="https://dev.mysql.com/downloads/installer/" target="_ blank"><code>https://dev.mysql.com/downloads/installer/</code></a></p>
 <p>Select the second of the two options shown in the image below:</p>
 <p><img src="img/01.png" alt=""></p>
 <p>Note that you do not need to sign up for an Oracle Web account - just select &quot;No thanks, just start my download&quot; which can be found under the grey box with the Login and Sign up buttons.</p>
 <p><img src="img/02.png" alt=""></p>
 </li>
-      
-        <li> <h1>Run the installation</h1>
+        
+          <li> <h1>Run the installation</h1>
 <p>Once you have downloaded the MySQL installer, carry out the following steps to install MySQL:</p>
 <ul>
 <li>Double click the installer and click &quot;Run&quot;.</li>
@@ -171,8 +176,8 @@ Lab-01 SQL Introduction
 <li>MySQL Workbench should launch automatically. In step 4, we will log in to MySQL Workbench.</li>
 </ul>
 </li>
-      
-        <li> <h1>Log in to MySQL Workbench</h1>
+        
+          <li> <h1>Log in to MySQL Workbench</h1>
 <p>Once the MySQL installation is complete, MySQL Workbench should launch automatically.</p>
 <p><img src="img/05.png" alt=""></p>
 <p>Under &quot;MySQL Connections&quot; you should see one connection: Local instance MySQL56. This is the default connection; you can see it uses the default &quot;root&quot; user, the localhost server and port 3306.</p>
@@ -182,7 +187,26 @@ Lab-01 SQL Introduction
 <p><img src="img/07.png" alt=""></p>
 <p>You are now logged in to the MySQL Workbench application. In our next lab (the onsite workshop on Friday 15th June) we will create a database and perform some simple queries on the data. </p>
 </li>
-      
-    </ul>
-  </div>
-</body>
+        
+      </ul>
+    </div>
+
+    <script>
+      $(document).ready(function() {
+  const $images = $('.lab img');
+  jQuery.each($images, function(i) {
+    if ($images[i].alt.length > 0) {
+      const divImg = $(document.createElement('div')).addClass('');
+      $($images[i]).wrap(divImg);
+      const divLabel = $(document.createElement('div')).addClass(
+          'uk-label',
+      );
+      divLabel.append($images[i].alt);
+      $(divLabel).insertBefore($images[i]);
+    }
+  });
+});
+
+    </script>
+  </body>
+</html>
