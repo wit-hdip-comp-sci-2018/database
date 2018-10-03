@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/railscasts.min.css" rel="stylesheet" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <style>
+      
+
+body {
+  font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
+  font-size:90%;
+  color: black;
+}
+
+p {
+  margin: 0.5em;
+}
+
+pre code {
+  font-family: "Monaco";
+  font-size: 100%;
+}
+
+img {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin:10px;
+}
+
+h1, h2, h3 {
+  border-bottom:thin solid black;
+  margin-bottom: 0.5em;
+  margin-top: 1em;
+}
+
+h1 {
+  font-style:italic;
+  font-size:130%;
+}
+
+h2 {
+  font-size:110%;
+}
+
+h3 {
+  font-size:100%;
+}
+
+
+
+    </style>
+  </head>
+
+  <body>
+    
+    
+
+    <div class="ui fixed top pointing inverted stackable menu labmenu">
+      <header class="header item">
+        <i id="toc" class="sitemap icon"></i>
+        
+          <a href="../index.html"> Normalisation  </a>
+        
+      </header>
+      <div class="right tab-menu menu">
+        
+          <a class="item" data-tab="Lab-01 SQL 6">
+            Lab-01 SQL 6
+          </a>
+        
+          <a class="item" data-tab="01">
+            01
+          </a>
+        
+          <a class="item" data-tab="02">
+            02
+          </a>
+        
+          <a class="item" data-tab="03">
+            03
+          </a>
+        
+          <a class="item" data-tab="04">
+            04
+          </a>
+        
+          <a class="item" data-tab="05">
+            05
+          </a>
+        
+          <a class="item" data-tab="06">
+            06
+          </a>
+        
+          <a class="item" data-tab="07">
+            07
+          </a>
+        
+          <a class="item" data-tab="08">
+            08
+          </a>
+        
+          <a class="item" data-tab="09">
+            09
+          </a>
+        
+          <a class="item" data-tab="10">
+            10
+          </a>
+        
+          <a class="item" data-tab="11">
+            11
+          </a>
+        
+          <a class="item" data-tab="Exercise">
+            Exercise
+          </a>
+        
+      </div>
+    </div>
+
+    <div class="ui segment pushable">
+      <div class="ui inverted labeled icon left inline vertical sidebar menu">
+        <br><br>
+        
+          
+            <a class="item" href="../../topic-00-Assignment/book-00-Assignment/index.html">
+              Assignment
+            </a>
+          
+        
+          
+            <a class="item" href="../../topic-00-On-Site/book-a/index.html">
+              Installation
+            </a>
+          
+        
+          
+            <a class="item" href="../../topic-00-On-Site/book-b/index.html">
+              SQL Introduction
+            </a>
+          
+        
+          
+            <a class="item" href="../../topic-01-Introduction/book-a/index.html">
+              SQL 1
+            </a>
+          
+        
+          
+            <a class="item" href="../../topic-02-Conceptual/book-a/index.html">
+              SQL 2
+            </a>
+          
+        
+          
+            <a class="item" href="../../topic-03-Logical/book-a/index.html">
+              SQL 3
+            </a>
+          
+        
+          
+            <a class="item" href="../../topic-04-EnhancedER/book-a/index.html">
+              SQL 4
+            </a>
+          
+        
+          
+            <a class="active item" href="../../topic-06-Normalisation2/book-a/index.html">
+              Lab-01 SQL 6
+            </a>
+          
+        
+      </div>
+      <div class="pusher" tabindex="-1">
+        <div class="ui basic segment" id="labchat">
+          <br>
+          
+            <div  class="ui tab segment lab" data-tab="Lab-01 SQL 6">
+              <h1>Objectives</h1>
+<p>In this lab, we will look at Data Definition.</p>
+<ul>
+<li>Use CREATE, ALTER and DROP statements.</li>
+</ul>
+
+            </div>
+          
+            <div  class="ui tab segment lab" data-tab="01">
+              <h1>Data Defintion</h1>
+<p>So far we have performed <strong>SELECT</strong> statements on existing tables in the Library and Movie databases.  We have also executed <strong>INSERT</strong>, <strong>UPDATE</strong>, and <strong>DELETE</strong>
+statements. </p>
+<p>The above 4 statements are <em>DATA MANIPULATION</em> statements. </p>
+<p>We are now going to create a new database and create tables within it.  The commands we will look at are <em>DATA DEFINITION</em>  commands (statements):</p>
+<ul>
+<li>CREATE (database/table).</li>
+<li>ALTER (add, delete, modify table).</li>
+<li>DROP (database/table).</li>
+</ul>
+
+            </div>
+          
+            <div  class="ui tab segment lab" data-tab="02">
+              <h1>Creating a database</h1>
+<p>To create a database (also known in MySQL as a schema) we can either of the following commands:  </p>
+<pre><code>CREATE DATABASE IF NOT EXISTS database_name;</code></pre>
+<pre><code>CREATE SCHEMA IF NOT EXISTS schema_name;</code></pre>
+<p>Whether we enter <em>CREATE DATABASE</em> or <em>CREATE SCHEMA</em> here, the result is the same. <em>CREATE SCHEMA</em> is a synonym for <em>CREATE DATABASE</em> as of MySQL 5.0.2.</p>
+<p>The <em>IF NOT EXISTS</em> part of the statement is optional, and checks whether the database you are creating already exists.  If this is the case, 
+MySQL will ignore the whole statement and it will not create any new object (database or schema or table).  The database name you choose must be <code>unique</code>
+on your system.  </p>
+<p>To drop a database, execute either of the following commands: </p>
+<pre><code>DROP DATABASE database_name;</code></pre>
+<pre><code>DROP SCHEMA schema_name;</code></pre>
+
+            </div>
+          
+            <div  class="ui tab segment lab" data-tab="03">
+              <h1>Creating a table</h1>
+<p>The following illustrates the syntax of the <em>CREATE TABLE</em> statement:</p>
+<pre><code>CREATE TABLE [IF NOT EXISTS] table_name(
+        column_list
+        ) engine=table_type;</code></pre>
+<p>Let&#39;s examine the syntax in greater detail:</p>
+<ol>
+<li>First, you specify the name of table that you want to create after the <em>CREATE TABLE</em> clause.  The table name must be <code>unique</code> within the database. 
+  As before, the <em>IF NOT EXISTS</em> part of the statement checks if the table already exists, and if so, no new table will be created. </li>
+<li>Second, you specify a list of columns for the table in the column_list section. Columns are separated by a comma (,).<br>  We will show you how to define columns in more detail in the next section.</li>
+<li>Third, you may specify the storage engine for the table in the engine clause. You can use any storage engine such as 
+  InnoDB, MyISAM, Memory (formerly known as HEAP), EXAMPLE, CSV, BLACKHOLE, ARCHIVE, MERGE, or FEDERATED. If you don&#39;t explicitly 
+  declare the storage engine, MySQL will use InnoDB by default.</li>
+</ol>
+<p><strong>InnoDB</strong> became the default storage engine since MySQL version 5.5. InnoDB brings many benefits of relational database management system such as 
+ACID transaction, referential integrity and crash recovery.  In the previous versions, MySQL used <strong>MyISAM</strong> as the default storage engine.</p>
+<p>For more information, see: <a href="http://dev.mysql.com/doc/refman/5.7/en/storage-engines.html" target="_blank">Alternative Storage Engines</a></p>
+
+            </div>
+          
+            <div  class="ui tab segment lab" data-tab="04">
+              <h1>Defining columns</h1>
+<p>To define a column for the table in the <em>CREATE TABLE</em> statement, you use the following syntax:</p>
+<pre><code>column_name data_type[size] [NOT NULL|NULL] [DEFAULT value] 
+[AUTO_INCREMENT]</code></pre>
+<p>[] denotes optional.</p>
+<p>The most important components of the syntax above are:</p>
+<ul>
+<li><em>column_name</em> specifies the name of the column. Each column must be always associated with a specific data type and the size e.g.  VARCHAR(255). </li>
+<li><em>NOT NULL</em> or <em>NULL</em> indicates that the column accepts a <em>NULL</em> value or not.</li>
+<li><em>DEFAULT value</em> is used to specify the default value of the column.</li>
+<li><em>AUTO_INCREMENT</em> indicates that the value of column is increased by one whenever a new record is inserted into the table. 
+   Each table can have one and only one AUTO_INCREMENT column.</li>
+</ul>
+
+            </div>
+          
+            <div  class="ui tab segment lab" data-tab="05">
+              <h1>MySQL data types 1</h1>
+<p>MySQL data types can be grouped into three main categories; <strong>text</strong>, <strong>number</strong> and <strong>date/time</strong>.</p>
+<h2>TEXT TYPES</h2>
+<p><img src="img/text.png" alt=""></p>
+<ul>
+<li>The <strong>( )</strong> brackets allow you to enter a maximum number of characters will be used in the column. </li>
+<li><strong>CHAR</strong> and <strong>VARCHAR</strong> are the most widely used types. <strong>CHAR</strong> is a fixed length string and is mainly used when the data is not going to vary much 
+in its length. <strong>VARCHAR</strong> is a variable length string and is mainly used when the data may vary in length.</li>
+<li><strong>CHAR</strong> may be faster for the database to process considering the fields stay the same length down the column. <strong>VARCHAR</strong> may be a bit slower as it 
+calculates each field down the column, but it saves on memory space. </li>
+<li>Using both a <strong>CHAR</strong> and <strong>VARCHAR</strong> option in the same table, MySQL will automatically change the <strong>CHAR</strong> into <strong>VARCHAR</strong> for compatibility reasons. </li>
+<li><strong>BLOB</strong> stands for <strong>Binary Large OBject</strong>. Both <strong>TEXT</strong> and <strong>BLOB</strong> are variable length types that store large amounts of data. They are similar to a 
+larger version of <strong>VARCHAR</strong>. These types can store a large piece of data information, but they are also processed much slower.</li>
+<li><strong>BLOB</strong> values are treated as binary strings (byte strings). They have the binary character set and collation, and comparison and sorting are based on the 
+numeric values of the bytes in column values. <strong>TEXT</strong> values are treated as non-binary strings (character strings). 
+They have a character set other than binary, and values are sorted and compared based on the collation of the character set. 
+Blob datatypes stores binary objects like images while text datatypes store text objects like articles of a webpage.</li>
+</ul>
+
+            </div>
+          
+            <div  class="ui tab segment lab" data-tab="06">
+              <h1>MySQL data types 2</h1>
+<h2>NUMBER TYPES</h2>
+<p><img src="img/numeric.png" alt=""></p>
+<ul>
+<li>The integer types have an extra option called <strong>UNSIGNED</strong>. Normally, the integer goes from a negative to positive value. Using an <strong>UNSIGNED</strong> command will 
+move that range up so it starts at zero instead of a negative number.</li>
+<li>Specifying a numeric field as smallint (for example) will allow numeric values to be stored upto a maximum value of 32767 (or 65535 for unsigned). 
+There is no advantage specifying a value with the numeric data type (for example -  smallint(4)). 
+The optional display width specifier (for integer data types) is only applicable when using <em>zerofill</em> and has nothing to do with the internal size (in bytes) 
+of the integer data type.</li>
+</ul>
+<pre><code>create table foo
+( 
+id int auto_increment primary key,
+bar smallint(4) unsigned zerofill not null default 0
+);</code></pre>
+<pre><code>insert into foo (bar) values (781);</code></pre>
+<pre><code>select * from foo;</code></pre>
+<p>This will return:</p>
+<p><img src="img/foo1.png" alt=""></p>
+
+            </div>
+          
+            <div  class="ui tab segment lab" data-tab="07">
+              <h1>MySQL data types 3</h1>
+<h2>DATE TYPES</h2>
+<p><img src="img/date.png" alt=""></p>
+<h2>Enum</h2>
+<p>ENUM is a data type in MySQL. An ENUM is a string object with a value chosen from a list of permitted values that are enumerated explicitly in the 
+column specification at table creation time.</p>
+<pre><code>CREATE TABLE Foo 
+ ( color ENUM(&#39;red&#39;, &#39;green&#39;, &#39;blue&#39;, &#39;yellow&#39;) 
+ );</code></pre>
+<p>This column allows you to store one of the values in the enum list, but no other value.</p>
+
+            </div>
+          
+            <div  class="ui tab segment lab" data-tab="08">
+              <h1>Keys</h1>
+<h2>Primary key</h2>
+<p>If you want to set particular columns of the table as the primary key, you use the following syntax:</p>
+<pre><code>PRIMARY KEY (col1,col2,...)</code></pre>
+<h2>Foreign key</h2>
+<p>To set a foreign key, we explicitly link an attribute in one table with the primary key value of another table.</p>
+<p>For Example: From our library script</p>
+<pre><code>create table Book (
+ ISBN varchar(15) not null,
+ title varchar(50) not null,
+ publisher varchar(30),
+ publishedDate date,
+ category varchar(30),
+ price decimal(5,2),
+ primary key (ISBN)
+);</code></pre>
+<pre><code>create table BookCopy(
+ copyId int auto_increment not null,
+ ISBN varchar(15) not null,
+ dateAcquired date not null,
+ dateDestroyed date,
+ primary key (copyId),
+ constraint fk_book foreign key(ISBN) references Book(ISBN) 
+ on update cascade 
+ on delete no action
+);</code></pre>
+<p>In the <em>foreign key</em> clause you may specify what is to happen to the foreign key value if the primary key is updated or deleted. The options are:</p>
+<ul>
+<li>cascade (all related foreign key values are updated or deleted when a primary key value is updated or deleted respectively).</li>
+<li>no action (if there are related foreign key values then the primary key value cannot be updated or deleted).</li>
+<li>set null (all related foreign key values are set to null if the primary key value is updated or deleted).</li>
+</ul>
+
+            </div>
+          
+            <div  class="ui tab segment lab" data-tab="09">
+              <h1>Alter or Drop a table</h1>
+<p>To check what tables (if any) exist in a database, enter the following command:</p>
+<pre><code>SHOW tables;</code></pre>
+<p>You should see tables MANUFACTURER and CAR. To see a description of the table, CAR, enter:</p>
+<pre><code>DESCRIBE car;</code></pre>
+<p>or </p>
+<pre><code>DESC car;</code></pre>
+<h2>Alter a table</h2>
+<p>To alter a table, you can use the any of the following commands:</p>
+<p><strong>Add a column:</strong></p>
+<pre><code> ALTER TABLE table_name
+ ADD column_name datatype</code></pre>
+<p><strong>Delete a column:</strong></p>
+<pre><code> ALTER TABLE table_name
+ DROP COLUMN column_name</code></pre>
+<p><strong>Modify a column:</strong></p>
+<pre><code>ALTER TABLE table_name
+    CHANGE COLUMN old_column_name new_column_name datatype</code></pre>
+<p>or</p>
+<pre><code>ALTER TABLE table_name
+    MODIFY COLUMN column_name datatype</code></pre>
+<h2>Drop a table</h2>
+<p>To drop a table, you can use the following command: </p>
+<pre><code>DROP TABLE table_name;</code></pre>
+<p>Note that if you try to delete a table that has related records in another table, you will receive an error message.</p>
+
+            </div>
+          
+            <div  class="ui tab segment lab" data-tab="10">
+              <h1>Example - Data Definition</h1>
+<p>The following example demonstrates the creation of a database called <code>Car_Sales</code> and a table called <code>Manufacturer</code>.  </p>
+<ul>
+<li>Once a database is created and before you can create a table you must tell MySQL which database you want to use, so we need to enter (<strong>USE database_name;</strong>).  </li>
+<li>The primary key of the manufacturer is an integer and is set to <code>auto increment</code> meaning that each manufacturer will automatically be assigned 
+a unique number by the system.  The primary key constraint itself means that the field <em>cannot be blank and the value it contains must be unique within that table</em>.  </li>
+<li>Note that some other attributes are also set to <code>not null</code> meaning that those fields cannot be blank.   </li>
+</ul>
+<p>Enter the following commands:</p>
+<pre><code>CREATE DATABASE IF NOT EXISTS CAR_SALES;</code></pre>
+<pre><code>USE CAR_SALES;</code></pre>
+<pre><code>CREATE TABLE IF NOT EXISTS MANUFACTURER
+( 
+  MCODE INT AUTO_INCREMENT, 
+  MNAME ENUM(&#39;Audi&#39;, &#39;BMW&#39;, &#39;Opel&#39;, &#39;Volkswagen&#39;, &#39;Peugeot&#39;, &#39;Renault&#39;, &#39;Alfa Romeo&#39;, &#39;Ford&#39;, &#39;Hyundai&#39;, &#39;Kia&#39;, 
+           &#39;Saab&#39;, &#39;SsangYong&#39;, &#39;Honda&#39;, &#39;Lexus&#39;, &#39;Mazda&#39;, &#39;Mitsubishi&#39;, &#39;Nissan&#39;, &#39;Suzuki&#39;, &#39;Toyota&#39;) NOT NULL,
+  MCOUNTRY VARCHAR(20),
+  PRIMARY KEY(MCODE)
+);</code></pre>
+<h2>Foreign keys</h2>
+<p>We will now create a second table called <code>Car</code>, which is related to the Manufacturer table.  We will add a foreign key constraint that means that we 
+cannot place a manufacturer code in the car table, unless a related code exists in the manufacturer table.<br>Note that the field names (primary key field and related foreign key field) do not need to be the 
+same, but the data type (and size, if relevant) must be the same.</p>
+<pre><code>CREATE TABLE IF NOT EXISTS CAR
+( 
+  REG VARCHAR(15), 
+  MODEL VARCHAR(10) NOT NULL, 
+  COST DOUBLE(8,2), 
+  MCODE INT, 
+  PRIMARY KEY(REG),
+  CONSTRAINT FK_MCODE FOREIGN KEY(MCODE) 
+  REFERENCES MANUFACTURER(MCODE) 
+  ON UPDATE CASCADE ON DELETE SET NULL
+);</code></pre>
+<p>We will now alter a column (<code>cost</code>) in the <code>car</code> table:</p>
+<pre><code>ALTER TABLE car MODIFY COLUMN cost DECIMAL(8,2);</code></pre>
+
+            </div>
+          
+            <div  class="ui tab segment lab" data-tab="11">
+              <h1>Example - Data Manipulation</h1>
+<p>Insert the following records into the MANUFACTURER table:</p>
+<pre><code>INSERT INTO MANUFACTURER (MNAME, MCOUNTRY) VALUES
+ (&#39;Audi&#39;,&#39;Germany&#39;),
+ (&#39;BMW&#39;,&#39;Germany&#39;), 
+ (&#39;Opel&#39;,&#39;Germany&#39;),
+ (&#39;Volkswagen&#39;,&#39;Germany&#39;),
+ (&#39;Peugeot&#39;,&#39;France&#39;),
+ (&#39;Renault&#39;,&#39;France&#39;),
+ (&#39;Alfa Romeo&#39;,&#39;Italy&#39;),
+ (&#39;Ford&#39;,&#39;USA&#39;),
+ (&#39;Hyundai&#39;,&#39;South Korea&#39;),
+ (&#39;Kia&#39;,&#39;South Korea&#39;),
+ (&#39;Saab&#39;,&#39;Swedan&#39;),
+ (&#39;SsangYong&#39;,&#39;Swedan&#39;),
+ (&#39;Honda&#39;,&#39;Japan&#39;),
+ (&#39;Lexus&#39;,&#39;Japan&#39;),
+ (&#39;Mazda&#39;,&#39;Japan&#39;),
+ (&#39;Mitsubishi&#39;,&#39;Japan&#39;),
+ (&#39;Nissan&#39;,&#39;Japan&#39;),
+ (&#39;Suzuki&#39;,&#39;Japan&#39;),
+ (&#39;Toyota&#39;, &#39;Japan&#39;);</code></pre>
+<p>Insert the following records into the CAR table:</p>
+<pre><code>INSERT INTO CAR VALUES 
+ (&#39;141-KK-345&#39;,&#39;i30&#39;,20760, 9),
+ (&#39;11-WD-1876&#39;,&#39;i35&#39;,14500, 9),
+ (&#39;151-KK-100&#39;,&#39;Astra&#39;,24800, 3),
+ (&#39;12-WX-222&#39;,&#39;Corolla&#39;,19870, 19),
+ (&#39;142-WD-7811&#39;,&#39;Vectra&#39;,28900, 3),
+ (&#39;08-KK-1234&#39;,&#39;Polo&#39;,6500, 4),
+ (&#39;10-WX-9875&#39;,&#39;Golf&#39;,9500, 4);</code></pre>
+<p>;</p>
+
+            </div>
+          
+            <div  class="ui tab segment lab" data-tab="Exercise">
+              <h1>Exercise</h1>
+<ol>
+<li><p>Create a new table called CUSTOMER, with the following attributes:</p>
+<ul>
+<li>customerId (int auto increment)</li>
+<li>fName (variable character, size 15)</li>
+<li>lName (variable character, size 15)</li>
+<li><p>emailAddress (variable character, size 40)</p>
+</li>
+<li><p>Primary key: customerId</p>
+</li>
+</ul>
+</li>
+<li><p>Create a new table called VIEWINGS, with the following attributes:</p>
+<ul>
+<li>customerId (same definition as in the CUSTOMER table)</li>
+<li>reg (same definition as in the CAR table)</li>
+<li>viewingDate (date)</li>
+<li><p>comments (variable character, size 250)</p>
+</li>
+<li><p>Primary key: customerId, reg</p>
+</li>
+<li><p>Foreign key: customerId (related to CUSTOMER table)</p>
+</li>
+<li><p>Foreign key: reg (related to CAR table)</p>
+</li>
+<li><p>Add cascade update and delete constraints for both of the foreign key values.</p>
+</li>
+</ul>
+</li>
+<li><p>Insert 2 CUSTOMER records and 5 VIEWINGS records. Remember when inserting records into the VIEWINGS table, the customerId value must match a value from the 
+  CUSTOMER table and the reg value must match a value from the CAR table.</p>
+</li>
+<li><p>Write select statements for each of the following:</p>
+<ol>
+<li>Return the car model, viewingDate and comments for all viewings.</li>
+<li>Return the customers full name, car model, viewingDate and comments for all viewings.</li>
+</ol>
+</li>
+</ol>
+
+            </div>
+          
+        </div>
+      </div>
+    </div>
+
+    <script>
+      $(document).ready(function() {
+  const $images = $('.lab img');
+  jQuery.each($images, function(i) {
+    if ($images[i].alt.length > 0) {
+      const divImg = $(document.createElement('div')).addClass('');
+      $($images[i]).wrap(divImg);
+      const divLabel = $(document.createElement('div')).addClass('uk-label uk-text-lowercase');
+      divLabel.append($images[i].alt);
+      $(divLabel).insertAfter($images[i]);
+      $('<br>').insertAfter($images[i]);
+    }
+  });
+});
+
+      $(document).ready(function() {
+  $('img').addClass('ui image');
+
+  $('.ui.embed').embed();
+
+  const $images = $('.lab img');
+  jQuery.each($images, function(i) {
+    if ($images[i].alt.length > 0) {
+      const divImg = $(document.createElement('div')).addClass(
+        'ui basic segment',
+      );
+      $($images[i]).wrap(divImg);
+      const divLabel = $(document.createElement('div')).addClass(
+        'ui blue ribbon label',
+      );
+      divLabel.append($images[i].alt);
+      $(divLabel).insertBefore($images[i]);
+    }
+  });
+
+  $('.ui.menu .item').tab({
+    history: true,
+    historyType: 'hash',
+  });
+
+  $('.popup').popup();
+
+  $('.ui.sidebar')
+    .sidebar({ context: $('.pushable') })
+    .sidebar('setting', 'transition', 'slide out')
+    .sidebar('attach events', '#toc');
+});
+
+    </script>
+  </body>
+</html>

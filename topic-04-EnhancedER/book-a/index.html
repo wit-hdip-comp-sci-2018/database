@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/railscasts.min.css" rel="stylesheet" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <style>
+      
+
+body {
+  font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
+  font-size:90%;
+  color: black;
+}
+
+p {
+  margin: 0.5em;
+}
+
+pre code {
+  font-family: "Monaco";
+  font-size: 100%;
+}
+
+img {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin:10px;
+}
+
+h1, h2, h3 {
+  border-bottom:thin solid black;
+  margin-bottom: 0.5em;
+  margin-top: 1em;
+}
+
+h1 {
+  font-style:italic;
+  font-size:130%;
+}
+
+h2 {
+  font-size:110%;
+}
+
+h3 {
+  font-size:100%;
+}
+
+
+
+    </style>
+  </head>
+
+  <body>
+    
+    
+
+    <div class="ui fixed top pointing inverted stackable menu labmenu">
+      <header class="header item">
+        <i id="toc" class="sitemap icon"></i>
+        
+          <a href="../index.html"> Enhanced ER diagrams  </a>
+        
+      </header>
+      <div class="right tab-menu menu">
+        
+          <a class="item" data-tab="SQL 4">
+            SQL 4
+          </a>
+        
+          <a class="item" data-tab="01">
+            01
+          </a>
+        
+          <a class="item" data-tab="02">
+            02
+          </a>
+        
+          <a class="item" data-tab="03">
+            03
+          </a>
+        
+          <a class="item" data-tab="04">
+            04
+          </a>
+        
+          <a class="item" data-tab="Movies Exercise 1">
+            Movies Exercise 1
+          </a>
+        
+          <a class="item" data-tab="06">
+            06
+          </a>
+        
+          <a class="item" data-tab="07">
+            07
+          </a>
+        
+          <a class="item" data-tab="08">
+            08
+          </a>
+        
+          <a class="item" data-tab="09">
+            09
+          </a>
+        
+          <a class="item" data-tab="10">
+            10
+          </a>
+        
+          <a class="item" data-tab="Movies Exercise 2">
+            Movies Exercise 2
+          </a>
+        
+      </div>
+    </div>
+
+    <div class="ui segment pushable">
+      <div class="ui inverted labeled icon left inline vertical sidebar menu">
+        <br><br>
+        
+          
+            <a class="item" href="../../topic-00-Assignment/book-00-Assignment/index.html">
+              Assignment
+            </a>
+          
+        
+          
+            <a class="item" href="../../topic-00-On-Site/book-a/index.html">
+              Installation
+            </a>
+          
+        
+          
+            <a class="item" href="../../topic-00-On-Site/book-b/index.html">
+              SQL Introduction
+            </a>
+          
+        
+          
+            <a class="item" href="../../topic-01-Introduction/book-a/index.html">
+              SQL 1
+            </a>
+          
+        
+          
+            <a class="item" href="../../topic-02-Conceptual/book-a/index.html">
+              SQL 2
+            </a>
+          
+        
+          
+            <a class="item" href="../../topic-03-Logical/book-a/index.html">
+              SQL 3
+            </a>
+          
+        
+          
+            <a class="active item" href="../../topic-04-EnhancedER/book-a/index.html">
+              SQL 4
+            </a>
+          
+        
+      </div>
+      <div class="pusher" tabindex="-1">
+        <div class="ui basic segment" id="labchat">
+          <br>
+          
+            <div  class="ui tab segment lab" data-tab="SQL 4">
+              <h1>Objectives</h1>
+<p>In this lab, we will use the Select statement statement to look at multi table and outer Joins.</p>
+<ul>
+<li>Retrieve data from more than two tables.</li>
+<li>Perform other types of Join.</li>
+</ul>
+
+            </div>
+          
+            <div  class="ui tab segment lab" data-tab="01">
+              <h1>Join</h1>
+<p>Sometimes we need to retrieve information from more than two tables. The rule goes that the number of <em>JOINs</em> a Select statement has is 1 less than the number of 
+tables involved. So if we have three tables in the query then we have two JOINs, if we have four tables in the query then we would have 3 JOINs and so on.</p>
+
+            </div>
+          
+            <div  class="ui tab segment lab" data-tab="02">
+              <h1>Example One</h1>
+<p>For each loan, if we wanted the student&#39;s name who borrowed the book, the ISBN of the book borrowed, and the dates loaned and returned.</p>
+<p>There are three things to do here:</p>
+<ol>
+<li>Identify which tables have the data you are looking for, student name is in the <em>Student</em> table, ISBN is in the <em>Book</em> and <em>BookCopy</em> tables, loan details are in the <em>Loan</em> table. 
+  Since tables Loan and BookCopy can be joined, we will use BookCopy instead of table Book. The tables required are: <em>Student</em>, <em>Loan</em> and <em>BookCopy</em>. 
+  Since there are 3 tables, we need 2 joins. </li>
+<li>Identify which columns are the primary and foreign keys in these tables. To join the Student and Loan tables, we use the <em>studentId</em> in the <em>Student</em> 
+  and <em>studentId</em> in the <em>Loan</em> table. To join the BookCopy and Loan tables we use the <em>copyId</em> in the <em>BookCopy</em> table and <em>copyId</em> in the <em>Loan</em> table. 
+  We use these in the <em>ON</em> clause.</li>
+<li>Identify which columns we want the query to output; in this case it is <em>fName</em>, <em>lName</em> from the <em>Student</em> table, <em>ISBN</em> from the <em>BookCopy</em> table, 
+  <em>dateOut</em> and <em>dateBack</em> from the <em>Loan</em> table. We will use these in our <em>SELECT</em>.</li>
+</ol>
+<pre><code>select concat(fname,&#39; &#39;,lname) as Name, isbn, dateOut, dateBack         
+from bookcopy join loan 
+on  bookcopy.copyId = loan.copyId 
+join student 
+on loan.studentId = student.studentId;</code></pre>
+
+            </div>
+          
+            <div  class="ui tab segment lab" data-tab="03">
+              <h1>Example Two</h1>
+<p>The previous example gives us some information about the book loans per student but we still do not know the book title!</p>
+<p>We can expand the above example to return the book title instead of the ISBN.
+For each loan, we want the student<code>&#39;</code>s name who borrowed the book, the title of the book borrowed, and the dates loaned and returned.</p>
+<p>There are three things to do here:</p>
+<ol>
+<li>Identify which tables have the data you are looking for, student name is in the <em>Student</em> table, Book Title is in the <em>Book</em> table, 
+  loan details are in the <em>Loan</em> table. Since table Book is not related to any of these tables, we also require BookCopy as it has ISBN 
+  as a foreign key and BookCopy can be joined with Loan. The tables required are: <em>Student</em>, <em>Book</em>, <em>Loan</em> and <em>BookCopy</em>. 
+  Since there are 4 tables, we need 3 joins.</li>
+<li>Identify which columns are the primary and foreign keys in these tables. To join the Student and Loan tables, we use the <em>studentId</em> in the <em>Student</em> and 
+  <em>studentId</em> in the <em>Loan</em> table. To join the BookCopy and Loan tables we use the <em>copyId</em> in the <em>BookCopy</em> table and <em>copyId</em> in the <em>Loan</em> table. 
+  To join the BookCopy and Book tables we use the <em>ISBN</em> in the <em>BookCopy</em> table and <em>ISBN</em> in the <em>Book</em> table.<br>  We use these in the <em>ON</em> clause.</li>
+<li>Identify which columns we want the query to output; in this case it is <em>fName</em>, <em>lName</em> from the Student table, <em>title</em> from the Book table,
+  <em>dateOut</em> and <em>dateBack</em> from the Loan table. We will use these in our <em>SELECT</em>.</li>
+</ol>
+<pre><code>select concat(fname,&#39; &#39;,lname)  Name, title, dateOut, dateBack           
+from bookcopy join book  
+on  bookcopy.isbn = book.isbn    
+join loan         
+on bookcopy.copyId = loan.copyId 
+join student   
+on student.studentId = loan.studentId;</code></pre>
+
+            </div>
+          
+            <div  class="ui tab segment lab" data-tab="04">
+              <h1>Exercises:</h1>
+<ol>
+<li><p>List the books by title that are on loan at present (dateBack is null). Label the title <em>Books currently on loan</em>. Sort in alphabetical order by title.</p>
+<p><img src="img/ans1.png" alt=""></p>
+</li>
+<li><p>List the books by title that are on loan at present, the student by name who borrowed the book, the date the book was borrowed and the date the book was due back.
+  Label the title <em>Books currently on loan</em> and label the student name <em>Student Name</em>.  Sort in alphabetical order by title.</p>
+<p><img src="img/ans2.png" alt=""></p>
+</li>
+<li><p>List the titles and authors by name for all books. Label the title <em>Book Title</em> and label the author name <em>Author</em>. Sort in alphabetical order of title and then last name.</p>
+<p><img src="img/ans3.png" alt=""></p>
+</li>
+<li><p>List the titles and authors by name for all books that have JavaScript in the title. Label the title <em>Book Title</em> and label the author name <em>Author</em>. Sort in alphabetical order of title and then last name.</p>
+<p><img src="img/ans4.png" alt=""></p>
+</li>
+<li><p>Return the number of loans per book title. Output the count with the label Number of Loans.</p>
+<p><img src="img/ans5.png" alt=""></p>
+</li>
+</ol>
+
+            </div>
+          
+            <div  class="ui tab segment lab" data-tab="Movies Exercise 1">
+              <h1>Movies Exercise 1</h1>
+<p>For these exercises, load the <em>movies</em> database and remember to select the database.</p>
+<p>To do:</p>
+<ol>
+<li><p>For each rating retrieve the reviewer name, film title, number of stars, and date of rating.</p>
+</li>
+<li><p>Return the film titles of the films reviewed by Chris Jackson.</p>
+</li>
+</ol>
+
+            </div>
+          
+            <div  class="ui tab segment lab" data-tab="06">
+              <h1>Outer Join</h1>
+<p>Please enter the following statement which returns all Student records:</p>
+<pre><code>SELECT * FROM student;</code></pre>
+<p>Now, enter the following statement which returns all Loan records:</p>
+<pre><code>SELECT * FROM loan;</code></pre>
+<p>If you look at the loan data, not all of the students have taken a book loan (as yet).</p>
+<p>Now, say we want to produce a query which lists all students and their loan details (if they have any).
+The query would be as follows:
+`</p>
+<pre><code>SELECT concat(fname,&#39; &#39;, lname) as &#39;Name&#39;, copyId      
+FROM student JOIN loan           
+ON student.studentid = loan.studentid;</code></pre>
+<p>This will return the same number of records as the previous statement (SELECT * FROM loan;)</p>
+<p>As you can see a JOIN SELECT will only show the student record if it has a loan.
+But, how can we return all student records and their loans even if they have NO loan record associated? We must use a <strong>LEFT</strong> or <strong>RIGHT</strong> <strong><em>OUTER JOIN</em></strong>. </p>
+<p>An outer join extends the result of a simple join. An outer join returns all rows that satisfy the join condition and also returns some or all of 
+those rows from one table for which no rows from the other satisfy the join condition.</p>
+
+            </div>
+          
+            <div  class="ui tab segment lab" data-tab="07">
+              <h1>Left Outer Join</h1>
+<p>The <strong>LEFT JOIN</strong> keyword returns all rows from the left (first) table (table1), with the matching rows in the right table (table2). 
+The result is NULL in the right side when there is no match.</p>
+<p>Syntax:</p>
+<pre><code>SELECT column_name(s)
+FROM table1
+LEFT JOIN table2
+ON table1.column_name=table2.column_name;</code></pre>
+<p><img src="img/left.gif" alt=""></p>
+<p>Here is the previous example written with the <em>LEFT OUTER JOIN</em> syntax:</p>
+<pre><code>SELECT * 
+FROM student LEFT JOIN loan 
+ON student.studentid = loan.studentid;</code></pre>
+<p>Execute the statement. Do you see all the null values?</p>
+<p>A more realistic SELECT would be:</p>
+<pre><code>SELECT concat(fname,&#39; &#39;, lname) as &#39;Name&#39;, copyId 
+FROM student LEFT JOIN loan 
+ON student.studentid = loan.studentid;</code></pre>
+<p><strong>Notes:</strong> </p>
+<ul>
+<li>The LEFT JOIN keyword returns all the rows from the left table (Student), even if there are no matches in the right table (Loan).</li>
+<li>A student name will appear more than once if he/she has borrowed more than one book.</li>
+</ul>
+
+            </div>
+          
+            <div  class="ui tab segment lab" data-tab="08">
+              <h1>Right Outer Join</h1>
+<p>The <strong>RIGHT JOIN</strong> keyword returns all rows from the right (second) table (table2), with the matching rows in the left table (table1). 
+The result is NULL in the left side when there is no match.</p>
+<p>Syntax:</p>
+<pre><code>SELECT column_name(s)
+FROM table1
+RIGHT JOIN table2
+ON table1.column_name=table2.column_name;</code></pre>
+<p><img src="img/right.gif" alt=""></p>
+<p>Here is the previous example written with the <em>RIGHT OUTER JOIN</em> syntax:</p>
+<pre><code>SELECT concat(fname,&#39; &#39;, lname) as &#39;Name&#39;, copyId 
+FROM loan RIGHT JOIN student 
+ON student.studentid = loan.studentid;</code></pre>
+<p><strong>Note:</strong></p>
+<ul>
+<li>The RIGHT JOIN keyword returns all the rows from the right table (Student), even if there are no matches in the left table (Loan).</li>
+</ul>
+<h2>Exercise</h2>
+<ul>
+<li>List all the authors by name and the ISBN of the books they have written (even if they have no books at present). Sort in alpahbetical order by last name and then first name.</li>
+</ul>
+<p><img src="img/ans6.png" alt=""></p>
+
+            </div>
+          
+            <div  class="ui tab segment lab" data-tab="09">
+              <h1>Example One</h1>
+<p>The following example produces for each bookcopy - the copyId, its&#39; book title, the loan details (i.e. the date it was borrowed (if it was borrowed), and the date 
+it was returned). This will require joining tables - bookcopy, loan and book.</p>
+<ol>
+<li>Identify which tables have the data you are looking for, copyId is in the <em>BookCopy</em> and <em>Loan</em> tables; title is in the <em>Book</em> table; and loan details 
+  are in the <em>Loan</em> table. The tables required are: <em>Book</em>, <em>Loan</em> and <em>BookCopy</em>. Since there are 3 tables, we need 2 joins.
+  We need an Outer Join as we want to return all BookCopy records and their loan details whether they have a loan or not.</li>
+<li>Identify which columns are the primary and foreign keys in these tables. To join the Book and BookCopy tables, we use the <em>ISBN</em> in the <em>Book</em> and <em>ISBN</em> in the <em>BookCopy</em> table. 
+  To join the BookCopy and Loan tables we use the <em>copyId</em> in the <em>BookCopy</em> table and <em>copyId</em> in the <em>Loan</em> table. 
+  We use these in the <em>ON</em> clause. 
+  We will join the <em>Book</em> and <em>BookCopy</em> tables together with an Equijoin, and then finally left join the <em>Loan</em> table to include all BookCopy details 
+  even if there is no match with the Loan table.</li>
+<li>Identify which columns we want the query to output; in this case it is <em>copyId</em> from the <em>BookCopy</em> table, <em>title</em> from the <em>Book</em> table, <em>dateOut</em> 
+  and <em>dateBack</em> from the <em>Loan</em> table. We will use these in our <em>SELECT</em>.</li>
+</ol>
+<pre><code>SELECT bookcopy.copyId, title, dateOut, dateBack 
+FROM book JOIN bookcopy ON book.isbn = bookcopy.isbn 
+LEFT JOIN loan 
+ON bookcopy.copyId = loan.copyId;</code></pre>
+<p>A bookcopy will appear more than once if it is loaned out more than once.</p>
+<p>You can write is as follows using the RIGHT join:</p>
+<pre><code>SELECT bookcopy.copyId, title, dateOut, dateBack 
+FROM loan RIGHT JOIN bookcopy
+ON bookcopy.copyId = loan.copyId
+JOIN book ON book.isbn = bookcopy.isbn;</code></pre>
+
+            </div>
+          
+            <div  class="ui tab segment lab" data-tab="10">
+              <h1>Example Two</h1>
+<p>The following example produces for each Student <code>-</code> the full student name, the title of the books borrowed, the date it was borrowed, 
+and the date it was returned even if the student has (or had) no loans.</p>
+<ol>
+<li>Identify which tables have the data you are looking for, student name is in the <em>Student</em> table, Book Title is in the <em>Book</em> table, loan details are 
+  in the <em>Loan</em> table. Since table Book is not related to any of these tables, we also require BookCopy as it has ISBN as a foreign key 
+  and BookCopy can be joined with <em>Loan</em>. The tables required are: <em>Student</em>, <em>Book</em>, <em>Loan</em> and <em>BookCopy</em>. Since there are 4 tables, we need 3 joins. 
+  We need an Outer Join as we want to return all Student records and their loan details whether they have a loan or not.</li>
+<li>Identify which columns are the primary and foreign keys in these tables. To join the Student and Loan tables, we use the <em>studentId</em> in the <em>Student</em> 
+  and <em>studentId</em> in the <em>Loan</em> table. To join the BookCopy and Loan tables we use the <em>copyId</em> in the <em>BookCopy</em> table and <em>copyId</em> in the <em>Loan</em> table. 
+  To join the BookCopy and Book tables we use the <em>ISBN</em> in the <em>BookCopy</em> table and <em>ISBN</em> in the <em>Book</em> table.  We use these in the <em>ON</em> clause. </li>
+<li>Identify which columns we want the query to output; in this case it is <em>fName</em>, <em>lName</em> from the <em>Student</em> table, <em>title</em> from the <em>Book</em> table, 
+  <em>dateOut</em> and <em>dateBack</em> from the <em>Loan</em> table. We will use these in our <em>SELECT</em>.</li>
+</ol>
+<p>As we saw previously we need the Book table to obtain the title column, but because it is not linked with the Loan table, we need BookCopy also. 
+We can join these three tables together with an Equijoin, and then finally right join the Student table to include all students even if 
+there is no match with the Loan table.</p>
+<pre><code>SELECT concat(fname,&#39; &#39;, lname) as &#39;Name&#39;, title, dateOut, dateBack
+FROM book JOIN bookcopy ON book.isbn=bookcopy.isbn 
+JOIN loan ON bookcopy.copyid = loan.copyid 
+RIGHT JOIN student 
+ON student.studentid = loan.studentid;</code></pre>
+<p>Another way of expressing the query (using LEFT join) is as follows:</p>
+<pre><code>SELECT concat(fname,&#39; &#39;, lname) as &#39;Name&#39;, title, dateOut, dateBack
+FROM student LEFT JOIN loan 
+ON student.studentid = loan.studentid
+LEFT JOIN bookcopy ON bookcopy.copyid = loan.copyid 
+LEFT JOIN book ON book.isbn=bookcopy.isbn;</code></pre>
+<p>In this example, because we selected from the student table first, we now need to left join it with all the other tables to ensure that all students are included 
+as after the first join <code>-</code> loanId and copyId will have null values for students who have no loans AND in order to join these values with other tables we need an Outer
+Join.</p>
+<h2>Exercise</h2>
+<ul>
+<li>List all the authors by name and the title of the books they have written (even if they have no books at present). Sort in alphabetical order of title and then last name and
+then first name.</li>
+</ul>
+
+            </div>
+          
+            <div  class="ui tab segment lab" data-tab="Movies Exercise 2">
+              <h1>Movies Exercise 2</h1>
+<p>For these exercises, load the <em>movies</em> database, remember to select the database, and execute the following statement:   </p>
+<pre><code>insert into reviewer values(209, &#39;Liam Collins&#39;);</code></pre>
+<ol>
+<li>Return the film title, reviewer name and number of stars for all films (even if it is not reviewed yet).</li>
+<li>Return the reviewer name, film title, and number of stars for all reviewers (even if they have not left a review yet).</li>
+</ol>
+
+            </div>
+          
+        </div>
+      </div>
+    </div>
+
+    <script>
+      $(document).ready(function() {
+  const $images = $('.lab img');
+  jQuery.each($images, function(i) {
+    if ($images[i].alt.length > 0) {
+      const divImg = $(document.createElement('div')).addClass('');
+      $($images[i]).wrap(divImg);
+      const divLabel = $(document.createElement('div')).addClass('uk-label uk-text-lowercase');
+      divLabel.append($images[i].alt);
+      $(divLabel).insertAfter($images[i]);
+      $('<br>').insertAfter($images[i]);
+    }
+  });
+});
+
+      $(document).ready(function() {
+  $('img').addClass('ui image');
+
+  $('.ui.embed').embed();
+
+  const $images = $('.lab img');
+  jQuery.each($images, function(i) {
+    if ($images[i].alt.length > 0) {
+      const divImg = $(document.createElement('div')).addClass(
+        'ui basic segment',
+      );
+      $($images[i]).wrap(divImg);
+      const divLabel = $(document.createElement('div')).addClass(
+        'ui blue ribbon label',
+      );
+      divLabel.append($images[i].alt);
+      $(divLabel).insertBefore($images[i]);
+    }
+  });
+
+  $('.ui.menu .item').tab({
+    history: true,
+    historyType: 'hash',
+  });
+
+  $('.popup').popup();
+
+  $('.ui.sidebar')
+    .sidebar({ context: $('.pushable') })
+    .sidebar('setting', 'transition', 'slide out')
+    .sidebar('attach events', '#toc');
+});
+
+    </script>
+  </body>
+</html>

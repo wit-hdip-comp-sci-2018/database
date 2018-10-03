@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/railscasts.min.css" rel="stylesheet" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <style>
+      
+
+body {
+  font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
+  font-size:90%;
+  color: black;
+}
+
+p {
+  margin: 0.5em;
+}
+
+pre code {
+  font-family: "Monaco";
+  font-size: 100%;
+}
+
+img {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin:10px;
+}
+
+h1, h2, h3 {
+  border-bottom:thin solid black;
+  margin-bottom: 0.5em;
+  margin-top: 1em;
+}
+
+h1 {
+  font-style:italic;
+  font-size:130%;
+}
+
+h2 {
+  font-size:110%;
+}
+
+h3 {
+  font-size:100%;
+}
+
+
+
+    </style>
+  </head>
+
+  <body>
+    
+    
+
+    <div class="ui fixed top pointing inverted stackable menu labmenu">
+      <header class="header item">
+        <i id="toc" class="sitemap icon"></i>
+        
+          <a href="../index.html">  Assignment  </a>
+        
+      </header>
+      <div class="right tab-menu menu">
+        
+          <a class="item" data-tab="Assignment">
+            Assignment
+          </a>
+        
+          <a class="item" data-tab="Design">
+            Design
+          </a>
+        
+          <a class="item" data-tab="Implementation">
+            Implementation
+          </a>
+        
+      </div>
+    </div>
+
+    <div class="ui segment pushable">
+      <div class="ui inverted labeled icon left inline vertical sidebar menu">
+        <br><br>
+        
+          
+            <a class="active item" href="../../topic-00-Assignment/book-00-Assignment/index.html">
+              Assignment
+            </a>
+          
+        
+          
+            <a class="item" href="../../topic-00-On-Site/book-a/index.html">
+              Installation
+            </a>
+          
+        
+          
+            <a class="item" href="../../topic-00-On-Site/book-b/index.html">
+              SQL Introduction
+            </a>
+          
+        
+          
+            <a class="item" href="../../topic-01-Introduction/book-a/index.html">
+              SQL 1
+            </a>
+          
+        
+          
+            <a class="item" href="../../topic-02-Conceptual/book-a/index.html">
+              SQL 2
+            </a>
+          
+        
+          
+            <a class="item" href="../../topic-03-Logical/book-a/index.html">
+              SQL 3
+            </a>
+          
+        
+          
+            <a class="item" href="../../topic-04-EnhancedER/book-a/index.html">
+              SQL 4
+            </a>
+          
+        
+      </div>
+      <div class="pusher" tabindex="-1">
+        <div class="ui basic segment" id="labchat">
+          <br>
+          
+            <div  class="ui tab segment lab" data-tab="Assignment">
+              <h1>Continuous Assessment</h1>
+<p>As your continuous assessment for this module, you are required to design and develop a database using MySQL. </p>
+<p>There are two project deliverables:</p>
+<ol>
+<li>Design Document (25%): due Sunday 4th November</li>
+<li>MySQL Implementation (25%): due Sunday 9th December</li>
+</ol>
+
+            </div>
+          
+            <div  class="ui tab segment lab" data-tab="Design">
+              <h1>Design Document (25%)</h1>
+<p>This document serves as the design and implementation plan for the database. It is at this stage that the database should be modelled and associated documentation should be developed. This report should have the following structure:   </p>
+<ol>
+<li><p><strong>Title Page</strong>: This should contain the name of the report, student number and student name, date and module.</p>
+</li>
+<li><p><strong>Table of Contents</strong>: This should include major sections and page numbers.</p>
+</li>
+<li><p><strong>Business Description</strong>: The business description should include a description of the business, along with its major functions. The benefits of implementing a database for the chosen business should be highlighted.</p>
+</li>
+<li><p><strong>Enhanced ER diagram</strong>: The data model should be sufficiently complex, including different types of relationships/associations (e.g. 1:1, 1:M, M:M and recursive relationships, used where relevant) and at least one example of a supertype/subtype relationship.</p>
+</li>
+<li><p><strong>Normalised Tables (3NF sufficient)</strong>: You should list the tables that will be created from the EER diagram above. Remember to include all the appropriate foreign keys and tables created by association entities.</p>
+</li>
+<li><p><strong>Table Design</strong>: This is a detailed description of each table. It should incorporate the data shown in the sample below. This section should also identify the relevant integrity constraints and keys required for database table. It would be advisable to indicate where the use of indexes would be appropriate. You should justify your choice of index. Remember to fill in all columns for all fields.</p>
+</li>
+</ol>
+<h2>Sample table specification</h2>
+<p>Table name: Student</p>
+<table style="width:80%;">
+  <tr>
+    <th style="border: black solid 1px; width: 10%">Field</th>
+    <th style="border: black solid 1px; width: 10%">Type</th>
+    <th style="border: black solid 1px; width: 10%">Size</th>
+    <th style="border: black solid 1px; width: 15%">Null/Not Null</th>
+    <th style="border: black solid 1px; width: 10%">Default</th>
+    <th style="border: black solid 1px; width: 15%">Constraints</th>
+    <th style="border: black solid 1px; width: 10%">Index</th>
+    <th style="border: black solid 1px; width: 20%">Description</th>
+  </tr>
+  <tr>
+    <td style="border: black solid 1px;">StdNo</td>
+    <td style="border: black solid 1px;">char</td>
+    <td style="border: black solid 1px;">8</td>
+    <td style="border: black solid 1px;">Not Null</td>
+    <td style="border: black solid 1px;"></td>
+    <td style="border: black solid 1px;">Unique</td>
+    <td style="border: black solid 1px;">PK</td>
+    <td style="border: black solid 1px;">Unique student number</td>
+  </tr>
+  <tr>
+    <td style="border: black solid 1px;">Name</td>
+    <td style="border: black solid 1px;">char</td>
+    <td style="border: black solid 1px;">20</td>
+    <td style="border: black solid 1px;"></td>
+    <td style="border: black solid 1px;"></td>
+    <td style="border: black solid 1px;"></td>
+    <td style="border: black solid 1px;"></td>
+    <td style="border: black solid 1px;">Surname followed by first name</td>
+  </tr>
+  <tr>
+    <td style="border: black solid 1px;">Address</td>
+    <td style="border: black solid 1px;">char</td>
+    <td style="border: black solid 1px;">100</td>
+    <td style="border: black solid 1px;"></td>
+    <td style="border: black solid 1px;"></td>
+    <td style="border: black solid 1px;"></td>
+    <td style="border: black solid 1px;"></td>
+    <td style="border: black solid 1px;">College address</td>
+  </tr>
+  <tr>
+    <td style="border: black solid 1px;">Mature</td>
+    <td style="border: black solid 1px;">char</td>
+    <td style="border: black solid 1px;">1</td>
+    <td style="border: black solid 1px;"></td>
+    <td style="border: black solid 1px;">N</td>
+    <td style="border: black solid 1px;">Y or N</td>
+    <td style="border: black solid 1px;"></td>
+    <td style="border: black solid 1px;">Yes if student is greater than 24 years old in year 1.</td>
+  </tr>
+</table>
+
+<h2>Submitting your assignment</h2>
+<p>The design document should be submitted in an electronic format through Moodle by Sunday 4th November.</p>
+
+            </div>
+          
+            <div  class="ui tab segment lab" data-tab="Implementation">
+              <h1>SQL Implementation (25%)</h1>
+<p>In this phase all previous documentation will be used in order to implement the actual database in the MySQL environment. Any revisions to the project design should be resubmitted at this stage. The student is expected to submit two SQL scripts:</p>
+<ul>
+<li>One that creates the database, users and tables, grants appropriate privileges to the users and populates the tables with records; basically everything required to recreate the entire database on another computer.</li>
+<li>Another script that contains the list of frequently used queries for the database.</li>
+</ul>
+<p>You will also submit a brief report which documents:</p>
+<ul>
+<li>The process you took to implement the database, any problems you encountered and how you solved them</li>
+<li>An explanation of the frequently used queries</li>
+<li>An explanation of the privileges granted to users</li>
+</ul>
+<h2>Submitting your assignment</h2>
+<p>The two SQL scripts and the report should be submitted in an electronic format through Moodle by Sunday 9th December.</p>
+
+            </div>
+          
+        </div>
+      </div>
+    </div>
+
+    <script>
+      $(document).ready(function() {
+  const $images = $('.lab img');
+  jQuery.each($images, function(i) {
+    if ($images[i].alt.length > 0) {
+      const divImg = $(document.createElement('div')).addClass('');
+      $($images[i]).wrap(divImg);
+      const divLabel = $(document.createElement('div')).addClass('uk-label uk-text-lowercase');
+      divLabel.append($images[i].alt);
+      $(divLabel).insertAfter($images[i]);
+      $('<br>').insertAfter($images[i]);
+    }
+  });
+});
+
+      $(document).ready(function() {
+  $('img').addClass('ui image');
+
+  $('.ui.embed').embed();
+
+  const $images = $('.lab img');
+  jQuery.each($images, function(i) {
+    if ($images[i].alt.length > 0) {
+      const divImg = $(document.createElement('div')).addClass(
+        'ui basic segment',
+      );
+      $($images[i]).wrap(divImg);
+      const divLabel = $(document.createElement('div')).addClass(
+        'ui blue ribbon label',
+      );
+      divLabel.append($images[i].alt);
+      $(divLabel).insertBefore($images[i]);
+    }
+  });
+
+  $('.ui.menu .item').tab({
+    history: true,
+    historyType: 'hash',
+  });
+
+  $('.popup').popup();
+
+  $('.ui.sidebar')
+    .sidebar({ context: $('.pushable') })
+    .sidebar('setting', 'transition', 'slide out')
+    .sidebar('attach events', '#toc');
+});
+
+    </script>
+  </body>
+</html>
