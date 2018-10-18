@@ -1,20 +1,29 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css" type="text/css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/railscasts.min.css" rel="stylesheet" />
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
-    <style>
-      
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css"
+        type="text/css">
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/railscasts.min.css"
+        rel="stylesheet"/>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script type="text/javascript"
+          src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+  <script type="text/javascript"
+          src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.js"></script>
+  <script type="text/javascript"
+          src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script type="text/javascript"
+          src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>
+  <script type="text/javascript"
+          src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/kotlin.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <style>
+    
 
 body {
   font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
@@ -57,102 +66,93 @@ h3 {
 
 
 
-    </style>
-  </head>
+  </style>
+</head>
 
-  <body>
+<body>
+
+
+
+<div class="ui fixed top pointing inverted stackable menu labmenu">
+  <header class="header item">
+    <i id="toc" class="sitemap icon"></i>
     
+      <a href="../index.html">  Assignment  </a>
     
+  </header>
+  <div class="right tab-menu menu">
+    
+      <a class="item" data-tab="Assignment">
+        Assignment
+      </a>
+    
+      <a class="item" data-tab="Design">
+        Design
+      </a>
+    
+      <a class="item" data-tab="Implementation">
+        Implementation
+      </a>
+    
+  </div>
+</div>
 
-    <div class="ui fixed top pointing inverted stackable menu labmenu">
-      <header class="header item">
-        <i id="toc" class="sitemap icon"></i>
-        
-          <a href="../index.html">  Assignment  </a>
-        
-      </header>
-      <div class="right tab-menu menu">
-        
-          <a class="item" data-tab="Assignment">
-            Assignment
-          </a>
-        
-          <a class="item" data-tab="Design">
-            Design
-          </a>
-        
-          <a class="item" data-tab="Implementation">
-            Implementation
-          </a>
-        
-      </div>
-    </div>
-
-    <div class="ui segment pushable">
-      <div class="ui inverted labeled icon left inline vertical sidebar menu">
-        <br><br>
-        
-          
-            <a class="active item" href="../../topic-00-Assignment/book-00-Assignment/index.html">
-              Assignment
-            </a>
-          
-        
-          
-            <a class="item" href="../../topic-00-On-Site/book-a/index.html">
-              Installation
-            </a>
-          
-        
-          
-            <a class="item" href="../../topic-00-On-Site/book-b/index.html">
-              SQL Introduction
-            </a>
-          
-        
-          
-            <a class="item" href="../../topic-01-Introduction/book-a/index.html">
-              SQL 1
-            </a>
-          
-        
-          
-            <a class="item" href="../../topic-02-Conceptual/book-a/index.html">
-              SQL 2
-            </a>
-          
-        
-          
-            <a class="item" href="../../topic-03-Logical/book-a/index.html">
-              SQL 3
-            </a>
-          
-        
-          
-            <a class="item" href="../../topic-04-EnhancedER/book-a/index.html">
-              SQL 4
-            </a>
-          
-        
-          
-            <a class="item" href="../../topic-05-Normalisation1/book-a/index.html">
-              Lab-01 SQL 5
-            </a>
-          
-        
-          
-            <a class="item" href="../../topic-06-Normalisation2/book-a/index.html">
-              Lab-01 SQL 6
-            </a>
-          
-        
-      </div>
-      <div class="pusher" tabindex="-1">
-        <div class="ui basic segment" id="labchat">
-          <br>
-          
-            <div  class="ui tab segment lab" data-tab="Assignment">
-              <h1>Continuous Assessment</h1>
+<div class="ui pushable">
+  <div class="ui inverted labeled icon left inline vertical sidebar menu">
+    <br><br>
+    
+      
+        <a class="item"
+           href="http://wit-hdip-comp-sci-2018.github.io/database//topic-00-Assignment/book-00-Assignment/index.html">Assignment </a>
+      
+    
+      
+        <a class="item"
+           href="http://wit-hdip-comp-sci-2018.github.io/database//topic-00-On-Site/book-a/index.html">Installation </a>
+      
+    
+      
+        <a class="item"
+           href="http://wit-hdip-comp-sci-2018.github.io/database//topic-00-On-Site/book-b/index.html">SQL Introduction </a>
+      
+    
+      
+        <a class="item"
+           href="http://wit-hdip-comp-sci-2018.github.io/database//topic-01-Introduction/book-a/index.html">SQL 1 </a>
+      
+    
+      
+        <a class="item"
+           href="http://wit-hdip-comp-sci-2018.github.io/database//topic-02-Conceptual/book-a/index.html">SQL 2 </a>
+      
+    
+      
+        <a class="item"
+           href="http://wit-hdip-comp-sci-2018.github.io/database//topic-03-Logical/book-a/index.html">SQL 3 </a>
+      
+    
+      
+        <a class="item"
+           href="http://wit-hdip-comp-sci-2018.github.io/database//topic-04-EnhancedER/book-a/index.html">SQL 4 </a>
+      
+    
+      
+        <a class="item"
+           href="http://wit-hdip-comp-sci-2018.github.io/database//topic-05-Normalisation1/book-a/index.html">Lab-01 SQL 5 </a>
+      
+    
+      
+        <a class="item"
+           href="http://wit-hdip-comp-sci-2018.github.io/database//topic-06-Normalisation2/book-a/index.html">Lab-01 SQL 6 </a>
+      
+    
+  </div>
+  <div class="pusher" tabindex="-1">
+    <div class="ui basic segment">
+      <br>
+      
+        <div class="ui tab segment lab" data-tab="Assignment">
+          <h1>Continuous Assessment</h1>
 <p>As your continuous assessment for this module, you are required to design and develop a database using MySQL. </p>
 <p>There are two project deliverables:</p>
 <ol>
@@ -160,10 +160,10 @@ h3 {
 <li>MySQL Implementation (25%): due Sunday 9th December</li>
 </ol>
 
-            </div>
-          
-            <div  class="ui tab segment lab" data-tab="Design">
-              <h1>Design Document (25%)</h1>
+        </div>
+      
+        <div class="ui tab segment lab" data-tab="Design">
+          <h1>Design Document (25%)</h1>
 <p>This document serves as the design and implementation plan for the database. It is at this stage that the database should be modelled and associated documentation should be developed. This report should have the following structure:   </p>
 <ol>
 <li><p><strong>Title Page</strong>: This should contain the name of the report, student number and student name, date and module.</p>
@@ -237,10 +237,10 @@ h3 {
 <h2>Submitting your assignment</h2>
 <p>The design document should be submitted in an electronic format through Moodle by Sunday 4th November.</p>
 
-            </div>
-          
-            <div  class="ui tab segment lab" data-tab="Implementation">
-              <h1>SQL Implementation (25%)</h1>
+        </div>
+      
+        <div class="ui tab segment lab" data-tab="Implementation">
+          <h1>SQL Implementation (25%)</h1>
 <p>In this phase all previous documentation will be used in order to implement the actual database in the MySQL environment. Any revisions to the project design should be resubmitted at this stage. The student is expected to submit two SQL scripts:</p>
 <ul>
 <li>One that creates the database, users and tables, grants appropriate privileges to the users and populates the tables with records; basically everything required to recreate the entire database on another computer.</li>
@@ -255,28 +255,34 @@ h3 {
 <h2>Submitting your assignment</h2>
 <p>The two SQL scripts and the report should be submitted in an electronic format through Moodle by Sunday 9th December.</p>
 
-            </div>
-          
         </div>
-      </div>
+      
     </div>
+  </div>
+</div>
 
-    <script>
-      $(document).ready(function() {
-  const $images = $('.lab img');
-  jQuery.each($images, function(i) {
-    if ($images[i].alt.length > 0) {
-      const divImg = $(document.createElement('div')).addClass('');
-      $($images[i]).wrap(divImg);
-      const divLabel = $(document.createElement('div')).addClass('uk-label uk-text-lowercase');
-      divLabel.append($images[i].alt);
-      $(divLabel).insertAfter($images[i]);
-      $('<br>').insertAfter($images[i]);
-    }
-  });
+<script>
+  $(document).on('keydown', function(e) {
+  e = e || window.event;
+  var nextTab;
+  switch (e.which || e.keyCode) {
+    case 37: // left
+      nextTab = $('.tab-menu a[data-tab].active').prev('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').last();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+
+    case 39: // right
+      nextTab = $('.tab-menu a[data-tab].active').next('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').first();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+  }
 });
 
-      $(document).ready(function() {
+  $(document).ready(function() {
   $('img').addClass('ui image');
 
   $('.ui.embed').embed();
@@ -309,6 +315,6 @@ h3 {
     .sidebar('attach events', '#toc');
 });
 
-    </script>
-  </body>
+</script>
+</body>
 </html>
