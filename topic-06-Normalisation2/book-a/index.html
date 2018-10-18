@@ -1,29 +1,20 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-  <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css"
-        type="text/css">
-  <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/railscasts.min.css"
-        rel="stylesheet"/>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script type="text/javascript"
-          src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
-  <script type="text/javascript"
-          src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.js"></script>
-  <script type="text/javascript"
-          src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-  <script type="text/javascript"
-          src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>
-  <script type="text/javascript"
-          src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/kotlin.min.js"></script>
-  <script>hljs.initHighlightingOnLoad();</script>
-  <style>
-    
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/railscasts.min.css" rel="stylesheet" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <style>
+      
 
 body {
   font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
@@ -66,142 +57,151 @@ h3 {
 
 
 
-  </style>
-</head>
+    </style>
+  </head>
 
-<body>
+  <body>
+    
+    
 
+    <div class="ui fixed top pointing inverted stackable menu labmenu">
+      <header class="header item">
+        <i id="toc" class="sitemap icon"></i>
+        
+          <a href="../index.html"> Advanced Normalisation  </a>
+        
+      </header>
+      <div class="right tab-menu menu">
+        
+          <a class="item" data-tab="Lab-01 SQL 6">
+            Lab-01 SQL 6
+          </a>
+        
+          <a class="item" data-tab="01">
+            01
+          </a>
+        
+          <a class="item" data-tab="02">
+            02
+          </a>
+        
+          <a class="item" data-tab="03">
+            03
+          </a>
+        
+          <a class="item" data-tab="04">
+            04
+          </a>
+        
+          <a class="item" data-tab="05">
+            05
+          </a>
+        
+          <a class="item" data-tab="06">
+            06
+          </a>
+        
+          <a class="item" data-tab="07">
+            07
+          </a>
+        
+          <a class="item" data-tab="08">
+            08
+          </a>
+        
+          <a class="item" data-tab="09">
+            09
+          </a>
+        
+          <a class="item" data-tab="10">
+            10
+          </a>
+        
+          <a class="item" data-tab="11">
+            11
+          </a>
+        
+          <a class="item" data-tab="Exercise">
+            Exercise
+          </a>
+        
+      </div>
+    </div>
 
-
-<div class="ui fixed top pointing inverted stackable menu labmenu">
-  <header class="header item">
-    <i id="toc" class="sitemap icon"></i>
-    
-      <a href="../index.html">  06: Advanced Normalisation  </a>
-    
-  </header>
-  <div class="right tab-menu menu">
-    
-      <a class="item" data-tab="Lab-01 SQL 6">
-        Lab-01 SQL 6
-      </a>
-    
-      <a class="item" data-tab="01">
-        01
-      </a>
-    
-      <a class="item" data-tab="02">
-        02
-      </a>
-    
-      <a class="item" data-tab="03">
-        03
-      </a>
-    
-      <a class="item" data-tab="04">
-        04
-      </a>
-    
-      <a class="item" data-tab="05">
-        05
-      </a>
-    
-      <a class="item" data-tab="06">
-        06
-      </a>
-    
-      <a class="item" data-tab="07">
-        07
-      </a>
-    
-      <a class="item" data-tab="08">
-        08
-      </a>
-    
-      <a class="item" data-tab="09">
-        09
-      </a>
-    
-      <a class="item" data-tab="10">
-        10
-      </a>
-    
-      <a class="item" data-tab="11">
-        11
-      </a>
-    
-      <a class="item" data-tab="Exercise">
-        Exercise
-      </a>
-    
-  </div>
-</div>
-
-<div class="ui pushable">
-  <div class="ui inverted labeled icon left inline vertical sidebar menu">
-    <br><br>
-    
-      
-        <a class="item"
-           href="http://wit-hdip-comp-sci-2018.github.io/database//topic-00-Assignment/book-00-Assignment/index.html">Assignment </a>
-      
-    
-      
-        <a class="item"
-           href="http://wit-hdip-comp-sci-2018.github.io/database//topic-00-On-Site/book-a/index.html">Installation </a>
-      
-    
-      
-        <a class="item"
-           href="http://wit-hdip-comp-sci-2018.github.io/database//topic-00-On-Site/book-b/index.html">SQL Introduction </a>
-      
-    
-      
-        <a class="item"
-           href="http://wit-hdip-comp-sci-2018.github.io/database//topic-01-Introduction/book-a/index.html">SQL 1 </a>
-      
-    
-      
-        <a class="item"
-           href="http://wit-hdip-comp-sci-2018.github.io/database//topic-02-Conceptual/book-a/index.html">SQL 2 </a>
-      
-    
-      
-        <a class="item"
-           href="http://wit-hdip-comp-sci-2018.github.io/database//topic-03-Logical/book-a/index.html">SQL 3 </a>
-      
-    
-      
-        <a class="item"
-           href="http://wit-hdip-comp-sci-2018.github.io/database//topic-04-EnhancedER/book-a/index.html">SQL 4 </a>
-      
-    
-      
-        <a class="item"
-           href="http://wit-hdip-comp-sci-2018.github.io/database//topic-05-Normalisation1/book-a/index.html">Lab-01 SQL 5 </a>
-      
-    
-      
-        <a class="item"
-           href="http://wit-hdip-comp-sci-2018.github.io/database//topic-06-Normalisation2/book-a/index.html">Lab-01 SQL 6 </a>
-      
-    
-  </div>
-  <div class="pusher" tabindex="-1">
-    <div class="ui basic segment">
-      <br>
-      
-        <div class="ui tab segment lab" data-tab="Lab-01 SQL 6">
-          <h1>Objectives</h1>
+    <div class="ui segment pushable">
+      <div class="ui inverted labeled icon left inline vertical sidebar menu">
+        <br><br>
+        
+          
+            <a class="item" href="../../topic-00-Assignment/book-00-Assignment/index.html">
+              Assignment
+            </a>
+          
+        
+          
+            <a class="item" href="../../topic-00-On-Site/book-a/index.html">
+              Installation
+            </a>
+          
+        
+          
+            <a class="item" href="../../topic-00-On-Site/book-b/index.html">
+              SQL Introduction
+            </a>
+          
+        
+          
+            <a class="item" href="../../topic-01-Introduction/book-a/index.html">
+              SQL 1
+            </a>
+          
+        
+          
+            <a class="item" href="../../topic-02-Conceptual/book-a/index.html">
+              SQL 2
+            </a>
+          
+        
+          
+            <a class="item" href="../../topic-03-Logical/book-a/index.html">
+              SQL 3
+            </a>
+          
+        
+          
+            <a class="item" href="../../topic-04-EnhancedER/book-a/index.html">
+              SQL 4
+            </a>
+          
+        
+          
+            <a class="item" href="../../topic-05-Normalisation1/book-a/index.html">
+              Lab-01 SQL 5
+            </a>
+          
+        
+          
+            <a class="active item" href="../../topic-06-Normalisation2/book-a/index.html">
+              Lab-01 SQL 6
+            </a>
+          
+        
+      </div>
+      <div class="pusher" tabindex="-1">
+        <div class="ui basic segment" id="labchat">
+          <br>
+          
+            <div  class="ui tab segment lab" data-tab="Lab-01 SQL 6">
+              <h1>Objectives</h1>
 <p>In this lab, we will look at Data Definition.</p>
 <ul>
 <li>Use CREATE, ALTER and DROP statements.</li>
 </ul>
 
-        </div>
-      
-        <div class="ui tab segment lab" data-tab="01">
-          <h1>Data Defintion</h1>
+            </div>
+          
+            <div  class="ui tab segment lab" data-tab="01">
+              <h1>Data Defintion</h1>
 <p>So far we have performed <strong>SELECT</strong> statements on existing tables in the Library and Movie databases.  We have also executed <strong>INSERT</strong>, <strong>UPDATE</strong>, and <strong>DELETE</strong>
 statements. </p>
 <p>The above 4 statements are <em>DATA MANIPULATION</em> statements. </p>
@@ -212,10 +212,10 @@ statements. </p>
 <li>DROP (database/table).</li>
 </ul>
 
-        </div>
-      
-        <div class="ui tab segment lab" data-tab="02">
-          <h1>Creating a database</h1>
+            </div>
+          
+            <div  class="ui tab segment lab" data-tab="02">
+              <h1>Creating a database</h1>
 <p>To create a database (also known in MySQL as a schema) we can either of the following commands:  </p>
 <pre><code>CREATE DATABASE IF NOT EXISTS database_name;</code></pre>
 <pre><code>CREATE SCHEMA IF NOT EXISTS schema_name;</code></pre>
@@ -227,10 +227,10 @@ on your system.  </p>
 <pre><code>DROP DATABASE database_name;</code></pre>
 <pre><code>DROP SCHEMA schema_name;</code></pre>
 
-        </div>
-      
-        <div class="ui tab segment lab" data-tab="03">
-          <h1>Creating a table</h1>
+            </div>
+          
+            <div  class="ui tab segment lab" data-tab="03">
+              <h1>Creating a table</h1>
 <p>The following illustrates the syntax of the <em>CREATE TABLE</em> statement:</p>
 <pre><code>CREATE TABLE [IF NOT EXISTS] table_name(
         column_list
@@ -248,10 +248,10 @@ on your system.  </p>
 ACID transaction, referential integrity and crash recovery.  In the previous versions, MySQL used <strong>MyISAM</strong> as the default storage engine.</p>
 <p>For more information, see: <a href="http://dev.mysql.com/doc/refman/5.7/en/storage-engines.html" target="_blank">Alternative Storage Engines</a></p>
 
-        </div>
-      
-        <div class="ui tab segment lab" data-tab="04">
-          <h1>Defining columns</h1>
+            </div>
+          
+            <div  class="ui tab segment lab" data-tab="04">
+              <h1>Defining columns</h1>
 <p>To define a column for the table in the <em>CREATE TABLE</em> statement, you use the following syntax:</p>
 <pre><code>column_name data_type[size] [NOT NULL|NULL] [DEFAULT value] 
 [AUTO_INCREMENT]</code></pre>
@@ -265,10 +265,10 @@ ACID transaction, referential integrity and crash recovery.  In the previous ver
    Each table can have one and only one AUTO_INCREMENT column.</li>
 </ul>
 
-        </div>
-      
-        <div class="ui tab segment lab" data-tab="05">
-          <h1>MySQL data types 1</h1>
+            </div>
+          
+            <div  class="ui tab segment lab" data-tab="05">
+              <h1>MySQL data types 1</h1>
 <p>MySQL data types can be grouped into three main categories; <strong>text</strong>, <strong>number</strong> and <strong>date/time</strong>.</p>
 <h2>TEXT TYPES</h2>
 <p><img src="img/text.png" alt=""></p>
@@ -287,10 +287,10 @@ They have a character set other than binary, and values are sorted and compared 
 Blob datatypes stores binary objects like images while text datatypes store text objects like articles of a webpage.</li>
 </ul>
 
-        </div>
-      
-        <div class="ui tab segment lab" data-tab="06">
-          <h1>MySQL data types 2</h1>
+            </div>
+          
+            <div  class="ui tab segment lab" data-tab="06">
+              <h1>MySQL data types 2</h1>
 <h2>NUMBER TYPES</h2>
 <p><img src="img/numeric.png" alt=""></p>
 <ul>
@@ -311,10 +311,10 @@ bar smallint(4) unsigned zerofill not null default 0
 <p>This will return:</p>
 <p><img src="img/foo1.png" alt=""></p>
 
-        </div>
-      
-        <div class="ui tab segment lab" data-tab="07">
-          <h1>MySQL data types 3</h1>
+            </div>
+          
+            <div  class="ui tab segment lab" data-tab="07">
+              <h1>MySQL data types 3</h1>
 <h2>DATE TYPES</h2>
 <p><img src="img/date.png" alt=""></p>
 <h2>Enum</h2>
@@ -325,10 +325,10 @@ column specification at table creation time.</p>
  );</code></pre>
 <p>This column allows you to store one of the values in the enum list, but no other value.</p>
 
-        </div>
-      
-        <div class="ui tab segment lab" data-tab="08">
-          <h1>Keys</h1>
+            </div>
+          
+            <div  class="ui tab segment lab" data-tab="08">
+              <h1>Keys</h1>
 <h2>Primary key</h2>
 <p>If you want to set particular columns of the table as the primary key, you use the following syntax:</p>
 <pre><code>PRIMARY KEY (col1,col2,...)</code></pre>
@@ -361,10 +361,10 @@ column specification at table creation time.</p>
 <li>set null (all related foreign key values are set to null if the primary key value is updated or deleted).</li>
 </ul>
 
-        </div>
-      
-        <div class="ui tab segment lab" data-tab="09">
-          <h1>Alter or Drop a table</h1>
+            </div>
+          
+            <div  class="ui tab segment lab" data-tab="09">
+              <h1>Alter or Drop a table</h1>
 <p>To check what tables (if any) exist in a database, enter the following command:</p>
 <pre><code>SHOW tables;</code></pre>
 <p>You should see tables MANUFACTURER and CAR. To see a description of the table, CAR, enter:</p>
@@ -390,10 +390,10 @@ column specification at table creation time.</p>
 <pre><code>DROP TABLE table_name;</code></pre>
 <p>Note that if you try to delete a table that has related records in another table, you will receive an error message.</p>
 
-        </div>
-      
-        <div class="ui tab segment lab" data-tab="10">
-          <h1>Example - Data Definition</h1>
+            </div>
+          
+            <div  class="ui tab segment lab" data-tab="10">
+              <h1>Example - Data Definition</h1>
 <p>The following example demonstrates the creation of a database called <code>Car_Sales</code> and a table called <code>Manufacturer</code>.  </p>
 <ul>
 <li>Once a database is created and before you can create a table you must tell MySQL which database you want to use, so we need to enter (<strong>USE database_name;</strong>).  </li>
@@ -430,10 +430,10 @@ same, but the data type (and size, if relevant) must be the same.</p>
 <p>We will now alter a column (<code>cost</code>) in the <code>car</code> table:</p>
 <pre><code>ALTER TABLE car MODIFY COLUMN cost DECIMAL(8,2);</code></pre>
 
-        </div>
-      
-        <div class="ui tab segment lab" data-tab="11">
-          <h1>Example - Data Manipulation</h1>
+            </div>
+          
+            <div  class="ui tab segment lab" data-tab="11">
+              <h1>Example - Data Manipulation</h1>
 <p>Insert the following records into the MANUFACTURER table:</p>
 <pre><code>INSERT INTO MANUFACTURER (MNAME, MCOUNTRY) VALUES
  (&#39;Audi&#39;,&#39;Germany&#39;),
@@ -466,10 +466,10 @@ same, but the data type (and size, if relevant) must be the same.</p>
  (&#39;10-WX-9875&#39;,&#39;Golf&#39;,9500, 4);</code></pre>
 <p>;</p>
 
-        </div>
-      
-        <div class="ui tab segment lab" data-tab="Exercise">
-          <h1>Exercise</h1>
+            </div>
+          
+            <div  class="ui tab segment lab" data-tab="Exercise">
+              <h1>Exercise</h1>
 <ol>
 <li><p>Create a new table called CUSTOMER, with the following attributes:</p>
 <ul>
@@ -510,34 +510,28 @@ same, but the data type (and size, if relevant) must be the same.</p>
 </li>
 </ol>
 
+            </div>
+          
         </div>
-      
+      </div>
     </div>
-  </div>
-</div>
 
-<script>
-  $(document).on('keydown', function(e) {
-  e = e || window.event;
-  var nextTab;
-  switch (e.which || e.keyCode) {
-    case 37: // left
-      nextTab = $('.tab-menu a[data-tab].active').prev('a[data-tab]');
-      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').last();
-      nextTab.click();
-      $('.pusher').focus();
-      break;
-
-    case 39: // right
-      nextTab = $('.tab-menu a[data-tab].active').next('a[data-tab]');
-      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').first();
-      nextTab.click();
-      $('.pusher').focus();
-      break;
-  }
+    <script>
+      $(document).ready(function() {
+  const $images = $('.lab img');
+  jQuery.each($images, function(i) {
+    if ($images[i].alt.length > 0) {
+      const divImg = $(document.createElement('div')).addClass('');
+      $($images[i]).wrap(divImg);
+      const divLabel = $(document.createElement('div')).addClass('uk-label uk-text-lowercase');
+      divLabel.append($images[i].alt);
+      $(divLabel).insertAfter($images[i]);
+      $('<br>').insertAfter($images[i]);
+    }
+  });
 });
 
-  $(document).ready(function() {
+      $(document).ready(function() {
   $('img').addClass('ui image');
 
   $('.ui.embed').embed();
@@ -570,6 +564,6 @@ same, but the data type (and size, if relevant) must be the same.</p>
     .sidebar('attach events', '#toc');
 });
 
-</script>
-</body>
+    </script>
+  </body>
 </html>
