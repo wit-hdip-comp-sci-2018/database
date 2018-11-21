@@ -68,13 +68,13 @@ h3 {
       <header class="header item">
         <i id="toc" class="sitemap icon"></i>
         
-          <a href="../index.html"> On-Site Workshop: June 15  </a>
+          <a href="../index.html">  9: Database Concurrency  </a>
         
       </header>
       <div class="right tab-menu menu">
         
-          <a class="item" data-tab="Installation">
-            Installation
+          <a class="item" data-tab="Backup and Restore">
+            Backup and Restore
           </a>
         
           <a class="item" data-tab="01">
@@ -83,14 +83,6 @@ h3 {
         
           <a class="item" data-tab="02">
             02
-          </a>
-        
-          <a class="item" data-tab="03">
-            03
-          </a>
-        
-          <a class="item" data-tab="04">
-            04
           </a>
         
       </div>
@@ -107,7 +99,7 @@ h3 {
           
         
           
-            <a class="active item" href="../../topic-00-On-Site/book-a/index.html">
+            <a class="item" href="../../topic-00-On-Site/book-a/index.html">
               Installation
             </a>
           
@@ -167,7 +159,7 @@ h3 {
           
         
           
-            <a class="item" href="../../topic-09-Transactions/book-a/index.html">
+            <a class="active item" href="../../topic-09-Transactions/book-a/index.html">
               Backup and Restore
             </a>
           
@@ -177,73 +169,41 @@ h3 {
         <div class="ui basic segment" id="labchat">
           <br>
           
-            <div  class="ui tab segment lab" data-tab="Installation">
+            <div  class="ui tab segment lab" data-tab="Backup and Restore">
               <h1>Objectives</h1>
-<p>In this lab, you will install MySQL and log in to MySQL Workbench.</p>
+<p>In this lab, we will look at database backup and recovery in MySQL Workbench.</p>
 
             </div>
           
             <div  class="ui tab segment lab" data-tab="01">
-              <h1>MySQL and MySQL Workbench</h1>
-<p>MySQL is an open-source relational database management system (RDBMS). The acronym &quot;SQL&quot; (sometimes pronounced &quot;sequel&quot;) stands for Structured Query Language. SQL is a standard computer language for relational database management and data manipulation. SQL is used to query, insert, update and modify data in a database.</p>
-<p>MySQL Workbench is a visual database design tool that integrates SQL development, administration, database design, creation and maintenance into a single integrated development environment for the MySQL database system.</p>
-<p>In this lab, you will install the various components that make up a MySQL database, including the MySQL server and the MySQL Workbench application.</p>
+              <h1>Back up a database in MySQL Workbench</h1>
+<p>The process to back up a database in MySQL Workbench is relatively simple. Open your localhost connection and go to the Administration tab in the pane on the left. Select the <strong>Data Export</strong> option.</p>
+<p>You will see a list of the databases available to back up. Tick the box next to library to back up the library database.</p>
+<p><img src="img/backup01.png" alt=""></p>
+<p>You can also choose specific tables from the library database to export. Click on the library database (click the folder icon or the word library) to see a list of the tables. By default, they are all selected.</p>
+<p><img src="img/backup02.png" alt=""></p>
+<p>Next, under export options, choose what you wish to output, and the output location. Export to Dump Project Folder creates a folder with a separate SQL file for each table being exported. The other option is &quot;self-contained file&quot;, which outputs all tables to one file. We will choose this option in this example, but feel free to try out both options.</p>
+<p><img src="img/backup03.png" alt=""></p>
+<p>Click Export; you should see a progress bar and confirmation message when it has completed successfully.</p>
+<p><img src="img/backup04.png" alt=""></p>
+<p>There should now be an SQL file in the folder location you specified in the export options. Open this file in a text editor and view the contents. You will see that it contains all of the CREATE and INSERT statements required to recreate the library database. </p>
+<p><img src="img/backup05.png" alt=""></p>
 
             </div>
           
             <div  class="ui tab segment lab" data-tab="02">
-              <h1>Download the installer</h1>
-<p>You can download the MySQL installer here: <a href="https://dev.mysql.com/downloads/installer/" target="_ blank"><code>https://dev.mysql.com/downloads/installer/</code></a></p>
-<p>Select the second of the two options shown in the image below:</p>
-<p><img src="img/01.png" alt=""></p>
-<p>Note that you do not need to sign up for an Oracle Web account - just select &quot;No thanks, just start my download&quot; which can be found under the grey box with the Login and Sign up buttons.</p>
-<p><img src="img/02.png" alt=""></p>
-
-            </div>
-          
-            <div  class="ui tab segment lab" data-tab="03">
-              <h1>Run the installation</h1>
-<p>Once you have downloaded the MySQL installer, carry out the following steps to install MySQL:</p>
-<ul>
-<li>Double click the installer and click &quot;Run&quot;.</li>
-<li>Accept the license terms and select &quot;Next&quot;.</li>
-<li>Leave the Setup type as the Developer Default and click &quot;Next&quot;.</li>
-<li>The Check Requirements step will install any additional software that you need to run MySQL. Click &quot;Execute&quot; on this step, and then &quot;Next&quot;.</li>
-<li>Now, click on &quot;Execute&quot; to run the MySQL installation; then click &quot;Next&quot; to continue.</li>
-<li><p>Click &quot;Next&quot; on the Product Configuration and Type and Networking steps.</p>
-</li>
-<li><p><strong>Important</strong>: Accounts and Roles:</p>
-<ul>
-<li>In this step, you need to set a password to use when logging into MySQL Workbench. It is crucial that you note and remember this password.</li>
-<li>Often, we use the password &quot;root&quot; as a default password for the root user account. If you want to keep it simple and easy to remember, use &quot;root&quot; as your password here.</li>
-</ul>
-</li>
-</ul>
-<p><img src="img/03.png" alt=""></p>
-<ul>
-<li>Click &quot;Next&quot; on the Windows Service step, and &quot;Execute&quot; on the Server Configuration step; then click &quot;Finish&quot;.</li>
-<li>The next step installs Samples and Examples. Click &quot;Next&quot; again.</li>
-<li>Then you will be prompted for your password, as shown below. Enter the password you set and click &quot;Check&quot;.</li>
-</ul>
-<p><img src="img/04.png" alt=""></p>
-<ul>
-<li>Once it is confirmed that the password is correct, click &quot;Next&quot;.</li>
-<li>Continue through the next few steps clicking either &quot;Execute&quot; or &quot;Next&quot;, and lastly, click &quot;Finish&quot; once the installation is complete.</li>
-<li>MySQL Workbench should launch automatically. In step 4, we will log in to MySQL Workbench.</li>
-</ul>
-
-            </div>
-          
-            <div  class="ui tab segment lab" data-tab="04">
-              <h1>Log in to MySQL Workbench</h1>
-<p>Once the MySQL installation is complete, MySQL Workbench should launch automatically.</p>
-<p><img src="img/05.png" alt=""></p>
-<p>Under &quot;MySQL Connections&quot; you should see one connection: Local instance MySQL56. This is the default connection; you can see it uses the default &quot;root&quot; user, the localhost server and port 3306.</p>
-<p>Click on the Local instance MySQL56 connection. You will be asked for a password; this is the password that you set during the installation process.</p>
-<p><img src="img/06.png" alt=""></p>
-<p>After entering the correct password, you should see the following view:</p>
-<p><img src="img/07.png" alt=""></p>
-<p>You are now logged in to the MySQL Workbench application. In our next lab (the onsite workshop on Friday 15th June) we will create a database and perform some simple queries on the data. </p>
+              <h1>Restore data in MySQL Workbench</h1>
+<p>First, we will drop the library database. Right-click on the library database in the schemas panel on the left, and select <strong>Drop Schema</strong>.</p>
+<p>Note: this step is not mandatory; we can also restore the database without dropping it first, in which case it will replace the existing database.</p>
+<p><img src="img/drop.png" alt=""></p>
+<p>Once you have dropped the library database, go to the Administration tab and select the <strong>Data Import/Restore</strong> option. Next, select the data to import. You can import from a dump project folder or a self-contained file. Choose the import type that matches your export type: a self-contained file in this example. Click the ... button to browse to the file&#39;s location.</p>
+<p><img src="img/restore01.png" alt=""></p>
+<p>Next, under &quot;Default Target Schema&quot; specify the name of the database you want to import into. If you dropped the library database, click New and enter the name &#39;library&#39;. If you didn&#39;t drop the library database, you can choose it from the dropdown list.</p>
+<p><img src="img/restore02.png" alt=""></p>
+<p>Click import; you should see a confirmation message to say that the import was successful.</p>
+<p><img src="img/restore03.png" alt=""></p>
+<p>Go to the Schemas tab and confirm that the library database has been restored (you may need to click refresh). Do a select to confirm that the data within the tables has also been restored.</p>
+<p><img src="img/restore04.png" alt=""></p>
 
             </div>
           
