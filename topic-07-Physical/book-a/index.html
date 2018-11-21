@@ -1,20 +1,29 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css" type="text/css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/railscasts.min.css" rel="stylesheet" />
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
-    <style>
-      
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css"
+        type="text/css">
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/railscasts.min.css"
+        rel="stylesheet"/>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script type="text/javascript"
+          src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+  <script type="text/javascript"
+          src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.js"></script>
+  <script type="text/javascript"
+          src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script type="text/javascript"
+          src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>
+  <script type="text/javascript"
+          src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/kotlin.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <style>
+    
 
 body {
   font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
@@ -57,166 +66,154 @@ h3 {
 
 
 
-    </style>
-  </head>
+  </style>
+</head>
 
-  <body>
+<body>
+
+
+
+<div class="ui fixed top pointing inverted stackable menu labmenu">
+  <header class="header item">
+    <i id="toc" class="sitemap icon"></i>
     
+      <a href="../index.html">  07: Physical Database Design  </a>
     
+  </header>
+  <div class="right tab-menu menu">
+    
+      <a class="item" data-tab="Lab-01 SQL 7">
+        Lab-01 SQL 7
+      </a>
+    
+      <a class="item" data-tab="01">
+        01
+      </a>
+    
+      <a class="item" data-tab="02">
+        02
+      </a>
+    
+      <a class="item" data-tab="03">
+        03
+      </a>
+    
+      <a class="item" data-tab="04">
+        04
+      </a>
+    
+      <a class="item" data-tab="05">
+        05
+      </a>
+    
+      <a class="item" data-tab="06">
+        06
+      </a>
+    
+      <a class="item" data-tab="07">
+        07
+      </a>
+    
+      <a class="item" data-tab="08">
+        08
+      </a>
+    
+      <a class="item" data-tab="09">
+        09
+      </a>
+    
+      <a class="item" data-tab="10">
+        10
+      </a>
+    
+  </div>
+</div>
 
-    <div class="ui fixed top pointing inverted stackable menu labmenu">
-      <header class="header item">
-        <i id="toc" class="sitemap icon"></i>
-        
-          <a href="../index.html">  07: Physical Database Design  </a>
-        
-      </header>
-      <div class="right tab-menu menu">
-        
-          <a class="item" data-tab="Lab-01 SQL 7">
-            Lab-01 SQL 7
-          </a>
-        
-          <a class="item" data-tab="01">
-            01
-          </a>
-        
-          <a class="item" data-tab="02">
-            02
-          </a>
-        
-          <a class="item" data-tab="03">
-            03
-          </a>
-        
-          <a class="item" data-tab="04">
-            04
-          </a>
-        
-          <a class="item" data-tab="05">
-            05
-          </a>
-        
-          <a class="item" data-tab="06">
-            06
-          </a>
-        
-          <a class="item" data-tab="07">
-            07
-          </a>
-        
-          <a class="item" data-tab="08">
-            08
-          </a>
-        
-          <a class="item" data-tab="09">
-            09
-          </a>
-        
-          <a class="item" data-tab="10">
-            10
-          </a>
-        
-      </div>
-    </div>
-
-    <div class="ui segment pushable">
-      <div class="ui inverted labeled icon left inline vertical sidebar menu">
-        <br><br>
-        
-          
-            <a class="item" href="../../topic-00-Assignment/book-00-Assignment/index.html">
-              Assignment
-            </a>
-          
-        
-          
-            <a class="item" href="../../topic-00-On-Site/book-a/index.html">
-              Installation
-            </a>
-          
-        
-          
-            <a class="item" href="../../topic-00-On-Site/book-b/index.html">
-              SQL Introduction
-            </a>
-          
-        
-          
-            <a class="item" href="../../topic-01-Introduction/book-a/index.html">
-              SQL 1
-            </a>
-          
-        
-          
-            <a class="item" href="../../topic-02-Conceptual/book-a/index.html">
-              SQL 2
-            </a>
-          
-        
-          
-            <a class="item" href="../../topic-03-Logical/book-a/index.html">
-              SQL 3
-            </a>
-          
-        
-          
-            <a class="item" href="../../topic-04-EnhancedER/book-a/index.html">
-              SQL 4
-            </a>
-          
-        
-          
-            <a class="item" href="../../topic-05-Normalisation1/book-a/index.html">
-              Lab-01 SQL 5
-            </a>
-          
-        
-          
-            <a class="item" href="../../topic-06-Normalisation2/book-a/index.html">
-              Lab-01 SQL 6
-            </a>
-          
-        
-          
-            <a class="active item" href="../../topic-07-Physical/book-a/index.html">
-              Lab-01 SQL 7
-            </a>
-          
-        
-          
-            <a class="item" href="../../topic-08-Security/book-a/index.html">
-              Lab-01 SQL 8
-            </a>
-          
-        
-          
-            <a class="item" href="../../topic-09-Transactions/book-a/index.html">
-              Backup and Restore
-            </a>
-          
-        
-      </div>
-      <div class="pusher" tabindex="-1">
-        <div class="ui basic segment" id="labchat">
-          <br>
-          
-            <div  class="ui tab segment lab" data-tab="Lab-01 SQL 7">
-              <h1>Objectives</h1>
+<div class="ui pushable">
+  <div class="ui inverted labeled icon left inline vertical sidebar menu">
+    <br><br>
+    
+      
+        <a class="item"
+           href="http://wit-hdip-comp-sci-2018.github.io/database//topic-00-Assignment/book-00-Assignment/index.html">Assignment </a>
+      
+    
+      
+        <a class="item"
+           href="http://wit-hdip-comp-sci-2018.github.io/database//topic-00-On-Site/book-a/index.html">Installation </a>
+      
+    
+      
+        <a class="item"
+           href="http://wit-hdip-comp-sci-2018.github.io/database//topic-00-On-Site/book-b/index.html">SQL Introduction </a>
+      
+    
+      
+        <a class="item"
+           href="http://wit-hdip-comp-sci-2018.github.io/database//topic-01-Introduction/book-a/index.html">SQL 1 </a>
+      
+    
+      
+        <a class="item"
+           href="http://wit-hdip-comp-sci-2018.github.io/database//topic-02-Conceptual/book-a/index.html">SQL 2 </a>
+      
+    
+      
+        <a class="item"
+           href="http://wit-hdip-comp-sci-2018.github.io/database//topic-03-Logical/book-a/index.html">SQL 3 </a>
+      
+    
+      
+        <a class="item"
+           href="http://wit-hdip-comp-sci-2018.github.io/database//topic-04-EnhancedER/book-a/index.html">SQL 4 </a>
+      
+    
+      
+        <a class="item"
+           href="http://wit-hdip-comp-sci-2018.github.io/database//topic-05-Normalisation1/book-a/index.html">Lab-01 SQL 5 </a>
+      
+    
+      
+        <a class="item"
+           href="http://wit-hdip-comp-sci-2018.github.io/database//topic-06-Normalisation2/book-a/index.html">Lab-01 SQL 6 </a>
+      
+    
+      
+        <a class="item"
+           href="http://wit-hdip-comp-sci-2018.github.io/database//topic-07-Physical/book-a/index.html">Lab-01 SQL 7 </a>
+      
+    
+      
+        <a class="item"
+           href="http://wit-hdip-comp-sci-2018.github.io/database//topic-08-Security/book-a/index.html">Lab-01 SQL 8 </a>
+      
+    
+      
+        <a class="item"
+           href="http://wit-hdip-comp-sci-2018.github.io/database//topic-09-Transactions/book-a/index.html">Backup and Restore </a>
+      
+    
+  </div>
+  <div class="pusher" tabindex="-1">
+    <div class="ui basic segment">
+      <br>
+      
+        <div class="ui tab segment lab" data-tab="Lab-01 SQL 7">
+          <h1>Objectives</h1>
 <p>In this lab, we will look at Sub Queries and Views.</p>
 
-            </div>
-          
-            <div  class="ui tab segment lab" data-tab="01">
-              <h1>Subqueries</h1>
+        </div>
+      
+        <div class="ui tab segment lab" data-tab="01">
+          <h1>Subqueries</h1>
 <p>A <strong>subquery</strong> is where we have a complete SELECT statement embedded within another SELECT statement. The results of this <em>inner</em> SELECT statement (or <em>subselect</em>) are used
 in the <em>outer</em> statement to help determine the contents of the final result.</p>
 <p>A <em>subquery</em> can be used in the WHERE and HAVING clauses of an outer SELECT statement.</p>
 
-            </div>
-          
-            <div  class="ui tab segment lab" data-tab="02">
-              <h1>Using a subquery with equality</h1>
+        </div>
+      
+        <div class="ui tab segment lab" data-tab="02">
+          <h1>Using a subquery with equality</h1>
 <p><em>List the bookcopy Ids for the book with title <code>JavaScript</code>.</em></p>
 <pre><code>SELECT copyId 
 FROM bookcopy 
@@ -243,10 +240,10 @@ WHERE isbn =
 </li>
 </ol>
 
-            </div>
-          
-            <div  class="ui tab segment lab" data-tab="03">
-              <h1>Using a subquery with an aggregate function</h1>
+        </div>
+      
+        <div class="ui tab segment lab" data-tab="03">
+          <h1>Using a subquery with an aggregate function</h1>
 <h2>Example One</h2>
 <p><em>List the title and price for the most expensive book.</em></p>
 <pre><code>SELECT title, price 
@@ -277,10 +274,10 @@ WHERE price =
 </li>
 </ol>
 
-            </div>
-          
-            <div  class="ui tab segment lab" data-tab="04">
-              <h1>Use of IN</h1>
+        </div>
+      
+        <div class="ui tab segment lab" data-tab="04">
+          <h1>Use of IN</h1>
 <p><em>List the students (by Name), who have a loan (studentId value in the Loan table).</em></p>
 <pre><code>SELECT concat(fname, &#39; &#39;, lname) as Name 
 FROM student 
@@ -298,10 +295,10 @@ WHERE studentid IN
 </li>
 </ol>
 
-            </div>
-          
-            <div  class="ui tab segment lab" data-tab="05">
-              <h1>Use of ANY and ALL</h1>
+        </div>
+      
+        <div class="ui tab segment lab" data-tab="05">
+          <h1>Use of ANY and ALL</h1>
 <p>The keywords ANY and ALL may be used with subqueries that produce a single column of numbers. </p>
 <h2>ALL</h2>
 <p>If the subquery is preceded by the keyword ALL, the condition will be true only if it is satisfied by all values produced by the subquery.</p>
@@ -330,10 +327,10 @@ WHERE price &gt; ANY
                    FROM book
                    WHERE category = &#39;Computing&#39;);</code></pre>
 
-            </div>
-          
-            <div  class="ui tab segment lab" data-tab="06">
-              <h1>Views</h1>
+        </div>
+      
+        <div class="ui tab segment lab" data-tab="06">
+          <h1>Views</h1>
 <h2>What is a View</h2>
 <blockquote>
 <p>A view is the dynamic result of querying a base relation(table) to produce another relation (result-set). A view is a <em>virtual relation</em> that does not 
@@ -344,10 +341,10 @@ values. Instead, a view is defined as a query on one or more base tables or view
 a view, one approach is to look up this definition and translate the request into an equivalent request against the source tables of the view and perform the 
 equivalent request. </p>
 
-            </div>
-          
-            <div  class="ui tab segment lab" data-tab="07">
-              <h1>Creating a View</h1>
+        </div>
+      
+        <div class="ui tab segment lab" data-tab="07">
+          <h1>Creating a View</h1>
 <p>The format of the CREATE VIEW statement is:</p>
 <pre><code>CREATE [OR REPLACE] VIEW ViewName [(newColumnName[,...])]
  AS subselect [WITH [CASCADED|LOCAL] CHECK OPTION]</code></pre>
@@ -380,10 +377,10 @@ equivalent request. </p>
 <li>Create a view called <code>FilmReviewDetails</code>, which returns the film title, released year, reviewer name, and number of stars for all films reviewed.    </li>
 </ol>
 
-            </div>
-          
-            <div  class="ui tab segment lab" data-tab="08">
-              <h1>Managing Views</h1>
+        </div>
+      
+        <div class="ui tab segment lab" data-tab="08">
+          <h1>Managing Views</h1>
 <h2>Showing view definition</h2>
 <p>MySQL provides the <code>SHOW CREATE VIEW</code> statement that displays the view&#39;s definition.</p>
 <p>For example:</p>
@@ -410,10 +407,10 @@ In case the view does not exist, MySQL creates a new view.</p>
 <p>For example:</p>
 <pre><code> DROP VIEW year1students;</code></pre>
 
-            </div>
-          
-            <div  class="ui tab segment lab" data-tab="09">
-              <h1>MySQL updatable views</h1>
+        </div>
+      
+        <div class="ui tab segment lab" data-tab="09">
+          <h1>MySQL updatable views</h1>
 <p>In MySQL, views are not only query-able but also updatable. It means that you can use the <code>INSERT</code> or <code>UPDATE</code> statement to insert or update rows of the 
 base table through the updatable view. In addition, you can use <code>DELETE</code> statement to remove rows of the underlying table through the view.</p>
 <p>However, to create an updatable view, the SELECT statement that defines the view must not contain any of the following elements:</p>
@@ -474,10 +471,10 @@ base table through the updatable view. In addition, you can use <code>DELETE</co
 <p>You can also confirm the record is gone from the base table:</p>
 <pre><code> SELECT * FROMjournal;</code></pre>
 
-            </div>
-          
-            <div  class="ui tab segment lab" data-tab="10">
-              <h1>Introduction to WITH CHECK OPTION clause</h1>
+        </div>
+      
+        <div class="ui tab segment lab" data-tab="10">
+          <h1>Introduction to WITH CHECK OPTION clause</h1>
 <p>Sometimes, you create a view to reveal the partial data of a table only. However, a simple view is updatable therefore it is possible to update data 
 which is not visible through the view. This update makes the view inconsistent. To ensure the consistency of the view, 
 you use the <code>WITH CHECK OPTION</code> clause when you create or modify the view.</p>
@@ -531,28 +528,34 @@ when you create or modify the view.</p>
  INSERT INTO modernfilms VALUES (110, &#39;Lawrence of Arabia&#39;, 1962, &#39;David Lean&#39;);</code></pre>
 <p><strong>Note:</strong> The second record should not be accepted by MySQL.</p>
 
-            </div>
-          
         </div>
-      </div>
+      
     </div>
+  </div>
+</div>
 
-    <script>
-      $(document).ready(function() {
-  const $images = $('.lab img');
-  jQuery.each($images, function(i) {
-    if ($images[i].alt.length > 0) {
-      const divImg = $(document.createElement('div')).addClass('');
-      $($images[i]).wrap(divImg);
-      const divLabel = $(document.createElement('div')).addClass('uk-label uk-text-lowercase');
-      divLabel.append($images[i].alt);
-      $(divLabel).insertAfter($images[i]);
-      $('<br>').insertAfter($images[i]);
-    }
-  });
+<script>
+  $(document).on('keydown', function(e) {
+  e = e || window.event;
+  var nextTab;
+  switch (e.which || e.keyCode) {
+    case 37: // left
+      nextTab = $('.tab-menu a[data-tab].active').prev('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').last();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+
+    case 39: // right
+      nextTab = $('.tab-menu a[data-tab].active').next('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').first();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+  }
 });
 
-      $(document).ready(function() {
+  $(document).ready(function() {
   $('img').addClass('ui image');
 
   $('.ui.embed').embed();
@@ -585,6 +588,6 @@ when you create or modify the view.</p>
     .sidebar('attach events', '#toc');
 });
 
-    </script>
-  </body>
+</script>
+</body>
 </html>

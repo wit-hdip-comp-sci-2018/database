@@ -1,20 +1,29 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css" type="text/css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/railscasts.min.css" rel="stylesheet" />
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
-    <style>
-      
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css"
+        type="text/css">
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/railscasts.min.css"
+        rel="stylesheet"/>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script type="text/javascript"
+          src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+  <script type="text/javascript"
+          src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.js"></script>
+  <script type="text/javascript"
+          src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script type="text/javascript"
+          src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>
+  <script type="text/javascript"
+          src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/kotlin.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <style>
+    
 
 body {
   font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
@@ -57,160 +66,148 @@ h3 {
 
 
 
-    </style>
-  </head>
+  </style>
+</head>
 
-  <body>
+<body>
+
+
+
+<div class="ui fixed top pointing inverted stackable menu labmenu">
+  <header class="header item">
+    <i id="toc" class="sitemap icon"></i>
     
+      <a href="../index.html">  01: Introduction   </a>
     
+  </header>
+  <div class="right tab-menu menu">
+    
+      <a class="item" data-tab="SQL 1">
+        SQL 1
+      </a>
+    
+      <a class="item" data-tab="01">
+        01
+      </a>
+    
+      <a class="item" data-tab="02">
+        02
+      </a>
+    
+      <a class="item" data-tab="03">
+        03
+      </a>
+    
+      <a class="item" data-tab="04">
+        04
+      </a>
+    
+      <a class="item" data-tab="05">
+        05
+      </a>
+    
+      <a class="item" data-tab="06">
+        06
+      </a>
+    
+      <a class="item" data-tab="07">
+        07
+      </a>
+    
+      <a class="item" data-tab="08">
+        08
+      </a>
+    
+      <a class="item" data-tab="09">
+        09
+      </a>
+    
+      <a class="item" data-tab="10">
+        10
+      </a>
+    
+      <a class="item" data-tab="11">
+        11
+      </a>
+    
+      <a class="item" data-tab="12">
+        12
+      </a>
+    
+  </div>
+</div>
 
-    <div class="ui fixed top pointing inverted stackable menu labmenu">
-      <header class="header item">
-        <i id="toc" class="sitemap icon"></i>
-        
-          <a href="../index.html">  01: Introduction   </a>
-        
-      </header>
-      <div class="right tab-menu menu">
-        
-          <a class="item" data-tab="SQL 1">
-            SQL 1
-          </a>
-        
-          <a class="item" data-tab="01">
-            01
-          </a>
-        
-          <a class="item" data-tab="02">
-            02
-          </a>
-        
-          <a class="item" data-tab="03">
-            03
-          </a>
-        
-          <a class="item" data-tab="04">
-            04
-          </a>
-        
-          <a class="item" data-tab="05">
-            05
-          </a>
-        
-          <a class="item" data-tab="06">
-            06
-          </a>
-        
-          <a class="item" data-tab="07">
-            07
-          </a>
-        
-          <a class="item" data-tab="08">
-            08
-          </a>
-        
-          <a class="item" data-tab="09">
-            09
-          </a>
-        
-          <a class="item" data-tab="10">
-            10
-          </a>
-        
-          <a class="item" data-tab="11">
-            11
-          </a>
-        
-          <a class="item" data-tab="12">
-            12
-          </a>
-        
-      </div>
-    </div>
-
-    <div class="ui segment pushable">
-      <div class="ui inverted labeled icon left inline vertical sidebar menu">
-        <br><br>
-        
-          
-            <a class="item" href="../../topic-00-Assignment/book-00-Assignment/index.html">
-              Assignment
-            </a>
-          
-        
-          
-            <a class="item" href="../../topic-00-On-Site/book-a/index.html">
-              Installation
-            </a>
-          
-        
-          
-            <a class="item" href="../../topic-00-On-Site/book-b/index.html">
-              SQL Introduction
-            </a>
-          
-        
-          
-            <a class="active item" href="../../topic-01-Introduction/book-a/index.html">
-              SQL 1
-            </a>
-          
-        
-          
-            <a class="item" href="../../topic-02-Conceptual/book-a/index.html">
-              SQL 2
-            </a>
-          
-        
-          
-            <a class="item" href="../../topic-03-Logical/book-a/index.html">
-              SQL 3
-            </a>
-          
-        
-          
-            <a class="item" href="../../topic-04-EnhancedER/book-a/index.html">
-              SQL 4
-            </a>
-          
-        
-          
-            <a class="item" href="../../topic-05-Normalisation1/book-a/index.html">
-              Lab-01 SQL 5
-            </a>
-          
-        
-          
-            <a class="item" href="../../topic-06-Normalisation2/book-a/index.html">
-              Lab-01 SQL 6
-            </a>
-          
-        
-          
-            <a class="item" href="../../topic-07-Physical/book-a/index.html">
-              Lab-01 SQL 7
-            </a>
-          
-        
-          
-            <a class="item" href="../../topic-08-Security/book-a/index.html">
-              Lab-01 SQL 8
-            </a>
-          
-        
-          
-            <a class="item" href="../../topic-09-Transactions/book-a/index.html">
-              Backup and Restore
-            </a>
-          
-        
-      </div>
-      <div class="pusher" tabindex="-1">
-        <div class="ui basic segment" id="labchat">
-          <br>
-          
-            <div  class="ui tab segment lab" data-tab="SQL 1">
-              <h1>Objectives</h1>
+<div class="ui pushable">
+  <div class="ui inverted labeled icon left inline vertical sidebar menu">
+    <br><br>
+    
+      
+        <a class="item"
+           href="http://wit-hdip-comp-sci-2018.github.io/database//topic-00-Assignment/book-00-Assignment/index.html">Assignment </a>
+      
+    
+      
+        <a class="item"
+           href="http://wit-hdip-comp-sci-2018.github.io/database//topic-00-On-Site/book-a/index.html">Installation </a>
+      
+    
+      
+        <a class="item"
+           href="http://wit-hdip-comp-sci-2018.github.io/database//topic-00-On-Site/book-b/index.html">SQL Introduction </a>
+      
+    
+      
+        <a class="item"
+           href="http://wit-hdip-comp-sci-2018.github.io/database//topic-01-Introduction/book-a/index.html">SQL 1 </a>
+      
+    
+      
+        <a class="item"
+           href="http://wit-hdip-comp-sci-2018.github.io/database//topic-02-Conceptual/book-a/index.html">SQL 2 </a>
+      
+    
+      
+        <a class="item"
+           href="http://wit-hdip-comp-sci-2018.github.io/database//topic-03-Logical/book-a/index.html">SQL 3 </a>
+      
+    
+      
+        <a class="item"
+           href="http://wit-hdip-comp-sci-2018.github.io/database//topic-04-EnhancedER/book-a/index.html">SQL 4 </a>
+      
+    
+      
+        <a class="item"
+           href="http://wit-hdip-comp-sci-2018.github.io/database//topic-05-Normalisation1/book-a/index.html">Lab-01 SQL 5 </a>
+      
+    
+      
+        <a class="item"
+           href="http://wit-hdip-comp-sci-2018.github.io/database//topic-06-Normalisation2/book-a/index.html">Lab-01 SQL 6 </a>
+      
+    
+      
+        <a class="item"
+           href="http://wit-hdip-comp-sci-2018.github.io/database//topic-07-Physical/book-a/index.html">Lab-01 SQL 7 </a>
+      
+    
+      
+        <a class="item"
+           href="http://wit-hdip-comp-sci-2018.github.io/database//topic-08-Security/book-a/index.html">Lab-01 SQL 8 </a>
+      
+    
+      
+        <a class="item"
+           href="http://wit-hdip-comp-sci-2018.github.io/database//topic-09-Transactions/book-a/index.html">Backup and Restore </a>
+      
+    
+  </div>
+  <div class="pusher" tabindex="-1">
+    <div class="ui basic segment">
+      <br>
+      
+        <div class="ui tab segment lab" data-tab="SQL 1">
+          <h1>Objectives</h1>
 <p>In this lab we will learn about the basics of SQL and learn about the SELECT statement</p>
 <ul>
 <li>Understand what SQL is</li>
@@ -230,10 +227,10 @@ h3 {
 <li>Sort the Rows returned by a Select statement using Order By</li>
 </ul>
 
-            </div>
-          
-            <div  class="ui tab segment lab" data-tab="01">
-              <h1>What is SQL?</h1>
+        </div>
+      
+        <div class="ui tab segment lab" data-tab="01">
+          <h1>What is SQL?</h1>
 <p>SQL (sometimes pronounced SEQUEL) stands for Structured Query Language. SQL is used to communicate with a database. According to ANSI (American National Standards Institute), it is the standard language for relational database management systems. SQL statements are used to perform tasks such as update data on a database, or retrieve data from a database. Some common relational database management systems that use SQL are: Oracle, Sybase, Microsoft SQL Server, Access, Ingres, etc. Although most database systems use SQL, most of them also have their own additional proprietary extensions that are usually only used on their system. However, the standard SQL commands such as &quot;Select&quot;, &quot;Insert&quot;, &quot;Update&quot;, &quot;Delete&quot;, &quot;Create&quot;, and &quot;Drop&quot; can be used to accomplish almost everything that one needs to do with a database.</p>
 <h2>Table Basics</h2>
 <p>A relational database system contains one or more objects called <em>tables</em>. The data or information for the database are stored in these tables. 
@@ -242,10 +239,10 @@ for the column. Rows contain the records or data for the columns. Here is a samp
 The values city, state, high, and low are the columns. The rows contain the data for this table:</p>
 <p><img src="img/table.png" alt=""></p>
 
-            </div>
-          
-            <div  class="ui tab segment lab" data-tab="02">
-              <h1>Our example - Library system</h1>
+        </div>
+      
+        <div class="ui tab segment lab" data-tab="02">
+          <h1>Our example - Library system</h1>
 <p>We have built a <a href="archives/library.zip">library database</a> with the following tables: <em>book</em>, <em>bookcopy</em>, <em>student</em>, <em>loan</em>, <em>author</em> and <em>authorship</em>. </p>
 <p>The tables are populated and we will use this data in our queries. The schema is stored in <strong>library_script.sql</strong>.</p>
 <ul>
@@ -267,10 +264,10 @@ The values city, state, high, and low are the columns. The rows contain the data
 </ul>
 <p><img src="img/dialog.png" alt=""></p>
 
-            </div>
-          
-            <div  class="ui tab segment lab" data-tab="03">
-              <h1>Describing Data</h1>
+        </div>
+      
+        <div class="ui tab segment lab" data-tab="03">
+          <h1>Describing Data</h1>
 <p>Before you work with a database you must specify the database (by name) that you want to work with. </p>
 <p>Enter the following command:</p>
 <pre><code>USE LIBRARY;</code></pre>
@@ -284,10 +281,10 @@ The values city, state, high, and low are the columns. The rows contain the data
 <h2>To Do:</h2>
 <p>Now, describe the other tables.</p>
 
-            </div>
-          
-            <div  class="ui tab segment lab" data-tab="04">
-              <h1>The SELECT statement</h1>
+        </div>
+      
+        <div class="ui tab segment lab" data-tab="04">
+          <h1>The SELECT statement</h1>
 <style>
 table.mine {
     border-collapse:collapse;
@@ -327,10 +324,10 @@ The data returned is stored in a result table, called the <em>result-set</em>. H
 The order of the clauses in the SELECT statement <strong>cannot</strong> be changed.The only two mandatory  clauses are the first two: SELECT and FROM; the remainder
 are optional.</p>
 
-            </div>
-          
-            <div  class="ui tab segment lab" data-tab="05">
-              <h1>Simple Select examples</h1>
+        </div>
+      
+        <div class="ui tab segment lab" data-tab="05">
+          <h1>Simple Select examples</h1>
 <style>
 table.mine {
     border-collapse:collapse;
@@ -391,10 +388,10 @@ WHERE county = &#39;Waterford&#39;;</code></pre>
 </li>
 </ol>
 
-            </div>
-          
-            <div  class="ui tab segment lab" data-tab="06">
-              <h1>More on Select</h1>
+        </div>
+      
+        <div class="ui tab segment lab" data-tab="06">
+          <h1>More on Select</h1>
 <p>To change the column heading returned, we can use <em>AS</em>:</p>
 <pre><code>SELECT fname AS &#39;First Name&#39;, lname AS &#39;Last Name&#39; FROM student;</code></pre>
 <p>OR</p>
@@ -430,10 +427,10 @@ any one time, we do not want to see for example <em>Addison Wesley</em> more tha
 </li>
 </ol>
 
-            </div>
-          
-            <div  class="ui tab segment lab" data-tab="07">
-              <h1>Pattern Matching</h1>
+        </div>
+      
+        <div class="ui tab segment lab" data-tab="07">
+          <h1>Pattern Matching</h1>
 <p>Sometimes we do not always have the exact search criteria we need.<br>Maybe we need to find some books with JavaScript in the title. If we enter:</p>
 <pre><code>SELECT title FROM book WHERE title = &#39;JavaScript&#39;;</code></pre>
 <p>This will only return books with the title equal to JavaScript, so titles like <code>JavaScript</code>-<code>The Guide</code> or <code>Learning JavaScript</code> would not be returned. </p>
@@ -460,10 +457,10 @@ SELECT title FROM book WHERE title LIKE &#39;%JavaScript&#39;;</code></pre>
 </li>
 </ol>
 
-            </div>
-          
-            <div  class="ui tab segment lab" data-tab="08">
-              <h1>BETWEEN ... AND</h1>
+        </div>
+      
+        <div class="ui tab segment lab" data-tab="08">
+          <h1>BETWEEN ... AND</h1>
 <p>We can use the <em>BETWEEN ... AND</em> operators to search within an <em>inclusive range of values</em>, for example:</p>
 <p>For Example, to return students from years 1, 2, and 3:</p>
 <pre><code>SELECT * FROM student WHERE year BETWEEN 1 AND 3;</code></pre>
@@ -478,10 +475,10 @@ SELECT title FROM book WHERE title LIKE &#39;%JavaScript&#39;;</code></pre>
 <img src="img/ans12.png" alt=""> </li>
 </ol>
 
-            </div>
-          
-            <div  class="ui tab segment lab" data-tab="09">
-              <h1>IN</h1>
+        </div>
+      
+        <div class="ui tab segment lab" data-tab="09">
+          <h1>IN</h1>
 <p>The <em>IN</em> operator allows us to query records based on matching one of a number of values. We can use the <em>NOT</em> operator to negate those results.
 So if we are only interested in Computing, Business, and Engineering books, instead of writing the query as follows:</p>
 <pre><code>SELECT * FROM book WHERE category = &#39;Computing&#39; OR category = &#39;Business&#39; OR category =&#39;Engineering&#39;;</code></pre>
@@ -496,10 +493,10 @@ So if we are only interested in Computing, Business, and Engineering books, inst
 <img src="img/ans13.png" alt=""> </li>
 </ol>
 
-            </div>
-          
-            <div  class="ui tab segment lab" data-tab="10">
-              <h1>AND/OR</h1>
+        </div>
+      
+        <div class="ui tab segment lab" data-tab="10">
+          <h1>AND/OR</h1>
 <p>When one search criteria is not enough we use the <em>AND</em>, <em>OR</em> operators to use more than one search condition.
 The following commands give very different results <code>-</code> can you work out why? </p>
 <pre><code>SELECT * FROM book WHERE category = &#39;Computing&#39; AND publisher = &#39;Sitepoint&#39;;
@@ -515,10 +512,10 @@ SELECT * FROM book WHERE category = &#39;Computing&#39; OR category = &#39;Busin
 </li>
 </ol>
 
-            </div>
-          
-            <div  class="ui tab segment lab" data-tab="11">
-              <h1>NULL</h1>
+        </div>
+      
+        <div class="ui tab segment lab" data-tab="11">
+          <h1>NULL</h1>
 <p>A <em>NULL</em> value (not white space or a zero) exists in a database where a piece of data is missing or not filled in. </p>
 <p>For example when entering information into a table not all the information may be to hand at the time of data entry and so may be left NULL. 
 Sometimes we may want to find out where these NULL values are. Again we can use <em>IS NOT NULL</em> for negation.</p>
@@ -527,10 +524,10 @@ Sometimes we may want to find out where these NULL values are. Again we can use 
 <p>Return the ISBN from the bookcopy table for all books whose datedestroyed is known:</p>
 <pre><code>SELECT ISBN FROM bookcopy WHERE datedestroyed IS NOT NULL;</code></pre>
 
-            </div>
-          
-            <div  class="ui tab segment lab" data-tab="12">
-              <h1>ORDER BY</h1>
+        </div>
+      
+        <div class="ui tab segment lab" data-tab="12">
+          <h1>ORDER BY</h1>
 <p>To sort your query results you should use the <em>ORDER BY</em> clause. This clause always comes last in your SELECT statement. <em>Ascending</em> order is the default.</p>
 <p>Return the title and category of all books from the book table whose category is Computing or Business or Engineering sorted in alphabetical order by category.</p>
 <pre><code>SELECT title, category FROM book WHERE category IN (&#39;Computing&#39;, &#39;Business&#39;, &#39;Engineering&#39;) ORDER BY category;</code></pre>
@@ -554,28 +551,34 @@ returned records by county and within each county by town.</p>
 </li>
 </ol>
 
-            </div>
-          
         </div>
-      </div>
+      
     </div>
+  </div>
+</div>
 
-    <script>
-      $(document).ready(function() {
-  const $images = $('.lab img');
-  jQuery.each($images, function(i) {
-    if ($images[i].alt.length > 0) {
-      const divImg = $(document.createElement('div')).addClass('');
-      $($images[i]).wrap(divImg);
-      const divLabel = $(document.createElement('div')).addClass('uk-label uk-text-lowercase');
-      divLabel.append($images[i].alt);
-      $(divLabel).insertAfter($images[i]);
-      $('<br>').insertAfter($images[i]);
-    }
-  });
+<script>
+  $(document).on('keydown', function(e) {
+  e = e || window.event;
+  var nextTab;
+  switch (e.which || e.keyCode) {
+    case 37: // left
+      nextTab = $('.tab-menu a[data-tab].active').prev('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').last();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+
+    case 39: // right
+      nextTab = $('.tab-menu a[data-tab].active').next('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').first();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+  }
 });
 
-      $(document).ready(function() {
+  $(document).ready(function() {
   $('img').addClass('ui image');
 
   $('.ui.embed').embed();
@@ -608,6 +611,6 @@ returned records by county and within each county by town.</p>
     .sidebar('attach events', '#toc');
 });
 
-    </script>
-  </body>
+</script>
+</body>
 </html>

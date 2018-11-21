@@ -1,20 +1,29 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css" type="text/css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/railscasts.min.css" rel="stylesheet" />
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>
-    <script>hljs.initHighlightingOnLoad();</script>
-    <style>
-      
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css"
+        type="text/css">
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/railscasts.min.css"
+        rel="stylesheet"/>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+  <script type="text/javascript"
+          src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+  <script type="text/javascript"
+          src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.js"></script>
+  <script type="text/javascript"
+          src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script type="text/javascript"
+          src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>
+  <script type="text/javascript"
+          src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/kotlin.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <style>
+    
 
 body {
   font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
@@ -57,167 +66,155 @@ h3 {
 
 
 
-    </style>
-  </head>
+  </style>
+</head>
 
-  <body>
+<body>
+
+
+
+<div class="ui fixed top pointing inverted stackable menu labmenu">
+  <header class="header item">
+    <i id="toc" class="sitemap icon"></i>
     
+      <a href="../index.html">  08: Security, Indexes and Triggers  </a>
     
+  </header>
+  <div class="right tab-menu menu">
+    
+      <a class="item" data-tab="Lab-01 SQL 8">
+        Lab-01 SQL 8
+      </a>
+    
+      <a class="item" data-tab="01">
+        01
+      </a>
+    
+      <a class="item" data-tab="02">
+        02
+      </a>
+    
+      <a class="item" data-tab="03">
+        03
+      </a>
+    
+      <a class="item" data-tab="04">
+        04
+      </a>
+    
+      <a class="item" data-tab="05">
+        05
+      </a>
+    
+      <a class="item" data-tab="06">
+        06
+      </a>
+    
+      <a class="item" data-tab="07">
+        07
+      </a>
+    
+      <a class="item" data-tab="08">
+        08
+      </a>
+    
+      <a class="item" data-tab="09">
+        09
+      </a>
+    
+      <a class="item" data-tab="10">
+        10
+      </a>
+    
+  </div>
+</div>
 
-    <div class="ui fixed top pointing inverted stackable menu labmenu">
-      <header class="header item">
-        <i id="toc" class="sitemap icon"></i>
-        
-          <a href="../index.html">  08: Security, Indexes and Triggers  </a>
-        
-      </header>
-      <div class="right tab-menu menu">
-        
-          <a class="item" data-tab="Lab-01 SQL 8">
-            Lab-01 SQL 8
-          </a>
-        
-          <a class="item" data-tab="01">
-            01
-          </a>
-        
-          <a class="item" data-tab="02">
-            02
-          </a>
-        
-          <a class="item" data-tab="03">
-            03
-          </a>
-        
-          <a class="item" data-tab="04">
-            04
-          </a>
-        
-          <a class="item" data-tab="05">
-            05
-          </a>
-        
-          <a class="item" data-tab="06">
-            06
-          </a>
-        
-          <a class="item" data-tab="07">
-            07
-          </a>
-        
-          <a class="item" data-tab="08">
-            08
-          </a>
-        
-          <a class="item" data-tab="09">
-            09
-          </a>
-        
-          <a class="item" data-tab="10">
-            10
-          </a>
-        
-      </div>
-    </div>
-
-    <div class="ui segment pushable">
-      <div class="ui inverted labeled icon left inline vertical sidebar menu">
-        <br><br>
-        
-          
-            <a class="item" href="../../topic-00-Assignment/book-00-Assignment/index.html">
-              Assignment
-            </a>
-          
-        
-          
-            <a class="item" href="../../topic-00-On-Site/book-a/index.html">
-              Installation
-            </a>
-          
-        
-          
-            <a class="item" href="../../topic-00-On-Site/book-b/index.html">
-              SQL Introduction
-            </a>
-          
-        
-          
-            <a class="item" href="../../topic-01-Introduction/book-a/index.html">
-              SQL 1
-            </a>
-          
-        
-          
-            <a class="item" href="../../topic-02-Conceptual/book-a/index.html">
-              SQL 2
-            </a>
-          
-        
-          
-            <a class="item" href="../../topic-03-Logical/book-a/index.html">
-              SQL 3
-            </a>
-          
-        
-          
-            <a class="item" href="../../topic-04-EnhancedER/book-a/index.html">
-              SQL 4
-            </a>
-          
-        
-          
-            <a class="item" href="../../topic-05-Normalisation1/book-a/index.html">
-              Lab-01 SQL 5
-            </a>
-          
-        
-          
-            <a class="item" href="../../topic-06-Normalisation2/book-a/index.html">
-              Lab-01 SQL 6
-            </a>
-          
-        
-          
-            <a class="item" href="../../topic-07-Physical/book-a/index.html">
-              Lab-01 SQL 7
-            </a>
-          
-        
-          
-            <a class="active item" href="../../topic-08-Security/book-a/index.html">
-              Lab-01 SQL 8
-            </a>
-          
-        
-          
-            <a class="item" href="../../topic-09-Transactions/book-a/index.html">
-              Backup and Restore
-            </a>
-          
-        
-      </div>
-      <div class="pusher" tabindex="-1">
-        <div class="ui basic segment" id="labchat">
-          <br>
-          
-            <div  class="ui tab segment lab" data-tab="Lab-01 SQL 8">
-              <h1>Objectives</h1>
+<div class="ui pushable">
+  <div class="ui inverted labeled icon left inline vertical sidebar menu">
+    <br><br>
+    
+      
+        <a class="item"
+           href="http://wit-hdip-comp-sci-2018.github.io/database//topic-00-Assignment/book-00-Assignment/index.html">Assignment </a>
+      
+    
+      
+        <a class="item"
+           href="http://wit-hdip-comp-sci-2018.github.io/database//topic-00-On-Site/book-a/index.html">Installation </a>
+      
+    
+      
+        <a class="item"
+           href="http://wit-hdip-comp-sci-2018.github.io/database//topic-00-On-Site/book-b/index.html">SQL Introduction </a>
+      
+    
+      
+        <a class="item"
+           href="http://wit-hdip-comp-sci-2018.github.io/database//topic-01-Introduction/book-a/index.html">SQL 1 </a>
+      
+    
+      
+        <a class="item"
+           href="http://wit-hdip-comp-sci-2018.github.io/database//topic-02-Conceptual/book-a/index.html">SQL 2 </a>
+      
+    
+      
+        <a class="item"
+           href="http://wit-hdip-comp-sci-2018.github.io/database//topic-03-Logical/book-a/index.html">SQL 3 </a>
+      
+    
+      
+        <a class="item"
+           href="http://wit-hdip-comp-sci-2018.github.io/database//topic-04-EnhancedER/book-a/index.html">SQL 4 </a>
+      
+    
+      
+        <a class="item"
+           href="http://wit-hdip-comp-sci-2018.github.io/database//topic-05-Normalisation1/book-a/index.html">Lab-01 SQL 5 </a>
+      
+    
+      
+        <a class="item"
+           href="http://wit-hdip-comp-sci-2018.github.io/database//topic-06-Normalisation2/book-a/index.html">Lab-01 SQL 6 </a>
+      
+    
+      
+        <a class="item"
+           href="http://wit-hdip-comp-sci-2018.github.io/database//topic-07-Physical/book-a/index.html">Lab-01 SQL 7 </a>
+      
+    
+      
+        <a class="item"
+           href="http://wit-hdip-comp-sci-2018.github.io/database//topic-08-Security/book-a/index.html">Lab-01 SQL 8 </a>
+      
+    
+      
+        <a class="item"
+           href="http://wit-hdip-comp-sci-2018.github.io/database//topic-09-Transactions/book-a/index.html">Backup and Restore </a>
+      
+    
+  </div>
+  <div class="pusher" tabindex="-1">
+    <div class="ui basic segment">
+      <br>
+      
+        <div class="ui tab segment lab" data-tab="Lab-01 SQL 8">
+          <h1>Objectives</h1>
 <p>In this lab, we will look at creating Indexes, Triggers, and Users. We will also look at granting access to users.</p>
 
-            </div>
-          
-            <div  class="ui tab segment lab" data-tab="01">
-              <h1>Indexes</h1>
+        </div>
+      
+        <div class="ui tab segment lab" data-tab="01">
+          <h1>Indexes</h1>
 <p>An Index is a structure that provides accelerated access to the rows (records) of a table based on the values of one or more columns. The presence of an index can 
 significantly improve the performance of a query. However, as indexes may be updated by the system every time the underlying tables are updated, additional overheads may be incurred.</p>
 <p>Indexes are usually created to satisfy particular search criteria after the table has been in use for some time and has grown in size. </p>
 <p>MySQL creates indexes automatically for all primary key columns and will create indexes for foreign key columns if the underlying table structure is innoDB.</p>
 
-            </div>
-          
-            <div  class="ui tab segment lab" data-tab="02">
-              <h1>Creating an Index</h1>
+        </div>
+      
+        <div class="ui tab segment lab" data-tab="02">
+          <h1>Creating an Index</h1>
 <pre><code> CREATE [UNIQUE] INDEX indexName
   ON TableName (columnName [ASC|DESC] [....])</code></pre>
 <p>The specified columns constitute the index key and should be listed in major to minor order. Indexes can be created on base tables only (and not Views). </p>
@@ -226,10 +223,10 @@ This is required for the primary key (and alternate key) columns (fields).</p>
 <p>To create an index on the book table for the title to speed up searching:</p>
 <pre><code> create index booktitleind on book(title);</code></pre>
 
-            </div>
-          
-            <div  class="ui tab segment lab" data-tab="03">
-              <h1>Managing Indexes</h1>
+        </div>
+      
+        <div class="ui tab segment lab" data-tab="03">
+          <h1>Managing Indexes</h1>
 <h2>Viewing Indexes</h2>
 <p>To view the indexes from each table by using:</p>
 <pre><code> SHOW INDEX FROM tableName;</code></pre>
@@ -244,10 +241,10 @@ remove the index from the database.</p>
 <p>The following statement would remove the index created in the previous example:</p>
 <pre><code>  alter table book drop index booktitleind;</code></pre>
 
-            </div>
-          
-            <div  class="ui tab segment lab" data-tab="04">
-              <h1>Triggers</h1>
+        </div>
+      
+        <div class="ui tab segment lab" data-tab="04">
+          <h1>Triggers</h1>
 <p>A <code>SQL trigger</code> is a set of  SQL statements stored in the database catalog. A SQL trigger is executed or fired whenever an event associated with a table 
 occurs e.g.,  INSERT, UPDATE or DELETE. A trigger can be defined to be invoked either before or after the data is changed (INSERT, UPDATE or DELETE).</p>
 <p>A SQL trigger is called automatically when a data modification event is made against a table </p>
@@ -271,10 +268,10 @@ To define a trigger that is invoked by multiple events, you have to define multi
 <li>You place the SQL statements between <code>BEGIN</code> and <code>END</code> block. This is where you define the logic for the trigger.</li>
 </ul>
 
-            </div>
-          
-            <div  class="ui tab segment lab" data-tab="05">
-              <h1>MySQL trigger example</h1>
+        </div>
+      
+        <div class="ui tab segment lab" data-tab="05">
+          <h1>MySQL trigger example</h1>
 <p>We will create a trigger in MySQL to log the changes of the Book table in the library database. To do this, we will create a new table (book_audit), which will record the ISBN, 
 and price of the record before it was updated. It also records the date and time of the change.</p>
 <p>To do this we will create a new table, <strong>book_audit</strong>:</p>
@@ -301,10 +298,10 @@ DELIMITER ;</code></pre>
 <p><strong>Note:</strong> By default, mysql itself recognizes the semicolon as a statement delimiter, so you must redefine the <code>delimiter</code> temporarily to cause mysql to 
 pass the entire stored program definition to the server. To redefine the mysql delimiter, use the delimiter command.</p>
 
-            </div>
-          
-            <div  class="ui tab segment lab" data-tab="06">
-              <h1>Managing Triggers</h1>
+        </div>
+      
+        <div class="ui tab segment lab" data-tab="06">
+          <h1>Managing Triggers</h1>
 <h2>Viewing Triggers</h2>
 <p>To view all triggers in the current database, you use <code>SHOW TRIGGERS</code> statement as follows:</p>
 <pre><code> show triggers;</code></pre>
@@ -315,10 +312,10 @@ below:</p>
 <p>To remove a trigger, use the <code>DROP TRIGGER</code> statement as follows:</p>
 <pre><code> drop trigger before_book_update;</code></pre>
 
-            </div>
-          
-            <div  class="ui tab segment lab" data-tab="07">
-              <h1>Users and Security</h1>
+        </div>
+      
+        <div class="ui tab segment lab" data-tab="07">
+          <h1>Users and Security</h1>
 <h2>Create a user</h2>
 <p>MySQL provides the <code>CREATE USER</code> statement to allow you to create a new user in a database server. The syntax of the CREATE USER statement is as follows:</p>
 <pre><code>CREATE USER Username IDENTIFIED BY password;</code></pre>
@@ -328,10 +325,10 @@ below:</p>
 <p>To create a new user called <code>Clerk</code> that connects from localhost with the password <code>desk</code>, you use the CREATE USER statement as follows:</p>
 <pre><code> create user Clerk identified by &#39;desk&#39;;</code></pre>
 
-            </div>
-          
-            <div  class="ui tab segment lab" data-tab="08">
-              <h1>Users and Security</h1>
+        </div>
+      
+        <div class="ui tab segment lab" data-tab="08">
+          <h1>Users and Security</h1>
 <h2>MySQL Grant</h2>
 <p>Now that we have created users, we can grant a range of privileges to that user on different schemas and objects.  When granting privileges we can either 
 specify <code>all</code> privileges or list the privileges that we want to grant.  </p>
@@ -348,10 +345,10 @@ SELECT, DELETE, INSERT and UPDATE on all the tables. </p>
 <p>To show all the privileges that have been assigned to a particular user, enter the following command:</p>
 <pre><code> show grants for Manager;</code></pre>
 
-            </div>
-          
-            <div  class="ui tab segment lab" data-tab="09">
-              <h1>Managing User accounts</h1>
+        </div>
+      
+        <div class="ui tab segment lab" data-tab="09">
+          <h1>Managing User accounts</h1>
 <h2>View User accounts</h2>
 <p>To view all users in the MySQL database server, you use the following SELECT statement:</p>
 <pre><code> SELECT user, host FROM mysql.user;</code></pre>
@@ -377,10 +374,10 @@ SELECT, DELETE, INSERT and UPDATE on all the tables. </p>
 </li>
 </ol>
 
-            </div>
-          
-            <div  class="ui tab segment lab" data-tab="10">
-              <h1>Logging in as a different user</h1>
+        </div>
+      
+        <div class="ui tab segment lab" data-tab="10">
+          <h1>Logging in as a different user</h1>
 <p>So far when using MySQL workbench we have always logged in as the root user.  Thus we all had total access to all our tables. We will now create a new connection for a different user.  Thus we will maintain a number of connections to the same database but depending on whom you are logged in as, you will have different access to the database.    </p>
 <p>In the home tab (click the little house), click on the plus symbol shown below, to create a <code>New Connection</code>. A new screen appears asking you to 
 define certain parameters for your new connection.</p>
@@ -390,28 +387,34 @@ define certain parameters for your new connection.</p>
 <p>Now that you have created the connection, you can double-click on the Management connection in the list to log in and interact with the database as this user called Manager.  In order to check who you are logged on as just check the tab highlighted. </p>
 <p><img src="img/log.png" alt=""></p>
 
-            </div>
-          
         </div>
-      </div>
+      
     </div>
+  </div>
+</div>
 
-    <script>
-      $(document).ready(function() {
-  const $images = $('.lab img');
-  jQuery.each($images, function(i) {
-    if ($images[i].alt.length > 0) {
-      const divImg = $(document.createElement('div')).addClass('');
-      $($images[i]).wrap(divImg);
-      const divLabel = $(document.createElement('div')).addClass('uk-label uk-text-lowercase');
-      divLabel.append($images[i].alt);
-      $(divLabel).insertAfter($images[i]);
-      $('<br>').insertAfter($images[i]);
-    }
-  });
+<script>
+  $(document).on('keydown', function(e) {
+  e = e || window.event;
+  var nextTab;
+  switch (e.which || e.keyCode) {
+    case 37: // left
+      nextTab = $('.tab-menu a[data-tab].active').prev('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').last();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+
+    case 39: // right
+      nextTab = $('.tab-menu a[data-tab].active').next('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').first();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+  }
 });
 
-      $(document).ready(function() {
+  $(document).ready(function() {
   $('img').addClass('ui image');
 
   $('.ui.embed').embed();
@@ -444,6 +447,6 @@ define certain parameters for your new connection.</p>
     .sidebar('attach events', '#toc');
 });
 
-    </script>
-  </body>
+</script>
+</body>
 </html>
