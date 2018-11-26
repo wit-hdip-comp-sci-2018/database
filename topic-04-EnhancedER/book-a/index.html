@@ -1,29 +1,29 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-  <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css"
-        type="text/css">
-  <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/railscasts.min.css"
-        rel="stylesheet"/>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script type="text/javascript"
-          src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
-  <script type="text/javascript"
-          src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.js"></script>
-  <script type="text/javascript"
-          src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-  <script type="text/javascript"
-          src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>
-  <script type="text/javascript"
-          src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/kotlin.min.js"></script>
-  <script>hljs.initHighlightingOnLoad();</script>
-  <style>
-    
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css"
+          type="text/css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/railscasts.min.css"
+          rel="stylesheet"/>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/kotlin.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <style>
+      
 
 body {
   font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
@@ -66,161 +66,189 @@ h3 {
 
 
 
-  </style>
-</head>
+      
 
-<body>
+html, body {
+  height: 100%;
+  margin: 0;
+}
+.wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.footer {
+  background: white;
+  text-align: right;
+}
+.content {
+  flex: 1;
+  overflow: auto;
+}
 
 
 
-<div class="ui fixed top pointing inverted stackable menu labmenu">
-  <header class="header item">
-    <i id="toc" class="sitemap icon"></i>
-    
-      <a href="../index.html">  04: Enhanced ER diagrams  </a>
-    
-  </header>
-  <div class="right tab-menu menu">
-    
-      <a class="item" data-tab="SQL 4">
-        SQL 4
-      </a>
-    
-      <a class="item" data-tab="01">
-        01
-      </a>
-    
-      <a class="item" data-tab="02">
-        02
-      </a>
-    
-      <a class="item" data-tab="03">
-        03
-      </a>
-    
-      <a class="item" data-tab="04">
-        04
-      </a>
-    
-      <a class="item" data-tab="Movies Exercise 1">
-        Movies Exercise 1
-      </a>
-    
-      <a class="item" data-tab="06">
-        06
-      </a>
-    
-      <a class="item" data-tab="07">
-        07
-      </a>
-    
-      <a class="item" data-tab="08">
-        08
-      </a>
-    
-      <a class="item" data-tab="09">
-        09
-      </a>
-    
-      <a class="item" data-tab="10">
-        10
-      </a>
-    
-      <a class="item" data-tab="Movies Exercise 2">
-        Movies Exercise 2
-      </a>
-    
+    </style>
+  </head>
+
+  <body class="uk-background-muted">
+    <div class="wrapper">
+      <div class="content">
+        <div style="height:1000px;">
+          
+  
+
+  <div class="ui fixed top pointing inverted stackable menu labmenu">
+    <header class="header item">
+      <i id="toc" class="sitemap icon"></i>
+      
+        <a href="../index.html">  04: Enhanced ER diagrams  </a>
+      
+    </header>
+    <div class="right tab-menu menu">
+      
+        <a class="item" data-tab="SQL 4">
+          SQL 4
+        </a>
+      
+        <a class="item" data-tab="01">
+          01
+        </a>
+      
+        <a class="item" data-tab="02">
+          02
+        </a>
+      
+        <a class="item" data-tab="03">
+          03
+        </a>
+      
+        <a class="item" data-tab="04">
+          04
+        </a>
+      
+        <a class="item" data-tab="Movies Exercise 1">
+          Movies Exercise 1
+        </a>
+      
+        <a class="item" data-tab="06">
+          06
+        </a>
+      
+        <a class="item" data-tab="07">
+          07
+        </a>
+      
+        <a class="item" data-tab="08">
+          08
+        </a>
+      
+        <a class="item" data-tab="09">
+          09
+        </a>
+      
+        <a class="item" data-tab="10">
+          10
+        </a>
+      
+        <a class="item" data-tab="Movies Exercise 2">
+          Movies Exercise 2
+        </a>
+      
+    </div>
   </div>
-</div>
 
-<div class="ui pushable">
-  <div class="ui inverted labeled icon left inline vertical sidebar menu">
-    <br><br>
-    
+
+  
+
+  <div class="ui pushable">
+    <div class="ui inverted labeled icon left inline vertical sidebar menu">
+      <br><br>
       
-        <a class="item"
-           href="http://wit-hdip-comp-sci-2018.github.io/database//topic-00-Assignment/book-00-Assignment/index.html">Assignment </a>
+        
+          <a class="item"
+             href="http://wit-hdip-comp-sci-2018.github.io/database//topic-00-Assignment/book-00-Assignment/index.html">Assignment </a>
+        
       
-    
+        
+          <a class="item"
+             href="http://wit-hdip-comp-sci-2018.github.io/database//topic-00-On-Site/book-a/index.html">Installation </a>
+        
       
-        <a class="item"
-           href="http://wit-hdip-comp-sci-2018.github.io/database//topic-00-On-Site/book-a/index.html">Installation </a>
+        
+          <a class="item"
+             href="http://wit-hdip-comp-sci-2018.github.io/database//topic-00-On-Site/book-b/index.html">SQL Introduction </a>
+        
       
-    
+        
+          <a class="item"
+             href="http://wit-hdip-comp-sci-2018.github.io/database//topic-01-Introduction/book-a/index.html">SQL 1 </a>
+        
       
-        <a class="item"
-           href="http://wit-hdip-comp-sci-2018.github.io/database//topic-00-On-Site/book-b/index.html">SQL Introduction </a>
+        
+          <a class="item"
+             href="http://wit-hdip-comp-sci-2018.github.io/database//topic-02-Conceptual/book-a/index.html">SQL 2 </a>
+        
       
-    
+        
+          <a class="item"
+             href="http://wit-hdip-comp-sci-2018.github.io/database//topic-03-Logical/book-a/index.html">SQL 3 </a>
+        
       
-        <a class="item"
-           href="http://wit-hdip-comp-sci-2018.github.io/database//topic-01-Introduction/book-a/index.html">SQL 1 </a>
+        
+          <a class="item"
+             href="http://wit-hdip-comp-sci-2018.github.io/database//topic-04-EnhancedER/book-a/index.html">SQL 4 </a>
+        
       
-    
+        
+          <a class="item"
+             href="http://wit-hdip-comp-sci-2018.github.io/database//topic-05-Normalisation1/book-a/index.html">Lab-01 SQL 5 </a>
+        
       
-        <a class="item"
-           href="http://wit-hdip-comp-sci-2018.github.io/database//topic-02-Conceptual/book-a/index.html">SQL 2 </a>
+        
+          <a class="item"
+             href="http://wit-hdip-comp-sci-2018.github.io/database//topic-06-Normalisation2/book-a/index.html">Lab-01 SQL 6 </a>
+        
       
-    
+        
+          <a class="item"
+             href="http://wit-hdip-comp-sci-2018.github.io/database//topic-07-Physical/book-a/index.html">Lab-01 SQL 7 </a>
+        
       
-        <a class="item"
-           href="http://wit-hdip-comp-sci-2018.github.io/database//topic-03-Logical/book-a/index.html">SQL 3 </a>
+        
+          <a class="item"
+             href="http://wit-hdip-comp-sci-2018.github.io/database//topic-08-Security/book-a/index.html">Lab-01 SQL 8 </a>
+        
       
-    
+        
+          <a class="item"
+             href="http://wit-hdip-comp-sci-2018.github.io/database//topic-09-Transactions/book-a/index.html">Backup and Restore </a>
+        
       
-        <a class="item"
-           href="http://wit-hdip-comp-sci-2018.github.io/database//topic-04-EnhancedER/book-a/index.html">SQL 4 </a>
-      
-    
-      
-        <a class="item"
-           href="http://wit-hdip-comp-sci-2018.github.io/database//topic-05-Normalisation1/book-a/index.html">Lab-01 SQL 5 </a>
-      
-    
-      
-        <a class="item"
-           href="http://wit-hdip-comp-sci-2018.github.io/database//topic-06-Normalisation2/book-a/index.html">Lab-01 SQL 6 </a>
-      
-    
-      
-        <a class="item"
-           href="http://wit-hdip-comp-sci-2018.github.io/database//topic-07-Physical/book-a/index.html">Lab-01 SQL 7 </a>
-      
-    
-      
-        <a class="item"
-           href="http://wit-hdip-comp-sci-2018.github.io/database//topic-08-Security/book-a/index.html">Lab-01 SQL 8 </a>
-      
-    
-      
-        <a class="item"
-           href="http://wit-hdip-comp-sci-2018.github.io/database//topic-09-Transactions/book-a/index.html">Backup and Restore </a>
-      
-    
-  </div>
-  <div class="pusher" tabindex="-1">
-    <div class="ui basic segment">
-      <br>
-      
-        <div class="ui tab segment lab" data-tab="SQL 4">
-          <h1>Objectives</h1>
+    </div>
+    <div class="pusher" tabindex="-1">
+      <div class="ui basic segment">
+        <br>
+        
+          <div class="ui tab segment lab" data-tab="SQL 4">
+            <h1>Objectives</h1>
 <p>In this lab, we will use the Select statement statement to look at multi table and outer Joins.</p>
 <ul>
 <li>Retrieve data from more than two tables.</li>
 <li>Perform other types of Join.</li>
 </ul>
 
-        </div>
-      
-        <div class="ui tab segment lab" data-tab="01">
-          <h1>Join</h1>
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="01">
+            <h1>Join</h1>
 <p>Sometimes we need to retrieve information from more than two tables. The rule goes that the number of <em>JOINs</em> a Select statement has is 1 less than the number of 
 tables involved. So if we have three tables in the query then we have two JOINs, if we have four tables in the query then we would have 3 JOINs and so on.</p>
 
-        </div>
-      
-        <div class="ui tab segment lab" data-tab="02">
-          <h1>Example One</h1>
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="02">
+            <h1>Example One</h1>
 <p>For each loan, if we wanted the student&#39;s name who borrowed the book, the ISBN of the book borrowed, and the dates loaned and returned.</p>
 <p>There are three things to do here:</p>
 <ol>
@@ -239,10 +267,10 @@ on  bookcopy.copyId = loan.copyId
 join student 
 on loan.studentId = student.studentId;</code></pre>
 
-        </div>
-      
-        <div class="ui tab segment lab" data-tab="03">
-          <h1>Example Two</h1>
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="03">
+            <h1>Example Two</h1>
 <p>The previous example gives us some information about the book loans per student but we still do not know the book title!</p>
 <p>We can expand the above example to return the book title instead of the ISBN.
 For each loan, we want the student<code>&#39;</code>s name who borrowed the book, the title of the book borrowed, and the dates loaned and returned.</p>
@@ -266,10 +294,10 @@ on bookcopy.copyId = loan.copyId
 join student   
 on student.studentId = loan.studentId;</code></pre>
 
-        </div>
-      
-        <div class="ui tab segment lab" data-tab="04">
-          <h1>Exercises:</h1>
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="04">
+            <h1>Exercises:</h1>
 <ol>
 <li><p>List the books by title that are on loan at present (dateBack is null). Label the title <em>Books currently on loan</em>. Sort in alphabetical order by title.</p>
 <p><img src="img/ans1.png" alt=""></p>
@@ -289,10 +317,10 @@ on student.studentId = loan.studentId;</code></pre>
 </li>
 </ol>
 
-        </div>
-      
-        <div class="ui tab segment lab" data-tab="Movies Exercise 1">
-          <h1>Movies Exercise 1</h1>
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="Movies Exercise 1">
+            <h1>Movies Exercise 1</h1>
 <p>For these exercises, load the <em>movies</em> database and remember to select the database.</p>
 <p>To do:</p>
 <ol>
@@ -302,10 +330,10 @@ on student.studentId = loan.studentId;</code></pre>
 </li>
 </ol>
 
-        </div>
-      
-        <div class="ui tab segment lab" data-tab="06">
-          <h1>Outer Join</h1>
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="06">
+            <h1>Outer Join</h1>
 <p>Please enter the following statement which returns all Student records:</p>
 <pre><code>SELECT * FROM student;</code></pre>
 <p>Now, enter the following statement which returns all Loan records:</p>
@@ -323,10 +351,10 @@ But, how can we return all student records and their loans even if they have NO 
 <p>An outer join extends the result of a simple join. An outer join returns all rows that satisfy the join condition and also returns some or all of 
 those rows from one table for which no rows from the other satisfy the join condition.</p>
 
-        </div>
-      
-        <div class="ui tab segment lab" data-tab="07">
-          <h1>Left Outer Join</h1>
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="07">
+            <h1>Left Outer Join</h1>
 <p>The <strong>LEFT JOIN</strong> keyword returns all rows from the left (first) table (table1), with the matching rows in the right table (table2). 
 The result is NULL in the right side when there is no match.</p>
 <p>Syntax:</p>
@@ -350,10 +378,10 @@ ON student.studentid = loan.studentid;</code></pre>
 <li>A student name will appear more than once if he/she has borrowed more than one book.</li>
 </ul>
 
-        </div>
-      
-        <div class="ui tab segment lab" data-tab="08">
-          <h1>Right Outer Join</h1>
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="08">
+            <h1>Right Outer Join</h1>
 <p>The <strong>RIGHT JOIN</strong> keyword returns all rows from the right (second) table (table2), with the matching rows in the left table (table1). 
 The result is NULL in the left side when there is no match.</p>
 <p>Syntax:</p>
@@ -376,10 +404,10 @@ ON student.studentid = loan.studentid;</code></pre>
 </ul>
 <p><img src="img/ans6.png" alt=""></p>
 
-        </div>
-      
-        <div class="ui tab segment lab" data-tab="09">
-          <h1>Example One</h1>
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="09">
+            <h1>Example One</h1>
 <p>The following example produces for each bookcopy - the copyId, its&#39; book title, the loan details (i.e. the date it was borrowed (if it was borrowed), and the date 
 it was returned). This will require joining tables - bookcopy, loan and book.</p>
 <ol>
@@ -405,10 +433,10 @@ FROM loan RIGHT JOIN bookcopy
 ON bookcopy.copyId = loan.copyId
 JOIN book ON book.isbn = bookcopy.isbn;</code></pre>
 
-        </div>
-      
-        <div class="ui tab segment lab" data-tab="10">
-          <h1>Example Two</h1>
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="10">
+            <h1>Example Two</h1>
 <p>The following example produces for each Student <code>-</code> the full student name, the title of the books borrowed, the date it was borrowed, 
 and the date it was returned even if the student has (or had) no loans.</p>
 <ol>
@@ -445,10 +473,10 @@ Join.</p>
 then first name.</li>
 </ul>
 
-        </div>
-      
-        <div class="ui tab segment lab" data-tab="Movies Exercise 2">
-          <h1>Movies Exercise 2</h1>
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="Movies Exercise 2">
+            <h1>Movies Exercise 2</h1>
 <p>For these exercises, load the <em>movies</em> database, remember to select the database, and execute the following statement:   </p>
 <pre><code>insert into reviewer values(209, &#39;Liam Collins&#39;);</code></pre>
 <ol>
@@ -456,14 +484,16 @@ then first name.</li>
 <li>Return the reviewer name, film title, and number of stars for all reviewers (even if they have not left a review yet).</li>
 </ol>
 
-        </div>
-      
+          </div>
+        
+      </div>
     </div>
   </div>
-</div>
 
-<script>
-  $(document).on('keydown', function(e) {
+
+
+  <script>
+    $(document).on('keydown', function(e) {
   e = e || window.event;
   var nextTab;
   switch (e.which || e.keyCode) {
@@ -483,7 +513,7 @@ then first name.</li>
   }
 });
 
-  $(document).ready(function() {
+    $(document).ready(function() {
   $('img').addClass('ui image');
 
   $('.ui.embed').embed();
@@ -516,6 +546,16 @@ then first name.</li>
     .sidebar('attach events', '#toc');
 });
 
-</script>
-</body>
+  </script>
+
+
+        </div>
+      </div>
+      <div class="footer"> <p> Powered by <a
+          href="https://github.com/edeleastar/tutors-ts">tutors-ts.</a>
+        Unless otherwise stated, this work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>. </p>
+      </div>
+    </div>
+  </body>
+
 </html>
