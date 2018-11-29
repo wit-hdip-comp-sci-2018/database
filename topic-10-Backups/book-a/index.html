@@ -102,13 +102,13 @@ html, body {
     <header class="header item">
       <i id="toc" class="sitemap icon"></i>
       
-        <a href="../index.html"> On-Site Workshop: June 15  </a>
+        <a href="../index.html">  10: Backup and Recovery  </a>
       
     </header>
     <div class="right tab-menu menu">
       
-        <a class="item" data-tab="Installation">
-          Installation
+        <a class="item" data-tab="Install MongoDB">
+          Install MongoDB
         </a>
       
         <a class="item" data-tab="01">
@@ -207,73 +207,113 @@ html, body {
       <div class="ui basic segment">
         <br>
         
-          <div class="ui tab segment lab" data-tab="Installation">
+          <div class="ui tab segment lab" data-tab="Install MongoDB">
             <h1>Objectives</h1>
-<p>In this lab, you will install MySQL and log in to MySQL Workbench.</p>
+<p>In this lab, we will install and test MongoDB, a non-relational database.</p>
 
           </div>
         
           <div class="ui tab segment lab" data-tab="01">
-            <h1>MySQL and MySQL Workbench</h1>
-<p>MySQL is an open-source relational database management system (RDBMS). The acronym &quot;SQL&quot; (sometimes pronounced &quot;sequel&quot;) stands for Structured Query Language. SQL is a standard computer language for relational database management and data manipulation. SQL is used to query, insert, update and modify data in a database.</p>
-<p>MySQL Workbench is a visual database design tool that integrates SQL development, administration, database design, creation and maintenance into a single integrated development environment for the MySQL database system.</p>
-<p>In this lab, you will install the various components that make up a MySQL database, including the MySQL server and the MySQL Workbench application.</p>
+            <h1>MongoDB installation</h1>
+<p>MongoDB is a non-relational database that stores data in flexible, JSON-like documents, meaning fields can vary from document to document and data structure can be changed over time. In this lab, we will download and install MongoDB and create a test document.</p>
+<p>Go to <a href="https://www.mongodb.com/download-center/community" target="_ blank"><code>https://www.mongodb.com/download-center/community</code></a> and select the correct installer for your operating system.</p>
+<p><img src="img/download.png" alt=""></p>
+<p>Once the installer has downloaded, run it. Choose the following options during installation:</p>
+<ul>
+<li>Accept the license terms and agreement</li>
+<li>Choose <em>complete</em> as the setup type, to install all features</li>
+<li>Under Service Configuration, the &quot;Install MongoD as a service&quot; option should stay checked</li>
+<li><strong>Uncheck</strong> the Install MongoDB Compass option. (MongoDB Compass is a graphical user interface for MongoDB; we will use the console for our commands. Compass causes installation to hang on some operating systems, so uncheck for now; it can be installed separately later if you wish to try it out).</li>
+<li>Click Install to begin the installation.</li>
+</ul>
+<p>To confirm that MongoDB has installed successfully, go to the install location (probably <code>C:\Program Files\MongoDB\</code>, or the equivalent location on your system). You should see a MongoDB folder. Go to the <code>Server\4.0\bin</code> folder and view the files there.</p>
+<p><img src="img/installed.png" alt=""></p>
 
           </div>
         
           <div class="ui tab segment lab" data-tab="02">
-            <h1>Download the installer</h1>
-<p>You can download the MySQL installer here: <a href="https://dev.mysql.com/downloads/installer/" target="_ blank"><code>https://dev.mysql.com/downloads/installer/</code></a></p>
-<p>Select the second of the two options shown in the image below:</p>
-<p><img src="img/01.png" alt=""></p>
-<p>Note that you do not need to sign up for an Oracle Web account - just select &quot;No thanks, just start my download&quot; which can be found under the grey box with the Login and Sign up buttons.</p>
-<p><img src="img/02.png" alt=""></p>
+            <h1>Getting started with MongoDB</h1>
+<p>Now, we will take the first steps in starting to use MongoDB. We need to first create a storage location, and then start the Mongo server and client processes from the command prompt.</p>
+<h2>Create storage location for MongoDB</h2>
+<p>Open a command prompt (your regular system command prompt, not the Mongo shell) and run the following commands to create a folder on your C: drive called <code>db</code> inside a folder called <code>data</code>. This location is where MongoDB will store your data files.</p>
+<pre><code>c:\
+md data
+md data\db</code></pre>
+<p><img src="img/md.png" alt=""></p>
+<p>You should now see a folder on your C: drive called <code>data\db</code>. Note that this step only needs to be done the first time you use MongoDB.</p>
+<p><img src="img/datadbfolder.png" alt=""></p>
+<h2>Start server and client processes</h2>
+<p>Next, we will start the MongoDB server and client processes. We will need to start both of these processes <em>every</em> time we use MongoDB. <code>mongod.exe</code> is the Mongo Server process, and <code>mongo.exe</code> is the client process.</p>
+<h3>Start mongod.exe (server)</h3>
+<ul>
+<li>In your command prompt, navigate to the bin folder within the command prompt. The location is probably something like <code>C:\Program Files\MongoDB\Server\4.0\bin</code>.</li>
+</ul>
+<p><img src="img/binfolder.png" alt=""></p>
+<ul>
+<li>Now enter the command <code>mongod.exe</code>. This starts the MongoD application, which is the database server.</li>
+</ul>
+<p><img src="img/mongod.png" alt=""></p>
+<p>You should see something like this when MongoD is running. Note the part that says &quot;waiting for connections&quot;; this indicates our database server is running and waiting for users to connect to it. We will need to leave this command prompt open and running MongoD for the entire time that we are using the MongoDB database.  </p>
+<p><img src="img/mongodrunning.png" alt=""></p>
+<h3>Start mongo.exe (client)</h3>
+<ul>
+<li>Open a <strong>new</strong> command prompt. Remember to leave the other one open too.</li>
+<li>Once again, navigate to the <code>C:\Program Files\MongoDB\Server\4.0\bin</code> folder.</li>
+<li>Then, enter the command <code>mongo.exe</code>; this will start the Mongo client process.</li>
+</ul>
+<p><img src="img/mongo.png" alt=""></p>
+<p>When Mongo has started, you will see something like the following. You should see a blinking cursor at the prompt, indicating that it is ready for commands.</p>
+<p><img src="img/mongorunning.png" alt=""></p>
 
           </div>
         
           <div class="ui tab segment lab" data-tab="03">
-            <h1>Run the installation</h1>
-<p>Once you have downloaded the MySQL installer, carry out the following steps to install MySQL:</p>
+            <h1>Creating your first document</h1>
+<p>We will delve into the CRUD (Create, Read, Update and Delete) functions in MongoDB in more detail next week. This week, we will create a very simple document and then use find() to retrieve it.</p>
 <ul>
-<li>Double click the installer and click &quot;Run&quot;.</li>
-<li>Accept the license terms and select &quot;Next&quot;.</li>
-<li>Leave the Setup type as the Developer Default and click &quot;Next&quot;.</li>
-<li>The Check Requirements step will install any additional software that you need to run MySQL. Click &quot;Execute&quot; on this step, and then &quot;Next&quot;.</li>
-<li>Now, click on &quot;Execute&quot; to run the MySQL installation; then click &quot;Next&quot; to continue.</li>
-<li><p>Click &quot;Next&quot; on the Product Configuration and Type and Networking steps.</p>
-</li>
-<li><p><strong>Important</strong>: Accounts and Roles:</p>
+<li>Use the <code>show dbs</code> command to list the databases currently held in the MongoDB system.</li>
+</ul>
+<p><img src="img/showdbs.png" alt=""></p>
+<h2>Create</h2>
 <ul>
-<li>In this step, you need to set a password to use when logging into MySQL Workbench. It is crucial that you note and remember this password.</li>
-<li>Often, we use the password &quot;root&quot; as a default password for the root user account. If you want to keep it simple and easy to remember, use &quot;root&quot; as your password here.</li>
+<li>The <code>use test</code> command will switch to the test database if it exists already or create it if it doesn&#39;t exist; so in this instance, running the use test command both creates a database called &quot;test&quot; and switches to that database.</li>
 </ul>
-</li>
-</ul>
-<p><img src="img/03.png" alt=""></p>
+<p><img src="img/usetest.png" alt=""></p>
 <ul>
-<li>Click &quot;Next&quot; on the Windows Service step, and &quot;Execute&quot; on the Server Configuration step; then click &quot;Finish&quot;.</li>
-<li>The next step installs Samples and Examples. Click &quot;Next&quot; again.</li>
-<li>Then you will be prompted for your password, as shown below. Enter the password you set and click &quot;Check&quot;.</li>
+<li>We will now create our first document in MongoDB. This is a sample document with a range of different datatypes used:</li>
 </ul>
-<p><img src="img/04.png" alt=""></p>
-<ul>
-<li>Once it is confirmed that the password is correct, click &quot;Next&quot;.</li>
-<li>Continue through the next few steps clicking either &quot;Execute&quot; or &quot;Next&quot;, and lastly, click &quot;Finish&quot; once the installation is complete.</li>
-<li>MySQL Workbench should launch automatically. In step 4, we will log in to MySQL Workbench.</li>
-</ul>
+<pre><code>db.test.insert(
+    {
+        item: &quot;box&quot;,
+        qty: 20,
+        price: 14.99,
+        available: true,
+        timestamp: new Date(),
+        itemcodes: [1002, 1003, 1004],
+        supplierinfo: { name: &quot;Boxes Inc.&quot;, location: &quot;Ireland&quot; }
+    }
+)</code></pre>
+<p>When a document has been inserted successfully, you will see the following output:</p>
+<p><img src="img/inserted.png" alt=""></p>
+<h2>Read</h2>
+<p>To read from a MongoDB database, the find() operation is used. To find the document we just created, use the following:</p>
+<pre><code>db.test.find()</code></pre>
+<p>This prints the document, although it&#39;s not very readable. MongoDB supports <em>chaining</em> of functions (meaning we can call multiple operations at the same time). The pretty() function produces more readable results.</p>
+<pre><code>db.test.find().pretty()</code></pre>
+<p><img src="img/findpretty.png" alt=""></p>
+<p>We can now see the document we created, along with the timestamp that was assigned to it when we called the Date() function and the ObjectId that MongoDB assigned to it.</p>
 
           </div>
         
           <div class="ui tab segment lab" data-tab="04">
-            <h1>Log in to MySQL Workbench</h1>
-<p>Once the MySQL installation is complete, MySQL Workbench should launch automatically.</p>
-<p><img src="img/05.png" alt=""></p>
-<p>Under &quot;MySQL Connections&quot; you should see one connection: Local instance MySQL56. This is the default connection; you can see it uses the default &quot;root&quot; user, the localhost server and port 3306.</p>
-<p>Click on the Local instance MySQL56 connection. You will be asked for a password; this is the password that you set during the installation process.</p>
-<p><img src="img/06.png" alt=""></p>
-<p>After entering the correct password, you should see the following view:</p>
-<p><img src="img/07.png" alt=""></p>
-<p>You are now logged in to the MySQL Workbench application. In our next lab (the onsite workshop on Friday 15th June) we will create a database and perform some simple queries on the data. </p>
+            <h1>Shutting down the processes</h1>
+<p>It&#39;s a good idea to shut down the processes correctly each time you&#39;ve finished using MongoDB; don&#39;t just close the command prompt windows when you&#39;re done. Shutting down correctly ensures that your data has been committed and saved.</p>
+<h2>Shut down mongo.exe</h2>
+<p>In the mongo.exe window, type &#39;exit&#39; to shut down the process. It will, very politely, say &#39;bye&#39; and then it&#39;s safe to close the window.</p>
+<p><img src="img/bye.png" alt=""></p>
+<h2>Shut down mongod.exe</h2>
+<p>In the mongod.exe window, use the <code>CTRL + C</code> command to shut down. When you see this output and it returns to the command prompt, it&#39;s safe to close the window. </p>
+<p><img src="img/ctrlc.png" alt=""></p>
 
           </div>
         
