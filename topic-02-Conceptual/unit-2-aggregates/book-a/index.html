@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css"
+          type="text/css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/railscasts.min.css"
+          rel="stylesheet"/>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/kotlin.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <style>
+      
+
+body {
+  font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
+  font-size:90%;
+  color: black;
+}
+
+p {
+  margin: 0.5em;
+}
+
+pre code {
+  font-family: "Monaco";
+  font-size: 100%;
+}
+
+img {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin:10px;
+}
+
+h1, h2, h3 {
+  border-bottom:thin solid black;
+  margin-bottom: 0.5em;
+  margin-top: 1em;
+}
+
+h1 {
+  font-style:italic;
+  font-size:130%;
+}
+
+h2 {
+  font-size:110%;
+}
+
+h3 {
+  font-size:100%;
+}
+
+
+
+      
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+.wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.footer {
+  background: white;
+  text-align: right;
+}
+.content {
+  flex: 1;
+  overflow: auto;
+}
+
+
+
+    </style>
+  </head>
+
+  
+  
+
+  <div class="ui fixed top pointing inverted stackable menu labmenu">
+    <header class="header item">
+      <i id="toc" class="sitemap icon"></i>
+      
+        <a href="../../index.html"> Aggregate queries  </a>
+      
+    </header>
+    <div class="right tab-menu menu">
+      
+        <a class="item" data-tab="SQL 2">
+          SQL 2
+        </a>
+      
+        <a class="item" data-tab="01">
+          01
+        </a>
+      
+        <a class="item" data-tab="02">
+          02
+        </a>
+      
+        <a class="item" data-tab="03">
+          03
+        </a>
+      
+        <a class="item" data-tab="04">
+          04
+        </a>
+      
+        <a class="item" data-tab="05">
+          05
+        </a>
+      
+        <a class="item" data-tab="Movies Exercise">
+          Movies Exercise
+        </a>
+      
+        <a class="item" data-tab="Solutions">
+          Solutions
+        </a>
+      
+    </div>
+  </div>
+
+
+  
+
+  <div class="ui pushable">
+    <div class="ui inverted labeled icon left inline vertical sidebar menu">
+      <br><br>
+      
+        
+          
+            <a class="item"
+               href="/topic---Assignment/book-00-Assignment/index.html">Assignment </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-00-On-Site/book-a/index.html">Installation </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-00-On-Site/book-b/index.html">SQL Introduction </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-01-Introduction/unit-2-select/book-a/index.html">SQL 1 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-02-Conceptual/unit-2-aggregates/book-a/index.html">SQL 2 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-03-Logical/unit-2-join/book-a/index.html">SQL 3 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-04-EnhancedER/unit-2-outerjoins/book-a/index.html">SQL 4 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-05-Normalisation1/unit-2-dml/book-a/index.html">Lab-01 SQL 5 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-06-Normalisation2/unit-3-ddl/book-a/index.html">Lab-01 SQL 6 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-07-Physical/unit-3-subqueries/book-a/index.html">Lab-01 SQL 7 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-08-Security/unit-2-users-privileges/book-a/index.html">Lab-01 SQL 8 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-09-Transactions/unit-2-mysqlbackup/book-a/index.html">Backup and Restore </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-Backups/unit-2-mongodb/book-a/index.html">Install MongoDB </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-NoSQL1/unit-2-create/book-a-create/index.html">Create </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-NoSQL1/unit-3-read/book-b-read/index.html">Read (find) </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-NoSQL2/unit-2-update/book-a-update/index.html">Update </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-NoSQL2/unit-3-delete/book-b-delete/index.html">Delete </a>
+          
+        
+      
+    </div>
+    <div class="pusher" tabindex="-1">
+      <div class="ui basic segment">
+        <br>
+        
+          <div class="ui tab segment lab" data-tab="SQL 2">
+            <h1>Objectives</h1>
+<p>In this lab we will learn about Aggregate Functions.</p>
+<ul>
+<li>Use Aggregate Functions</li>
+<li>Use GROUP BY and HAVING clauses with aggregate functions</li>
+</ul>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="01">
+            <h1>Aggregate Functions</h1>
+<style>
+table.mine {
+    border-collapse:collapse;
+    border: 1px solid black;
+    width:30%;
+}
+
+td.mine2 {
+    border: 1px solid black;
+    padding: 0.2em;
+}
+</style>
+
+<p>SQL provides aggregate functions to help with the summarisation of large volumes of data. The functions can produce a <strong>single</strong> value for an entire group or table.
+The functions operate on sets of rows and return results based on groups of rows.</p>
+<table class="mine">
+<tr><td class = "mine2">MIN</td><td class = "mine2">returns the smallest value in a given column</td></tr>
+<tr><td class = "mine2">MAX</td><td class = "mine2">returns the largest value in a given column</td></tr>
+<tr><td class = "mine2">SUM</td><td class = "mine2">returns the sum of the numeric values in a given column</td></tr>
+<tr><td class = "mine2">AVG</td><td class = "mine2">returns the average value of a given column</td></tr>
+<tr><td class = "mine2">COUNT</td><td class = "mine2">returns the total number of values in a given column</td></tr>
+</table>
+
+<h2>Examples</h2>
+<p>Return the number of rows in the book table:</p>
+<pre><code>SELECT COUNT(*) 
+FROM book;</code></pre>
+<p>Return the number of student records:</p>
+<pre><code>SELECT COUNT(*) 
+FROM student;</code></pre>
+<p>Return the number of bookcopies where the ISBN is equal to 123675432:</p>
+<pre><code>SELECT COUNT(copyId) as &#39;JavaScript Book Count&#39; 
+FROM bookcopy 
+WHERE isbn = &#39;123675432&#39;;</code></pre>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="02">
+            <h1>Exercises</h1>
+<ol>
+<li><p>Return the number of students from Waterford. Label the returned value appropriately.</p>
+<p><img src="img/ans1.png" alt=""></p>
+</li>
+<li><p>Return the number of books that contain the term Database in the title. Label the returned value appropriately.</p>
+<p><img src="img/ans2.png" alt=""></p>
+</li>
+<li><p>Return the maximum book price. Label the returned value appropriately.</p>
+<p><img src="img/ans3.png" alt=""></p>
+</li>
+<li><p>Return the minimum book price. Label the returned value appropriately.</p>
+<p><img src="img/ans4.png" alt=""></p>
+</li>
+<li><p>Return the average book price. Label the returned value appropriately.</p>
+<p><img src="img/ans5.png" alt=""></p>
+</li>
+<li><p>Return the number of different counties that students come from. </p>
+<p><img src="img/ans6.png" alt=""></p>
+</li>
+</ol>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="03">
+            <h1>Rounding</h1>
+<p>To round a numeric value to a whole number (or to 2 decimal places for example), use <em>round</em>.</p>
+<h2>Examples</h2>
+<p>Round 34.6792 to a whole number (35).</p>
+<pre><code>round(34.6792);</code></pre>
+<p>Round 34.6792 to 2 decimal places (34.68).</p>
+<pre><code>round(34.6792,2);</code></pre>
+<h2>Exercise</h2>
+<ol>
+<li><p>Return the average book price rounded to 2 decimal places. Label the returned value appropriately.</p>
+<p><img src="img/ans7.png" alt=""></p>
+</li>
+</ol>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="04">
+            <h1>GROUP BY</h1>
+<p>The <em>GROUP BY</em> clause groups a result into subsets that have matching values for one or more columns. The GROUP BY clause will gather all of the rows 
+together that contain data in the specified column(s) and will allow aggregate functions to be performed on the one or more columns.</p>
+<h2>Example</h2>
+<p>The following example returns the number of students grouped by (per) county.</p>
+<pre><code>SELECT county, COUNT(*) 
+FROM student 
+GROUP BY county;</code></pre>
+<p>This will return one computed value for each different value of county.  In the select statement, the attribute used in the GROUP BY clause must be one of the attributes returned.</p>
+<h2>Exercises</h2>
+<ol>
+<li><p>Return the number of bookcopies. Label the returned value appropriately.</p>
+<p><img src="img/ans8.png" alt=""></p>
+</li>
+<li><p>Count the number of bookcopies by ISBN. Rename the count column as Number of Copies of each Book. 
+<img src="img/ans9.png" alt=""></p>
+</li>
+<li><p>Count the number of books per book category. Again, rename the count column. </p>
+<p><img src="img/ans10.png" alt=""></p>
+</li>
+<li><p>Return the minimum and maximum priced book for each publisher. Again, rename the calculated columns.</p>
+<p><img src="img/ans11.png" alt=""></p>
+</li>
+</ol>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="05">
+            <h1>HAVING</h1>
+<p>In order to restrict rows returned with aggregate functions, you must use a <em>HAVING</em> clause. Essentially it is a WHERE clause for aggregate functions.</p>
+<pre><code>SELECT county, COUNT(*) 
+FROM student 
+GROUP BY county 
+HAVING COUNT(*) &gt;= 5;</code></pre>
+<h2>Exercises</h2>
+<ol>
+<li><p>Using the solution to Number 3 (on the previous page); return records for categories that only have 3 or more books.</p>
+<p><img src="img/ans12.png" alt=""></p>
+</li>
+<li><p>Using the solution to Number 4 (on the previous page); return records where the maximum priced book is &gt;=60.00.</p>
+<p><img src="img/ans13.png" alt=""></p>
+</li>
+</ol>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="Movies Exercise">
+            <h1>Exercise</h1>
+<ul>
+<li>Download and open the <a href="archives/Movies.zip">Movies</a> script (as an SQL file). </li>
+<li>The <em>Movies</em> database has 3 tables: <em>film</em>, <em>reviewer</em>, and <em>rating</em>.</li>
+<li>Open the SQL script in MySQL Workbench.</li>
+<li>Open a new tab and save it as Review Exercise. Enter (and execute) the following commands:</li>
+</ul>
+<pre><code>USE MOVIES; /*Select the Movies database*/</code></pre>
+<pre><code>SHOW TABLES; /*List all the tables*/</code></pre>
+<p>To do:</p>
+<ol>
+<li><p>Describe each table.</p>
+</li>
+<li><p>Find the titles of all films directed by Steven Spielberg.</p>
+</li>
+<li><p>Return the title and year of all films produced from 1940 to 1990. Sort by title.</p>
+</li>
+<li><p>Return the title and length of all films whose length is 110 minutes or more. Sort by title.</p>
+</li>
+<li><p>Return the title and director of all films where the director<code>&#39;</code>s surname begins with C.</p>
+</li>
+<li><p>Return the number of stars, film Id (output as Film Id), and ratingdate of all movie ratings where the rating given is 4 or 5. Sort the output in descending order of the stars and then in ascending order of movie id.</p>
+</li>
+<li><p>Some reviewers didn<code>&#39;</code>t provide a date with their rating. Find the rID of all reviewers who have ratings with a NULL value for the date.</p>
+</li>
+<li><p>Return the number of films. Label the returned column Number of Films.</p>
+</li>
+<li><p>Return the number of reviewers. Label the returned column Number of Reviewers.</p>
+</li>
+<li><p>Return the number of ratings. Label the returned column Number of Ratings Provided.</p>
+</li>
+<li><p>Return the number of films per director. Label the returned column for the calculation - Number of Films.</p>
+</li>
+<li><p>Return the number of ratings left by each reviewer. Label the returned column for the calculation - Number of Reviews (per Reviewer).</p>
+</li>
+<li><p>Return the average number of film minutes per director. Label the returned column for the calculation <code>-</code> Average Number of Minutes per Film. The returned value is to be output as a whole number (no decimal places). </p>
+</li>
+</ol>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="Solutions">
+            <h1>Solutions</h1>
+<p>Solutions for the exercises in this lab are available here: <a href="./archives/Week2.zip">Week2.zip</a></p>
+
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+
+  <script>
+    $(document).on('keydown', function(e) {
+  e = e || window.event;
+  var nextTab;
+  switch (e.which || e.keyCode) {
+    case 37: // left
+      nextTab = $('.tab-menu a[data-tab].active').prev('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').last();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+
+    case 39: // right
+      nextTab = $('.tab-menu a[data-tab].active').next('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').first();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+  }
+});
+
+    $(document).ready(function() {
+  $('img').addClass('ui image');
+
+  $('.ui.embed').embed();
+
+  const $images = $('.lab img');
+  jQuery.each($images, function(i) {
+    if ($images[i].alt.length > 0) {
+      const divImg = $(document.createElement('div')).addClass(
+        'ui basic segment',
+      );
+      $($images[i]).wrap(divImg);
+      const divLabel = $(document.createElement('div')).addClass(
+        'ui blue ribbon label',
+      );
+      divLabel.append($images[i].alt);
+      $(divLabel).insertBefore($images[i]);
+    }
+  });
+
+  $('.ui.menu .item').tab({
+    history: true,
+    historyType: 'hash',
+  });
+
+  $('.popup').popup();
+
+  $('.ui.sidebar')
+    .sidebar({ context: $('.pushable') })
+    .sidebar('setting', 'transition', 'slide out')
+    .sidebar('attach events', '#toc');
+});
+
+  </script>
+
+
+
+  <div class="ui bottom fixed borderless right menu">
+    <div class="ui right small menu">
+      <div class="ui tiny basic message segment">
+         Powered by <a href="https://github.com/edeleastar/tutors-ts">tutors-ts.</a> 
+      </div>
+    </div>
+  </div>
+
+  </body>
+
+</html>

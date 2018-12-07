@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css"
+          type="text/css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/railscasts.min.css"
+          rel="stylesheet"/>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/kotlin.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <style>
+      
+
+body {
+  font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
+  font-size:90%;
+  color: black;
+}
+
+p {
+  margin: 0.5em;
+}
+
+pre code {
+  font-family: "Monaco";
+  font-size: 100%;
+}
+
+img {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin:10px;
+}
+
+h1, h2, h3 {
+  border-bottom:thin solid black;
+  margin-bottom: 0.5em;
+  margin-top: 1em;
+}
+
+h1 {
+  font-style:italic;
+  font-size:130%;
+}
+
+h2 {
+  font-size:110%;
+}
+
+h3 {
+  font-size:100%;
+}
+
+
+
+      
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+.wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.footer {
+  background: white;
+  text-align: right;
+}
+.content {
+  flex: 1;
+  overflow: auto;
+}
+
+
+
+    </style>
+  </head>
+
+  
+  
+
+  <div class="ui fixed top pointing inverted stackable menu labmenu">
+    <header class="header item">
+      <i id="toc" class="sitemap icon"></i>
+      
+        <a href="../../index.html"> Select statements  </a>
+      
+    </header>
+    <div class="right tab-menu menu">
+      
+        <a class="item" data-tab="SQL 1">
+          SQL 1
+        </a>
+      
+        <a class="item" data-tab="01">
+          01
+        </a>
+      
+        <a class="item" data-tab="02">
+          02
+        </a>
+      
+        <a class="item" data-tab="03">
+          03
+        </a>
+      
+        <a class="item" data-tab="04">
+          04
+        </a>
+      
+        <a class="item" data-tab="05">
+          05
+        </a>
+      
+        <a class="item" data-tab="06">
+          06
+        </a>
+      
+        <a class="item" data-tab="07">
+          07
+        </a>
+      
+        <a class="item" data-tab="08">
+          08
+        </a>
+      
+        <a class="item" data-tab="09">
+          09
+        </a>
+      
+        <a class="item" data-tab="10">
+          10
+        </a>
+      
+        <a class="item" data-tab="11">
+          11
+        </a>
+      
+        <a class="item" data-tab="12">
+          12
+        </a>
+      
+        <a class="item" data-tab="Solutions">
+          Solutions
+        </a>
+      
+    </div>
+  </div>
+
+
+  
+
+  <div class="ui pushable">
+    <div class="ui inverted labeled icon left inline vertical sidebar menu">
+      <br><br>
+      
+        
+          
+            <a class="item"
+               href="/topic---Assignment/book-00-Assignment/index.html">Assignment </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-00-On-Site/book-a/index.html">Installation </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-00-On-Site/book-b/index.html">SQL Introduction </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-01-Introduction/unit-2-select/book-a/index.html">SQL 1 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-02-Conceptual/unit-2-aggregates/book-a/index.html">SQL 2 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-03-Logical/unit-2-join/book-a/index.html">SQL 3 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-04-EnhancedER/unit-2-outerjoins/book-a/index.html">SQL 4 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-05-Normalisation1/unit-2-dml/book-a/index.html">Lab-01 SQL 5 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-06-Normalisation2/unit-3-ddl/book-a/index.html">Lab-01 SQL 6 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-07-Physical/unit-3-subqueries/book-a/index.html">Lab-01 SQL 7 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-08-Security/unit-2-users-privileges/book-a/index.html">Lab-01 SQL 8 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-09-Transactions/unit-2-mysqlbackup/book-a/index.html">Backup and Restore </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-Backups/unit-2-mongodb/book-a/index.html">Install MongoDB </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-NoSQL1/unit-2-create/book-a-create/index.html">Create </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-NoSQL1/unit-3-read/book-b-read/index.html">Read (find) </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-NoSQL2/unit-2-update/book-a-update/index.html">Update </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-NoSQL2/unit-3-delete/book-b-delete/index.html">Delete </a>
+          
+        
+      
+    </div>
+    <div class="pusher" tabindex="-1">
+      <div class="ui basic segment">
+        <br>
+        
+          <div class="ui tab segment lab" data-tab="SQL 1">
+            <h1>Objectives</h1>
+<p>In this lab we will learn about the basics of SQL and learn about the SELECT statement</p>
+<ul>
+<li>Understand what SQL is</li>
+<li>Understand a database table is</li>
+<li>Describe a table structure</li>
+<li>Select statement syntax</li>
+<li>Retrieve all records in a table</li>
+<li>Limit the columns returned by a Select statement</li>
+<li>Limit the Rows returned by a Select statement using the following operators:<ul>
+<li>LIKE</li>
+<li>BETWEEN ... AND</li>
+<li>IN</li>
+<li>AND/OR</li>
+<li>IS NULL</li>
+</ul>
+</li>
+<li>Sort the Rows returned by a Select statement using Order By</li>
+</ul>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="01">
+            <h1>What is SQL?</h1>
+<p>SQL (sometimes pronounced SEQUEL) stands for Structured Query Language. SQL is used to communicate with a database. According to ANSI (American National Standards Institute), it is the standard language for relational database management systems. SQL statements are used to perform tasks such as update data on a database, or retrieve data from a database. Some common relational database management systems that use SQL are: Oracle, Sybase, Microsoft SQL Server, Access, Ingres, etc. Although most database systems use SQL, most of them also have their own additional proprietary extensions that are usually only used on their system. However, the standard SQL commands such as &quot;Select&quot;, &quot;Insert&quot;, &quot;Update&quot;, &quot;Delete&quot;, &quot;Create&quot;, and &quot;Drop&quot; can be used to accomplish almost everything that one needs to do with a database.</p>
+<h2>Table Basics</h2>
+<p>A relational database system contains one or more objects called <em>tables</em>. The data or information for the database are stored in these tables. 
+Tables are uniquely identified by their <em>name</em> and are comprised of <em>columns</em> and <em>rows</em>. Columns contain the column name, data type, and any other attributes 
+for the column. Rows contain the records or data for the columns. Here is a sample table called &quot;weather&quot;.
+The values city, state, high, and low are the columns. The rows contain the data for this table:</p>
+<p><img src="img/table.png" alt=""></p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="02">
+            <h1>Our example - Library system</h1>
+<p>We have built a <a href="archives/library.zip">library database</a> with the following tables: <em>book</em>, <em>bookcopy</em>, <em>student</em>, <em>loan</em>, <em>author</em> and <em>authorship</em>. </p>
+<p>The tables are populated and we will use this data in our queries. The schema is stored in <strong>library_script.sql</strong>.</p>
+<ul>
+<li>Open <em>MySQL Workbench</em> and log in using password root. </li>
+</ul>
+<p>To run the script:</p>
+<ul>
+<li>Under the <em>File</em> menu, choose <em>Run SQL Script …</em>. </li>
+<li>When the dialog box opens, select <em>library_script.sql</em>. </li>
+<li>Click the button <em>Open</em> and on the next dialog box, click <em>Run</em>.  </li>
+<li>When the Operation has run successfully, click Close.</li>
+</ul>
+<p>Alternatively:</p>
+<ul>
+<li>Choose <em>Open SQL Script …</em>. </li>
+<li>When the dialog box opens, select <em>library_script.sql</em>. </li>
+<li>Click the button <em>Open</em>. This will open the script in a new tab. </li>
+<li>To execute the script, choose the third option on the window.  </li>
+</ul>
+<p><img src="img/dialog.png" alt=""></p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="03">
+            <h1>Describing Data</h1>
+<p>Before you work with a database you must specify the database (by name) that you want to work with. </p>
+<p>Enter the following command:</p>
+<pre><code>USE LIBRARY;</code></pre>
+<p>We have already set up tables for our library system. If you want to see their structure, use:</p>
+<pre><code>DESCRIBE &#39;tablename&#39;;</code></pre>
+<p>Or</p>
+<pre><code>DESC &#39;tablename&#39;;</code></pre>
+<h2>Example</h2>
+<pre><code>DESC book;</code></pre>
+<p>This will return a description of the <em>book</em> table including field names and their corresponding data types.</p>
+<h2>To Do:</h2>
+<p>Now, describe the other tables.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="04">
+            <h1>The SELECT statement</h1>
+<style>
+table.mine {
+    border-collapse:collapse;
+    border: 1px solid black;
+    width:50%;
+}
+
+td.mine2 {
+    border: 1px solid black;
+    padding: 0.2em;
+}
+</style>
+
+<p>The select statement is used to query the database and retrieve selected data that match the criteria that you specify. 
+The data returned is stored in a result table, called the <em>result-set</em>. Here is the format of a simple select statement:</p>
+<pre><code>  SELECT [DISTINCT|ALL]{*|[columnExpression [AS newName]][,...]}
+  FROM Tablename [alias] 
+  [JOIN Tablename ON ...]
+  [WHERE condition]
+  [GROUP BY columnlist][HAVING condition]
+  [ORDER BY columnList];</code></pre>
+<p><em>Note:</em> [] = optional</p>
+<ul>
+<li><em>columnExpression</em> represents a column name or an expression.</li>
+<li><em>TableName</em> is the name of an existing database table or view that you have access to, and <em>alias</em> is an optional abbreviation for <em>TableName</em>.</li>
+<li>The sequence of processing in a SELECCT statement is:</li>
+</ul>
+<p><table class="mine"></p>
+<p><tr><td class = "mine2" >SELECT</td><td class = "mine2" >specifies which columns are to appear in the output</td></tr></p>
+<p><tr><td class = "mine2" >FROM</td><td class = "mine2" >specifies the table to be used</td></tr></p>
+<p><tr><td class = "mine2" >JOIN</td><td class = "mine2" >specifies the table(s) to be joined with the table in the FROM</td></tr></p>
+<p><tr><td class = "mine2" >WHERE</td><td class = "mine2" >filters the rows subject to some condition(s)</td></tr></p>
+<p><tr><td class = "mine2" >GROUP BY</td><td class = "mine2" >forms groups of rows with the same column name</td></tr></p>
+<p><tr><td class = "mine2" >HAVING</td><td class = "mine2" >filters the groups subject to some condition(s)</td></tr></p>
+<p><tr><td class = "mine2" >ORDER BY</td><td class = "mine2" >specifies the order of the output</td></tr>
+</table>
+The order of the clauses in the SELECT statement <strong>cannot</strong> be changed.The only two mandatory  clauses are the first two: SELECT and FROM; the remainder
+are optional.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="05">
+            <h1>Simple Select examples</h1>
+<style>
+table.mine {
+    border-collapse:collapse;
+    border: 1px solid black;
+    width:30%;
+}
+
+td.mine2 {
+    border: 1px solid black;
+    padding: 0.2em;
+}
+</style>
+
+<p>As we know, the select statement is used to query the database and retrieve selected data that match the criteria that you specify.</p>
+<p>Conditional selections used in the where clause:</p>
+<table class="mine">
+<tr><td class = "mine2" >=</td><td class = "mine2" >Equal</td></tr>
+<tr><td class = "mine2" >&gt;</td><td class = "mine2" >Greater than</td></tr>
+<tr><td class = "mine2" >&lt;</td><td class = "mine2" >Less than</td></tr>
+<tr><td class = "mine2" >&gt;=</td><td class = "mine2" >Greater than or equal</td></tr>
+<tr><td class = "mine2" >&lt;=</td><td class = "mine2" >Less than or equal</td></tr>
+<tr><td class = "mine2" >&lt;&gt;</td><td class = "mine2" >Not equal</td></tr>
+<tr><td class = "mine2" >!=</td><td class = "mine2" >Not equal</td></tr>
+</table>
+
+<h2>Examples</h2>
+<pre><code>SELECT * 
+FROM book;</code></pre>
+<p>This will return all records with all columns included.</p>
+<pre><code>SELECT title, publisher 
+FROM book;</code></pre>
+<p>This will return a subset of columns. This query will return all records with just 2 columns (title and publisher) included.</p>
+<pre><code>SELECT title 
+FROM book 
+WHERE publisher = &#39;Addison Wesley&#39;;</code></pre>
+<p>This will return a subset of records only. Records will only be selected if the publisher value is equal to Addison Wesley. When these records are selected (in memory) the column title is then returned.</p>
+<h3>Practice: Try out all the examples yourself</h3>
+<p>Enter the following sample select statements, one at a time to see what is returned:</p>
+<pre><code>SELECT * 
+FROM student; 
+
+SELECT fname, lname 
+FROM student; 
+
+SELECT * 
+FROM student 
+WHERE county = &#39;Waterford&#39;;</code></pre>
+<h2>Exercises</h2>
+<ol>
+<li><p>Display the full name and full address for every student that&#39;s in the table.</p>
+<p><img src="img/ans1.png" alt=""> </p>
+</li>
+<li><p>Display the first name, last name, and county for everyone that&#39;s not from Waterford.</p>
+<p><img src="img/ans2.png" alt=""> </p>
+</li>
+<li><p>Display all columns for every student that is in first year.</p>
+<p><img src="img/ans3.png" alt=""></p>
+</li>
+</ol>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="06">
+            <h1>More on Select</h1>
+<p>To change the column heading returned, we can use <em>AS</em>:</p>
+<pre><code>SELECT fname AS &#39;First Name&#39;, lname AS &#39;Last Name&#39; FROM student;</code></pre>
+<p>OR</p>
+<pre><code>SELECT fname &#39;First Name&#39;, lname &#39;Last Name&#39; FROM student;</code></pre>
+<p>To concatenate (join) two (or more) columns together use CONCAT as follows:</p>
+<pre><code>SELECT concat(fname, &#39; &#39;, lname) AS Name FROM Student;</code></pre>
+<p>The result of concatenating two character strings is another character string. With the concat feature, we are usually joining fieldnames and 
+separation characters (such as a hyphen (<code>-</code>) or a colon (:) or a space ( )). Use a comma to separate each element.</p>
+<h2>Distinct</h2>
+<p>Enter the following:</p>
+<pre><code>SELECT publisher FROM book;</code></pre>
+<p>This returns the publisher for each book record, so you will see values repeated. But if we only want to know the list of publishers that we are using at 
+any one time, we do not want to see for example <em>Addison Wesley</em> more than once.</p>
+<p>To eliminate duplicates, use  the keyword <strong>DISTINCT</strong>. Now enter the following:</p>
+<pre><code>SELECT DISTINCT publisher FROM book;</code></pre>
+<p>Notice the difference in the number of returned values.</p>
+<h2>Exercises</h2>
+<ol>
+<li><p>Display the title of all books that are categorised as Computing. Output the result as Computing Titles.</p>
+<p><img src="img/ans4.png" alt=""> </p>
+</li>
+<li><p>Display the counties that the students come from. Output the result as Student County. List each county only once.</p>
+<p><img src="img/ans5.png" alt=""> </p>
+</li>
+<li><p>Display the student id, first name and last name for all students that are on course wd155. Concatenate first name and last name together and output the value as Student Name.</p>
+<p><img src="img/ans6.png" alt=""> </p>
+</li>
+<li><p>Return the first name, last name and Street for all Students from Tramore. Output the student name concatenated and labelled as Name.</p>
+<p><img src="img/ans7.png" alt=""> </p>
+</li>
+<li><p>Retrieve the titles of all books published by Sitepoint. Label the returned titles as &#39;Sitepoint books&#39;.</p>
+<p><img src="img/ans8.png" alt=""> </p>
+</li>
+</ol>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="07">
+            <h1>Pattern Matching</h1>
+<p>Sometimes we do not always have the exact search criteria we need.<br>Maybe we need to find some books with JavaScript in the title. If we enter:</p>
+<pre><code>SELECT title FROM book WHERE title = &#39;JavaScript&#39;;</code></pre>
+<p>This will only return books with the title equal to JavaScript, so titles like <code>JavaScript</code>-<code>The Guide</code> or <code>Learning JavaScript</code> would not be returned. </p>
+<p>So we need to broaden our search criteria so that it includes the term JavaScript and is preceded by and/or followed by other term(s). 
+To do this we use <em>Pattern Matching</em> with the <strong>LIKE</strong> clause. To denote several characters, use <code>%</code>:</p>
+<pre><code>SELECT title FROM book WHERE title LIKE &#39;%JavaScript%&#39;;</code></pre>
+<p>This statement returns book titles, that includes <code>JavaScript</code> in the title.</p>
+<p>The <em>LIKE</em> operator allows us to pattern match. The <code>%</code> is a wildcard which stands for zero or more letters or numbers.    </p>
+<p>What will each of the following return?</p>
+<pre><code>SELECT title FROM book WHERE title LIKE &#39;JavaScript%&#39;;    
+SELECT title FROM book WHERE title LIKE &#39;%JavaScript&#39;;</code></pre>
+<p>The underscore is also a wildcard but it stands in for just one letter or number, try out the following:</p>
+<pre><code>SELECT * FROM student WHERE county LIKE &#39;_aterford&#39;;</code></pre>
+<h2>Exercises</h2>
+<ol>
+<li><p>Retrieve the title and publisher of all Books whose title starts with the word Database.</p>
+<p><img src="img/ans9.png" alt=""> </p>
+</li>
+<li><p>Retrieve the title and publisher of all Books whose title includes the word Engineering.</p>
+<p><img src="img/ans10.png" alt=""> </p>
+</li>
+<li><p>Retrieve the names (first and last) of all Students whose last name start with D.</p>
+<p><img src="img/ans11.png" alt=""> </p>
+</li>
+</ol>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="08">
+            <h1>BETWEEN ... AND</h1>
+<p>We can use the <em>BETWEEN ... AND</em> operators to search within an <em>inclusive range of values</em>, for example:</p>
+<p>For Example, to return students from years 1, 2, and 3:</p>
+<pre><code>SELECT * FROM student WHERE year BETWEEN 1 AND 3;</code></pre>
+<p>To return students (by name) with course codes between wd150 and wd159:</p>
+<pre><code>select concat(fName, &#39; &#39;, lName) as Name, course from student where course between &#39;wd150&#39; and &#39;wd159&#39;;</code></pre>
+<h2>NOT BETWEEN ... AND</h2>
+<p>To return students (by name) with course codes outside the range of the previous example:</p>
+<pre><code>select concat(fName, &#39; &#39;, lName) as Name, course from student where course not between &#39;wd150&#39; and &#39;wd159&#39;;</code></pre>
+<h2>Exercise</h2>
+<ol>
+<li>Retrieve all book details that were published from 2008-01-01 to 2013-12-31 inclusive.
+<img src="img/ans12.png" alt=""> </li>
+</ol>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="09">
+            <h1>IN</h1>
+<p>The <em>IN</em> operator allows us to query records based on matching one of a number of values. We can use the <em>NOT</em> operator to negate those results.
+So if we are only interested in Computing, Business, and Engineering books, instead of writing the query as follows:</p>
+<pre><code>SELECT * FROM book WHERE category = &#39;Computing&#39; OR category = &#39;Business&#39; OR category =&#39;Engineering&#39;;</code></pre>
+<p>We can write it as follows:</p>
+<pre><code>SELECT * FROM book WHERE category IN (&#39;Computing&#39;, &#39;Business&#39;, &#39;Engineering&#39;);</code></pre>
+<h2>NOT IN</h2>
+<p>To select from outside the above range, use:</p>
+<pre><code>SELECT * FROM book WHERE category NOT IN (&#39;Computing&#39;, &#39;Business&#39;, &#39;Engineering&#39;);</code></pre>
+<h2>Exercise</h2>
+<ol>
+<li>Retrieve the names, towns, and county of all Students from Kilkenny, Waterford or Wexford. Again, output the student name concatenated and labelled as Name.
+<img src="img/ans13.png" alt=""> </li>
+</ol>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="10">
+            <h1>AND/OR</h1>
+<p>When one search criteria is not enough we use the <em>AND</em>, <em>OR</em> operators to use more than one search condition.
+The following commands give very different results <code>-</code> can you work out why? </p>
+<pre><code>SELECT * FROM book WHERE category = &#39;Computing&#39; AND publisher = &#39;Sitepoint&#39;;
+SELECT * FROM book WHERE category = &#39;Computing&#39; OR publisher = &#39;Sitepoint&#39;;
+SELECT * FROM book WHERE category = &#39;Computing&#39; OR category = &#39;Business&#39;;</code></pre>
+<h2>Exercises</h2>
+<ol>
+<li><p>Retrieve the names of all Students in first year from Waterford. Output the student name concatenated and labelled as Name.</p>
+<p><img src="img/ans14.png" alt=""></p>
+</li>
+<li><p>Retrieve the title and price of all books that contain the Database keyword and are priced at 50 euro or less.</p>
+<p><img src="img/ans15.png" alt=""> </p>
+</li>
+</ol>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="11">
+            <h1>NULL</h1>
+<p>A <em>NULL</em> value (not white space or a zero) exists in a database where a piece of data is missing or not filled in. </p>
+<p>For example when entering information into a table not all the information may be to hand at the time of data entry and so may be left NULL. 
+Sometimes we may want to find out where these NULL values are. Again we can use <em>IS NOT NULL</em> for negation.</p>
+<p>Return the ISBN from the bookcopy table for all books whose datedestroyed is unknown or unavailable:</p>
+<pre><code>SELECT ISBN FROM bookcopy WHERE datedestroyed IS NULL;</code></pre>
+<p>Return the ISBN from the bookcopy table for all books whose datedestroyed is known:</p>
+<pre><code>SELECT ISBN FROM bookcopy WHERE datedestroyed IS NOT NULL;</code></pre>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="12">
+            <h1>ORDER BY</h1>
+<p>To sort your query results you should use the <em>ORDER BY</em> clause. This clause always comes last in your SELECT statement. <em>Ascending</em> order is the default.</p>
+<p>Return the title and category of all books from the book table whose category is Computing or Business or Engineering sorted in alphabetical order by category.</p>
+<pre><code>SELECT title, category FROM book WHERE category IN (&#39;Computing&#39;, &#39;Business&#39;, &#39;Engineering&#39;) ORDER BY category;</code></pre>
+<p>To reverse the order you must specify <em>descending</em> order using the keyword <em>DESC</em>.</p>
+<pre><code>SELECT title, category FROM book WHERE category IN (&#39;Computing&#39;, &#39;Business&#39;, &#39;Engineering&#39;) ORDER BY category DESC;</code></pre>
+<p>You can also sort by more than one column, where the first column is the outer sorted value.</p>
+<p>Return all the student records sorted in alphabetic order by lastname (lname) and within each lastname by firstname (fname).:</p>
+<pre><code>SELECT * FROM student ORDER BY lname, fname;</code></pre>
+<p>For Example, Alice Ryan would appear before Anne Ryan.</p>
+<h2>Exercises:</h2>
+<ol>
+<li><p>Retrieve the names of students whose last name is Ryan sorted by first name. Again, output the student name concatenated and labelled as Name.</p>
+<p><img src="img/ans16.png" alt=""> </p>
+</li>
+<li><p>Retrieve the names, towns, and county of all Students from Kilkenny, Waterford or Wexford. Again, output the student name concatenated and labelled as Name. Sort the 
+returned records by county and within each county by town.</p>
+<p> <img src="img/ans17.png" alt=""></p>
+</li>
+<li><p>Retrieve the price and title of all business books. Output the results in reverse order of price and in ascending order of title.</p>
+<p> <img src="img/ans18.png" alt=""></p>
+</li>
+</ol>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="Solutions">
+            <h1>Solutions</h1>
+<p>Solutions for the exercises in this lab are available here: <a href="./archives/Week1.zip">Week1.zip</a></p>
+
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+
+  <script>
+    $(document).on('keydown', function(e) {
+  e = e || window.event;
+  var nextTab;
+  switch (e.which || e.keyCode) {
+    case 37: // left
+      nextTab = $('.tab-menu a[data-tab].active').prev('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').last();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+
+    case 39: // right
+      nextTab = $('.tab-menu a[data-tab].active').next('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').first();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+  }
+});
+
+    $(document).ready(function() {
+  $('img').addClass('ui image');
+
+  $('.ui.embed').embed();
+
+  const $images = $('.lab img');
+  jQuery.each($images, function(i) {
+    if ($images[i].alt.length > 0) {
+      const divImg = $(document.createElement('div')).addClass(
+        'ui basic segment',
+      );
+      $($images[i]).wrap(divImg);
+      const divLabel = $(document.createElement('div')).addClass(
+        'ui blue ribbon label',
+      );
+      divLabel.append($images[i].alt);
+      $(divLabel).insertBefore($images[i]);
+    }
+  });
+
+  $('.ui.menu .item').tab({
+    history: true,
+    historyType: 'hash',
+  });
+
+  $('.popup').popup();
+
+  $('.ui.sidebar')
+    .sidebar({ context: $('.pushable') })
+    .sidebar('setting', 'transition', 'slide out')
+    .sidebar('attach events', '#toc');
+});
+
+  </script>
+
+
+
+  <div class="ui bottom fixed borderless right menu">
+    <div class="ui right small menu">
+      <div class="ui tiny basic message segment">
+         Powered by <a href="https://github.com/edeleastar/tutors-ts">tutors-ts.</a> 
+      </div>
+    </div>
+  </div>
+
+  </body>
+
+</html>

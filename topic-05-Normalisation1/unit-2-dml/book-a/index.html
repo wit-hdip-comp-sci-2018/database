@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css"
+          type="text/css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/railscasts.min.css"
+          rel="stylesheet"/>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/kotlin.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <style>
+      
+
+body {
+  font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
+  font-size:90%;
+  color: black;
+}
+
+p {
+  margin: 0.5em;
+}
+
+pre code {
+  font-family: "Monaco";
+  font-size: 100%;
+}
+
+img {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin:10px;
+}
+
+h1, h2, h3 {
+  border-bottom:thin solid black;
+  margin-bottom: 0.5em;
+  margin-top: 1em;
+}
+
+h1 {
+  font-style:italic;
+  font-size:130%;
+}
+
+h2 {
+  font-size:110%;
+}
+
+h3 {
+  font-size:100%;
+}
+
+
+
+      
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+.wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.footer {
+  background: white;
+  text-align: right;
+}
+.content {
+  flex: 1;
+  overflow: auto;
+}
+
+
+
+    </style>
+  </head>
+
+  
+  
+
+  <div class="ui fixed top pointing inverted stackable menu labmenu">
+    <header class="header item">
+      <i id="toc" class="sitemap icon"></i>
+      
+        <a href="../../index.html"> Data Manipulation  </a>
+      
+    </header>
+    <div class="right tab-menu menu">
+      
+        <a class="item" data-tab="Lab-01 SQL 5">
+          Lab-01 SQL 5
+        </a>
+      
+        <a class="item" data-tab="01">
+          01
+        </a>
+      
+        <a class="item" data-tab="02">
+          02
+        </a>
+      
+        <a class="item" data-tab="03">
+          03
+        </a>
+      
+        <a class="item" data-tab="04">
+          04
+        </a>
+      
+        <a class="item" data-tab="05">
+          05
+        </a>
+      
+        <a class="item" data-tab="06">
+          06
+        </a>
+      
+        <a class="item" data-tab="Exercise">
+          Exercise
+        </a>
+      
+        <a class="item" data-tab="Solutions">
+          Solutions
+        </a>
+      
+    </div>
+  </div>
+
+
+  
+
+  <div class="ui pushable">
+    <div class="ui inverted labeled icon left inline vertical sidebar menu">
+      <br><br>
+      
+        
+          
+            <a class="item"
+               href="/topic---Assignment/book-00-Assignment/index.html">Assignment </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-00-On-Site/book-a/index.html">Installation </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-00-On-Site/book-b/index.html">SQL Introduction </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-01-Introduction/unit-2-select/book-a/index.html">SQL 1 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-02-Conceptual/unit-2-aggregates/book-a/index.html">SQL 2 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-03-Logical/unit-2-join/book-a/index.html">SQL 3 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-04-EnhancedER/unit-2-outerjoins/book-a/index.html">SQL 4 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-05-Normalisation1/unit-2-dml/book-a/index.html">Lab-01 SQL 5 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-06-Normalisation2/unit-3-ddl/book-a/index.html">Lab-01 SQL 6 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-07-Physical/unit-3-subqueries/book-a/index.html">Lab-01 SQL 7 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-08-Security/unit-2-users-privileges/book-a/index.html">Lab-01 SQL 8 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-09-Transactions/unit-2-mysqlbackup/book-a/index.html">Backup and Restore </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-Backups/unit-2-mongodb/book-a/index.html">Install MongoDB </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-NoSQL1/unit-2-create/book-a-create/index.html">Create </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-NoSQL1/unit-3-read/book-b-read/index.html">Read (find) </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-NoSQL2/unit-2-update/book-a-update/index.html">Update </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-NoSQL2/unit-3-delete/book-b-delete/index.html">Delete </a>
+          
+        
+      
+    </div>
+    <div class="pusher" tabindex="-1">
+      <div class="ui basic segment">
+        <br>
+        
+          <div class="ui tab segment lab" data-tab="Lab-01 SQL 5">
+            <h1>Objectives</h1>
+<p>In this lab, we will look at Data Manipulation.</p>
+<ul>
+<li>Use the Select statement to ascertain the date and format dates.</li>
+<li>Use the Select statement to perform calculations.</li>
+<li>Use the COMMIT statement to explicitly save previous commands.</li>
+<li>Use the ROLLBACK statement to undo the effects of previous commands.</li>
+<li>Use the INSERT statement to add records to tables.</li>
+<li>Use the UPDATE statement to modify records.</li>
+<li>Use the DELETE statement to remove records.</li>
+</ul>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="01">
+            <h1>Date</h1>
+<p>The following statement will display the current date.</p>
+<pre><code>SELECT curdate() as &#39;Todays Date&#39;;</code></pre>
+<p>The following statement will display the current date and time.</p>
+<pre><code>SELECT now() as &#39;Todays Date and Time&#39;;</code></pre>
+<p>If you wish to format the date and display it in a more readable manner, you can use DATE_FORMAT as follows:</p>
+<pre><code>SELECT DATE_FORMAT(curdate(),&#39;%d %b %y&#39;)  as &#39;Todays Date&#39;;</code></pre>
+<p><img src="img/date.png" alt=""></p>
+<p>You can include commas, - etc in the string as separators.</p>
+<pre><code>SELECT DATE_FORMAT(curdate(),&#39;%d-%b-%y&#39;) as &#39;Todays Date&#39;;</code></pre>
+<h2>Exercise</h2>
+<ul>
+<li>Output &#39;2018-12-25&#39; as follows:<ul>
+<li>December 25th, 2018</li>
+<li>Tues 25th December 2018</li>
+<li>Tuesday 25th December 2018</li>
+<li>25 Dec 2018</li>
+<li>25 December 18</li>
+</ul>
+</li>
+</ul>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="02">
+            <h1>Calculations in our database tables</h1>
+<p>DATEDIFF calculates the distance (number of days) between  2 dates.</p>
+<ul>
+<li>If we want to calculate the number of days that a book is overdue we could use DATEDIFF as follows:</li>
+</ul>
+<pre><code>SELECT loanId, DATEDIFF(curdate(), dateDue) as &#39;Number of Days Overdue&#39; 
+FROM loan 
+WHERE dateback IS NULL;</code></pre>
+<p>Obviously we will need to return the title of the book overdue, and the student who the book is on loan to:</p>
+<pre><code>SELECT concat(fname, &#39; &#39; , lname) as Name, title, DATEDIFF(curdate(),dateDue) as &#39;Number of Days Overdue&#39; 
+FROM book JOIN bookcopy ON book.isbn=bookcopy.isbn 
+JOIN loan ON bookcopy.copyId = loan.copyId 
+JOIN student ON loan.studentid = student.studentid
+WHERE dateback IS NULL;</code></pre>
+<p>What if we want to use SQL to calculate a value that is not stored anywhere in the database? We can just use statements as follows:</p>
+<pre><code>SELECT 12 + 14;
+SELECT 12 - 14;
+SELECT 12 * 14;
+SELECT 12 / 14;
+SELECT 12 % 14;
+SELECT 14 % 12;</code></pre>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="03">
+            <h1>Commit and Rollback</h1>
+<p>The <strong>COMMIT</strong> statement explicitly saves previous commands up until the last <em>COMMIT</em> or <em>ROLLBACK</em>. </p>
+<p>The <strong>ROLLBACK</strong> command will undo all statements issued since the last <em>COMMIT</em> or <em>ROLLBACK</em>.</p>
+<p><strong>Note:</strong> At present, all commands issued are committed automatically. To prevent this happening:</p>
+<ul>
+<li>Go to the <strong>Edit</strong> menu, choose <strong>Preferences...</strong>, this opens the <em>Workbench Preferences</em> dialog box.</li>
+<li>Select <strong>SQL Execution</strong> and uncheck the <em>New connections use auto commit mode</em> checkbox.</li>
+<li>Click <strong>OK</strong>. </li>
+<li>Exit Workbench and open it again.</li>
+</ul>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="04">
+            <h1>Insert</h1>
+<p>The <strong>INSERT</strong> statement is used to add new records to tables, as follows:</p>
+<pre><code>INSERT INTO Book (ISBN, title, publisher, publishedDate, category, price)
+VALUES (&#39;213345432&#39;, &#39;Beginning XML&#39;, &#39;McGraw Hill&#39;, &#39;2010-07-13&#39;,&#39;Computing&#39;, 43.00);</code></pre>
+<ul>
+<li>Return all the book records (See the newly inserted record by issuing SELECT * FROM book;).</li>
+<li>Undo the above statement.</li>
+</ul>
+<p>Because the above INSERT statement includes all the attributes of table Book, we could rewrite the statement as follows:</p>
+<pre><code>INSERT INTO Book VALUES 
+(&#39;213345432&#39;, &#39;Beginning XML&#39;, &#39;McGraw Hill&#39;, &#39;2010-07-13&#39;,&#39;Computing&#39;, 43.00);</code></pre>
+<ul>
+<li>Again, return all the book records.</li>
+<li>Undo the above statement.</li>
+</ul>
+<p>If you are only inserting values for a subset off the attributes, then you must specify the attribute by name. The order of the values supplied must match 
+the order of the attribute names specified as follows:</p>
+<pre><code>INSERT INTO Book (ISBN, title, publisher, category)
+VALUES (&#39;214562899&#39;, &#39;DOM Scripting&#39;, &#39;Sitepoint&#39;, &#39;Computing&#39;);</code></pre>
+<ul>
+<li>Again, return all the book records.</li>
+<li>Undo the above statement.</li>
+</ul>
+<pre><code>INSERT INTO Book (ISBN, title, category, publisher)
+VALUES (&#39;214562899&#39;, &#39;DOM Scripting&#39;, &#39;Computing&#39;, &#39;Sitepoint&#39;);</code></pre>
+<ul>
+<li>Again, return all the book records.</li>
+<li>Undo the above statement.</li>
+</ul>
+<p>If you are inserting a few records into the one table, then you can do so as follows:</p>
+<pre><code>INSERT INTO Book VALUES
+(&#39;133451216&#39;, &#39;Backbone JS&#39;, &#39;Sitepoint&#39;, &#39;2012-10-28&#39;,&#39;Computing&#39;, 60.00), 
+(&#39;134562135&#39;, &#39;Sociology in Practice&#39;, &#39;Prentice Hall&#39;, &#39;2010-05-08&#39;, &#39;Humanities&#39;, 78.00);
+
+insert into BookCopy (ISBN, dateAcquired) values
+ (&#39;133451216&#39;,&#39;2012-12-10&#39;),
+ (&#39;133451216&#39;,&#39;2012-12-10&#39;), 
+ (&#39;134562135&#39;,&#39;2011-08-01&#39;);</code></pre>
+<ul>
+<li>Return all the book and bookcopy records. </li>
+<li>Undo the above statements.</li>
+</ul>
+<p><strong>Notes:</strong></p>
+<ul>
+<li>The primary key must have a UNIQUE value entered for it.</li>
+<li>Any values which have been specified as NOT NULL must have a value entered for them. Note: A Primary key is always NOT NULL.</li>
+<li>Any foreign key values must match a primary key value in the related table or else be NULL.</li>
+<li>String values MUST be enclosed in quotes.</li>
+<li>The quotes used are very specific <code>-</code> the ones in MS word are not the same as the ones in SQL PLUS Worksheet.</li>
+</ul>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="05">
+            <h1>Update</h1>
+<p><strong>Note:</strong> At present, we cannot use the <em>Update</em> and <em>Delete</em> statements without a <em>WHERE</em> clause. To prevent this happening:</p>
+<ul>
+<li>Go to the <strong>Edit</strong> menu, <strong>choose Preferences...</strong>, this opens the <em>Workbench Preferences</em> dialog box.</li>
+<li>Select <strong>SQL Editor</strong> and uncheck the <em>Safe Updates...</em> checkbox. </li>
+<li>Click <strong>OK</strong>. </li>
+<li>Exit Workbench and open it again.</li>
+</ul>
+<p>The UPDATE statement is used to modify 0 or more records in a table. If the WHERE clause is omitted, then all records are updated.</p>
+<pre><code>SELECT * FROM student;</code></pre>
+<p>Note the different year values for each student. Now enter the following statement and note that all the student year values are set to 1:</p>
+<pre><code>UPDATE student SET year = 1;</code></pre>
+<ul>
+<li>Again, return all the student records.</li>
+<li>Undo the above statement.</li>
+</ul>
+<p>To update one student record (use the Primary key value in the WHERE clause):</p>
+<pre><code>UPDATE student 
+SET year = 1 
+WHERE studentId = &#39;20026294&#39;;</code></pre>
+<ul>
+<li>Again, return all the student records.</li>
+<li>Undo the above statement.</li>
+</ul>
+<p>To update more than one student record (but not all records):</p>
+<pre><code>UPDATE student 
+SET year = 1 
+WHERE county = &#39;Kilkenny&#39;;</code></pre>
+<ul>
+<li>Again, return all the student records.</li>
+<li>Undo the above statement.</li>
+</ul>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="06">
+            <h1>Delete</h1>
+<p>The <strong>DELETE</strong> statement is used to delete 0 or more records in a table. If the WHERE clause is omitted then all records are deleted (so be careful).</p>
+<pre><code>DELETE FROM authorship;</code></pre>
+<ul>
+<li>Return all the authorship records. Note that the Authorship table is empty!</li>
+<li>Undo the above statement.</li>
+</ul>
+<p>To delete one Authorship record (use the Primary key value in the WHERE clause):</p>
+<pre><code>DELETE FROM authorship 
+WHERE authorId = 1 AND ISBN = &#39;123675432&#39;;</code></pre>
+<ul>
+<li>Again, return all the authorship records. </li>
+<li>Undo the above statement.</li>
+</ul>
+<p>To delete more than one Authorship record (but not all records):</p>
+<pre><code>DELETE FROM authorship 
+WHERE ISBN = &#39;123675432&#39;;</code></pre>
+<ul>
+<li>Again, return all the authorship records. </li>
+<li>Undo the above statement.</li>
+</ul>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="Exercise">
+            <h1>Exercise</h1>
+<h2>Insert</h2>
+<ol>
+<li><p>Add a new book to the book table: </p>
+<ul>
+<li>ISBN:133312345; </li>
+<li>title: Learning SQL;</li>
+<li>publisher:O Reilly; </li>
+<li>publishedDate:2009-05-08, </li>
+<li>category: Computing; </li>
+<li>price:25.00.</li>
+</ul>
+</li>
+<li>Add 3 bookcopies for this book, with dateAcquired:2018-09-01.</li>
+<li><p>Add a new author to the author table:</p>
+<ul>
+<li>fname:Adam; </li>
+<li>lname:Beauleau.</li>
+</ul>
+</li>
+<li>Add a record to the authorship table, for the new author and the new book.</li>
+<li>Commit the changes.</li>
+</ol>
+<h2>Update</h2>
+<ol>
+<li>Change the price of the book to 28.00.</li>
+<li>Change the dateAcquired value to 2018-09-12 for all 3 copies.</li>
+<li>Commit the changes.</li>
+</ol>
+<h2>Delete</h2>
+<ol>
+<li>Delete the third copy of the book.</li>
+<li>Commit the changes.</li>
+</ol>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="Solutions">
+            <h1>Solutions</h1>
+<p>Solutions for the exercises in this lab are available here: <a href="./archives/Week5.zip">Week5.zip</a></p>
+
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+
+  <script>
+    $(document).on('keydown', function(e) {
+  e = e || window.event;
+  var nextTab;
+  switch (e.which || e.keyCode) {
+    case 37: // left
+      nextTab = $('.tab-menu a[data-tab].active').prev('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').last();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+
+    case 39: // right
+      nextTab = $('.tab-menu a[data-tab].active').next('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').first();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+  }
+});
+
+    $(document).ready(function() {
+  $('img').addClass('ui image');
+
+  $('.ui.embed').embed();
+
+  const $images = $('.lab img');
+  jQuery.each($images, function(i) {
+    if ($images[i].alt.length > 0) {
+      const divImg = $(document.createElement('div')).addClass(
+        'ui basic segment',
+      );
+      $($images[i]).wrap(divImg);
+      const divLabel = $(document.createElement('div')).addClass(
+        'ui blue ribbon label',
+      );
+      divLabel.append($images[i].alt);
+      $(divLabel).insertBefore($images[i]);
+    }
+  });
+
+  $('.ui.menu .item').tab({
+    history: true,
+    historyType: 'hash',
+  });
+
+  $('.popup').popup();
+
+  $('.ui.sidebar')
+    .sidebar({ context: $('.pushable') })
+    .sidebar('setting', 'transition', 'slide out')
+    .sidebar('attach events', '#toc');
+});
+
+  </script>
+
+
+
+  <div class="ui bottom fixed borderless right menu">
+    <div class="ui right small menu">
+      <div class="ui tiny basic message segment">
+         Powered by <a href="https://github.com/edeleastar/tutors-ts">tutors-ts.</a> 
+      </div>
+    </div>
+  </div>
+
+  </body>
+
+</html>

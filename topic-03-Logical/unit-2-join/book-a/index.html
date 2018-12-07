@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css"
+          type="text/css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/railscasts.min.css"
+          rel="stylesheet"/>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/kotlin.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <style>
+      
+
+body {
+  font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
+  font-size:90%;
+  color: black;
+}
+
+p {
+  margin: 0.5em;
+}
+
+pre code {
+  font-family: "Monaco";
+  font-size: 100%;
+}
+
+img {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin:10px;
+}
+
+h1, h2, h3 {
+  border-bottom:thin solid black;
+  margin-bottom: 0.5em;
+  margin-top: 1em;
+}
+
+h1 {
+  font-style:italic;
+  font-size:130%;
+}
+
+h2 {
+  font-size:110%;
+}
+
+h3 {
+  font-size:100%;
+}
+
+
+
+      
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+.wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.footer {
+  background: white;
+  text-align: right;
+}
+.content {
+  flex: 1;
+  overflow: auto;
+}
+
+
+
+    </style>
+  </head>
+
+  
+  
+
+  <div class="ui fixed top pointing inverted stackable menu labmenu">
+    <header class="header item">
+      <i id="toc" class="sitemap icon"></i>
+      
+        <a href="../../index.html"> Join queries  </a>
+      
+    </header>
+    <div class="right tab-menu menu">
+      
+        <a class="item" data-tab="SQL 3">
+          SQL 3
+        </a>
+      
+        <a class="item" data-tab="01">
+          01
+        </a>
+      
+        <a class="item" data-tab="02">
+          02
+        </a>
+      
+        <a class="item" data-tab="03">
+          03
+        </a>
+      
+        <a class="item" data-tab="04">
+          04
+        </a>
+      
+        <a class="item" data-tab="05">
+          05
+        </a>
+      
+        <a class="item" data-tab="06">
+          06
+        </a>
+      
+        <a class="item" data-tab="07">
+          07
+        </a>
+      
+        <a class="item" data-tab="Movies Exercise">
+          Movies Exercise
+        </a>
+      
+        <a class="item" data-tab="Solutions">
+          Solutions
+        </a>
+      
+    </div>
+  </div>
+
+
+  
+
+  <div class="ui pushable">
+    <div class="ui inverted labeled icon left inline vertical sidebar menu">
+      <br><br>
+      
+        
+          
+            <a class="item"
+               href="/topic---Assignment/book-00-Assignment/index.html">Assignment </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-00-On-Site/book-a/index.html">Installation </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-00-On-Site/book-b/index.html">SQL Introduction </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-01-Introduction/unit-2-select/book-a/index.html">SQL 1 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-02-Conceptual/unit-2-aggregates/book-a/index.html">SQL 2 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-03-Logical/unit-2-join/book-a/index.html">SQL 3 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-04-EnhancedER/unit-2-outerjoins/book-a/index.html">SQL 4 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-05-Normalisation1/unit-2-dml/book-a/index.html">Lab-01 SQL 5 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-06-Normalisation2/unit-3-ddl/book-a/index.html">Lab-01 SQL 6 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-07-Physical/unit-3-subqueries/book-a/index.html">Lab-01 SQL 7 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-08-Security/unit-2-users-privileges/book-a/index.html">Lab-01 SQL 8 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-09-Transactions/unit-2-mysqlbackup/book-a/index.html">Backup and Restore </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-Backups/unit-2-mongodb/book-a/index.html">Install MongoDB </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-NoSQL1/unit-2-create/book-a-create/index.html">Create </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-NoSQL1/unit-3-read/book-b-read/index.html">Read (find) </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-NoSQL2/unit-2-update/book-a-update/index.html">Update </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-NoSQL2/unit-3-delete/book-b-delete/index.html">Delete </a>
+          
+        
+      
+    </div>
+    <div class="pusher" tabindex="-1">
+      <div class="ui basic segment">
+        <br>
+        
+          <div class="ui tab segment lab" data-tab="SQL 3">
+            <h1>Objectives</h1>
+<p>In this lab, we will use the Select statement to retrieve data from two tables.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="01">
+            <h1>Join</h1>
+<p>All the queries up until this point have been useful except for one major limitation - that is, we have been selecting from only one table at a time with 
+the <em>SELECT</em> statement. It is time to introduce one of the most beneficial features of SQL and relational database systems - the <strong>Join</strong>. To put it simply, 
+the <strong>Join</strong> makes relational database systems &quot;relational&quot;.</p>
+<p><em>Joins</em> allow you to link data from two or more tables together into a single query result <code>-</code> from one single SELECT statement. </p>
+<p>A database is defined as a set of related data stored in tables of rows and columns. Most often the data we are looking for will be in more than one table. 
+So, for example if we wanted to see the book details for a given book copy. We would want information from the tables: book and bookcopy.</p>
+<p>The <strong>JOIN</strong> keyword selects all rows from both tables if there is a match between the <code>join</code> columns in both tables (i.e. Primary Key <code>-</code> Foreign Key link).</p>
+<pre><code>SELECT column_name(s)
+FROM table1
+JOIN table2
+ON table1.column_name=table2.column_name;</code></pre>
+<p><img src="img/img1.gif" alt=""></p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="02">
+            <h1>The JOIN statement</h1>
+<p>Recall the attributes for the book and bookcopy tables:</p>
+<p>Book(ISBN, title, publisher, publishedDate, category, price)</p>
+<p>BookCopy(copyId, ISBN, dateAcquired, dateDestroyed)</p>
+<p>Notice how each of the tables have a common <strong>ISBN</strong> column. This column, will be used to JOIN the two tables. It is the primary key in the <em>Book</em> table and the 
+foreign key in the <em>BookCopy</em> table.</p>
+<p>If we wish to return the copyId and title for each bookcopy, we need values from both tables so we perform the statement as follows:</p>
+<pre><code>select copyId, title 
+from book join bookcopy 
+on book.isbn=bookcopy.isbn;</code></pre>
+<p>This particular <strong>Join</strong> is also known as an <strong>Inner Join</strong> or <strong>Equijoin</strong>. This is the most common type of <strong>Join</strong> that you will see or use. </p>
+<p><strong>Note:</strong> The <em>JOIN</em> keyword selects all rows from both tables as long as there is a match between the columns. If there are rows in the <em>Book</em> table that do 
+not have matches in the <em>BookCopy</em> table, these Books (rows) will NOT be listed.</p>
+<p>The following statements are NOT the same <code>-</code> run them both and see the different results. Count the number of records returned.</p>
+<ol>
+<li>Without the <strong>ON</strong> clause:<pre><code>select copyId, title 
+from book join bookcopy;</code></pre>
+</li>
+</ol>
+<ol>
+<li>With the <strong>ON</strong> clause:<pre><code>select copyId, title 
+from book join bookcopy
+on book.isbn=bookcopy.isbn;</code></pre>
+</li>
+</ol>
+<p>Another alternative of writing the query is to use the <code>NATURAL JOIN</code>. In this case, the <code>join</code> columns must have the same name. The statement omits the <code>ON</code> clause.</p>
+<pre><code>select copyId, title 
+from book natural join bookcopy;</code></pre>
+<p>Finally, another (older) method of writing the query is as follows:</p>
+<pre><code>select copyId, title 
+from book, bookcopy 
+where book.isbn=bookcopy.isbn;</code></pre>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="03">
+            <h1>Example One</h1>
+<p>We want to return the title and copyId of all books containing the word <code>JavaScript</code> in the title.</p>
+<p>There are four things to do here:</p>
+<ol>
+<li>Identify which tables have the data you are looking for, in this case it is <em>Book</em> and <em>BookCopy</em>. These need to be joined.</li>
+<li>Identify which columns are the primary and foreign keys in these tables; in this case it is <em>ISBN</em> in the <em>Book</em> and <em>ISBN</em> in the <em>BookCopy</em> table. 
+  We use these in the <em>ON</em> clause.</li>
+<li>Identify which columns we want the query to output; in this case it is <em>copyId</em> from the <em>BookCopy</em> table; and <em>title</em> from the <em>Book</em> table. 
+  We will use these in our <em>SELECT</em>.</li>
+<li>Add any conditions necessary, in this example: <em>title like &#39;%JavaScript%&#39;</em>;</li>
+</ol>
+<pre><code>select title, copyId 
+from book join bookcopy 
+on book.isbn=bookcopy.isbn
+where title like &#39;%JavaScript%&#39;;</code></pre>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="04">
+            <h1>Example Two</h1>
+<p>In this example, we wish to return the copyId, title, publisher, and acquired date for all book copies that are Computing books. </p>
+<p>Again, there are four things to do here:</p>
+<ol>
+<li>Identify which tables have the data you are looking for, in this case its <em>Book</em> and <em>BookCopy</em>. These need to be joined.</li>
+<li>Identify which columns are the primary and foreign keys in these tables; in this case it is <em>ISBN</em> in the <em>Book</em> and <em>ISBN</em> in the <em>BookCopy</em> table. 
+  We use these in the <em>ON</em> clause.</li>
+<li>Identify which columns we want the query to output; in this case it is <em>copyId</em> and <em>acquiredDate</em> from the <em>BookCopy</em> table; and <em>title</em> and <em>publisher</em> from
+  the <em>Book</em> table. We will use these in our <em>SELECT</em>.</li>
+<li>Add any conditions necessary, in this example: <em>category = &#39;Computing&#39;</em>;</li>
+</ol>
+<pre><code>select copyid, title, publisher, dateacquired                            
+from book join bookcopy                                                   
+on book.isbn = bookcopy.isbn                                                             
+where category = &#39;Computing&#39;;</code></pre>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="05">
+            <h1>Exercises</h1>
+<ol>
+<li><p>Retrieve the title, copyId, publisher, and acquired date for all book copies that were acquired since June 1 2014.<br>  Sort the results in alphabetical order of title.</p>
+<p><img src="img/ans1.png" alt=""></p>
+</li>
+<li><p>List the students (combined fname and lname) who have borrowed a book(s). 
+  Return the student name only once even if he/she has more than one loan.</p>
+<p><img src="img/ans2.png" alt=""></p>
+</li>
+<li><p>List the students (combined fname and lname) who have borrowed a book(s) and has it still on loan (dateBack is empty). 
+  Return the student name only once even if he/she has more than one loan.</p>
+<p><img src="img/ans3.png" alt=""></p>
+</li>
+<li><p>For each loan record, retrieve the student by Name (combined fname and lname) who made the loan, and the copyId, dateOut and dateBack for each book loaned.
+Sort the results in alphabetical order of Name (fname sorted within lname).</p>
+<p><img src="img/ans4.png" alt=""></p>
+</li>
+<li><p>List the copyId and title for all books that are in service now (datedestroyed is empty).</p>
+<p><img src="img/ans5.png" alt="">
+<img src="img/ans5b.png" alt="">
+<img src="img/ans5c.png" alt=""></p>
+</li>
+</ol>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="06">
+            <h1>Example Three</h1>
+<p>In this example, we wish to return the number of book copies per Book title and output the count (result) with the label <em>Number of Books</em>.</p>
+<p>There are three things to do here:</p>
+<ol>
+<li>Identify which tables have the data you are looking for, in this case its <em>Book</em> and <em>BookCopy</em>. These need to be joined.</li>
+<li>Identify which columns are the primary and foreign keys in these tables; in this case it is <em>ISBN</em> in the <em>Book</em> and <em>ISBN</em> in the <em>BookCopy</em> table. 
+  We use these in the <em>ON</em> clause.</li>
+<li>Identify which columns we want the query to output; in this case it is <em>title</em> from the <em>Book</em> table and <em>count(copyId)</em> from the <em>ookCopy</em> table. 
+  We will use these in our <em>SELECT</em>.</li>
+</ol>
+<p>Let<code>&#39;</code>s put it all together:</p>
+<pre><code>select title, count(copyId)  as &quot;Number of Books&quot;  
+from book join bookcopy                                                            
+on book.isbn = bookcopy.isbn                                             
+group by title;</code></pre>
+<p><strong>Note:</strong> The records are also sorted by title.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="07">
+            <h1>Exercises</h1>
+<ol>
+<li><p>Return the book title and corresponding number of book copies for all books that have Database in the book title. 
+  Output the count with the label Number of Books.</p>
+<p><img src="img/ans6.png" alt=""></p>
+</li>
+<li><p>Return the number of loans per student (identified by name). Output the count with the label Number of Loans 
+  and identify each student by name (combined fname and lname). Note: Use the combined fname and lname in the Group By clause.
+  Sort in alphabetical order by Last Name and then First Name.</p>
+<p><img src="img/ans7.png" alt=""></p>
+</li>
+<li><p>Return the number of loans that a student has at present (where dateBack is empty). Output the count with the label Number of Loans 
+  and again identify each student by name.</p>
+<p><img src="img/ans8.png" alt=""></p>
+</li>
+</ol>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="Movies Exercise">
+            <h1>Movies Exercise</h1>
+<p>For these exercises, load the <em>movies</em> database and remember to enter the command:</p>
+<pre><code>USE MOVIES;</code></pre>
+<p>To do:</p>
+<ol>
+<li><p>For each rating, return the reviewer id, film title, director, and number of stars.</p>
+</li>
+<li><p>Return the number of reviews (in the ratings table) left by Chris Jackson. Label the output &quot;Number of Chris&#39;s Reviews.</p>
+</li>
+<li><p>Return the number of reviews left by each reviewer (identified by name). Label the number of reviews (Number of Reviews).</p>
+</li>
+<li><p>Return the number of reviews left for each film (identified by title). Label the number of reviews (Number of Film Reviews).</p>
+</li>
+</ol>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="Solutions">
+            <h1>Solutions</h1>
+<p>Solutions for the exercises in this lab are available here: <a href="./archives/Week3.zip">Week3.zip</a></p>
+
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+
+  <script>
+    $(document).on('keydown', function(e) {
+  e = e || window.event;
+  var nextTab;
+  switch (e.which || e.keyCode) {
+    case 37: // left
+      nextTab = $('.tab-menu a[data-tab].active').prev('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').last();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+
+    case 39: // right
+      nextTab = $('.tab-menu a[data-tab].active').next('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').first();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+  }
+});
+
+    $(document).ready(function() {
+  $('img').addClass('ui image');
+
+  $('.ui.embed').embed();
+
+  const $images = $('.lab img');
+  jQuery.each($images, function(i) {
+    if ($images[i].alt.length > 0) {
+      const divImg = $(document.createElement('div')).addClass(
+        'ui basic segment',
+      );
+      $($images[i]).wrap(divImg);
+      const divLabel = $(document.createElement('div')).addClass(
+        'ui blue ribbon label',
+      );
+      divLabel.append($images[i].alt);
+      $(divLabel).insertBefore($images[i]);
+    }
+  });
+
+  $('.ui.menu .item').tab({
+    history: true,
+    historyType: 'hash',
+  });
+
+  $('.popup').popup();
+
+  $('.ui.sidebar')
+    .sidebar({ context: $('.pushable') })
+    .sidebar('setting', 'transition', 'slide out')
+    .sidebar('attach events', '#toc');
+});
+
+  </script>
+
+
+
+  <div class="ui bottom fixed borderless right menu">
+    <div class="ui right small menu">
+      <div class="ui tiny basic message segment">
+         Powered by <a href="https://github.com/edeleastar/tutors-ts">tutors-ts.</a> 
+      </div>
+    </div>
+  </div>
+
+  </body>
+
+</html>

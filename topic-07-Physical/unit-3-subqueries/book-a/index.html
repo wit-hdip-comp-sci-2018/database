@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css"
+          type="text/css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/railscasts.min.css"
+          rel="stylesheet"/>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/jquery.address/1.6/jquery.address.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/java.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/kotlin.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <style>
+      
+
+body {
+  font-family: "Open Sans", "Helvetica", "Helvetica Neue",  "Arial", sans-serif;
+  font-size:90%;
+  color: black;
+}
+
+p {
+  margin: 0.5em;
+}
+
+pre code {
+  font-family: "Monaco";
+  font-size: 100%;
+}
+
+img {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin:10px;
+}
+
+h1, h2, h3 {
+  border-bottom:thin solid black;
+  margin-bottom: 0.5em;
+  margin-top: 1em;
+}
+
+h1 {
+  font-style:italic;
+  font-size:130%;
+}
+
+h2 {
+  font-size:110%;
+}
+
+h3 {
+  font-size:100%;
+}
+
+
+
+      
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+.wrapper {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.footer {
+  background: white;
+  text-align: right;
+}
+.content {
+  flex: 1;
+  overflow: auto;
+}
+
+
+
+    </style>
+  </head>
+
+  
+  
+
+  <div class="ui fixed top pointing inverted stackable menu labmenu">
+    <header class="header item">
+      <i id="toc" class="sitemap icon"></i>
+      
+        <a href="../../index.html"> Subqueries and views  </a>
+      
+    </header>
+    <div class="right tab-menu menu">
+      
+        <a class="item" data-tab="Lab-01 SQL 7">
+          Lab-01 SQL 7
+        </a>
+      
+        <a class="item" data-tab="01">
+          01
+        </a>
+      
+        <a class="item" data-tab="02">
+          02
+        </a>
+      
+        <a class="item" data-tab="03">
+          03
+        </a>
+      
+        <a class="item" data-tab="04">
+          04
+        </a>
+      
+        <a class="item" data-tab="05">
+          05
+        </a>
+      
+        <a class="item" data-tab="06">
+          06
+        </a>
+      
+        <a class="item" data-tab="07">
+          07
+        </a>
+      
+        <a class="item" data-tab="08">
+          08
+        </a>
+      
+        <a class="item" data-tab="09">
+          09
+        </a>
+      
+        <a class="item" data-tab="10">
+          10
+        </a>
+      
+        <a class="item" data-tab="Solutions">
+          Solutions
+        </a>
+      
+    </div>
+  </div>
+
+
+  
+
+  <div class="ui pushable">
+    <div class="ui inverted labeled icon left inline vertical sidebar menu">
+      <br><br>
+      
+        
+          
+            <a class="item"
+               href="/topic---Assignment/book-00-Assignment/index.html">Assignment </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-00-On-Site/book-a/index.html">Installation </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-00-On-Site/book-b/index.html">SQL Introduction </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-01-Introduction/unit-2-select/book-a/index.html">SQL 1 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-02-Conceptual/unit-2-aggregates/book-a/index.html">SQL 2 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-03-Logical/unit-2-join/book-a/index.html">SQL 3 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-04-EnhancedER/unit-2-outerjoins/book-a/index.html">SQL 4 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-05-Normalisation1/unit-2-dml/book-a/index.html">Lab-01 SQL 5 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-06-Normalisation2/unit-3-ddl/book-a/index.html">Lab-01 SQL 6 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-07-Physical/unit-3-subqueries/book-a/index.html">Lab-01 SQL 7 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-08-Security/unit-2-users-privileges/book-a/index.html">Lab-01 SQL 8 </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-09-Transactions/unit-2-mysqlbackup/book-a/index.html">Backup and Restore </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-10-Backups/unit-2-mongodb/book-a/index.html">Install MongoDB </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-NoSQL1/unit-2-create/book-a-create/index.html">Create </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-11-NoSQL1/unit-3-read/book-b-read/index.html">Read (find) </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-NoSQL2/unit-2-update/book-a-update/index.html">Update </a>
+          
+        
+      
+        
+          
+            <a class="item"
+               href="/topic-12-NoSQL2/unit-3-delete/book-b-delete/index.html">Delete </a>
+          
+        
+      
+    </div>
+    <div class="pusher" tabindex="-1">
+      <div class="ui basic segment">
+        <br>
+        
+          <div class="ui tab segment lab" data-tab="Lab-01 SQL 7">
+            <h1>Objectives</h1>
+<p>In this lab, we will look at Sub Queries and Views.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="01">
+            <h1>Subqueries</h1>
+<p>A <strong>subquery</strong> is where we have a complete SELECT statement embedded within another SELECT statement. The results of this <em>inner</em> SELECT statement (or <em>subselect</em>) are used
+in the <em>outer</em> statement to help determine the contents of the final result.</p>
+<p>A <em>subquery</em> can be used in the WHERE and HAVING clauses of an outer SELECT statement.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="02">
+            <h1>Using a subquery with equality</h1>
+<p><em>List the bookcopy Ids for the book with title <code>JavaScript</code>.</em></p>
+<pre><code>SELECT copyId 
+FROM bookcopy 
+WHERE isbn = 
+  (SELECT isbn 
+   FROM book 
+   WHERE title =&#39;JavaScript&#39;);</code></pre>
+<p>The inner SELECT statement finds the ISBN that corresponds to the book with title <code>JavaScript</code>. Having obtained this ISBN, the outer SELECCT statement
+then retrieves the copyIds for the book. In other words, the inner SELECT returns a result table containing a single value <code>123675432</code>. The outer SELECT becomes:</p>
+<pre><code>SELECT copyId 
+FROM bookcopy 
+WHERE isbn = &#39;123675432&#39;;</code></pre>
+<p>If we want to count the copyIds rather than display them, we could modify the above as follows:</p>
+<pre><code>SELECT count(copyId) as &#39;Number of copies&#39; 
+FROM bookcopy 
+WHERE isbn = 
+  (SELECT isbn 
+   FROM book 
+   WHERE title =&#39;JavaScript&#39;);</code></pre>
+<h2>Exercise</h2>
+<ol>
+<li><p>Using a subquery, return the number of books out on loan for student (20038967).</p>
+<p><img src="img/ans1.png" alt=""></p>
+</li>
+</ol>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="03">
+            <h1>Using a subquery with an aggregate function</h1>
+<h2>Example One</h2>
+<p><em>List the title and price for the most expensive book.</em></p>
+<pre><code>SELECT title, price 
+FROM book 
+WHERE price = 
+  (SELECT max(price) 
+   FROM book);</code></pre>
+<p>The inner SELECT returns the maximum priced book price and then this value is used in the WHERE clause (WHERE price =  ).</p>
+<h2>Example Two</h2>
+<p><em>List the title and price of any book that has the same price as the JavaScript book.</em></p>
+<pre><code>SELECT title, price 
+FROM book 
+WHERE price = 
+  (SELECT  price
+   FROM book
+   WHERE title = &#39;JavaScript&#39;);</code></pre>
+<h2>Exercise</h2>
+<ol>
+<li><p>Using a subquery, return the title and price of the least expensive book.</p>
+<p><img src="img/ans2.png" alt=""></p>
+</li>
+<li><p>Using a subquery, return the title and price of all books whose price is greater than the average book price.</p>
+<p><img src="img/ans3.png" alt=""></p>
+</li>
+<li><p>Using a subquery, return the title and price difference of all books whose price is greater than the average book price. </p>
+<p><strong>Hint:</strong> Round the average price when calculating the price difference.</p>
+<p><img src="img/ans4.png" alt=""></p>
+</li>
+</ol>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="04">
+            <h1>Use of IN</h1>
+<p><em>List the students (by Name), who have a loan (studentId value in the Loan table).</em></p>
+<pre><code>SELECT concat(fname, &#39; &#39;, lname) as Name 
+FROM student 
+WHERE studentid IN 
+  (SELECT studentId 
+   FROM loan);</code></pre>
+<p>The inner SELECT will return more than one record (row), and so we cannot use the equality condition in the outer query. Instead we use the IN keyword.</p>
+<h2>Exercise</h2>
+<ol>
+<li><p>Using a subquery, return the authors by name who have a book in our library.</p>
+<p><img src="img/ans5.png" alt=""></p>
+</li>
+<li><p>Using a subquery, return the authors by name who do not have a book in our library.</p>
+<p><img src="img/ans6.png" alt=""></p>
+</li>
+</ol>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="05">
+            <h1>Use of ANY and ALL</h1>
+<p>The keywords ANY and ALL may be used with subqueries that produce a single column of numbers. </p>
+<h2>ALL</h2>
+<p>If the subquery is preceded by the keyword ALL, the condition will be true only if it is satisfied by all values produced by the subquery.</p>
+<h3>Example One</h3>
+<p><em>List the title and price of the book whose price is greater than or equal to the price of all books (i.e. the most expensive book).</em> </p>
+<pre><code>SELECT title, price 
+FROM book 
+WHERE price &gt;= ALL 
+                  (SELECT price 
+                   FROM book);</code></pre>
+<h3>Example Two</h3>
+<p><em>List all book titles whose price is greater than the price all Computing books.</em></p>
+<pre><code>SELECT title, category, price
+FROM book 
+WHERE price &gt; ALL 
+                  (SELECT price 
+                   FROM book
+                   WHERE category = &#39;Computing&#39;);</code></pre>
+<h2>ANY</h2>
+<p>If the subquery is preceded by the keyword ANY, the condition will be true if it is satisfied by any (one or more) values produced by the subquery. </p>
+<p><em>List all book titles whose price is greater than the price of at least one Computing book.</em></p>
+<pre><code>SELECT title, category, price
+FROM book 
+WHERE price &gt; ANY 
+                  (SELECT price 
+                   FROM book
+                   WHERE category = &#39;Computing&#39;);</code></pre>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="06">
+            <h1>Views</h1>
+<h2>What is a View</h2>
+<blockquote>
+<p>A view is the dynamic result of querying a base relation(table) to produce another relation (result-set). A view is a <em>virtual relation</em> that does not 
+necessarily exist in the database but can be produced upon request by a particular user, at the time of request.</p>
+</blockquote>
+<p>To the user, a view appears just like a real table, with a set of named columns and rows of data. However, unlike a base table, a view does not necessarily exist in the database as a stored set of data 
+values. Instead, a view is defined as a query on one or more base tables or views. The DBMS stores the definition of the view in the database. When the DBMS encounters a reference to
+a view, one approach is to look up this definition and translate the request into an equivalent request against the source tables of the view and perform the 
+equivalent request. </p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="07">
+            <h1>Creating a View</h1>
+<p>The format of the CREATE VIEW statement is:</p>
+<pre><code>CREATE [OR REPLACE] VIEW ViewName [(newColumnName[,...])]
+ AS subselect [WITH [CASCADED|LOCAL] CHECK OPTION]</code></pre>
+<h2>Creating MySQL view example</h2>
+<p>The following simple VIEW selects a subset of fields from the Student table for all year 1 students:</p>
+<pre><code>CREATE OR REPLACE VIEW year1students AS
+    SELECT studentid, fname, lname,  street, town, county, year
+    FROM student
+    WHERE year = 1;</code></pre>
+<p>If you use the <code>SHOW TABLES</code> command to view all tables in the <code>library</code> database, we also see the year1students view is showing up in the list.</p>
+<p><img src="img/tables.png" alt=""></p>
+<p>This is because the views and tables share the same namespace. To know which object is view or table, you use the <code>SHOW FULL TABLES</code> command.</p>
+<p><img src="img/fulltables.png" alt=""></p>
+<p>If we want to query the year1students view, you just need to execute a simple SELECT statement against the year1student view as follows:</p>
+<pre><code> SELECT * FROM year1students;</code></pre>
+<p>Your view can be based on any type of SELECT, for example using joins, subqueries or the view can be based on another view.</p>
+<pre><code>CREATE VIEW overduedetails AS
+   SELECT concat(fname,&#39; &#39;,lname)  Name, title, dateOut           
+   FROM bookcopy JOIN book  
+   ON  bookcopy.isbn = book.isbn    
+   JOIN loan         
+   ON bookcopy.copyId = loan.copyId 
+   JOIN student   
+   ON student.studentId = loan.studentId
+   WHERE dateBack IS NULL;</code></pre>
+<h2>Exercise</h2>
+<p>For this exercise, load the <em>movies</em> database and remember to enter the command:</p>
+<pre><code>USE MOVIES;</code></pre>
+<ol>
+<li>Create a view called <code>FilmReviewDetails</code>, which returns the film title, released year, reviewer name, and number of stars for all films reviewed.    </li>
+</ol>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="08">
+            <h1>Managing Views</h1>
+<h2>Showing view definition</h2>
+<p>MySQL provides the <code>SHOW CREATE VIEW</code> statement that displays the view&#39;s definition.</p>
+<p>For example:</p>
+<pre><code> SHOW CREATE VIEW overduedetails;</code></pre>
+<h1>Modifying Views</h1>
+<h3>Modifying view using CREATE OR REPLACE VIEW statement</h3>
+<p>You can use <code>CREATE OR REPLACE VIEW</code> statement to either create or replace an existing view. If a view already exists, MySQL simply modifies the view. 
+In case the view does not exist, MySQL creates a new view.</p>
+<pre><code>CREATE OR REPLACE view year1students AS
+    SELECT studentid, fname, lname,  street, town, county, year
+    FROM student
+    WHERE year = 1
+    AND county = &#39;Waterford&#39;;</code></pre>
+<h3>Modifying views using ALTER VIEW statement</h3>
+<p>Once a view is created, you can modify it using the <code>ALTER VIEW</code> statement.</p>
+<p>The syntax of the ALTER VIEW statement is similar to the CREATE VIEW statement except that the CREATE keyword is replaced by the ALTER keyword.</p>
+<pre><code>ALTER VIEW year1students AS
+    SELECT studentid, fname, lname,  street, town, county, year
+    FROM student
+    WHERE year = 1
+    AND county = &#39;Waterford&#39;;</code></pre>
+<h1>Removing views</h1>
+<p>Once a view created, you can remove it using the <code>DROP VIEW</code> statement. The following illustrates the syntax of the DROP VIEW statement:</p>
+<p>For example:</p>
+<pre><code> DROP VIEW year1students;</code></pre>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="09">
+            <h1>MySQL updatable views</h1>
+<p>In MySQL, views are not only query-able but also updatable. It means that you can use the <code>INSERT</code> or <code>UPDATE</code> statement to insert or update rows of the 
+base table through the updatable view. In addition, you can use <code>DELETE</code> statement to remove rows of the underlying table through the view.</p>
+<p>However, to create an updatable view, the SELECT statement that defines the view must not contain any of the following elements:</p>
+<ul>
+<li>Aggregate functions such as MIN, MAX, SUM, AVG, COUNT, etc.</li>
+<li>DISTINCT</li>
+<li>GROUP BY clause.</li>
+<li>HAVING clause.</li>
+<li>Outer join.</li>
+<li>Subquery in the SELECT clause or in the WHERE clause that refers to the table appeared in the FROM clause.</li>
+</ul>
+<h2>Updating rows through the view</h2>
+<p>Let&#39;s create an updatable view.</p>
+<pre><code> CREATE OR REPLACE view pricedetails AS 
+ SELECT isbn, title, category, price 
+ FROM book
+ WHERE category = &#39;computing&#39;;</code></pre>
+<p>Next, we can query data from the <code>pricedetails</code> view using the following statement:</p>
+<pre><code> SELECT * FROM pricedetails;</code></pre>
+<p>We can update the price of one, some or all of these books using the <code>UPDATE</code> statement.</p>
+<p>For example, update the price by 10%:</p>
+<pre><code> UPDATE pricedetails
+ SET price = price * 1.10;</code></pre>
+<p>Next, we can check whether the prices have increased:</p>
+<pre><code> SELECT * FROM pricedetails;</code></pre>
+<p>You can also confirm the price change by querying the base table:</p>
+<pre><code> SELECT * FROM  book;</code></pre>
+<h2>Checking updatable view information</h2>
+<p>You can check if a view in a database in updatable by querying the <strong>is_updatable</strong> column from the views table in the <strong>information_schema</strong> database.</p>
+<p>The following query gets all views from the <em>library</em> database and shows which views are updatable.</p>
+<pre><code> SELECT table_name, is_updatable
+ FROM information_schema.views
+ WHERE table_schema = &#39;library&#39;;</code></pre>
+<p><img src="img/views.png" alt=""></p>
+<h2>Removing rows through the view</h2>
+<p>First, we create a table named <code>journal</code>, insert some rows into the <code>journal</code> table, and create a view that contains only scienific journals.</p>
+<pre><code> CREATE TABLE journal (
+  ISSN varchar(15) not null,
+  title varchar(50) not null,
+  category varchar(30),
+  primary key (ISSN)
+ ); -- create table
+
+ INSERT INTO  journal 
+ VALUES (&#39;9999-8888&#39;, &#39;Computer Bulletin&#39;, &#39;Science&#39;), (&#39;7861-9932&#39;, &#39;Academy of Management Journal&#39;, &#39;Business&#39;), (&#39;2314-7788&#39;, &#39;Irish Chemical News&#39;, &#39;Science&#39;);
+ --insert new records
+
+ CREATE OR REPLACE  view sciencejournals  AS
+  SELECT * from journal 
+  WHERE category = &#39;Science&#39;; -- create a view based on Science journals
+
+ SELECT * FROM sciencejournals; -- query the view</code></pre>
+<p>Delete one of the records from the view (issn: 9999-8888):</p>
+<pre><code> DELETE FROM sciencejournals  
+ WHERE issn = &#39;9999-8888&#39;;</code></pre>
+<p>Next, we can check whether the record is deleted:</p>
+<pre><code> SELECT * FROM sciencejournals;</code></pre>
+<p>You can also confirm the record is gone from the base table:</p>
+<pre><code> SELECT * FROMjournal;</code></pre>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="10">
+            <h1>Introduction to WITH CHECK OPTION clause</h1>
+<p>Sometimes, you create a view to reveal the partial data of a table only. However, a simple view is updatable therefore it is possible to update data 
+which is not visible through the view. This update makes the view inconsistent. To ensure the consistency of the view, 
+you use the <code>WITH CHECK OPTION</code> clause when you create or modify the view.</p>
+<p>The <code>WITH CHECK OPTION</code> clause is an optional part of the CREATE VIEW statement. The WITH CHECK OPTION clause prevents you from updating or inserting 
+rows that are not visible through the view. In other words, whenever you update or insert a row of the base table through a view, 
+MySQL ensures that the insert or update operation is conformed with the definition of the view.</p>
+<p>The following illustrates the syntax of the WITH CHECK OPTION clause.</p>
+<pre><code>CREATE OR REPLACE VIEW view_name 
+AS
+  select_statement
+  WITH CHECK OPTION;</code></pre>
+<p>Notice that you put the semicolon (;) at the end of the WITH CHECK OPTION clause, not at the end of the SELECT statement defined the view.</p>
+<p>We will now look at an existing view and see how an update makes the view inconsistent and we will then modify the view.</p>
+<p>Our original <code>year1students</code> view is defined as follows:</p>
+<pre><code>CREATE OR REPLACE VIEW year1students AS
+    SELECT studentid, fname, lname,  street, town, county, year
+    FROM student
+    WHERE year = 1;</code></pre>
+<p>Now, we insert a row into the student table through the <code>year1students</code> view as follows:</p>
+<pre><code> INSERT INTO year1students VALUES 
+(&#39;20081336&#39;, &#39;Sam&#39;, &#39;Brown&#39;,  &#39;Tintine&#39;, &#39;The Rower&#39;, &#39;Kilkenny&#39;,2);</code></pre>
+<p>Notice that the newly created student is not visible through the <code>year1students</code> view because his year is 2, which is not 1. 
+You can verify that the record has been inserted by using the following SELECT statement.</p>
+<pre><code> SELECT * FROM student;</code></pre>
+<p>To ensure the consistency of a view so that users only can display or update data that visible through the view, you use the <code>WITH CHECK OPTION</code>
+when you create or modify the view.</p>
+<p>Let&#39;s modify the view to include the WITH CHECK OPTION.</p>
+<pre><code>CREATE OR REPLACE VIEW year1students AS
+    SELECT studentid, fname, lname,  street, town, county, year
+    FROM student
+    WHERE year = 1
+    WITH CHECK OPTION;</code></pre>
+<p>Now, we insert a row into the student table through the <code>year1students</code> view as follows:</p>
+<pre><code> INSERT INTO year1students VALUES 
+(&#39;20091010&#39;, &#39;Phil&#39;, &#39;Smith&#39;,  &#39;Rose Inn&#39;, &#39;Dungarvan&#39;, &#39;Waterford&#39;,3);</code></pre>
+<p>This time, MySQL rejects the insert and issues the following error message:</p>
+<p><img src="img/error.png" alt=""></p>
+<p>Finally, we insert a student whose year is 1 into the student table through the <code>year1students</code> view to see if MySQL allows us to do it.</p>
+<pre><code>  INSERT INTO year1students VALUES  
+(&#39;20091010&#39;, &#39;Phil&#39;, &#39;Smith&#39;,  &#39;Rose Inn&#39;, &#39;Dungarvan&#39;, &#39;Waterford&#39;,1);</code></pre>
+<p>This time there is no error, you can check it by entering the command:</p>
+<pre><code> SELECT * FROM year1students;</code></pre>
+<h2>Exercise</h2>
+<p>For this exercise, load the <em>movies</em> database and remember to enter the command:</p>
+<pre><code>USE MOVIES;</code></pre>
+<ol>
+<li>Create a view called <code>modernfilms</code> which returns the film id, title, released year and director for all films released since 1980.</li>
+<li>Try to insert the following records:</li>
+</ol>
+<pre><code> INSERT INTO modernfilms VALUES (109, &#39;The Kings Speech&#39;, 2010, &#39;Tom Hooper&#39;);
+ INSERT INTO modernfilms VALUES (110, &#39;Lawrence of Arabia&#39;, 1962, &#39;David Lean&#39;);</code></pre>
+<p><strong>Note:</strong> The second record should not be accepted by MySQL.</p>
+
+          </div>
+        
+          <div class="ui tab segment lab" data-tab="Solutions">
+            <h1>Solutions</h1>
+<p>Solutions for the exercises in this lab are available here: <a href="./archives/Week7.zip">Week7.zip</a></p>
+
+          </div>
+        
+      </div>
+    </div>
+  </div>
+
+
+
+  <script>
+    $(document).on('keydown', function(e) {
+  e = e || window.event;
+  var nextTab;
+  switch (e.which || e.keyCode) {
+    case 37: // left
+      nextTab = $('.tab-menu a[data-tab].active').prev('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').last();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+
+    case 39: // right
+      nextTab = $('.tab-menu a[data-tab].active').next('a[data-tab]');
+      if (!nextTab.length) nextTab = $('.tab-menu a[data-tab]').first();
+      nextTab.click();
+      $('.pusher').focus();
+      break;
+  }
+});
+
+    $(document).ready(function() {
+  $('img').addClass('ui image');
+
+  $('.ui.embed').embed();
+
+  const $images = $('.lab img');
+  jQuery.each($images, function(i) {
+    if ($images[i].alt.length > 0) {
+      const divImg = $(document.createElement('div')).addClass(
+        'ui basic segment',
+      );
+      $($images[i]).wrap(divImg);
+      const divLabel = $(document.createElement('div')).addClass(
+        'ui blue ribbon label',
+      );
+      divLabel.append($images[i].alt);
+      $(divLabel).insertBefore($images[i]);
+    }
+  });
+
+  $('.ui.menu .item').tab({
+    history: true,
+    historyType: 'hash',
+  });
+
+  $('.popup').popup();
+
+  $('.ui.sidebar')
+    .sidebar({ context: $('.pushable') })
+    .sidebar('setting', 'transition', 'slide out')
+    .sidebar('attach events', '#toc');
+});
+
+  </script>
+
+
+
+  <div class="ui bottom fixed borderless right menu">
+    <div class="ui right small menu">
+      <div class="ui tiny basic message segment">
+         Powered by <a href="https://github.com/edeleastar/tutors-ts">tutors-ts.</a> 
+      </div>
+    </div>
+  </div>
+
+  </body>
+
+</html>
