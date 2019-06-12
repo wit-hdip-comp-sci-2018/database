@@ -1,0 +1,101 @@
+
+
+
+  {
+  
+  
+    "properties" : {},
+  
+  "type" : "lab",
+  "title" : "SQL 4",
+  "img" : "img/main.png",
+  "videoid" : "none",
+  "objectives" : "<p>In this lab, we will use the Select statement statement to look at multi table and outer Joins.</p>",
+  "folder" : "book-a",
+  "link" : "index.html",
+  "los": [
+   ]
+,
+  "chapters" : [
+  
+    {
+    "title": "#Objectives",
+    "shortTitle": "SQL 4",
+    "contentMd" : "#Objectives\r\n\r\nIn this lab, we will use the Select statement statement to look at multi table and outer Joins.\r\n\r\n- Retrieve data from more than two tables.\r\n- Perform other types of Join.\r\n"
+    },
+  
+    {
+    "title": "#Join",
+    "shortTitle": "01",
+    "contentMd" : "#Join\r\n\r\nSometimes we need to retrieve information from more than two tables. The rule goes that the number of *JOINs* a Select statement has is 1 less than the number of \r\ntables involved. So if we have three tables in the query then we have two JOINs, if we have four tables in the query then we would have 3 JOINs and so on."
+    },
+  
+    {
+    "title": "#Example One",
+    "shortTitle": "02",
+    "contentMd" : "#Example One\r\n\r\nFor each loan, if we wanted the student's name who borrowed the book, the ISBN of the book borrowed, and the dates loaned and returned.\r\n\r\nThere are three things to do here:\r\n\r\n1.\tIdentify which tables have the data you are looking for, student name is in the *Student* table, ISBN is in the *Book* and *BookCopy* tables, loan details are in the *Loan* table. \r\n        Since tables Loan and BookCopy can be joined, we will use BookCopy instead of table Book. The tables required are: *Student*, *Loan* and *BookCopy*. \r\n        Since there are 3 tables, we need 2 joins. \r\n2.\tIdentify which columns are the primary and foreign keys in these tables. To join the Student and Loan tables, we use the *studentId* in the *Student* \r\n        and *studentId* in the *Loan* table. To join the BookCopy and Loan tables we use the *copyId* in the *BookCopy* table and *copyId* in the *Loan* table. \r\n        We use these in the *ON* clause.\r\n3.\tIdentify which columns we want the query to output; in this case it is *fName*, *lName* from the *Student* table, *ISBN* from the *BookCopy* table, \r\n        *dateOut* and *dateBack* from the *Loan* table. We will use these in our *SELECT*.\r\n\r\n~~~\r\nselect concat(fname,' ',lname) as Name, isbn, dateOut, dateBack         \r\nfrom bookcopy join loan \r\non  bookcopy.copyId = loan.copyId \r\njoin student \r\non loan.studentId = student.studentId;\r\n~~~"
+    },
+  
+    {
+    "title": "# Example Two",
+    "shortTitle": "03",
+    "contentMd" : "# Example Two\r\n\r\nThe previous example gives us some information about the book loans per student but we still do not know the book title!\r\n\r\nWe can expand the above example to return the book title instead of the ISBN.\r\nFor each loan, we want the student`'`s name who borrowed the book, the title of the book borrowed, and the dates loaned and returned.\r\n\r\nThere are three things to do here:\r\n\r\n1.\tIdentify which tables have the data you are looking for, student name is in the *Student* table, Book Title is in the *Book* table, \r\n        loan details are in the *Loan* table. Since table Book is not related to any of these tables, we also require BookCopy as it has ISBN \r\n        as a foreign key and BookCopy can be joined with Loan. The tables required are: *Student*, *Book*, *Loan* and *BookCopy*. \r\n        Since there are 4 tables, we need 3 joins.\r\n2.\tIdentify which columns are the primary and foreign keys in these tables. To join the Student and Loan tables, we use the *studentId* in the *Student* and \r\n        *studentId* in the *Loan* table. To join the BookCopy and Loan tables we use the *copyId* in the *BookCopy* table and *copyId* in the *Loan* table. \r\n        To join the BookCopy and Book tables we use the *ISBN* in the *BookCopy* table and *ISBN* in the *Book* table.  \r\n        We use these in the *ON* clause.\r\n3.\tIdentify which columns we want the query to output; in this case it is *fName*, *lName* from the Student table, *title* from the Book table,\r\n        *dateOut* and *dateBack* from the Loan table. We will use these in our *SELECT*.\r\n\r\n~~~\r\nselect concat(fname,' ',lname)  Name, title, dateOut, dateBack           \r\nfrom bookcopy join book  \r\non  bookcopy.isbn = book.isbn    \r\njoin loan         \r\non bookcopy.copyId = loan.copyId \r\njoin student   \r\non student.studentId = loan.studentId;\r\n~~~"
+    },
+  
+    {
+    "title": "# Exercises:",
+    "shortTitle": "04",
+    "contentMd" : "# Exercises:\r\n\r\n1.\tList the books by title that are on loan at present (dateBack is null). Label the title *Books currently on loan*. Sort in alphabetical order by title.\r\n\r\n  ![](img/ans1.png)\r\n2.\tList the books by title that are on loan at present, the student by name who borrowed the book, the date the book was borrowed and the date the book was due back.\r\n        Label the title *Books currently on loan* and label the student name *Student Name*.  Sort in alphabetical order by title.\r\n\r\n  ![](img/ans2.png)\r\n\r\n3.\tList the titles and authors by name for all books. Label the title *Book Title* and label the author name *Author*. Sort in alphabetical order of title and then last name.\r\n\r\n  ![](img/ans3.png)\r\n\r\n4.\tList the titles and authors by name for all books that have JavaScript in the title. Label the title *Book Title* and label the author name *Author*. Sort in alphabetical order of title and then last name.\r\n\r\n  ![](img/ans4.png)\r\n\r\n5.\tReturn the number of loans per book title. Output the count with the label Number of Loans.\r\n\r\n  ![](img/ans5.png)\r\n"
+    },
+  
+    {
+    "title": "#Movies Exercise 1",
+    "shortTitle": "Movies Exercise 1",
+    "contentMd" : "#Movies Exercise 1\r\n\r\nFor these exercises, load the *movies* database and remember to select the database.\r\n\r\nTo do:\r\n\r\n1.\tFor each rating retrieve the reviewer name, film title, number of stars, and date of rating.\r\n\r\n2.\tReturn the film titles of the films reviewed by Chris Jackson.\r\n"
+    },
+  
+    {
+    "title": "#Outer Join",
+    "shortTitle": "06",
+    "contentMd" : "#Outer Join\r\n\r\nPlease enter the following statement which returns all Student records:\r\n\r\n~~~\r\nSELECT * FROM student;\r\n~~~\r\n\r\nNow, enter the following statement which returns all Loan records:\r\n\r\n~~~\r\nSELECT * FROM loan;\r\n~~~\r\n\r\nIf you look at the loan data, not all of the students have taken a book loan (as yet).\r\n\r\nNow, say we want to produce a query which lists all students and their loan details (if they have any).\r\nThe query would be as follows:\r\n`\r\n~~~\r\nSELECT concat(fname,' ', lname) as 'Name', copyId      \r\nFROM student JOIN loan           \r\nON student.studentid = loan.studentid;\r\n~~~\r\n\r\nThis will return the same number of records as the previous statement (SELECT * FROM loan;)\r\n\r\nAs you can see a JOIN SELECT will only show the student record if it has a loan.\r\nBut, how can we return all student records and their loans even if they have NO loan record associated? We must use a **LEFT** or **RIGHT** ***OUTER JOIN***. \r\n\r\nAn outer join extends the result of a simple join. An outer join returns all rows that satisfy the join condition and also returns some or all of \r\nthose rows from one table for which no rows from the other satisfy the join condition.\r\n"
+    },
+  
+    {
+    "title": "#Left Outer Join",
+    "shortTitle": "07",
+    "contentMd" : "#Left Outer Join\r\n\r\nThe **LEFT JOIN** keyword returns all rows from the left (first) table (table1), with the matching rows in the right table (table2). \r\nThe result is NULL in the right side when there is no match.\r\n\r\nSyntax:\r\n\r\n~~~\r\nSELECT column_name(s)\r\nFROM table1\r\nLEFT JOIN table2\r\nON table1.column_name=table2.column_name;\r\n~~~\r\n\r\n![](img/left.gif)\r\n\r\nHere is the previous example written with the *LEFT OUTER JOIN* syntax:\r\n\r\n~~~\r\nSELECT * \r\nFROM student LEFT JOIN loan \r\nON student.studentid = loan.studentid;\r\n~~~\r\n\r\nExecute the statement. Do you see all the null values?\r\n\r\nA more realistic SELECT would be:\r\n\r\n~~~\r\nSELECT concat(fname,' ', lname) as 'Name', copyId \r\nFROM student LEFT JOIN loan \r\nON student.studentid = loan.studentid;\r\n~~~\r\n\r\n**Notes:** \r\n\r\n- The LEFT JOIN keyword returns all the rows from the left table (Student), even if there are no matches in the right table (Loan).\r\n- A student name will appear more than once if he/she has borrowed more than one book.\r\n"
+    },
+  
+    {
+    "title": "#Right Outer Join",
+    "shortTitle": "08",
+    "contentMd" : "#Right Outer Join\r\n\r\nThe **RIGHT JOIN** keyword returns all rows from the right (second) table (table2), with the matching rows in the left table (table1). \r\nThe result is NULL in the left side when there is no match.\r\n\r\nSyntax:\r\n\r\n~~~\r\nSELECT column_name(s)\r\nFROM table1\r\nRIGHT JOIN table2\r\nON table1.column_name=table2.column_name;\r\n~~~\r\n\r\n![](img/right.gif)\r\n \r\nHere is the previous example written with the *RIGHT OUTER JOIN* syntax:\r\n\r\n~~~\r\nSELECT concat(fname,' ', lname) as 'Name', copyId \r\nFROM loan RIGHT JOIN student \r\nON student.studentid = loan.studentid;\r\n~~~\r\n\r\n**Note:**\r\n\r\n- The RIGHT JOIN keyword returns all the rows from the right table (Student), even if there are no matches in the left table (Loan).\r\n\r\n## Exercise\r\n\r\n- List all the authors by name and the ISBN of the books they have written (even if they have no books at present). Sort in alpahbetical order by last name and then first name.\r\n\r\n![](img/ans6.png)"
+    },
+  
+    {
+    "title": "#Example One",
+    "shortTitle": "09",
+    "contentMd" : "#Example One\r\n\r\n\r\nThe following example produces for each bookcopy - the copyId, its' book title, the loan details (i.e. the date it was borrowed (if it was borrowed), and the date \r\nit was returned). This will require joining tables - bookcopy, loan and book.\r\n\r\n1.\tIdentify which tables have the data you are looking for, copyId is in the *BookCopy* and *Loan* tables; title is in the *Book* table; and loan details \r\n        are in the *Loan* table. The tables required are: *Book*, *Loan* and *BookCopy*. Since there are 3 tables, we need 2 joins.\r\n        We need an Outer Join as we want to return all BookCopy records and their loan details whether they have a loan or not.\r\n2.\tIdentify which columns are the primary and foreign keys in these tables. To join the Book and BookCopy tables, we use the *ISBN* in the *Book* and *ISBN* in the *BookCopy* table. \r\n        To join the BookCopy and Loan tables we use the *copyId* in the *BookCopy* table and *copyId* in the *Loan* table. \r\n        We use these in the *ON* clause. \r\n        We will join the *Book* and *BookCopy* tables together with an Equijoin, and then finally left join the *Loan* table to include all BookCopy details \r\n        even if there is no match with the Loan table.\r\n3.\tIdentify which columns we want the query to output; in this case it is *copyId* from the *BookCopy* table, *title* from the *Book* table, *dateOut* \r\n        and *dateBack* from the *Loan* table. We will use these in our *SELECT*.\r\n\r\n~~~\r\nSELECT bookcopy.copyId, title, dateOut, dateBack \r\nFROM book JOIN bookcopy ON book.isbn = bookcopy.isbn \r\nLEFT JOIN loan \r\nON bookcopy.copyId = loan.copyId;\r\n~~~\r\n\r\nA bookcopy will appear more than once if it is loaned out more than once.\r\n\r\nYou can write is as follows using the RIGHT join:\r\n\r\n~~~\r\nSELECT bookcopy.copyId, title, dateOut, dateBack \r\nFROM loan RIGHT JOIN bookcopy\r\nON bookcopy.copyId = loan.copyId\r\nJOIN book ON book.isbn = bookcopy.isbn;\r\n~~~\r\n"
+    },
+  
+    {
+    "title": "#Example Two",
+    "shortTitle": "10",
+    "contentMd" : "#Example Two\r\n\r\n\r\nThe following example produces for each Student `-` the full student name, the title of the books borrowed, the date it was borrowed, \r\nand the date it was returned even if the student has (or had) no loans.\r\n\r\n1.\tIdentify which tables have the data you are looking for, student name is in the *Student* table, Book Title is in the *Book* table, loan details are \r\n        in the *Loan* table. Since table Book is not related to any of these tables, we also require BookCopy as it has ISBN as a foreign key \r\n        and BookCopy can be joined with *Loan*. The tables required are: *Student*, *Book*, *Loan* and *BookCopy*. Since there are 4 tables, we need 3 joins. \r\n        We need an Outer Join as we want to return all Student records and their loan details whether they have a loan or not.\r\n2.\tIdentify which columns are the primary and foreign keys in these tables. To join the Student and Loan tables, we use the *studentId* in the *Student* \r\n        and *studentId* in the *Loan* table. To join the BookCopy and Loan tables we use the *copyId* in the *BookCopy* table and *copyId* in the *Loan* table. \r\n        To join the BookCopy and Book tables we use the *ISBN* in the *BookCopy* table and *ISBN* in the *Book* table.  We use these in the *ON* clause. \r\n3.\tIdentify which columns we want the query to output; in this case it is *fName*, *lName* from the *Student* table, *title* from the *Book* table, \r\n        *dateOut* and *dateBack* from the *Loan* table. We will use these in our *SELECT*.\r\n\r\nAs we saw previously we need the Book table to obtain the title column, but because it is not linked with the Loan table, we need BookCopy also. \r\nWe can join these three tables together with an Equijoin, and then finally right join the Student table to include all students even if \r\nthere is no match with the Loan table.\r\n\r\n~~~\r\nSELECT concat(fname,' ', lname) as 'Name', title, dateOut, dateBack\r\nFROM book JOIN bookcopy ON book.isbn=bookcopy.isbn \r\nJOIN loan ON bookcopy.copyid = loan.copyid \r\nRIGHT JOIN student \r\nON student.studentid = loan.studentid;\r\n~~~\r\n\r\nAnother way of expressing the query (using LEFT join) is as follows:\r\n\r\n~~~\r\nSELECT concat(fname,' ', lname) as 'Name', title, dateOut, dateBack\r\nFROM student LEFT JOIN loan \r\nON student.studentid = loan.studentid\r\nLEFT JOIN bookcopy ON bookcopy.copyid = loan.copyid \r\nLEFT JOIN book ON book.isbn=bookcopy.isbn;\r\n~~~\r\n\r\nIn this example, because we selected from the student table first, we now need to left join it with all the other tables to ensure that all students are included \r\nas after the first join `-` loanId and copyId will have null values for students who have no loans AND in order to join these values with other tables we need an Outer\r\nJoin.\r\n\r\n## Exercise\r\n\r\n- List all the authors by name and the title of the books they have written (even if they have no books at present). Sort in alphabetical order of title and then last name and\r\nthen first name.\r\n"
+    },
+  
+    {
+    "title": "#Movies Exercise 2",
+    "shortTitle": "Movies Exercise 2",
+    "contentMd" : "#Movies Exercise 2\r\n\r\nFor these exercises, load the *movies* database, remember to select the database, and execute the following statement:   \r\n\r\n~~~\r\ninsert into reviewer values(209, 'Liam Collins');\r\n~~~\r\n\r\n1.\tReturn the film title, reviewer name and number of stars for all films (even if it is not reviewed yet).\r\n2.\tReturn the reviewer name, film title, and number of stars for all reviewers (even if they have not left a review yet).\r\n"
+    },
+  
+    {
+    "title": "# Solutions",
+    "shortTitle": "Solutions",
+    "contentMd" : "# Solutions\r\n\r\nSolutions for the exercises in this lab are available here: \r\n\r\n- Movies exercise 1: [Week4a.zip](./archives/Week4a.zip)\r\n- Movies exercise 2: [Week4b.zip](./archives/Week4b.zip)"
+    }
+  
+  ]
+  }
+

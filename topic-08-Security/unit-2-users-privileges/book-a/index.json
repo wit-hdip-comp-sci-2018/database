@@ -1,0 +1,95 @@
+
+
+
+  {
+  
+  
+    "properties" : {},
+  
+  "type" : "lab",
+  "title" : "Lab-01 SQL 8",
+  "img" : "img/main.png",
+  "videoid" : "none",
+  "objectives" : "<p>In this lab, we will look at creating Indexes, Triggers, and Users. We will also look at granting access to users.</p>",
+  "folder" : "book-a",
+  "link" : "index.html",
+  "los": [
+   ]
+,
+  "chapters" : [
+  
+    {
+    "title": "#Objectives",
+    "shortTitle": "Lab-01 SQL 8",
+    "contentMd" : "#Objectives\r\n\r\nIn this lab, we will look at creating Indexes, Triggers, and Users. We will also look at granting access to users.\r\n\r\n\r\n\r\n\r\n"
+    },
+  
+    {
+    "title": "#Indexes",
+    "shortTitle": "01",
+    "contentMd" : "#Indexes\r\n\r\nAn Index is a structure that provides accelerated access to the rows (records) of a table based on the values of one or more columns. The presence of an index can \r\nsignificantly improve the performance of a query. However, as indexes may be updated by the system every time the underlying tables are updated, additional overheads may be incurred.\r\n\r\nIndexes are usually created to satisfy particular search criteria after the table has been in use for some time and has grown in size. \r\n\r\nMySQL creates indexes automatically for all primary key columns and will create indexes for foreign key columns if the underlying table structure is innoDB.\r\n\r\n"
+    },
+  
+    {
+    "title": "# Creating an Index",
+    "shortTitle": "02",
+    "contentMd" : "# Creating an Index\r\n\r\n~~~\r\n CREATE [UNIQUE] INDEX indexName\r\n  ON TableName (columnName [ASC|DESC] [....])\r\n~~~\r\n\r\nThe specified columns constitute the index key and should be listed in major to minor order. Indexes can be created on base tables only (and not Views). \r\n\r\nIf the UNIQUE clause is used, uniqueness of the indexed column or combination of columns will be enforced by the DBMS. \r\nThis is required for the primary key (and alternate key) columns (fields).\r\n\r\nTo create an index on the book table for the title to speed up searching:\r\n\r\n~~~\r\n create index booktitleind on book(title);\r\n~~~\r\n\r\n"
+    },
+  
+    {
+    "title": "#Managing Indexes",
+    "shortTitle": "03",
+    "contentMd" : "#Managing Indexes\r\n\r\n## Viewing Indexes\r\n\r\nTo view the indexes from each table by using:\r\n\r\n~~~\r\n SHOW INDEX FROM tableName;\r\n~~~\r\n\r\nFor example:\r\n~~~\r\n show index from book;\r\n~~~\r\n\r\nIn addition, if you look at the schema using MySQL Workbench under the book > Indexes, you will see the indexes for the book table:\r\n\r\n![](img/indexes.png)\r\n\r\n## Removing an Index\r\n\r\nIf we create an index for a base table and later decide that it is no longer needed, we can use the DROP INDEX command combined with the ALTER TABLE statement to \r\nremove the index from the database.\r\n\r\n~~~\r\n ALTER TABLE TableName DROP INDEX indexName\r\n~~~\r\n\r\nThe following statement would remove the index created in the previous example:\r\n\r\n~~~\r\n  alter table book drop index booktitleind;\r\n~~~\r\n\r\n\r\n"
+    },
+  
+    {
+    "title": "# Triggers",
+    "shortTitle": "04",
+    "contentMd" : "# Triggers\r\n\r\nA `SQL trigger` is a set of  SQL statements stored in the database catalog. A SQL trigger is executed or fired whenever an event associated with a table \r\noccurs e.g.,  INSERT, UPDATE or DELETE. A trigger can be defined to be invoked either before or after the data is changed (INSERT, UPDATE or DELETE).\r\n\r\nA SQL trigger is called automatically when a data modification event is made against a table \r\n\r\n## MySQL trigger syntax\r\n\r\nIn order to create a new trigger, you use the `CREATE TRIGGER` statement. The following illustrates the syntax of the CREATE TRIGGER statement:\r\n\r\n~~~\r\nCREATE TRIGGER trigger_name trigger_time trigger_event\r\n\tON table_name\r\n\tFOR EACH ROW\r\n BEGIN\r\n ...\r\n END;\r\n~~~\r\n\r\nLet's examine the syntax above in more detail.\r\n\r\n- You put the trigger name after the `CREATE TRIGGER` statement. The trigger name should follow the naming convention `[trigger time]_[table name]_[trigger event]`, \r\n  for example `before_employees_update`.\r\n- Trigger activation time can be `BEFORE` or `AFTER`. You must specify the activation time when you define a trigger. You use the BEFORE keyword if you want \r\n  to process action prior to the change is made on the table and AFTER if you need to process action after the change is made.\r\n- The trigger event can be `INSERT`, `UPDATE` or `DELETE`. This event causes the trigger to be invoked. A trigger only can be invoked by one event. \r\n  To define a trigger that is invoked by multiple events, you have to define multiple triggers, one for each event.\r\n- A trigger must be associated with a specific table. Without a table, trigger would not exist therefore you have to specify the table name after the `ON` keyword.\r\n- You place the SQL statements between `BEGIN` and `END` block. This is where you define the logic for the trigger."
+    },
+  
+    {
+    "title": "# MySQL trigger example",
+    "shortTitle": "05",
+    "contentMd" : "# MySQL trigger example\r\n\r\nWe will create a trigger in MySQL to log the changes of the Book table in the library database. To do this, we will create a new table (book_audit), which will record the ISBN, \r\nand price of the record before it was updated. It also records the date and time of the change.\r\n\r\nTo do this we will create a new table, **book_audit**:\r\n\r\n~~~\r\nCREATE TABLE book_audit (\r\n    id INT AUTO_INCREMENT PRIMARY KEY,\r\n    ISBN varchar(15) not null,\r\n    price decimal(5,2),\r\n    changedate DATETIME DEFAULT NULL,\r\n    action VARCHAR(50) DEFAULT NULL\r\n);\r\n~~~\r\n\r\nNow, we will create a trigger **before_book_update**:\r\n\r\n~~~\r\nDELIMITER $$\r\nCREATE TRIGGER before_book_update \r\n    BEFORE UPDATE ON book\r\n    FOR EACH ROW \r\nBEGIN\r\n    INSERT INTO book_audit\r\n    SET action = 'update',\r\n        ISBN = OLD.ISBN,\r\n\tprice = OLD.price,\r\n        changedate = NOW(); \r\nEND$$\r\nDELIMITER ;\r\n~~~\r\n\r\n**Note:** By default, mysql itself recognizes the semicolon as a statement delimiter, so you must redefine the `delimiter` temporarily to cause mysql to \r\npass the entire stored program definition to the server. To redefine the mysql delimiter, use the delimiter command."
+    },
+  
+    {
+    "title": "# Managing Triggers",
+    "shortTitle": "06",
+    "contentMd" : "# Managing Triggers\r\n\r\n##Viewing Triggers\r\n\r\nTo view all triggers in the current database, you use `SHOW TRIGGERS` statement as follows:\r\n\r\n~~~\r\n show triggers;\r\n~~~\r\n\r\nIn addition, if you look at the schema using MySQL Workbench under the book > triggers, you will see the `before_book_update` trigger as shown in the screenshot \r\nbelow:\r\n\r\n![](img/triggers.png)\r\n\r\n##Removing Triggers\r\n\r\nTo remove a trigger, use the `DROP TRIGGER` statement as follows:\r\n\r\n~~~\r\n drop trigger before_book_update;\r\n~~~\r\n\r\n\r\n"
+    },
+  
+    {
+    "title": "# Users and Security",
+    "shortTitle": "07",
+    "contentMd" : "# Users and Security\r\n\r\n## Create a user\r\n\r\nMySQL provides the `CREATE USER` statement to allow you to create a new user in a database server. The syntax of the CREATE USER statement is as follows:\r\n\r\n~~~\r\nCREATE USER Username IDENTIFIED BY password;\r\n~~~\r\n\r\nPlease note capital letter at the start of Username --- all caps will not work.\r\n\r\nFor example, to create a new user called `Manager` that connects from localhost with the password `boss`, you use the CREATE USER statement as follows:\r\n\r\n~~~\r\n create user Manager identified by 'boss';\r\n~~~\r\n\r\nTo create a new user called `Clerk` that connects from localhost with the password `desk`, you use the CREATE USER statement as follows:\r\n\r\n~~~\r\n create user Clerk identified by 'desk';\r\n~~~\r\n\r\n\r\n\r\n"
+    },
+  
+    {
+    "title": "# Users and Security",
+    "shortTitle": "08",
+    "contentMd" : "# Users and Security\r\n\r\n## MySQL Grant\r\n\r\nNow that we have created users, we can grant a range of privileges to that user on different schemas and objects.  When granting privileges we can either \r\nspecify `all` privileges or list the privileges that we want to grant.  \r\n\r\nThis example grants all privileges to the Manager user on all tables within the \r\n`library` schema, and also gives the Manager the option to grant those privileges to other users.\r\n\r\n~~~\r\n grant all on library.* to Manager with grant option;\r\n~~~\r\n\r\nFor some users, we may wish them to only have certain privileges on certain tables, not all tables.  For example, clerk in our library database may only need \r\nSELECT, DELETE, INSERT and UPDATE on all the tables. \r\n\r\n~~~\r\n grant insert, update, delete, select on library.* to Clerk;\r\n~~~\r\n\r\n## MySQL Revoke\r\n\r\nWe can also delete privileges from a user after they have been granted.  For example, we may wish to stop our clerks from deleting records from the student table.\r\n\r\n~~~\r\n revoke delete on student from Clerk;\r\n~~~\r\n\r\nIn the same way as when granting privileges, the ALL command (i.e. REVOKE ALL) can be used to revoke all of a user's privileges in one operation. \r\n\r\nTo show all the privileges that have been assigned to a particular user, enter the following command:\r\n\r\n~~~\r\n show grants for Manager;\r\n~~~\r\n"
+    },
+  
+    {
+    "title": "#Managing User accounts",
+    "shortTitle": "09",
+    "contentMd" : "#Managing User accounts\r\n\r\n##View User accounts\r\nTo view all users in the MySQL database server, you use the following SELECT statement:\r\n\r\n~~~\r\n SELECT user, host FROM mysql.user;\r\n~~~\r\n\r\n## Remove an Account\r\n\r\nTo remove one or more user accounts, you use the DROP USER statement as follows:\r\n\r\n~~~\r\n DROP USER user, [user],...;\r\n~~~\r\n\r\nFor example to remove the user account `Clerk`:\r\n\r\n~~~\r\n drop user Clerk;\r\n~~~\r\n\r\n## Exercise\r\n\r\nFor these exercises, load the *CAR_SALES* database and remember to enter the command:\r\n\r\n~~~\r\nUSE CAR_SALES;\r\n~~~\r\n\r\nTo do:\r\n\r\n1.\tCreate a user called `Management`.\r\n\r\n2. Grant all privileges on the CAR_SALES database to `Management` and apply the `with grant option`.\r\n\r\n3. Create a user called `Salesperson`.\r\n\r\n4. Grant the `SELECT` privilege on all tables to `Salesperson`.\r\n\r\n5. Grant the `UPDATE` privilge on the `COST` column in the `CAR` table to `Salesperson`.\r\n\r\n\r\n"
+    },
+  
+    {
+    "title": "#Logging in as a different user",
+    "shortTitle": "10",
+    "contentMd" : "#Logging in as a different user\r\n\r\nSo far when using MySQL workbench we have always logged in as the root user.  Thus we all had total access to all our tables. We will now create a new connection for a different user.  Thus we will maintain a number of connections to the same database but depending on whom you are logged in as, you will have different access to the database.    \r\n\r\nIn the home tab (click the little house), click on the plus symbol shown below, to create a `New Connection`. A new screen appears asking you to \r\ndefine certain parameters for your new connection.\r\n\r\n![](img/home.png)\r\n\r\nIn the new connection screen, give the connection a name `Management`.  Leave the hostname and port as they are (127.0.0.1 is the same as saying `localhost`).  \r\nIn the username box, type `Manager`.  In the password field, click store in vault and enter the Manager's password in the box that appears. Password is `boss`.\r\n\r\n![](img/connection.png)\r\n\r\nNow that you have created the connection, you can double-click on the Management connection in the list to log in and interact with the database as this user called Manager.  In order to check who you are logged on as just check the tab highlighted. \r\n\r\n![](img/log.png)"
+    },
+  
+    {
+    "title": "# Solutions",
+    "shortTitle": "Solutions",
+    "contentMd" : "# Solutions\r\n\r\nSolutions for the exercises in this lab are available here: [Week8.zip](./archives/Week8.zip)\r\n"
+    }
+  
+  ]
+  }
+

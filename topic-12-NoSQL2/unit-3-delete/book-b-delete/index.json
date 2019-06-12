@@ -1,0 +1,53 @@
+
+
+
+  {
+  
+  
+    "properties" : {},
+  
+  "type" : "lab",
+  "title" : "Delete",
+  "img" : "img/main.png",
+  "videoid" : "none",
+  "objectives" : "<p>In this lab, we examine the MongoDB methods using for deleting documents from a collection.</p>",
+  "folder" : "book-b-delete",
+  "link" : "index.html",
+  "los": [
+   ]
+,
+  "chapters" : [
+  
+    {
+    "title": "# Delete",
+    "shortTitle": "Delete",
+    "contentMd" : "# Delete\r\n\r\nIn this lab, we examine the MongoDB methods using for deleting documents from a collection.\r\n"
+    },
+  
+    {
+    "title": "# db.collection.remove()",
+    "shortTitle": "01",
+    "contentMd" : "# db.collection.remove()\r\n\r\nRemoves documents from a collection. The remove() method can take a query document and an optional justOne boolean:\r\n\r\n~~~\r\ndb.collection.remove(\r\n   <query>,\r\n   <justOne>\r\n)\r\n~~~\r\n\r\n##  remove() example\r\n\r\nThe following example removes all documents in a collection. The remove method is called with an empty query document {}. The following operation deletes all documents from the bios collection:\r\n\r\n~~~\r\ndb.bios.remove( { } )\r\n~~~\r\n\r\nThis operation is not equivalent to the drop() method.\r\n\r\n\r\n## drop() example\r\n\r\nTo remove all documents from a collection, it may be more efficient to use the drop() method to drop the entire collection, including the indexes, and then recreate the collection and rebuild the indexes.\r\n\r\nThe following operation drops the students collection in the current database.\r\n\r\n~~~\r\ndb.students.drop()\r\n~~~\r\n"
+    },
+  
+    {
+    "title": "# Setting conditions and options",
+    "shortTitle": "02",
+    "contentMd" : "# Setting conditions and options\r\n\r\n## Remove All Documents that Match a Condition\r\n\r\nTo remove the documents that match a deletion criteria, call the remove() method with the <query> parameter. The following operation removes all the documents from the collection products where qty is greater than 20:\r\n\r\n~~~\r\ndb.products.remove( { qty: { $gt: 20 } } )\r\n~~~\r\n\r\nAll of the operators covered in the find() section can also be used in the remove query (gt, lt, eq, in, etc.)\r\n\r\n\r\n## Remove a Single Document that Matches a Condition\r\n\r\nTo remove the first document that matches a deletion criteria, call the remove method with the query criteria and the justOne parameter set to true or 1.\r\n\r\nThe following operation removes **only** the first document from the collection products where qty is greater than 20:\r\n\r\n~~~\r\ndb.products.remove( { qty: { $gt: 20 } }, true )\r\n~~~\r\n"
+    },
+  
+    {
+    "title": "# Exercises",
+    "shortTitle": "Exercises",
+    "contentMd" : "# Exercises\r\n\r\nPerform the following deletes on your grades collection.\r\n\r\n1. Remove the document that relates to student 9 and class 15.\r\n2. Remove all of the documents belonging to student 19.\r\n3. Use a find() query to show all documents with an exam score of less than or equal to 5. Then, use remove() to delete the first of these documents (hint: you need to set the justOne option).\r\n\r\n\r\n## Further reading\r\n\r\n- Examine the deleteOne() and deleteMany() methods in the MongoDB reference:\r\n\r\n  - <a href=\"https://docs.mongodb.com/manual/reference/method/db.collection.deleteOne/\" target=\"_ blank\">db.collection.deleteOne()</a>\r\n  - <a href=\"https://docs.mongodb.com/manual/reference/method/db.collection.deleteMany/\" target=\"_ blank\">db.collection.deleteMany()</a>\r\n\r\n\r\n- Use deleteOne() to delete a single document from the grades collection.\r\n- Use deleteMany() to delete multiple documents.\r\n- Use find() after your deletes to confirm that the documents have been removed.\r\n"
+    },
+  
+    {
+    "title": "# Solutions",
+    "shortTitle": "Solutions",
+    "contentMd" : "# Solutions\r\n\r\nSolutions for the exercises in this lab are available here: [delete_solutions.zip](./archives/delete_solutions.zip)\r\n"
+    }
+  
+  ]
+  }
+

@@ -1,0 +1,71 @@
+
+
+
+  {
+  
+  
+    "properties" : {},
+  
+  "type" : "lab",
+  "title" : "SQL 2",
+  "img" : "img/main.png",
+  "videoid" : "none",
+  "objectives" : "<p>In this lab we will learn about Aggregate Functions.</p>",
+  "folder" : "book-a",
+  "link" : "index.html",
+  "los": [
+   ]
+,
+  "chapters" : [
+  
+    {
+    "title": "#Objectives",
+    "shortTitle": "SQL 2",
+    "contentMd" : "#Objectives\r\n\r\nIn this lab we will learn about Aggregate Functions.\r\n\r\n- Use Aggregate Functions\r\n- Use GROUP BY and HAVING clauses with aggregate functions\r\n"
+    },
+  
+    {
+    "title": "#Aggregate Functions",
+    "shortTitle": "01",
+    "contentMd" : "#Aggregate Functions\r\n<style>\r\ntable.mine {\r\n    border-collapse:collapse;\r\n    border: 1px solid black;\r\n    width:30%;\r\n}\r\n\r\ntd.mine2 {\r\n    border: 1px solid black;\r\n    padding: 0.2em;\r\n}\r\n</style>\r\n\r\nSQL provides aggregate functions to help with the summarisation of large volumes of data. The functions can produce a **single** value for an entire group or table.\r\nThe functions operate on sets of rows and return results based on groups of rows.\r\n\r\n<table class=\"mine\">\r\n<tr><td class = \"mine2\">MIN</td><td class = \"mine2\">returns the smallest value in a given column</td></tr>\r\n<tr><td class = \"mine2\">MAX</td><td class = \"mine2\">returns the largest value in a given column</td></tr>\r\n<tr><td class = \"mine2\">SUM</td><td class = \"mine2\">returns the sum of the numeric values in a given column</td></tr>\r\n<tr><td class = \"mine2\">AVG</td><td class = \"mine2\">returns the average value of a given column</td></tr>\r\n<tr><td class = \"mine2\">COUNT</td><td class = \"mine2\">returns the total number of values in a given column</td></tr>\r\n</table>\r\n\r\n## Examples\r\nReturn the number of rows in the book table:\r\n\r\n~~~\r\nSELECT COUNT(*) \r\nFROM book;\r\n~~~\r\n\r\nReturn the number of student records:\r\n\r\n~~~\r\nSELECT COUNT(*) \r\nFROM student;\r\n~~~\r\n\r\nReturn the number of bookcopies where the ISBN is equal to 123675432:\r\n\r\n~~~\r\nSELECT COUNT(copyId) as 'JavaScript Book Count' \r\nFROM bookcopy \r\nWHERE isbn = '123675432';\r\n~~~"
+    },
+  
+    {
+    "title": "#Exercises",
+    "shortTitle": "02",
+    "contentMd" : "#Exercises\r\n\r\n1. Return the number of students from Waterford. Label the returned value appropriately.\r\n\r\n   ![](img/ans1.png)\r\n2. Return the number of books that contain the term Database in the title. Label the returned value appropriately.\r\n\r\n   ![](img/ans2.png)\r\n\r\n3. Return the maximum book price. Label the returned value appropriately.\r\n\r\n   ![](img/ans3.png)\r\n4. Return the minimum book price. Label the returned value appropriately.\r\n\r\n   ![](img/ans4.png)\r\n5. Return the average book price. Label the returned value appropriately.\r\n\r\n   ![](img/ans5.png)\r\n   \r\n6. Return the number of different counties that students come from. \r\n\r\n   ![](img/ans6.png)"
+    },
+  
+    {
+    "title": "# Rounding",
+    "shortTitle": "03",
+    "contentMd" : "# Rounding\r\n\r\nTo round a numeric value to a whole number (or to 2 decimal places for example), use *round*.\r\n\r\n##Examples\r\n\r\nRound 34.6792 to a whole number (35).\r\n~~~\r\nround(34.6792);\r\n~~~\r\n\r\nRound 34.6792 to 2 decimal places (34.68).\r\n~~~\r\nround(34.6792,2);\r\n~~~\r\n\r\n## Exercise\r\n\r\n1. Return the average book price rounded to 2 decimal places. Label the returned value appropriately.\r\n\r\n   ![](img/ans7.png)"
+    },
+  
+    {
+    "title": "# GROUP BY",
+    "shortTitle": "04",
+    "contentMd" : "# GROUP BY\r\n\r\nThe *GROUP BY* clause groups a result into subsets that have matching values for one or more columns. The GROUP BY clause will gather all of the rows \r\ntogether that contain data in the specified column(s) and will allow aggregate functions to be performed on the one or more columns.\r\n\r\n##Example\r\n\r\nThe following example returns the number of students grouped by (per) county.\r\n~~~\r\nSELECT county, COUNT(*) \r\nFROM student \r\nGROUP BY county;\r\n~~~\r\n\r\nThis will return one computed value for each different value of county.  In the select statement, the attribute used in the GROUP BY clause must be one of the attributes returned.\r\n\r\n## Exercises\r\n\r\n1.  Return the number of bookcopies. Label the returned value appropriately.\r\n\r\n   ![](img/ans8.png)\r\n   \r\n2.  Count the number of bookcopies by ISBN. Rename the count column as Number of Copies of each Book. \r\n   ![](img/ans9.png)\r\n   \r\n3.  Count the number of books per book category. Again, rename the count column. \r\n\r\n   ![](img/ans10.png)\r\n   \r\n4. Return the minimum and maximum priced book for each publisher. Again, rename the calculated columns.\r\n\r\n   ![](img/ans11.png)"
+    },
+  
+    {
+    "title": "# HAVING",
+    "shortTitle": "05",
+    "contentMd" : "# HAVING\r\n\r\nIn order to restrict rows returned with aggregate functions, you must use a *HAVING* clause. Essentially it is a WHERE clause for aggregate functions.\r\n\r\n~~~\r\nSELECT county, COUNT(*) \r\nFROM student \r\nGROUP BY county \r\nHAVING COUNT(*) >= 5;\r\n~~~\r\n\r\n## Exercises\r\n\r\n1. Using the solution to Number 3 (on the previous page); return records for categories that only have 3 or more books.\r\n\r\n   ![](img/ans12.png)\r\n   \r\n2. Using the solution to Number 4 (on the previous page); return records where the maximum priced book is >=60.00.\r\n\r\n   ![](img/ans13.png)"
+    },
+  
+    {
+    "title": "#Exercise",
+    "shortTitle": "Movies Exercise",
+    "contentMd" : "#Exercise\r\n\r\n- Download and open the [Movies](archives/Movies.zip) script (as an SQL file). \r\n- The *Movies* database has 3 tables: *film*, *reviewer*, and *rating*.\r\n- Open the SQL script in MySQL Workbench.\r\n- Open a new tab and save it as Review Exercise. Enter (and execute) the following commands:\r\n\r\n~~~\r\nUSE MOVIES; /*Select the Movies database*/\r\n~~~\r\n\r\n~~~\r\nSHOW TABLES; /*List all the tables*/\r\n~~~\r\n\r\nTo do:\r\n\r\n1.\tDescribe each table.\r\n\r\n2.\tFind the titles of all films directed by Steven Spielberg.\r\n\r\n3.\tReturn the title and year of all films produced from 1940 to 1990. Sort by title.\r\n\r\n4.\tReturn the title and length of all films whose length is 110 minutes or more. Sort by title.\r\n\r\n5.\tReturn the title and director of all films where the director`'`s surname begins with C.\r\n\r\n6.\tReturn the number of stars, film Id (output as Film Id), and ratingdate of all movie ratings where the rating given is 4 or 5. Sort the output in descending order of the stars and then in ascending order of movie id.\r\n\r\n7.\tSome reviewers didn`'`t provide a date with their rating. Find the rID of all reviewers who have ratings with a NULL value for the date.\r\n\r\n8.\tReturn the number of films. Label the returned column Number of Films.\r\n\r\n9.\tReturn the number of reviewers. Label the returned column Number of Reviewers.\r\n\r\n10.\tReturn the number of ratings. Label the returned column Number of Ratings Provided.\r\n\r\n11.\tReturn the number of films per director. Label the returned column for the calculation - Number of Films.\r\n\r\n12.\tReturn the number of ratings left by each reviewer. Label the returned column for the calculation - Number of Reviews (per Reviewer).\r\n\r\n13.\tReturn the average number of film minutes per director. Label the returned column for the calculation `-` Average Number of Minutes per Film. The returned value is to be output as a whole number (no decimal places). \r\n\r\n\r\n\r\n\r\n"
+    },
+  
+    {
+    "title": "# Solutions",
+    "shortTitle": "Solutions",
+    "contentMd" : "# Solutions\r\n\r\nSolutions for the exercises in this lab are available here: [Week2.zip](./archives/Week2.zip)\r\n"
+    }
+  
+  ]
+  }
+

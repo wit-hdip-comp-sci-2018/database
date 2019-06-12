@@ -1,0 +1,95 @@
+
+
+
+  {
+  
+  
+    "properties" : {},
+  
+  "type" : "lab",
+  "title" : "Lab-01 SQL 7",
+  "img" : "img/main.png",
+  "videoid" : "none",
+  "objectives" : "<p>In this lab, we will look at Sub Queries and Views.</p>",
+  "folder" : "book-a",
+  "link" : "index.html",
+  "los": [
+   ]
+,
+  "chapters" : [
+  
+    {
+    "title": "#Objectives",
+    "shortTitle": "Lab-01 SQL 7",
+    "contentMd" : "#Objectives\r\n\r\nIn this lab, we will look at Sub Queries and Views.\r\n\r\n\r\n\r\n\r\n"
+    },
+  
+    {
+    "title": "# Subqueries",
+    "shortTitle": "01",
+    "contentMd" : "# Subqueries\r\n\r\nA **subquery** is where we have a complete SELECT statement embedded within another SELECT statement. The results of this *inner* SELECT statement (or *subselect*) are used\r\nin the *outer* statement to help determine the contents of the final result.\r\n\r\nA *subquery* can be used in the WHERE and HAVING clauses of an outer SELECT statement.\r\n\r\n"
+    },
+  
+    {
+    "title": "#Using a subquery with equality",
+    "shortTitle": "02",
+    "contentMd" : "#Using a subquery with equality\r\n\r\n*List the bookcopy Ids for the book with title `JavaScript`.*\r\n~~~\r\nSELECT copyId \r\nFROM bookcopy \r\nWHERE isbn = \r\n  (SELECT isbn \r\n   FROM book \r\n   WHERE title ='JavaScript');\r\n~~~\r\n\r\nThe inner SELECT statement finds the ISBN that corresponds to the book with title `JavaScript`. Having obtained this ISBN, the outer SELECCT statement\r\nthen retrieves the copyIds for the book. In other words, the inner SELECT returns a result table containing a single value `123675432`. The outer SELECT becomes:\r\n\r\n~~~\r\nSELECT copyId \r\nFROM bookcopy \r\nWHERE isbn = '123675432';\r\n~~~\r\n\r\nIf we want to count the copyIds rather than display them, we could modify the above as follows:\r\n\r\n~~~\r\nSELECT count(copyId) as 'Number of copies' \r\nFROM bookcopy \r\nWHERE isbn = \r\n  (SELECT isbn \r\n   FROM book \r\n   WHERE title ='JavaScript');\r\n~~~\r\n\r\n##Exercise\r\n\r\n1. Using a subquery, return the number of books out on loan for student (20038967).\r\n\r\n   ![](img/ans1.png)"
+    },
+  
+    {
+    "title": "# Using a subquery with an aggregate function",
+    "shortTitle": "03",
+    "contentMd" : "# Using a subquery with an aggregate function\r\n\r\n##Example One\r\n\r\n*List the title and price for the most expensive book.*\r\n\r\n~~~\r\nSELECT title, price \r\nFROM book \r\nWHERE price = \r\n  (SELECT max(price) \r\n   FROM book);\r\n~~~\r\n\r\nThe inner SELECT returns the maximum priced book price and then this value is used in the WHERE clause (WHERE price =  ).\r\n\r\n##Example Two\r\n\r\n*List the title and price of any book that has the same price as the JavaScript book.*\r\n\r\n~~~\r\nSELECT title, price \r\nFROM book \r\nWHERE price = \r\n  (SELECT  price\r\n   FROM book\r\n   WHERE title = 'JavaScript');\r\n~~~\r\n\r\n##Exercise\r\n\r\n1. Using a subquery, return the title and price of the least expensive book.\r\n\r\n   ![](img/ans2.png)\r\n\r\n2. Using a subquery, return the title and price of all books whose price is greater than the average book price.\r\n\r\n   ![](img/ans3.png)\r\n   \r\n3. Using a subquery, return the title and price difference of all books whose price is greater than the average book price. \r\n   \r\n   **Hint:** Round the average price when calculating the price difference.\r\n\r\n   ![](img/ans4.png)\r\n   \r\n"
+    },
+  
+    {
+    "title": "# Use of IN",
+    "shortTitle": "04",
+    "contentMd" : "# Use of IN\r\n\r\n*List the students (by Name), who have a loan (studentId value in the Loan table).*\r\n\r\n~~~\r\nSELECT concat(fname, ' ', lname) as Name \r\nFROM student \r\nWHERE studentid IN \r\n  (SELECT studentId \r\n   FROM loan);\r\n~~~\r\n\r\nThe inner SELECT will return more than one record (row), and so we cannot use the equality condition in the outer query. Instead we use the IN keyword.\r\n\r\n##Exercise\r\n\r\n1. Using a subquery, return the authors by name who have a book in our library.\r\n\r\n   ![](img/ans5.png)\r\n   \r\n2. Using a subquery, return the authors by name who do not have a book in our library.\r\n\r\n   ![](img/ans6.png)\r\n"
+    },
+  
+    {
+    "title": "# Use of ANY and ALL",
+    "shortTitle": "05",
+    "contentMd" : "# Use of ANY and ALL\r\n\r\n\r\nThe keywords ANY and ALL may be used with subqueries that produce a single column of numbers. \r\n\r\n##ALL\r\nIf the subquery is preceded by the keyword ALL, the condition will be true only if it is satisfied by all values produced by the subquery.\r\n\r\n###Example One\r\n*List the title and price of the book whose price is greater than or equal to the price of all books (i.e. the most expensive book).* \r\n\r\n~~~\r\nSELECT title, price \r\nFROM book \r\nWHERE price >= ALL \r\n                  (SELECT price \r\n                   FROM book);\r\n~~~\r\n\r\n###Example Two\r\n*List all book titles whose price is greater than the price all Computing books.*\r\n\r\n~~~\r\nSELECT title, category, price\r\nFROM book \r\nWHERE price > ALL \r\n                  (SELECT price \r\n                   FROM book\r\n                   WHERE category = 'Computing');\r\n~~~\r\n\r\n##ANY\r\nIf the subquery is preceded by the keyword ANY, the condition will be true if it is satisfied by any (one or more) values produced by the subquery. \r\n\r\n*List all book titles whose price is greater than the price of at least one Computing book.*\r\n\r\n~~~\r\nSELECT title, category, price\r\nFROM book \r\nWHERE price > ANY \r\n                  (SELECT price \r\n                   FROM book\r\n                   WHERE category = 'Computing');\r\n~~~        "
+    },
+  
+    {
+    "title": "# Views",
+    "shortTitle": "06",
+    "contentMd" : "# Views\r\n\r\n## What is a View\r\n\r\n>A view is the dynamic result of querying a base relation(table) to produce another relation (result-set). A view is a *virtual relation* that does not \r\nnecessarily exist in the database but can be produced upon request by a particular user, at the time of request.\r\n\r\nTo the user, a view appears just like a real table, with a set of named columns and rows of data. However, unlike a base table, a view does not necessarily exist in the database as a stored set of data \r\nvalues. Instead, a view is defined as a query on one or more base tables or views. The DBMS stores the definition of the view in the database. When the DBMS encounters a reference to\r\na view, one approach is to look up this definition and translate the request into an equivalent request against the source tables of the view and perform the \r\nequivalent request. "
+    },
+  
+    {
+    "title": "# Creating a View",
+    "shortTitle": "07",
+    "contentMd" : "# Creating a View\r\n\r\nThe format of the CREATE VIEW statement is:\r\n\r\n~~~\r\nCREATE [OR REPLACE] VIEW ViewName [(newColumnName[,...])]\r\n AS subselect [WITH [CASCADED|LOCAL] CHECK OPTION]\r\n~~~\r\n\r\n## Creating MySQL view example\r\n\r\nThe following simple VIEW selects a subset of fields from the Student table for all year 1 students:\r\n\r\n~~~\r\nCREATE OR REPLACE VIEW year1students AS\r\n    SELECT studentid, fname, lname,  street, town, county, year\r\n    FROM student\r\n    WHERE year = 1;\r\n~~~\r\n     \r\nIf you use the `SHOW TABLES` command to view all tables in the `library` database, we also see the year1students view is showing up in the list.\r\n\r\n![](img/tables.png)\r\n\r\nThis is because the views and tables share the same namespace. To know which object is view or table, you use the `SHOW FULL TABLES` command.\r\n\r\n![](img/fulltables.png)\r\n\r\nIf we want to query the year1students view, you just need to execute a simple SELECT statement against the year1student view as follows:\r\n\r\n~~~\r\n SELECT * FROM year1students;\r\n~~~\r\n\r\nYour view can be based on any type of SELECT, for example using joins, subqueries or the view can be based on another view.\r\n\r\n~~~\r\nCREATE VIEW overduedetails AS\r\n   SELECT concat(fname,' ',lname)  Name, title, dateOut           \r\n   FROM bookcopy JOIN book  \r\n   ON  bookcopy.isbn = book.isbn    \r\n   JOIN loan         \r\n   ON bookcopy.copyId = loan.copyId \r\n   JOIN student   \r\n   ON student.studentId = loan.studentId\r\n   WHERE dateBack IS NULL;\r\n~~~\r\n\r\n## Exercise\r\n\r\nFor this exercise, load the *movies* database and remember to enter the command:\r\n\r\n~~~\r\nUSE MOVIES;\r\n~~~\r\n\r\n1. Create a view called `FilmReviewDetails`, which returns the film title, released year, reviewer name, and number of stars for all films reviewed.\t\r\n"
+    },
+  
+    {
+    "title": "# Managing Views",
+    "shortTitle": "08",
+    "contentMd" : "# Managing Views\r\n\r\n##Showing view definition\r\n\r\nMySQL provides the `SHOW CREATE VIEW` statement that displays the view's definition.\r\n\r\nFor example:\r\n\r\n~~~\r\n SHOW CREATE VIEW overduedetails;\r\n~~~\r\n\r\n#Modifying Views\r\n\r\n###Modifying view using CREATE OR REPLACE VIEW statement\r\n\r\nYou can use `CREATE OR REPLACE VIEW` statement to either create or replace an existing view. If a view already exists, MySQL simply modifies the view. \r\nIn case the view does not exist, MySQL creates a new view.\r\n\r\n~~~\r\nCREATE OR REPLACE view year1students AS\r\n    SELECT studentid, fname, lname,  street, town, county, year\r\n    FROM student\r\n    WHERE year = 1\r\n    AND county = 'Waterford';\r\n~~~\r\n\r\n###Modifying views using ALTER VIEW statement\r\n\r\nOnce a view is created, you can modify it using the `ALTER VIEW` statement.\r\n\r\nThe syntax of the ALTER VIEW statement is similar to the CREATE VIEW statement except that the CREATE keyword is replaced by the ALTER keyword.\r\n\r\n~~~\r\nALTER VIEW year1students AS\r\n    SELECT studentid, fname, lname,  street, town, county, year\r\n    FROM student\r\n    WHERE year = 1\r\n    AND county = 'Waterford';\r\n~~~\r\n\r\n#Removing views\r\nOnce a view created, you can remove it using the `DROP VIEW` statement. The following illustrates the syntax of the DROP VIEW statement:\r\n\r\nFor example:\r\n\r\n~~~\r\n DROP VIEW year1students;\r\n~~~"
+    },
+  
+    {
+    "title": "# MySQL updatable views",
+    "shortTitle": "09",
+    "contentMd" : "# MySQL updatable views\r\n\r\nIn MySQL, views are not only query-able but also updatable. It means that you can use the `INSERT` or `UPDATE` statement to insert or update rows of the \r\nbase table through the updatable view. In addition, you can use `DELETE` statement to remove rows of the underlying table through the view.\r\n\r\nHowever, to create an updatable view, the SELECT statement that defines the view must not contain any of the following elements:\r\n\r\n- Aggregate functions such as MIN, MAX, SUM, AVG, COUNT, etc.\r\n- DISTINCT\r\n- GROUP BY clause.\r\n- HAVING clause.\r\n- Outer join.\r\n- Subquery in the SELECT clause or in the WHERE clause that refers to the table appeared in the FROM clause.\r\n\r\n\r\n## Updating rows through the view\r\n\r\nLet's create an updatable view.\r\n\r\n~~~\r\n CREATE OR REPLACE view pricedetails AS \r\n SELECT isbn, title, category, price \r\n FROM book\r\n WHERE category = 'computing';\r\n~~~\r\n\r\nNext, we can query data from the `pricedetails` view using the following statement:\r\n\r\n~~~\r\n SELECT * FROM pricedetails;\r\n~~~\r\n\r\nWe can update the price of one, some or all of these books using the `UPDATE` statement.\r\n\r\nFor example, update the price by 10%:\r\n\r\n~~~\r\n UPDATE pricedetails\r\n SET price = price * 1.10;\r\n~~~\r\n\r\nNext, we can check whether the prices have increased:\r\n\r\n~~~\r\n SELECT * FROM pricedetails;\r\n~~~\r\n\r\nYou can also confirm the price change by querying the base table:\r\n\r\n~~~\r\n SELECT * FROM  book;\r\n~~~\r\n\r\n##Checking updatable view information\r\n\r\nYou can check if a view in a database in updatable by querying the **is_updatable** column from the views table in the **information_schema** database.\r\n\r\nThe following query gets all views from the *library* database and shows which views are updatable.\r\n\r\n~~~\r\n SELECT table_name, is_updatable\r\n FROM information_schema.views\r\n WHERE table_schema = 'library';\r\n~~~\r\n\r\n![](img/views.png)\r\n\r\n## Removing rows through the view\r\n\r\nFirst, we create a table named `journal`, insert some rows into the `journal` table, and create a view that contains only scienific journals.\r\n\r\n~~~\r\n CREATE TABLE journal (\r\n  ISSN varchar(15) not null,\r\n  title varchar(50) not null,\r\n  category varchar(30),\r\n  primary key (ISSN)\r\n ); -- create table\r\n\r\n INSERT INTO  journal \r\n VALUES ('9999-8888', 'Computer Bulletin', 'Science'), ('7861-9932', 'Academy of Management Journal', 'Business'), ('2314-7788', 'Irish Chemical News', 'Science');\r\n --insert new records\r\n \r\n CREATE OR REPLACE  view sciencejournals  AS\r\n  SELECT * from journal \r\n  WHERE category = 'Science'; -- create a view based on Science journals\r\n  \r\n SELECT * FROM sciencejournals; -- query the view\r\n~~~\r\n\r\nDelete one of the records from the view (issn: 9999-8888):\r\n\r\n~~~\r\n DELETE FROM sciencejournals  \r\n WHERE issn = '9999-8888';\r\n~~~\r\n\r\nNext, we can check whether the record is deleted:\r\n\r\n~~~\r\n SELECT * FROM sciencejournals;\r\n~~~\r\n\r\nYou can also confirm the record is gone from the base table:\r\n\r\n~~~\r\n SELECT * FROMjournal;\r\n~~~"
+    },
+  
+    {
+    "title": "#Introduction to WITH CHECK OPTION clause",
+    "shortTitle": "10",
+    "contentMd" : "#Introduction to WITH CHECK OPTION clause\r\n\r\nSometimes, you create a view to reveal the partial data of a table only. However, a simple view is updatable therefore it is possible to update data \r\nwhich is not visible through the view. This update makes the view inconsistent. To ensure the consistency of the view, \r\nyou use the `WITH CHECK OPTION` clause when you create or modify the view.\r\n\r\nThe `WITH CHECK OPTION` clause is an optional part of the CREATE VIEW statement. The WITH CHECK OPTION clause prevents you from updating or inserting \r\nrows that are not visible through the view. In other words, whenever you update or insert a row of the base table through a view, \r\nMySQL ensures that the insert or update operation is conformed with the definition of the view.\r\n\r\nThe following illustrates the syntax of the WITH CHECK OPTION clause.\r\n\r\n~~~\r\nCREATE OR REPLACE VIEW view_name \r\nAS\r\n  select_statement\r\n  WITH CHECK OPTION;\r\n~~~\r\n\r\nNotice that you put the semicolon (;) at the end of the WITH CHECK OPTION clause, not at the end of the SELECT statement defined the view.\r\n\r\nWe will now look at an existing view and see how an update makes the view inconsistent and we will then modify the view.\r\n\r\nOur original `year1students` view is defined as follows:\r\n\r\n~~~\r\nCREATE OR REPLACE VIEW year1students AS\r\n    SELECT studentid, fname, lname,  street, town, county, year\r\n    FROM student\r\n    WHERE year = 1;\r\n~~~\r\n\r\nNow, we insert a row into the student table through the `year1students` view as follows:\r\n\r\n~~~\r\n INSERT INTO year1students VALUES \r\n('20081336', 'Sam', 'Brown',  'Tintine', 'The Rower', 'Kilkenny',2);\r\n~~~\r\n\r\nNotice that the newly created student is not visible through the `year1students` view because his year is 2, which is not 1. \r\nYou can verify that the record has been inserted by using the following SELECT statement.\r\n\r\n~~~\r\n SELECT * FROM student;\r\n~~~\r\n\r\nTo ensure the consistency of a view so that users only can display or update data that visible through the view, you use the `WITH CHECK OPTION`\r\nwhen you create or modify the view.\r\n\r\nLet's modify the view to include the WITH CHECK OPTION.\r\n\r\n~~~\r\nCREATE OR REPLACE VIEW year1students AS\r\n    SELECT studentid, fname, lname,  street, town, county, year\r\n    FROM student\r\n    WHERE year = 1\r\n    WITH CHECK OPTION;\r\n~~~\r\n\r\nNow, we insert a row into the student table through the `year1students` view as follows:\r\n\r\n~~~\r\n INSERT INTO year1students VALUES \r\n('20091010', 'Phil', 'Smith',  'Rose Inn', 'Dungarvan', 'Waterford',3);\r\n~~~\r\n\r\nThis time, MySQL rejects the insert and issues the following error message:\r\n\r\n![](img/error.png)\r\n\r\nFinally, we insert a student whose year is 1 into the student table through the `year1students` view to see if MySQL allows us to do it.\r\n\r\n~~~\r\n  INSERT INTO year1students VALUES  \r\n('20091010', 'Phil', 'Smith',  'Rose Inn', 'Dungarvan', 'Waterford',1);\r\n~~~\r\n\r\nThis time there is no error, you can check it by entering the command:\r\n\r\n~~~\r\n SELECT * FROM year1students;\r\n~~~\r\n\r\n## Exercise\r\n\r\nFor this exercise, load the *movies* database and remember to enter the command:\r\n\r\n~~~\r\nUSE MOVIES;\r\n~~~\r\n\r\n1. Create a view called `modernfilms` which returns the film id, title, released year and director for all films released since 1980.\r\n2. Try to insert the following records:\r\n\r\n~~~\r\n INSERT INTO modernfilms VALUES (109, 'The Kings Speech', 2010, 'Tom Hooper');\r\n INSERT INTO modernfilms VALUES (110, 'Lawrence of Arabia', 1962, 'David Lean');\r\n~~~\r\n**Note:** The second record should not be accepted by MySQL."
+    },
+  
+    {
+    "title": "# Solutions",
+    "shortTitle": "Solutions",
+    "contentMd" : "# Solutions\r\n\r\nSolutions for the exercises in this lab are available here: [Week7.zip](./archives/Week7.zip)\r\n"
+    }
+  
+  ]
+  }
+

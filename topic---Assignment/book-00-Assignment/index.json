@@ -1,0 +1,41 @@
+
+
+
+  {
+  
+  
+    "properties" : {},
+  
+  "type" : "lab",
+  "title" : "Assignment",
+  "img" : "img/main.png",
+  "videoid" : "none",
+  "objectives" : "<p>As your continuous assessment for this module, you are required to design and develop a database using MySQL.</p>",
+  "folder" : "book-00-Assignment",
+  "link" : "index.html",
+  "los": [
+   ]
+,
+  "chapters" : [
+  
+    {
+    "title": "# Continuous Assessment",
+    "shortTitle": "Assignment",
+    "contentMd" : "# Continuous Assessment\r\n\r\nAs your continuous assessment for this module, you are required to design and develop a database using MySQL.\r\n\r\nThere are two project deliverables:\r\n\r\n1.\tDesign Document (25%): due Friday 30th August\r\n2.\tMySQL Implementation (25%): due Friday 30th August\r\n"
+    },
+  
+    {
+    "title": "# Design Document (25%)",
+    "shortTitle": "Design",
+    "contentMd" : "# Design Document (25%)\r\n\r\nThis document serves as the design and implementation plan for the database. It is at this stage that the database should be modelled and associated documentation should be developed. This report should have the following structure:   \r\n\r\n1.\t**Title Page**: This should contain the name of the report, student number and student name, date and module.\r\n\r\n2.\t**Table of Contents**: This should include major sections and page numbers.\r\n\r\n3.\t**Business Description**: The business description should include a description of the business, along with its major functions. The benefits of implementing a database for the chosen business should be highlighted.\r\n\r\n4.\t**Enhanced ER diagram**: The data model should be sufficiently complex, including different types of relationships/associations (e.g. 1:1, 1:M, M:M and recursive relationships, used where relevant) and at least one example of a supertype/subtype relationship.\r\n\r\n5.\t**Normalised Tables (3NF sufficient)**: You should list the tables that will be created from the EER diagram above. Remember to include all the appropriate foreign keys and tables created by association entities.\r\n\r\n6.\t**Table Design**: This is a detailed description of each table. It should incorporate the data shown in the sample below. This section should also identify the relevant integrity constraints and keys required for database table. It would be advisable to indicate where the use of indexes would be appropriate. You should justify your choice of index. Remember to fill in all columns for all fields.\r\n\r\n## Sample table specification\r\n\r\nTable name: Student\r\n\r\n<table style=\"width:80%;\">\r\n  <tr>\r\n    <th style=\"border: black solid 1px; width: 10%\">Field</th>\r\n    <th style=\"border: black solid 1px; width: 10%\">Type</th>\r\n    <th style=\"border: black solid 1px; width: 10%\">Size</th>\r\n    <th style=\"border: black solid 1px; width: 15%\">Null/Not Null</th>\r\n    <th style=\"border: black solid 1px; width: 10%\">Default</th>\r\n    <th style=\"border: black solid 1px; width: 15%\">Constraints</th>\r\n    <th style=\"border: black solid 1px; width: 10%\">Index</th>\r\n    <th style=\"border: black solid 1px; width: 20%\">Description</th>\r\n  </tr>\r\n  <tr>\r\n    <td style=\"border: black solid 1px;\">StdNo</td>\r\n    <td style=\"border: black solid 1px;\">char</td>\r\n    <td style=\"border: black solid 1px;\">8</td>\r\n    <td style=\"border: black solid 1px;\">Not Null</td>\r\n    <td style=\"border: black solid 1px;\"></td>\r\n    <td style=\"border: black solid 1px;\">Unique</td>\r\n    <td style=\"border: black solid 1px;\">PK</td>\r\n    <td style=\"border: black solid 1px;\">Unique student number</td>\r\n  </tr>\r\n  <tr>\r\n    <td style=\"border: black solid 1px;\">Name</td>\r\n    <td style=\"border: black solid 1px;\">char</td>\r\n    <td style=\"border: black solid 1px;\">20</td>\r\n    <td style=\"border: black solid 1px;\"></td>\r\n    <td style=\"border: black solid 1px;\"></td>\r\n    <td style=\"border: black solid 1px;\"></td>\r\n    <td style=\"border: black solid 1px;\"></td>\r\n    <td style=\"border: black solid 1px;\">Surname followed by first name</td>\r\n  </tr>\r\n  <tr>\r\n    <td style=\"border: black solid 1px;\">Address</td>\r\n    <td style=\"border: black solid 1px;\">char</td>\r\n    <td style=\"border: black solid 1px;\">100</td>\r\n    <td style=\"border: black solid 1px;\"></td>\r\n    <td style=\"border: black solid 1px;\"></td>\r\n    <td style=\"border: black solid 1px;\"></td>\r\n    <td style=\"border: black solid 1px;\"></td>\r\n    <td style=\"border: black solid 1px;\">College address</td>\r\n  </tr>\r\n  <tr>\r\n    <td style=\"border: black solid 1px;\">Mature</td>\r\n    <td style=\"border: black solid 1px;\">char</td>\r\n    <td style=\"border: black solid 1px;\">1</td>\r\n    <td style=\"border: black solid 1px;\"></td>\r\n    <td style=\"border: black solid 1px;\">N</td>\r\n    <td style=\"border: black solid 1px;\">Y or N</td>\r\n    <td style=\"border: black solid 1px;\"></td>\r\n    <td style=\"border: black solid 1px;\">Yes if student is greater than 24 years old in year 1.</td>\r\n  </tr>\r\n</table>\r\n\r\n## Submitting your assignment\r\n\r\nThe design document should be submitted in an electronic format through Moodle by Friday 30th August.\r\n"
+    },
+  
+    {
+    "title": "# SQL Implementation (25%)",
+    "shortTitle": "Implementation",
+    "contentMd" : "# SQL Implementation (25%)\r\n\r\nIn this phase all previous documentation will be used in order to implement the actual database in the MySQL environment. \r\nThe student is expected to submit two SQL scripts:\r\n\r\n- One that creates the database, users and tables, grants appropriate privileges to the users and populates the tables with records; basically everything required to recreate the entire database on another computer.\r\n- Another script that contains the list of frequently used queries for the database.\r\n\r\nYou will also submit a brief report which documents:\r\n\r\n- The process you took to implement the database, any problems you encountered and how you solved them\r\n- An explanation of the frequently used queries\r\n- An explanation of the privileges granted to users\r\n\r\n## Submitting your assignment\r\n\r\nThe two SQL scripts and the report should be submitted in an electronic format through Moodle by Friday 30th August.\r\n"
+    }
+  
+  ]
+  }
+

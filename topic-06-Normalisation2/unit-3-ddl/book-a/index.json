@@ -1,0 +1,107 @@
+
+
+
+  {
+  
+  
+    "properties" : {},
+  
+  "type" : "lab",
+  "title" : "Lab-01 SQL 6",
+  "img" : "img/main.png",
+  "videoid" : "none",
+  "objectives" : "<p>In this lab, we will look at Data Definition.</p>",
+  "folder" : "book-a",
+  "link" : "index.html",
+  "los": [
+   ]
+,
+  "chapters" : [
+  
+    {
+    "title": "#Objectives",
+    "shortTitle": "Lab-01 SQL 6",
+    "contentMd" : "#Objectives\r\n\r\nIn this lab, we will look at Data Definition.\r\n\r\n-\tUse CREATE, ALTER and DROP statements.\r\n\r\n\r\n"
+    },
+  
+    {
+    "title": "# Data Defintion",
+    "shortTitle": "01",
+    "contentMd" : "# Data Defintion\r\n\r\nSo far we have performed **SELECT** statements on existing tables in the Library and Movie databases.  We have also executed **INSERT**, **UPDATE**, and **DELETE**\r\nstatements. \r\n\r\nThe above 4 statements are *DATA MANIPULATION* statements. \r\n\r\nWe are now going to create a new database and create tables within it.  The commands we will look at are *DATA DEFINITION*  commands (statements):\r\n\r\n-\tCREATE (database/table).\r\n-\tALTER (add, delete, modify table).\r\n-\tDROP (database/table).\r\n\r\n\r\n\r\n"
+    },
+  
+    {
+    "title": "#Creating a database",
+    "shortTitle": "02",
+    "contentMd" : "#Creating a database\r\n\r\nTo create a database (also known in MySQL as a schema) we can either of the following commands:  \r\n\r\n~~~\r\nCREATE DATABASE IF NOT EXISTS database_name;\r\n~~~\r\n\r\n~~~\r\nCREATE SCHEMA IF NOT EXISTS schema_name;\r\n~~~\r\n\r\nWhether we enter *CREATE DATABASE* or *CREATE SCHEMA* here, the result is the same. *CREATE SCHEMA* is a synonym for *CREATE DATABASE* as of MySQL 5.0.2.\r\n\r\nThe *IF NOT EXISTS* part of the statement is optional, and checks whether the database you are creating already exists.  If this is the case, \r\nMySQL will ignore the whole statement and it will not create any new object (database or schema or table).  The database name you choose must be `unique`\r\non your system.  \r\n\r\nTo drop a database, execute either of the following commands: \r\n\r\n~~~\r\nDROP DATABASE database_name;\r\n~~~\r\n\r\n~~~\r\nDROP SCHEMA schema_name;\r\n~~~"
+    },
+  
+    {
+    "title": "# Creating a table",
+    "shortTitle": "03",
+    "contentMd" : "# Creating a table\r\n\r\nThe following illustrates the syntax of the *CREATE TABLE* statement:\r\n\r\n~~~\r\nCREATE TABLE [IF NOT EXISTS] table_name(\r\n        column_list\r\n        ) engine=table_type;\r\n~~~\r\nLet's examine the syntax in greater detail:\r\n\r\n1.\tFirst, you specify the name of table that you want to create after the *CREATE TABLE* clause.  The table name must be `unique` within the database. \r\n        As before, the *IF NOT EXISTS* part of the statement checks if the table already exists, and if so, no new table will be created. \r\n2.\tSecond, you specify a list of columns for the table in the column_list section. Columns are separated by a comma (,).  \r\n        We will show you how to define columns in more detail in the next section.\r\n3.\tThird, you may specify the storage engine for the table in the engine clause. You can use any storage engine such as \r\n        InnoDB, MyISAM, Memory (formerly known as HEAP), EXAMPLE, CSV, BLACKHOLE, ARCHIVE, MERGE, or FEDERATED. If you don't explicitly \r\n        declare the storage engine, MySQL will use InnoDB by default.\r\n\r\n**InnoDB** became the default storage engine since MySQL version 5.5. InnoDB brings many benefits of relational database management system such as \r\nACID transaction, referential integrity and crash recovery.  In the previous versions, MySQL used **MyISAM** as the default storage engine.\r\n\r\nFor more information, see: <a href=\"http://dev.mysql.com/doc/refman/5.7/en/storage-engines.html\" target=\"_blank\">Alternative Storage Engines</a>\r\n\r\n"
+    },
+  
+    {
+    "title": "# Defining columns",
+    "shortTitle": "04",
+    "contentMd" : "# Defining columns\r\n\r\nTo define a column for the table in the *CREATE TABLE* statement, you use the following syntax:\r\n\r\n~~~\r\ncolumn_name data_type[size] [NOT NULL|NULL] [DEFAULT value] \r\n[AUTO_INCREMENT]\r\n~~~\r\n[] denotes optional.\r\n\r\nThe most important components of the syntax above are:\r\n\r\n-\t*column_name* specifies the name of the column. Each column must be always associated with a specific data type and the size e.g.  VARCHAR(255). \r\n-\t*NOT NULL* or *NULL* indicates that the column accepts a *NULL* value or not.\r\n-\t*DEFAULT value* is used to specify the default value of the column.\r\n-\t*AUTO_INCREMENT* indicates that the value of column is increased by one whenever a new record is inserted into the table. \r\n        Each table can have one and only one AUTO_INCREMENT column.\r\n"
+    },
+  
+    {
+    "title": "# MySQL data types 1",
+    "shortTitle": "05",
+    "contentMd" : "# MySQL data types 1\r\n\r\nMySQL data types can be grouped into three main categories; **text**, **number** and **date/time**.\r\n\r\n##TEXT TYPES \r\n\r\n![](img/text.png)\r\n\r\n- The **( )** brackets allow you to enter a maximum number of characters will be used in the column. \r\n- **CHAR** and **VARCHAR** are the most widely used types. **CHAR** is a fixed length string and is mainly used when the data is not going to vary much \r\n  in its length. **VARCHAR** is a variable length string and is mainly used when the data may vary in length.\r\n- **CHAR** may be faster for the database to process considering the fields stay the same length down the column. **VARCHAR** may be a bit slower as it \r\n  calculates each field down the column, but it saves on memory space. \r\n- Using both a **CHAR** and **VARCHAR** option in the same table, MySQL will automatically change the **CHAR** into **VARCHAR** for compatibility reasons. \r\n- **BLOB** stands for **Binary Large OBject**. Both **TEXT** and **BLOB** are variable length types that store large amounts of data. They are similar to a \r\n  larger version of **VARCHAR**. These types can store a large piece of data information, but they are also processed much slower.\r\n- **BLOB** values are treated as binary strings (byte strings). They have the binary character set and collation, and comparison and sorting are based on the \r\n  numeric values of the bytes in column values. **TEXT** values are treated as non-binary strings (character strings). \r\n  They have a character set other than binary, and values are sorted and compared based on the collation of the character set. \r\n  Blob datatypes stores binary objects like images while text datatypes store text objects like articles of a webpage.\r\n"
+    },
+  
+    {
+    "title": "# MySQL data types 2",
+    "shortTitle": "06",
+    "contentMd" : "# MySQL data types 2\r\n\r\n## NUMBER TYPES \r\n\r\n![](img/numeric.png)\r\n\r\n- The integer types have an extra option called **UNSIGNED**. Normally, the integer goes from a negative to positive value. Using an **UNSIGNED** command will \r\n  move that range up so it starts at zero instead of a negative number.\r\n- Specifying a numeric field as smallint (for example) will allow numeric values to be stored upto a maximum value of 32767 (or 65535 for unsigned). \r\n  There is no advantage specifying a value with the numeric data type (for example -  smallint(4)). \r\n  The optional display width specifier (for integer data types) is only applicable when using *zerofill* and has nothing to do with the internal size (in bytes) \r\n  of the integer data type.\r\n\r\n~~~\r\ncreate table foo\r\n( \r\nid int auto_increment primary key,\r\nbar smallint(4) unsigned zerofill not null default 0\r\n);\r\n~~~\r\n\r\n~~~\r\ninsert into foo (bar) values (781);\r\n~~~\r\n\r\n~~~\r\nselect * from foo;\r\n~~~\r\n\r\nThis will return:\r\n\r\n![](img/foo1.png)\r\n\r\n"
+    },
+  
+    {
+    "title": "# MySQL data types 3",
+    "shortTitle": "07",
+    "contentMd" : "# MySQL data types 3\r\n\r\n##DATE TYPES \r\n\r\n![](img/date.png)\r\n\r\n##Enum\r\n\r\nENUM is a data type in MySQL. An ENUM is a string object with a value chosen from a list of permitted values that are enumerated explicitly in the \r\ncolumn specification at table creation time.\r\n\r\n~~~\r\nCREATE TABLE Foo \r\n ( color ENUM('red', 'green', 'blue', 'yellow') \r\n );\r\n~~~\r\n\r\nThis column allows you to store one of the values in the enum list, but no other value.\r\n"
+    },
+  
+    {
+    "title": "# Keys",
+    "shortTitle": "08",
+    "contentMd" : "# Keys\r\n\r\n##Primary key\r\n\r\nIf you want to set particular columns of the table as the primary key, you use the following syntax:\r\n\r\n~~~\r\nPRIMARY KEY (col1,col2,...)\r\n~~~\r\n\r\n##Foreign key\r\n\r\nTo set a foreign key, we explicitly link an attribute in one table with the primary key value of another table.\r\n\r\nFor Example: From our library script\r\n\r\n~~~\r\ncreate table Book (\r\n ISBN varchar(15) not null,\r\n title varchar(50) not null,\r\n publisher varchar(30),\r\n publishedDate date,\r\n category varchar(30),\r\n price decimal(5,2),\r\n primary key (ISBN)\r\n);\r\n~~~\r\n\r\n~~~\r\ncreate table BookCopy(\r\n copyId int auto_increment not null,\r\n ISBN varchar(15) not null,\r\n dateAcquired date not null,\r\n dateDestroyed date,\r\n primary key (copyId),\r\n constraint fk_book foreign key(ISBN) references Book(ISBN) \r\n on update cascade \r\n on delete no action\r\n);  \r\n~~~\r\n\r\nIn the *foreign key* clause you may specify what is to happen to the foreign key value if the primary key is updated or deleted. The options are:\r\n\r\n- cascade (all related foreign key values are updated or deleted when a primary key value is updated or deleted respectively).\r\n- no action (if there are related foreign key values then the primary key value cannot be updated or deleted).\r\n- set null (all related foreign key values are set to null if the primary key value is updated or deleted)."
+    },
+  
+    {
+    "title": "#Alter or Drop a table",
+    "shortTitle": "09",
+    "contentMd" : "#Alter or Drop a table\r\n\r\nTo check what tables (if any) exist in a database, enter the following command:\r\n\r\n~~~\r\nSHOW tables;\r\n~~~\r\n\r\nYou should see tables MANUFACTURER and CAR. To see a description of the table, CAR, enter:\r\n\r\n~~~\r\nDESCRIBE car; \r\n~~~\r\nor \r\n~~~\r\nDESC car;\r\n~~~\r\n\r\n##Alter a table\r\n\r\nTo alter a table, you can use the any of the following commands:\r\n\r\n**Add a column:**\r\n\r\n~~~\r\n ALTER TABLE table_name\r\n ADD column_name datatype\r\n~~~\r\n\r\n**Delete a column:**\r\n\r\n~~~\r\n ALTER TABLE table_name\r\n DROP COLUMN column_name\r\n~~~\r\n\r\n**Modify a column:**\r\n\r\n~~~\r\nALTER TABLE table_name\r\n\tCHANGE COLUMN old_column_name new_column_name datatype\r\n~~~\r\nor\r\n~~~\r\nALTER TABLE table_name\r\n\tMODIFY COLUMN column_name datatype\r\n~~~\r\n\r\n##Drop a table\r\n\r\nTo drop a table, you can use the following command: \r\n\r\n~~~\r\nDROP TABLE table_name;\r\n~~~\r\n\r\nNote that if you try to delete a table that has related records in another table, you will receive an error message.\r\n\r\n\r\n\r\n"
+    },
+  
+    {
+    "title": "# Example - Data Definition",
+    "shortTitle": "10",
+    "contentMd" : "# Example - Data Definition\r\n\r\nThe following example demonstrates the creation of a database called `Car_Sales` and a table called `Manufacturer`.  \r\n\r\n- Once a database is created and before you can create a table you must tell MySQL which database you want to use, so we need to enter (**USE database_name;**).  \r\n- The primary key of the manufacturer is an integer and is set to `auto increment` meaning that each manufacturer will automatically be assigned \r\n  a unique number by the system.  The primary key constraint itself means that the field *cannot be blank and the value it contains must be unique within that table*.  \r\n- Note that some other attributes are also set to `not null` meaning that those fields cannot be blank.   \r\n\r\nEnter the following commands:\r\n~~~\r\nCREATE DATABASE IF NOT EXISTS CAR_SALES;\r\n~~~\r\n\r\n~~~\r\nUSE CAR_SALES;\r\n~~~\r\n\r\n~~~\r\nCREATE TABLE IF NOT EXISTS MANUFACTURER\r\n( \r\n  MCODE INT AUTO_INCREMENT, \r\n  MNAME ENUM('Audi', 'BMW', 'Opel', 'Volkswagen', 'Peugeot', 'Renault', 'Alfa Romeo', 'Ford', 'Hyundai', 'Kia', \r\n           'Saab', 'SsangYong', 'Honda', 'Lexus', 'Mazda', 'Mitsubishi', 'Nissan', 'Suzuki', 'Toyota') NOT NULL,\r\n  MCOUNTRY VARCHAR(20),\r\n  PRIMARY KEY(MCODE)\r\n);\r\n~~~\r\n\r\n## Foreign keys\r\n\r\nWe will now create a second table called `Car`, which is related to the Manufacturer table.  We will add a foreign key constraint that means that we \r\ncannot place a manufacturer code in the car table, unless a related code exists in the manufacturer table.  \r\nNote that the field names (primary key field and related foreign key field) do not need to be the \r\nsame, but the data type (and size, if relevant) must be the same.\r\n\r\n~~~\r\nCREATE TABLE IF NOT EXISTS CAR\r\n( \r\n  REG VARCHAR(15), \r\n  MODEL VARCHAR(10) NOT NULL, \r\n  COST DOUBLE(8,2), \r\n  MCODE INT, \r\n  PRIMARY KEY(REG),\r\n  CONSTRAINT FK_MCODE FOREIGN KEY(MCODE) \r\n  REFERENCES MANUFACTURER(MCODE) \r\n  ON UPDATE CASCADE ON DELETE SET NULL\r\n);\r\n~~~\r\n\r\nWe will now alter a column (`cost`) in the `car` table:\r\n\r\n~~~\r\nALTER TABLE car MODIFY COLUMN cost DECIMAL(8,2);\r\n~~~\r\n\t\r\n\r\n"
+    },
+  
+    {
+    "title": "#Example - Data Manipulation",
+    "shortTitle": "11",
+    "contentMd" : "#Example - Data Manipulation\r\n\r\nInsert the following records into the MANUFACTURER table:\r\n\r\n~~~\r\nINSERT INTO MANUFACTURER (MNAME, MCOUNTRY) VALUES\r\n ('Audi','Germany'),\r\n ('BMW','Germany'), \r\n ('Opel','Germany'),\r\n ('Volkswagen','Germany'),\r\n ('Peugeot','France'),\r\n ('Renault','France'),\r\n ('Alfa Romeo','Italy'),\r\n ('Ford','USA'),\r\n ('Hyundai','South Korea'),\r\n ('Kia','South Korea'),\r\n ('Saab','Swedan'),\r\n ('SsangYong','Swedan'),\r\n ('Honda','Japan'),\r\n ('Lexus','Japan'),\r\n ('Mazda','Japan'),\r\n ('Mitsubishi','Japan'),\r\n ('Nissan','Japan'),\r\n ('Suzuki','Japan'),\r\n ('Toyota', 'Japan'); \r\n~~~\r\n\r\nInsert the following records into the CAR table:\r\n\r\n~~~\r\nINSERT INTO CAR VALUES \r\n ('141-KK-345','i30',20760, 9),\r\n ('11-WD-1876','i35',14500, 9),\r\n ('151-KK-100','Astra',24800, 3),\r\n ('12-WX-222','Corolla',19870, 19),\r\n ('142-WD-7811','Vectra',28900, 3),\r\n ('08-KK-1234','Polo',6500, 4),\r\n ('10-WX-9875','Golf',9500, 4); \r\n~~~\r\n;"
+    },
+  
+    {
+    "title": "#Exercise",
+    "shortTitle": "Exercise",
+    "contentMd" : "#Exercise\r\n\r\n1.\tCreate a new table called CUSTOMER, with the following attributes:\r\n\r\n  - customerId (int auto increment)\r\n  - fName (variable character, size 15)\r\n  - lName (variable character, size 15)\r\n  - emailAddress (variable character, size 40)\r\n\r\n  - Primary key: customerId\r\n\r\n2.\tCreate a new table called VIEWINGS, with the following attributes:\r\n\r\n  - customerId (same definition as in the CUSTOMER table)\r\n  - reg (same definition as in the CAR table)\r\n  - viewingDate (date)\r\n  - comments (variable character, size 250)\r\n\r\n  - Primary key: customerId, reg\r\n\r\n  - Foreign key: customerId (related to CUSTOMER table)\r\n  - Foreign key: reg (related to CAR table)\r\n\r\n  - Add cascade update and delete constraints for both of the foreign key values.\r\n\r\n3.\tInsert 2 CUSTOMER records and 5 VIEWINGS records. Remember when inserting records into the VIEWINGS table, the customerId value must match a value from the \r\n        CUSTOMER table and the reg value must match a value from the CAR table.\r\n4.\tWrite select statements for each of the following:\r\n\r\n  1.\tReturn the car model, viewingDate and comments for all viewings.\r\n  2.\tReturn the customers full name, car model, viewingDate and comments for all viewings.\r\n\r\n"
+    },
+  
+    {
+    "title": "# Solutions",
+    "shortTitle": "Solutions",
+    "contentMd" : "# Solutions\r\n\r\nSolutions for the exercises in this lab are available here: [Week6.zip](./archives/Week6.zip)\r\n"
+    }
+  
+  ]
+  }
+

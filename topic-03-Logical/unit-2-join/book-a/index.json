@@ -1,0 +1,83 @@
+
+
+
+  {
+  
+  
+    "properties" : {},
+  
+  "type" : "lab",
+  "title" : "SQL 3",
+  "img" : "img/main.png",
+  "videoid" : "none",
+  "objectives" : "<p>In this lab, we will use the Select statement to retrieve data from two tables.</p>",
+  "folder" : "book-a",
+  "link" : "index.html",
+  "los": [
+   ]
+,
+  "chapters" : [
+  
+    {
+    "title": "#Objectives",
+    "shortTitle": "SQL 3",
+    "contentMd" : "#Objectives\r\n\r\nIn this lab, we will use the Select statement to retrieve data from two tables.\r\n"
+    },
+  
+    {
+    "title": "#Join",
+    "shortTitle": "01",
+    "contentMd" : "#Join\r\n\r\nAll the queries up until this point have been useful except for one major limitation - that is, we have been selecting from only one table at a time with \r\nthe *SELECT* statement. It is time to introduce one of the most beneficial features of SQL and relational database systems - the **Join**. To put it simply, \r\nthe **Join** makes relational database systems \"relational\".\r\n\r\n*Joins* allow you to link data from two or more tables together into a single query result `-` from one single SELECT statement. \r\n\r\nA database is defined as a set of related data stored in tables of rows and columns. Most often the data we are looking for will be in more than one table. \r\nSo, for example if we wanted to see the book details for a given book copy. We would want information from the tables: book and bookcopy.\r\n\r\nThe **JOIN** keyword selects all rows from both tables if there is a match between the `join` columns in both tables (i.e. Primary Key `-` Foreign Key link).\r\n\r\n~~~\r\nSELECT column_name(s)\r\nFROM table1\r\nJOIN table2\r\nON table1.column_name=table2.column_name;\r\n~~~\r\n\r\n![](img/img1.gif)"
+    },
+  
+    {
+    "title": "#The JOIN statement",
+    "shortTitle": "02",
+    "contentMd" : "#The JOIN statement\r\n\r\nRecall the attributes for the book and bookcopy tables:\r\n\r\nBook(ISBN, title, publisher, publishedDate, category, price)\r\n\r\nBookCopy(copyId, ISBN, dateAcquired, dateDestroyed)\r\n\r\nNotice how each of the tables have a common **ISBN** column. This column, will be used to JOIN the two tables. It is the primary key in the *Book* table and the \r\nforeign key in the *BookCopy* table.\r\n\r\nIf we wish to return the copyId and title for each bookcopy, we need values from both tables so we perform the statement as follows:\r\n\r\n~~~\r\nselect copyId, title \r\nfrom book join bookcopy \r\non book.isbn=bookcopy.isbn;\r\n~~~\r\n\r\nThis particular **Join** is also known as an **Inner Join** or **Equijoin**. This is the most common type of **Join** that you will see or use. \r\n\r\n**Note:** The *JOIN* keyword selects all rows from both tables as long as there is a match between the columns. If there are rows in the *Book* table that do \r\nnot have matches in the *BookCopy* table, these Books (rows) will NOT be listed.\r\n\r\nThe following statements are NOT the same `-` run them both and see the different results. Count the number of records returned.\r\n\r\n1. Without the **ON** clause:\r\n~~~\r\nselect copyId, title \r\nfrom book join bookcopy;\r\n~~~\r\n\r\n\r\n2. With the **ON** clause:\r\n~~~\r\nselect copyId, title \r\nfrom book join bookcopy\r\non book.isbn=bookcopy.isbn; \r\n~~~\r\n\r\nAnother alternative of writing the query is to use the `NATURAL JOIN`. In this case, the `join` columns must have the same name. The statement omits the `ON` clause.\r\n\r\n~~~\r\nselect copyId, title \r\nfrom book natural join bookcopy; \r\n~~~\r\n\r\nFinally, another (older) method of writing the query is as follows:\r\n\r\n~~~\r\nselect copyId, title \r\nfrom book, bookcopy \r\nwhere book.isbn=bookcopy.isbn; \r\n~~~"
+    },
+  
+    {
+    "title": "# Example One",
+    "shortTitle": "03",
+    "contentMd" : "# Example One\r\n\r\nWe want to return the title and copyId of all books containing the word `JavaScript` in the title.\r\n\r\nThere are four things to do here:\r\n\r\n1.\tIdentify which tables have the data you are looking for, in this case it is *Book* and *BookCopy*. These need to be joined.\r\n2.\tIdentify which columns are the primary and foreign keys in these tables; in this case it is *ISBN* in the *Book* and *ISBN* in the *BookCopy* table. \r\n        We use these in the *ON* clause.\r\n3.\tIdentify which columns we want the query to output; in this case it is *copyId* from the *BookCopy* table; and *title* from the *Book* table. \r\n        We will use these in our *SELECT*.\r\n4.\tAdd any conditions necessary, in this example: *title like '%JavaScript%'*;\r\n\r\n~~~\r\nselect title, copyId \r\nfrom book join bookcopy \r\non book.isbn=bookcopy.isbn\r\nwhere title like '%JavaScript%'; \r\n~~~"
+    },
+  
+    {
+    "title": "# Example Two",
+    "shortTitle": "04",
+    "contentMd" : "# Example Two\r\n\r\nIn this example, we wish to return the copyId, title, publisher, and acquired date for all book copies that are Computing books. \r\n\r\nAgain, there are four things to do here:\r\n\r\n1.\tIdentify which tables have the data you are looking for, in this case its *Book* and *BookCopy*. These need to be joined.\r\n2.\tIdentify which columns are the primary and foreign keys in these tables; in this case it is *ISBN* in the *Book* and *ISBN* in the *BookCopy* table. \r\n        We use these in the *ON* clause.\r\n3.\tIdentify which columns we want the query to output; in this case it is *copyId* and *acquiredDate* from the *BookCopy* table; and *title* and *publisher* from\r\n        the *Book* table. We will use these in our *SELECT*.\r\n4.\tAdd any conditions necessary, in this example: *category = 'Computing'*;\r\n\r\n~~~\r\nselect copyid, title, publisher, dateacquired                            \r\nfrom book join bookcopy                                                   \r\non book.isbn = bookcopy.isbn                                                             \r\nwhere category = 'Computing'; \r\n~~~\r\n"
+    },
+  
+    {
+    "title": "# Exercises",
+    "shortTitle": "05",
+    "contentMd" : "# Exercises\r\n\r\n1.\tRetrieve the title, copyId, publisher, and acquired date for all book copies that were acquired since June 1 2014.  \r\n        Sort the results in alphabetical order of title.\r\n\r\n  ![](img/ans1.png)\r\n2.\tList the students (combined fname and lname) who have borrowed a book(s). \r\n        Return the student name only once even if he/she has more than one loan.\r\n\r\n  ![](img/ans2.png)\r\n  \r\n3.\tList the students (combined fname and lname) who have borrowed a book(s) and has it still on loan (dateBack is empty). \r\n        Return the student name only once even if he/she has more than one loan.\r\n\r\n   ![](img/ans3.png)\r\n   \r\n4.     For each loan record, retrieve the student by Name (combined fname and lname) who made the loan, and the copyId, dateOut and dateBack for each book loaned.\r\n       Sort the results in alphabetical order of Name (fname sorted within lname).\r\n\r\n   ![](img/ans4.png)\r\n\r\n5.\tList the copyId and title for all books that are in service now (datedestroyed is empty).\r\n\r\n   ![](img/ans5.png)\r\n   ![](img/ans5b.png)\r\n   ![](img/ans5c.png)\r\n   \r\n"
+    },
+  
+    {
+    "title": "# Example Three",
+    "shortTitle": "06",
+    "contentMd" : "# Example Three\r\n\r\n\r\nIn this example, we wish to return the number of book copies per Book title and output the count (result) with the label *Number of Books*.\r\n\r\nThere are three things to do here:\r\n\r\n1.\tIdentify which tables have the data you are looking for, in this case its *Book* and *BookCopy*. These need to be joined.\r\n2.\tIdentify which columns are the primary and foreign keys in these tables; in this case it is *ISBN* in the *Book* and *ISBN* in the *BookCopy* table. \r\n        We use these in the *ON* clause.\r\n3.\tIdentify which columns we want the query to output; in this case it is *title* from the *Book* table and *count(copyId)* from the *ookCopy* table. \r\n        We will use these in our *SELECT*.\r\n\r\n\r\nLet`'`s put it all together:\r\n\r\n~~~\r\nselect title, count(copyId)  as \"Number of Books\"  \r\nfrom book join bookcopy                                                            \r\non book.isbn = bookcopy.isbn                                             \r\ngroup by title; \r\n~~~\r\n\r\n**Note:** The records are also sorted by title.\r\n"
+    },
+  
+    {
+    "title": "# Exercises",
+    "shortTitle": "07",
+    "contentMd" : "# Exercises\r\n\r\n1.\tReturn the book title and corresponding number of book copies for all books that have Database in the book title. \r\n        Output the count with the label Number of Books.\r\n        \r\n    ![](img/ans6.png)\r\n2.\tReturn the number of loans per student (identified by name). Output the count with the label Number of Loans \r\n        and identify each student by name (combined fname and lname). Note: Use the combined fname and lname in the Group By clause.\r\n        Sort in alphabetical order by Last Name and then First Name.\r\n        \r\n   ![](img/ans7.png)\r\n3.\tReturn the number of loans that a student has at present (where dateBack is empty). Output the count with the label Number of Loans \r\n        and again identify each student by name.\r\n        \r\n   ![](img/ans8.png)\r\n"
+    },
+  
+    {
+    "title": "#Movies Exercise",
+    "shortTitle": "Movies Exercise",
+    "contentMd" : "#Movies Exercise\r\n\r\nFor these exercises, load the *movies* database and remember to enter the command:\r\n\r\n~~~\r\nUSE MOVIES;\r\n~~~\r\n\r\nTo do:\r\n\r\n1.\tFor each rating, return the reviewer id, film title, director, and number of stars.\r\n\r\n2.\tReturn the number of reviews (in the ratings table) left by Chris Jackson. Label the output \"Number of Chris's Reviews.\r\n\r\n3.\tReturn the number of reviews left by each reviewer (identified by name). Label the number of reviews (Number of Reviews).\r\n\r\n4.\tReturn the number of reviews left for each film (identified by title). Label the number of reviews (Number of Film Reviews).\r\n"
+    },
+  
+    {
+    "title": "# Solutions",
+    "shortTitle": "Solutions",
+    "contentMd" : "# Solutions\r\n\r\nSolutions for the exercises in this lab are available here: [Week3.zip](./archives/Week3.zip)\r\n"
+    }
+  
+  ]
+  }
+

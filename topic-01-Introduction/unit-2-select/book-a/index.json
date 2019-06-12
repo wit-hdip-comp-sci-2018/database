@@ -1,0 +1,107 @@
+
+
+
+  {
+  
+  
+    "properties" : {},
+  
+  "type" : "lab",
+  "title" : "SQL 1",
+  "img" : "img/main.png",
+  "videoid" : "none",
+  "objectives" : "<p>In this lab we will learn about the basics of SQL and learn about the SELECT statement</p>",
+  "folder" : "book-a",
+  "link" : "index.html",
+  "los": [
+   ]
+,
+  "chapters" : [
+  
+    {
+    "title": "#Objectives",
+    "shortTitle": "SQL 1",
+    "contentMd" : "#Objectives\r\n\r\nIn this lab we will learn about the basics of SQL and learn about the SELECT statement\r\n\r\n- Understand what SQL is\r\n- Understand a database table is\r\n- Describe a table structure\r\n- Select statement syntax\r\n- Retrieve all records in a table\r\n- Limit the columns returned by a Select statement\r\n- Limit the Rows returned by a Select statement using the following operators:\r\n  - LIKE\r\n  - BETWEEN \\... AND\r\n  - IN\r\n  - AND/OR\r\n  - IS NULL\r\n- Sort the Rows returned by a Select statement using Order By\r\n"
+    },
+  
+    {
+    "title": "#What is SQL?",
+    "shortTitle": "01",
+    "contentMd" : "#What is SQL?\r\n\r\nSQL (sometimes pronounced SEQUEL) stands for Structured Query Language. SQL is used to communicate with a database. According to ANSI (American National Standards Institute), it is the standard language for relational database management systems. SQL statements are used to perform tasks such as update data on a database, or retrieve data from a database. Some common relational database management systems that use SQL are: Oracle, Sybase, Microsoft SQL Server, Access, Ingres, etc. Although most database systems use SQL, most of them also have their own additional proprietary extensions that are usually only used on their system. However, the standard SQL commands such as \"Select\", \"Insert\", \"Update\", \"Delete\", \"Create\", and \"Drop\" can be used to accomplish almost everything that one needs to do with a database.\r\n\r\n## Table Basics\r\n\r\nA relational database system contains one or more objects called *tables*. The data or information for the database are stored in these tables. \r\nTables are uniquely identified by their *name* and are comprised of *columns* and *rows*. Columns contain the column name, data type, and any other attributes \r\nfor the column. Rows contain the records or data for the columns. Here is a sample table called \"weather\".\r\nThe values city, state, high, and low are the columns. The rows contain the data for this table:\r\n\r\n![](img/table.png)"
+    },
+  
+    {
+    "title": "# Our example - Library system",
+    "shortTitle": "02",
+    "contentMd" : "# Our example - Library system\r\n\r\nWe have built a [library database](archives/library.zip) with the following tables: *book*, *bookcopy*, *student*, *loan*, *author* and *authorship*. \r\n\r\nThe tables are populated and we will use this data in our queries. The schema is stored in **library_script.sql**.\r\n\r\n- Open *MySQL Workbench* and log in using password root. \r\n\r\nTo run the script:\r\n\r\n- Under the *File* menu, choose *Run SQL Script …*. \r\n- When the dialog box opens, select *library_script.sql*. \r\n- Click the button *Open* and on the next dialog box, click *Run*.  \r\n- When the Operation has run successfully, click Close.\r\n\r\nAlternatively:\r\n\r\n- Choose *Open SQL Script …*. \r\n- When the dialog box opens, select *library_script.sql*. \r\n- Click the button *Open*. This will open the script in a new tab. \r\n- To execute the script, choose the third option on the window.  \r\n\r\n![](img/dialog.png)\r\n\r\n"
+    },
+  
+    {
+    "title": "#Describing Data",
+    "shortTitle": "03",
+    "contentMd" : "#Describing Data\r\n\r\nBefore you work with a database you must specify the database (by name) that you want to work with. \r\n\r\nEnter the following command:\r\n\r\n~~~\r\nUSE LIBRARY;\r\n~~~\r\n\r\nWe have already set up tables for our library system. If you want to see their structure, use:\r\n~~~\r\nDESCRIBE 'tablename'; \r\n~~~\r\nOr\r\n~~~\r\nDESC 'tablename';\r\n~~~\r\n\r\n##Example\r\n~~~\r\nDESC book;\r\n~~~\r\n\r\nThis will return a description of the *book* table including field names and their corresponding data types.\r\n## To Do:\r\n\r\nNow, describe the other tables.\r\n\r\n"
+    },
+  
+    {
+    "title": "#The SELECT statement",
+    "shortTitle": "04",
+    "contentMd" : "#The SELECT statement\r\n\r\n<style>\r\ntable.mine {\r\n    border-collapse:collapse;\r\n    border: 1px solid black;\r\n    width:50%;\r\n}\r\n\r\ntd.mine2 {\r\n    border: 1px solid black;\r\n    padding: 0.2em;\r\n}\r\n</style>\r\n\r\nThe select statement is used to query the database and retrieve selected data that match the criteria that you specify. \r\nThe data returned is stored in a result table, called the *result-set*. Here is the format of a simple select statement:\r\n\r\n~~~\r\n  SELECT [DISTINCT|ALL]{*|[columnExpression [AS newName]][,...]}\r\n  FROM Tablename [alias] \r\n  [JOIN Tablename ON ...]\r\n  [WHERE condition]\r\n  [GROUP BY columnlist][HAVING condition]\r\n  [ORDER BY columnList];\r\n~~~\r\n  \r\n*Note:* [] = optional\r\n\r\n- *columnExpression* represents a column name or an expression.\r\n- *TableName* is the name of an existing database table or view that you have access to, and *alias* is an optional abbreviation for *TableName*.\r\n- The sequence of processing in a SELECCT statement is:\r\n\r\n<table class=\"mine\">\r\n<tr><td class = \"mine2\" >SELECT</td><td class = \"mine2\" >specifies which columns are to appear in the output</td></tr>\r\n<tr><td class = \"mine2\" >FROM</td><td class = \"mine2\" >specifies the table to be used</td></tr>\r\n<tr><td class = \"mine2\" >JOIN</td><td class = \"mine2\" >specifies the table(s) to be joined with the table in the FROM</td></tr>\r\n<tr><td class = \"mine2\" >WHERE</td><td class = \"mine2\" >filters the rows subject to some condition(s)</td></tr>\r\n<tr><td class = \"mine2\" >GROUP BY</td><td class = \"mine2\" >forms groups of rows with the same column name</td></tr>\r\n<tr><td class = \"mine2\" >HAVING</td><td class = \"mine2\" >filters the groups subject to some condition(s)</td></tr>\r\n<tr><td class = \"mine2\" >ORDER BY</td><td class = \"mine2\" >specifies the order of the output</td></tr>\r\n</table>\r\nThe order of the clauses in the SELECT statement **cannot** be changed.The only two mandatory  clauses are the first two: SELECT and FROM; the remainder\r\nare optional.\r\n\r\n"
+    },
+  
+    {
+    "title": "#Simple Select examples",
+    "shortTitle": "05",
+    "contentMd" : "#Simple Select examples\r\n\r\n<style>\r\ntable.mine {\r\n    border-collapse:collapse;\r\n    border: 1px solid black;\r\n    width:30%;\r\n}\r\n\r\ntd.mine2 {\r\n    border: 1px solid black;\r\n    padding: 0.2em;\r\n}\r\n</style>\r\n\r\nAs we know, the select statement is used to query the database and retrieve selected data that match the criteria that you specify.\r\n\r\nConditional selections used in the where clause:\r\n\r\n<table class=\"mine\">\r\n<tr><td class = \"mine2\" >=</td><td class = \"mine2\" >Equal</td></tr>\r\n<tr><td class = \"mine2\" >></td><td class = \"mine2\" >Greater than</td></tr>\r\n<tr><td class = \"mine2\" ><</td><td class = \"mine2\" >Less than</td></tr>\r\n<tr><td class = \"mine2\" >>=</td><td class = \"mine2\" >Greater than or equal</td></tr>\r\n<tr><td class = \"mine2\" ><=</td><td class = \"mine2\" >Less than or equal</td></tr>\r\n<tr><td class = \"mine2\" ><></td><td class = \"mine2\" >Not equal</td></tr>\r\n<tr><td class = \"mine2\" >!=</td><td class = \"mine2\" >Not equal</td></tr>\r\n</table>\r\n\r\n## Examples\r\n\r\n~~~\r\nSELECT * \r\nFROM book; \r\n~~~\r\n\r\nThis will return all records with all columns included.\r\n\r\n~~~\r\nSELECT title, publisher \r\nFROM book; \r\n~~~\r\n\r\nThis will return a subset of columns. This query will return all records with just 2 columns (title and publisher) included.\r\n\r\n~~~\r\nSELECT title \r\nFROM book \r\nWHERE publisher = 'Addison Wesley'; \r\n~~~\r\nThis will return a subset of records only. Records will only be selected if the publisher value is equal to Addison Wesley. When these records are selected (in memory) the column title is then returned.\r\n\r\n###Practice: Try out all the examples yourself\r\n\r\nEnter the following sample select statements, one at a time to see what is returned:\r\n~~~\r\nSELECT * \r\nFROM student; \r\n\r\nSELECT fname, lname \r\nFROM student; \r\n\r\nSELECT * \r\nFROM student \r\nWHERE county = 'Waterford'; \r\n~~~\r\n\r\n##Exercises\r\n\r\n 1. Display the full name and full address for every student that's in the table.\r\n \r\n ![](img/ans1.png) \r\n\r\n 2. Display the first name, last name, and county for everyone that's not from Waterford.\r\n \r\n ![](img/ans2.png) \r\n\r\n 3. Display all columns for every student that is in first year.\r\n \r\n ![](img/ans3.png)\r\n"
+    },
+  
+    {
+    "title": "# More on Select",
+    "shortTitle": "06",
+    "contentMd" : "# More on Select\r\n\r\nTo change the column heading returned, we can use *AS*:\r\n~~~\r\nSELECT fname AS 'First Name', lname AS 'Last Name' FROM student;\r\n~~~\r\nOR\r\n~~~\r\nSELECT fname 'First Name', lname 'Last Name' FROM student;\r\n~~~\r\n\r\nTo concatenate (join) two (or more) columns together use CONCAT as follows:\r\n~~~\r\nSELECT concat(fname, ' ', lname) AS Name FROM Student;\r\n~~~\r\n\r\nThe result of concatenating two character strings is another character string. With the concat feature, we are usually joining fieldnames and \r\nseparation characters (such as a hyphen (`-`) or a colon (:) or a space ( )). Use a comma to separate each element.\r\n\r\n\r\n## Distinct\r\n\r\nEnter the following:\r\n\r\n~~~\r\nSELECT publisher FROM book; \r\n~~~\r\n\r\nThis returns the publisher for each book record, so you will see values repeated. But if we only want to know the list of publishers that we are using at \r\nany one time, we do not want to see for example *Addison Wesley* more than once.\r\n\r\nTo eliminate duplicates, use  the keyword **DISTINCT**. Now enter the following:\r\n\r\n~~~\r\nSELECT DISTINCT publisher FROM book; \r\n~~~\r\n\r\nNotice the difference in the number of returned values.\r\n\r\n## Exercises\r\n\r\n 1. Display the title of all books that are categorised as Computing. Output the result as Computing Titles.\r\n \r\n ![](img/ans4.png) \r\n \r\n 2. Display the counties that the students come from. Output the result as Student County. List each county only once.\r\n \r\n ![](img/ans5.png) \r\n \r\n 3. Display the student id, first name and last name for all students that are on course wd155. Concatenate first name and last name together and output the value as Student Name.\r\n\r\n ![](img/ans6.png) \r\n \r\n 4. Return the first name, last name and Street for all Students from Tramore. Output the student name concatenated and labelled as Name.\r\n \r\n ![](img/ans7.png) \r\n\r\n 5. Retrieve the titles of all books published by Sitepoint. Label the returned titles as 'Sitepoint books'.\r\n\r\n ![](img/ans8.png) \r\n"
+    },
+  
+    {
+    "title": "# Pattern Matching",
+    "shortTitle": "07",
+    "contentMd" : "# Pattern Matching\r\n\r\nSometimes we do not always have the exact search criteria we need.  \r\nMaybe we need to find some books with JavaScript in the title. If we enter:\r\n~~~\r\nSELECT title FROM book WHERE title = 'JavaScript';\t\r\n~~~\r\n\r\nThis will only return books with the title equal to JavaScript, so titles like `JavaScript `-` The Guide` or `Learning JavaScript` would not be returned. \r\n\r\nSo we need to broaden our search criteria so that it includes the term JavaScript and is preceded by and/or followed by other term(s). \r\nTo do this we use *Pattern Matching* with the **LIKE** clause. To denote several characters, use `%`:\r\n\r\n~~~\r\nSELECT title FROM book WHERE title LIKE '%JavaScript%';\r\n~~~\r\n\r\nThis statement returns book titles, that includes `JavaScript` in the title.\r\n\t\r\nThe *LIKE* operator allows us to pattern match. The `%` is a wildcard which stands for zero or more letters or numbers.\t\r\n\r\nWhat will each of the following return?\r\n\r\n~~~\r\nSELECT title FROM book WHERE title LIKE 'JavaScript%';\t\r\nSELECT title FROM book WHERE title LIKE '%JavaScript';\r\n~~~\r\n\t\r\nThe underscore is also a wildcard but it stands in for just one letter or number, try out the following:\r\n\r\n~~~\r\nSELECT * FROM student WHERE county LIKE '_aterford';\r\n~~~\r\n\r\n##Exercises\r\n\r\n  1.\tRetrieve the title and publisher of all Books whose title starts with the word Database.\r\n  \r\n  ![](img/ans9.png) \r\n  \r\n  2.\tRetrieve the title and publisher of all Books whose title includes the word Engineering.\r\n  \r\n   ![](img/ans10.png) \r\n   \r\n  3.\tRetrieve the names (first and last) of all Students whose last name start with D.\r\n  \r\n   ![](img/ans11.png) \r\n\r\n"
+    },
+  
+    {
+    "title": "# BETWEEN ... AND",
+    "shortTitle": "08",
+    "contentMd" : "# BETWEEN ... AND\r\n\r\nWe can use the *BETWEEN ... AND* operators to search within an *inclusive range of values*, for example:\r\n\r\nFor Example, to return students from years 1, 2, and 3:\r\n~~~\r\nSELECT * FROM student WHERE year BETWEEN 1 AND 3;\r\n~~~\r\n\r\nTo return students (by name) with course codes between wd150 and wd159:\r\n~~~\r\nselect concat(fName, ' ', lName) as Name, course from student where course between 'wd150' and 'wd159';\r\n~~~\r\n\r\n## NOT BETWEEN ... AND\r\n\r\nTo return students (by name) with course codes outside the range of the previous example:\r\n~~~\r\nselect concat(fName, ' ', lName) as Name, course from student where course not between 'wd150' and 'wd159';\r\n~~~\r\n\r\n## Exercise\r\n\r\n 1. Retrieve all book details that were published from 2008-01-01 to 2013-12-31 inclusive.\r\n  ![](img/ans12.png) "
+    },
+  
+    {
+    "title": "# IN",
+    "shortTitle": "09",
+    "contentMd" : "# IN\r\n\r\nThe *IN* operator allows us to query records based on matching one of a number of values. We can use the *NOT* operator to negate those results.\r\nSo if we are only interested in Computing, Business, and Engineering books, instead of writing the query as follows:\r\n\r\n~~~\r\nSELECT * FROM book WHERE category = 'Computing' OR category = 'Business' OR category ='Engineering';\r\n~~~\r\n\r\nWe can write it as follows:\r\n~~~\r\nSELECT * FROM book WHERE category IN ('Computing', 'Business', 'Engineering');\r\n~~~\r\n\r\n## NOT IN\r\n\r\nTo select from outside the above range, use:\r\n~~~\r\nSELECT * FROM book WHERE category NOT IN ('Computing', 'Business', 'Engineering');\r\n~~~\r\n\r\n\r\n## Exercise\r\n\r\n 1. Retrieve the names, towns, and county of all Students from Kilkenny, Waterford or Wexford. Again, output the student name concatenated and labelled as Name.\r\n  ![](img/ans13.png) "
+    },
+  
+    {
+    "title": "# AND/OR",
+    "shortTitle": "10",
+    "contentMd" : "# AND/OR\r\n\r\nWhen one search criteria is not enough we use the *AND*, *OR* operators to use more than one search condition.\r\nThe following commands give very different results `-` can you work out why? \r\n~~~\r\nSELECT * FROM book WHERE category = 'Computing' AND publisher = 'Sitepoint';\r\nSELECT * FROM book WHERE category = 'Computing' OR publisher = 'Sitepoint';\r\nSELECT * FROM book WHERE category = 'Computing' OR category = 'Business';\r\n~~~\r\n\r\n##Exercises\r\n\r\n1. Retrieve the names of all Students in first year from Waterford. Output the student name concatenated and labelled as Name.\r\n\r\n ![](img/ans14.png)\r\n \r\n2. Retrieve the title and price of all books that contain the Database keyword and are priced at 50 euro or less.\r\n\r\n ![](img/ans15.png) \r\n"
+    },
+  
+    {
+    "title": "# NULL",
+    "shortTitle": "11",
+    "contentMd" : "# NULL\r\n\r\nA *NULL* value (not white space or a zero) exists in a database where a piece of data is missing or not filled in. \r\n\r\nFor example when entering information into a table not all the information may be to hand at the time of data entry and so may be left NULL. \r\nSometimes we may want to find out where these NULL values are. Again we can use *IS NOT NULL* for negation.\r\n\r\n\r\nReturn the ISBN from the bookcopy table for all books whose datedestroyed is unknown or unavailable:\r\n~~~\r\nSELECT ISBN FROM bookcopy WHERE datedestroyed IS NULL;\r\n~~~\r\n\r\nReturn the ISBN from the bookcopy table for all books whose datedestroyed is known:\r\n~~~\r\nSELECT ISBN FROM bookcopy WHERE datedestroyed IS NOT NULL;\r\n~~~\r\n"
+    },
+  
+    {
+    "title": "# ORDER BY",
+    "shortTitle": "12",
+    "contentMd" : "# ORDER BY\r\n\r\nTo sort your query results you should use the *ORDER BY* clause. This clause always comes last in your SELECT statement. *Ascending* order is the default.\r\n\r\nReturn the title and category of all books from the book table whose category is Computing or Business or Engineering sorted in alphabetical order by category.\r\n\r\n~~~\r\nSELECT title, category FROM book WHERE category IN ('Computing', 'Business', 'Engineering') ORDER BY category;\r\n~~~\r\n\r\nTo reverse the order you must specify *descending* order using the keyword *DESC*.\r\n~~~\r\nSELECT title, category FROM book WHERE category IN ('Computing', 'Business', 'Engineering') ORDER BY category DESC;\r\n~~~\r\n\r\nYou can also sort by more than one column, where the first column is the outer sorted value.\r\n\r\nReturn all the student records sorted in alphabetic order by lastname (lname) and within each lastname by firstname (fname).:\r\n~~~\r\nSELECT * FROM student ORDER BY lname, fname;\r\n~~~\r\nFor Example, Alice Ryan would appear before Anne Ryan.\r\n\r\n## Exercises:\r\n  1. Retrieve the names of students whose last name is Ryan sorted by first name. Again, output the student name concatenated and labelled as Name.\r\n  \r\n    ![](img/ans16.png) \r\n    \r\n  2. Retrieve the names, towns, and county of all Students from Kilkenny, Waterford or Wexford. Again, output the student name concatenated and labelled as Name. Sort the \r\n  returned records by county and within each county by town.\r\n  \r\n      ![](img/ans17.png)\r\n  \r\n  3. Retrieve the price and title of all business books. Output the results in reverse order of price and in ascending order of title.\r\n\r\n      ![](img/ans18.png)"
+    },
+  
+    {
+    "title": "# Solutions",
+    "shortTitle": "Solutions",
+    "contentMd" : "# Solutions\r\n\r\nSolutions for the exercises in this lab are available here: [Week1.zip](./archives/Week1.zip)\r\n"
+    }
+  
+  ]
+  }
+

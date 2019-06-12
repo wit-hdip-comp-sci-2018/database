@@ -1,0 +1,1973 @@
+
+
+
+  {
+  
+  
+    "properties" : {"highlightstyle":"railscasts","slack":"https://wit-hdip-comp-sci.slack.com/messages/CAHE9149Z","moodle":"https://moodle.wit.ie/course/view.php?id=118143&section=6","youtube":"https://www.youtube.com/playlist?list=PLMW4bgOfD3DwK4DR-0huZ57lsNtBgivQe","parent":"https://wit-hdip-comp-sci-2018.github.io/","courseurl":"https://wit-hdip-comp-sci-2018.github.io/database/","credits":"Dr. Rosanne Birney, Mary Lyng, WIT","courseicon":"link database","license":"Unless otherwise stated, this work is licensed under a <a rel=\"license\" href=\"http://creativecommons.org/licenses/by/4.0/\">Creative Commons Attribution 4.0 International License</a>.","ects":5,"faColour":"#FF5714","faPanelicon":"far fa-newspaper"},
+  
+  "type" : "course",
+  "title" : " Database ",
+  "img" : "",
+  "videoid" : "",
+  "objectives" : "<p>entities · tables · rows · sql · er · nosql</p>",
+  "folder" : "database-ict",
+  "link" : "index.html",
+  "los": [
+   ]
+,
+  "topics" : [  {
+    
+  
+    "properties" : {"highlightstyle":"railscasts","disable":false,"highlight":false,"slack":"https://wit-hdip-comp-sci.slack.com/messages/CAHE9149Z","moodle":"https://moodle.wit.ie/course/view.php?id=118143&section=6","youtube":"https://www.youtube.com/playlist?list=PLMW4bgOfD3DwK4DR-0huZ57lsNtBgivQe","parent":"https://wit-hdip-comp-sci-2018.github.io/","courseurl":"https://wit-hdip-comp-sci-2018.github.io/database/","credits":"Dr. Rosanne Birney, Mary Lyng, WIT","courseicon":"link database","license":"Unless otherwise stated, this work is licensed under a <a rel=\"license\" href=\"http://creativecommons.org/licenses/by/4.0/\">Creative Commons Attribution 4.0 International License</a>.","ects":5,"faColour":"#FF5714","faPanelicon":"far fa-newspaper"},
+  
+  "type" : "topic",
+  "title" : " Assignment ",
+  "img" : "topic.png",
+  "videoid" : "",
+  "objectives" : "<p>This assignment is worth 50% of your grade for this module. The final assignment submission deadline is Sunday 10th December.</p>",
+  "folder" : "topic---Assignment",
+  "link" : "index.html",
+  "los": [
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "lab",
+  "title" : "Assignment",
+  "img" : "img/main.png",
+  "videoid" : "none",
+  "objectives" : "<p>As your continuous assessment for this module, you are required to design and develop a database using MySQL.</p>",
+  "folder" : "book-00-Assignment",
+  "link" : "index.html",
+  "los": [
+   ]
+
+    } 
+   ]
+
+  },
+ {
+    
+  
+    "properties" : {"highlightstyle":"railscasts","disable":false,"highlight":false,"slack":"https://wit-hdip-comp-sci.slack.com/messages/CAHE9149Z","moodle":"https://moodle.wit.ie/course/view.php?id=118143&section=6","youtube":"https://www.youtube.com/playlist?list=PLMW4bgOfD3DwK4DR-0huZ57lsNtBgivQe","parent":"https://wit-hdip-comp-sci-2018.github.io/","courseurl":"https://wit-hdip-comp-sci-2018.github.io/database/","credits":"Dr. Rosanne Birney, Mary Lyng, WIT","courseicon":"link database","license":"Unless otherwise stated, this work is licensed under a <a rel=\"license\" href=\"http://creativecommons.org/licenses/by/4.0/\">Creative Commons Attribution 4.0 International License</a>.","ects":5,"faColour":"#FF5714","faPanelicon":"far fa-newspaper"},
+  
+  "type" : "topic",
+  "title" : "On-Site Workshop: June 15 ",
+  "img" : "topic.png",
+  "videoid" : "",
+  "objectives" : "<p>In this section, you will get started with SQL through MySQL Workbench.</p>",
+  "folder" : "topic-00-On-Site",
+  "link" : "index.html",
+  "los": [
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "lab",
+  "title" : "Installation",
+  "img" : "img/main.png",
+  "videoid" : "none",
+  "objectives" : "<p>In this lab, you will install MySQL and log in to MySQL Workbench.</p>",
+  "folder" : "book-a",
+  "link" : "index.html",
+  "los": [
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "lab",
+  "title" : "SQL Introduction",
+  "img" : "img/main.png",
+  "videoid" : "none",
+  "objectives" : "<p>In this lab we will become familiar with using MySQL Workbench.</p>",
+  "folder" : "book-b",
+  "link" : "index.html",
+  "los": [
+   ]
+
+    } 
+   ]
+
+  },
+ {
+    
+  
+    "properties" : {"highlightstyle":"railscasts","disable":false,"highlight":false,"slack":"https://wit-hdip-comp-sci.slack.com/messages/CAHE9149Z","moodle":"https://moodle.wit.ie/course/view.php?id=118143&section=6","youtube":"https://www.youtube.com/playlist?list=PLMW4bgOfD3DwK4DR-0huZ57lsNtBgivQe","parent":"https://wit-hdip-comp-sci-2018.github.io/","courseurl":"https://wit-hdip-comp-sci-2018.github.io/database/","credits":"Dr. Rosanne Birney, Mary Lyng, WIT","courseicon":"link database","license":"Unless otherwise stated, this work is licensed under a <a rel=\"license\" href=\"http://creativecommons.org/licenses/by/4.0/\">Creative Commons Attribution 4.0 International License</a>.","ects":5,"faColour":"#FF5714","faPanelicon":"far fa-newspaper"},
+  
+  "type" : "topic",
+  "title" : " 01: Introduction  ",
+  "img" : "topic.png",
+  "videoid" : "",
+  "objectives" : "<p>In this section, we will introduce a number of database concepts and begin working with SQL.</p>",
+  "folder" : "topic-01-Introduction",
+  "link" : "index.html",
+  "los": [
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "unit",
+  "title" : "Introduction to databases ",
+  "img" : "talk-1/talk-1.jpg",
+  "videoid" : "",
+  "objectives" : "<p>Introduction to databases</p>",
+  "folder" : "unit-1-introduction",
+  "link" : "index.html",
+  "los": [
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "talk",
+  "title" : " Module Overview ",
+  "img" : "talk-1.jpg",
+  "videoid" : "none",
+  "objectives" : "<p>An overview of the content we will cover in this module (link to video on title slide)</p>",
+  "folder" : "talk-1",
+  "link" : "talk-1.pdf",
+  "los": [
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "talk",
+  "title" : " Introduction to Databases ",
+  "img" : "talk-2.png",
+  "videoid" : "none",
+  "objectives" : "<p>This lecture introduces database concepts and terminology (link to video on title slide)</p>",
+  "folder" : "talk-2",
+  "link" : "talk-2.pdf",
+  "los": [
+   ]
+
+    } 
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "unit",
+  "title" : "Select statements ",
+  "img" : "talk-3/talk-3.png",
+  "videoid" : "",
+  "objectives" : "<p>Select statements</p>",
+  "folder" : "unit-2-select",
+  "link" : "index.html",
+  "los": [
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "talk",
+  "title" : " SQL ",
+  "img" : "talk-3.png",
+  "videoid" : "none",
+  "objectives" : "<p>In this lecture we will introduce the SQL Select statement (link to video on title slide)</p>",
+  "folder" : "talk-3",
+  "link" : "talk-3.pdf",
+  "los": [
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "lab",
+  "title" : "SQL 1",
+  "img" : "img/main.png",
+  "videoid" : "none",
+  "objectives" : "<p>In this lab we will learn about the basics of SQL and learn about the SELECT statement</p>",
+  "folder" : "book-a",
+  "link" : "index.html",
+  "los": [
+   ]
+
+    } 
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "panelvideo",
+  "title" : "01: Introduction ",
+  "img" : "",
+  "videoid" : "4MF5yYsphik",
+  "objectives" : "",
+  "folder" : "panelvideo",
+  "link" : "4MF5yYsphik",
+  "los": [
+   ]
+
+    } 
+   ]
+
+  },
+ {
+    
+  
+    "properties" : {"highlightstyle":"railscasts","disable":false,"highlight":false,"slack":"https://wit-hdip-comp-sci.slack.com/messages/CAHE9149Z","moodle":"https://moodle.wit.ie/course/view.php?id=118143&section=6","youtube":"https://www.youtube.com/playlist?list=PLMW4bgOfD3DwK4DR-0huZ57lsNtBgivQe","parent":"https://wit-hdip-comp-sci-2018.github.io/","courseurl":"https://wit-hdip-comp-sci-2018.github.io/database/","credits":"Dr. Rosanne Birney, Mary Lyng, WIT","courseicon":"link database","license":"Unless otherwise stated, this work is licensed under a <a rel=\"license\" href=\"http://creativecommons.org/licenses/by/4.0/\">Creative Commons Attribution 4.0 International License</a>.","ects":5,"faColour":"#FF5714","faPanelicon":"far fa-newspaper"},
+  
+  "type" : "topic",
+  "title" : " 02: Conceptual Database Design ",
+  "img" : "topic.jpg",
+  "videoid" : "",
+  "objectives" : "<p>In this section we will look at Conceptual Database Design and how to draw Entity Relationship diagrams.</p>",
+  "folder" : "topic-02-Conceptual",
+  "link" : "index.html",
+  "los": [
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "unit",
+  "title" : "Conceptual database design ",
+  "img" : "talk-1/talk-1.gif",
+  "videoid" : "",
+  "objectives" : "<p>Conceptual database design</p>",
+  "folder" : "unit-1-conceptual",
+  "link" : "index.html",
+  "los": [
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "talk",
+  "title" : " Entities, Entity Types, and Attributes ",
+  "img" : "talk-1.gif",
+  "videoid" : "none",
+  "objectives" : "<p>In this lecture you will learn about Entities, Entity Types, and Attributes</p>",
+  "folder" : "talk-1",
+  "link" : "talk-1.pdf",
+  "los": [
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "talk",
+  "title" : " Relationships and Relationship Types  ",
+  "img" : "talk-2.png",
+  "videoid" : "none",
+  "objectives" : "<p>In this lecture you will learn about Relationships and Relationship Types</p>",
+  "folder" : "talk-2",
+  "link" : "talk-2.pdf",
+  "los": [
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "talk",
+  "title" : " Conceptual Database Design 1 ",
+  "img" : "talk-3.gif",
+  "videoid" : "none",
+  "objectives" : "<p>In this lecture you will learn about steps involved in Conceptual Database Design</p>",
+  "folder" : "talk-3",
+  "link" : "talk-3.pdf",
+  "los": [
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "talk",
+  "title" : " Exercises ",
+  "img" : "ERExercises.jpg",
+  "videoid" : "none",
+  "objectives" : "<p>In your own time draw an ER diagram for the scenarios</p>",
+  "folder" : "talk-4",
+  "link" : "ERExercises.pdf",
+  "los": [
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "talk",
+  "title" : " Conceptual Database Design 2 ",
+  "img" : "talk-5.jpg",
+  "videoid" : "none",
+  "objectives" : "<p>In this lecture we will look at the remainder of steps in Conceptual Database Design</p>",
+  "folder" : "talk-5",
+  "link" : "talk-5.pdf",
+  "los": [
+   ]
+
+    } 
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "unit",
+  "title" : "Aggregate queries ",
+  "img" : "talk-6/talk-6.png",
+  "videoid" : "",
+  "objectives" : "<p>Aggregate queries</p>",
+  "folder" : "unit-2-aggregates",
+  "link" : "index.html",
+  "los": [
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "talk",
+  "title" : " SQL ",
+  "img" : "talk-6.png",
+  "videoid" : "none",
+  "objectives" : "<p>In this lecture we will introduce SQL Aggregate Functions</p>",
+  "folder" : "talk-6",
+  "link" : "talk-6.pdf",
+  "los": [
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "lab",
+  "title" : "SQL 2",
+  "img" : "img/main.png",
+  "videoid" : "none",
+  "objectives" : "<p>In this lab we will learn about Aggregate Functions.</p>",
+  "folder" : "book-a",
+  "link" : "index.html",
+  "los": [
+   ]
+
+    } 
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "panelvideo",
+  "title" : "02: Conceptual Design ",
+  "img" : "",
+  "videoid" : "Fel2WrnFgjc",
+  "objectives" : "",
+  "folder" : "panelvideo",
+  "link" : "Fel2WrnFgjc",
+  "los": [
+   ]
+
+    } 
+   ]
+
+  },
+ {
+    
+  
+    "properties" : {"highlightstyle":"railscasts","disable":false,"highlight":false,"slack":"https://wit-hdip-comp-sci.slack.com/messages/CAHE9149Z","moodle":"https://moodle.wit.ie/course/view.php?id=118143&section=6","youtube":"https://www.youtube.com/playlist?list=PLMW4bgOfD3DwK4DR-0huZ57lsNtBgivQe","parent":"https://wit-hdip-comp-sci-2018.github.io/","courseurl":"https://wit-hdip-comp-sci-2018.github.io/database/","credits":"Dr. Rosanne Birney, Mary Lyng, WIT","courseicon":"link database","license":"Unless otherwise stated, this work is licensed under a <a rel=\"license\" href=\"http://creativecommons.org/licenses/by/4.0/\">Creative Commons Attribution 4.0 International License</a>.","ects":5,"faColour":"#FF5714","faPanelicon":"far fa-newspaper"},
+  
+  "type" : "topic",
+  "title" : " 03: Logical Database Design ",
+  "img" : "topic.jpg",
+  "videoid" : "",
+  "objectives" : "<p>In this section we will look at the Relational Model and mapping an ER diagram to a set of relations.</p>",
+  "folder" : "topic-03-Logical",
+  "link" : "index.html",
+  "los": [
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "unit",
+  "title" : "Logical database design ",
+  "img" : "talk-1/talk-1.png",
+  "videoid" : "",
+  "objectives" : "<p>Logical database design</p>",
+  "folder" : "unit-1-logical",
+  "link" : "index.html",
+  "los": [
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "talk",
+  "title" : " Relational Model ",
+  "img" : "talk-1.png",
+  "videoid" : "none",
+  "objectives" : "<p>In this lecture you will learn about the Relational Model</p>",
+  "folder" : "talk-1",
+  "link" : "talk-1.pdf",
+  "los": [
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "talk",
+  "title" : " Logical Database Design 1 ",
+  "img" : "talk-2.jpg",
+  "videoid" : "none",
+  "objectives" : "<p>In this lecture you will learn about mapping ER diagrams to a set of relations.</p>",
+  "folder" : "talk-2",
+  "link" : "talk-2.pdf",
+  "los": [
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "talk",
+  "title" : " Worked Example ",
+  "img" : "talk-3.jpg",
+  "videoid" : "none",
+  "objectives" : "<p>Here we will step through transforming an ER diagram into a set ot relations</p>",
+  "folder" : "talk-3",
+  "link" : "talk-3.pdf",
+  "los": [
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "talk",
+  "title" : " Exercises ",
+  "img" : "LogicalDesignExercises.jpg",
+  "videoid" : "none",
+  "objectives" : "<p>In your own time transform the ER diagrams into a set of relations</p>",
+  "folder" : "talk-4",
+  "link" : "LogicalDesignExercises.pdf",
+  "los": [
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "talk",
+  "title" : " Logical Database Design 2 ",
+  "img" : "talk-5.png",
+  "videoid" : "none",
+  "objectives" : "<p>In this lecture we will look at the remainder of steps in Logical Database Design</p>",
+  "folder" : "talk-5",
+  "link" : "talk-5.pdf",
+  "los": [
+   ]
+
+    } 
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "unit",
+  "title" : "Join queries ",
+  "img" : "talk-6/talk-6.png",
+  "videoid" : "",
+  "objectives" : "<p>Join queries</p>",
+  "folder" : "unit-2-join",
+  "link" : "index.html",
+  "los": [
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "talk",
+  "title" : " SQL  ",
+  "img" : "talk-6.png",
+  "videoid" : "none",
+  "objectives" : "<p>In this lecture we will introduce the SQL JOIN statement</p>",
+  "folder" : "talk-6",
+  "link" : "talk-6.pdf",
+  "los": [
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "lab",
+  "title" : "SQL 3",
+  "img" : "img/main.png",
+  "videoid" : "none",
+  "objectives" : "<p>In this lab, we will use the Select statement to retrieve data from two tables.</p>",
+  "folder" : "book-a",
+  "link" : "index.html",
+  "los": [
+   ]
+
+    } 
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "panelvideo",
+  "title" : "03: Logical Design ",
+  "img" : "",
+  "videoid" : "gcYKGV-QKB0",
+  "objectives" : "",
+  "folder" : "panelvideo",
+  "link" : "gcYKGV-QKB0",
+  "los": [
+   ]
+
+    } 
+   ]
+
+  },
+ {
+    
+  
+    "properties" : {"highlightstyle":"railscasts","disable":false,"highlight":false,"slack":"https://wit-hdip-comp-sci.slack.com/messages/CAHE9149Z","moodle":"https://moodle.wit.ie/course/view.php?id=118143&section=6","youtube":"https://www.youtube.com/playlist?list=PLMW4bgOfD3DwK4DR-0huZ57lsNtBgivQe","parent":"https://wit-hdip-comp-sci-2018.github.io/","courseurl":"https://wit-hdip-comp-sci-2018.github.io/database/","credits":"Dr. Rosanne Birney, Mary Lyng, WIT","courseicon":"link database","license":"Unless otherwise stated, this work is licensed under a <a rel=\"license\" href=\"http://creativecommons.org/licenses/by/4.0/\">Creative Commons Attribution 4.0 International License</a>.","ects":5,"faColour":"#FF5714","faPanelicon":"far fa-newspaper"},
+  
+  "type" : "topic",
+  "title" : " 04: Enhanced ER diagrams ",
+  "img" : "topic.jpg",
+  "videoid" : "",
+  "objectives" : "<p>In this section we will look at the Enhanced ER diagrams and transforming them.</p>",
+  "folder" : "topic-04-EnhancedER",
+  "link" : "index.html",
+  "los": [
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "unit",
+  "title" : "Enhanced ER Modelling ",
+  "img" : "talk-1/talk-1.jpg",
+  "videoid" : "",
+  "objectives" : "<p>Enhanced ER Modelling</p>",
+  "folder" : "unit-1-eer",
+  "link" : "index.html",
+  "los": [
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "talk",
+  "title" : " Advanced ER Modelling ",
+  "img" : "talk-1.jpg",
+  "videoid" : "none",
+  "objectives" : "<p>In this lecture you will learn about how to model and transform Weak Entity Types, Recursive Relationships, and Multivalued Attributes into a set of relations</p>",
+  "folder" : "talk-1",
+  "link" : "talk-1.pdf",
+  "los": [
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "talk",
+  "title" : " Enhanced Entity-Relationship Modelling ",
+  "img" : "talk-2.jpg",
+  "videoid" : "none",
+  "objectives" : "<p>In this lecture you will learn about how Semantic concepts are incorporated into the original ER model and called the Enhanced Entity-Relationship (EER) model.</p>",
+  "folder" : "talk-2",
+  "link" : "talk-2.pdf",
+  "los": [
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "talk",
+  "title" : " Worked Example ",
+  "img" : "talk-3.png",
+  "videoid" : "none",
+  "objectives" : "<p>Here we construct an Enhanced Entity Relationship (EER) Diagram for a given scenario and convert the EER diagram into a set of relations.</p>",
+  "folder" : "talk-3",
+  "link" : "talk-3.pdf",
+  "los": [
+   ]
+
+    } 
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "unit",
+  "title" : "Multi-table and Outer Joins ",
+  "img" : "talk-4/talk-4.png",
+  "videoid" : "",
+  "objectives" : "<p>Multi-table and Outer Joins</p>",
+  "folder" : "unit-2-outerjoins",
+  "link" : "index.html",
+  "los": [
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "talk",
+  "title" : " SQL ",
+  "img" : "talk-4.png",
+  "videoid" : "none",
+  "objectives" : "<p>In this lecture we will look at the SQL JOIN statement for 3 or more tables and the Outer Join</p>",
+  "folder" : "talk-4",
+  "link" : "talk-4.pdf",
+  "los": [
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "lab",
+  "title" : "SQL 4",
+  "img" : "img/main.png",
+  "videoid" : "none",
+  "objectives" : "<p>In this lab, we will use the Select statement statement to look at multi table and outer Joins.</p>",
+  "folder" : "book-a",
+  "link" : "index.html",
+  "los": [
+   ]
+
+    } 
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "panelvideo",
+  "title" : "04: Enhanced ER Diagrams ",
+  "img" : "",
+  "videoid" : "w-NHKN94g9A",
+  "objectives" : "",
+  "folder" : "panelvideo",
+  "link" : "w-NHKN94g9A",
+  "los": [
+   ]
+
+    } 
+   ]
+
+  },
+ {
+    
+  
+    "properties" : {"highlightstyle":"railscasts","disable":false,"highlight":false,"slack":"https://wit-hdip-comp-sci.slack.com/messages/CAHE9149Z","moodle":"https://moodle.wit.ie/course/view.php?id=118143&section=6","youtube":"https://www.youtube.com/playlist?list=PLMW4bgOfD3DwK4DR-0huZ57lsNtBgivQe","parent":"https://wit-hdip-comp-sci-2018.github.io/","courseurl":"https://wit-hdip-comp-sci-2018.github.io/database/","credits":"Dr. Rosanne Birney, Mary Lyng, WIT","courseicon":"link database","license":"Unless otherwise stated, this work is licensed under a <a rel=\"license\" href=\"http://creativecommons.org/licenses/by/4.0/\">Creative Commons Attribution 4.0 International License</a>.","ects":5,"faColour":"#FF5714","faPanelicon":"far fa-newspaper"},
+  
+  "type" : "topic",
+  "title" : "05: Normalisation ",
+  "img" : "topic.jpg",
+  "videoid" : "",
+  "objectives" : "<p>In this section we will look at the rules for First, Second, and Third Normal Form.</p>",
+  "folder" : "topic-05-Normalisation1",
+  "link" : "index.html",
+  "los": [
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "unit",
+  "title" : "Normalisation ",
+  "img" : "talk-1/talk-1.jpg",
+  "videoid" : "",
+  "objectives" : "<p>Normalisation</p>",
+  "folder" : "unit-1-normalisation",
+  "link" : "index.html",
+  "los": [
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "talk",
+  "title" : " Normalisation ",
+  "img" : "talk-1.jpg",
+  "videoid" : "none",
+  "objectives" : "<p>In this lecture we will introduce what Normalisation is.</p>",
+  "folder" : "talk-1",
+  "link" : "talk-1.pdf",
+  "los": [
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "talk",
+  "title" : " The Process of Normalisation ",
+  "img" : "talk-2.jpg",
+  "videoid" : "none",
+  "objectives" : "<p>In this lecture we will look at the Process of Normalisation.</p>",
+  "folder" : "talk-2",
+  "link" : "talk-2.pdf",
+  "los": [
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "talk",
+  "title" : " First Normal Form ",
+  "img" : "talk-3.jpg",
+  "videoid" : "none",
+  "objectives" : "<p>In this lecture we will look at First Normal Form.</p>",
+  "folder" : "talk-3",
+  "link" : "talk-3.pdf",
+  "los": [
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "talk",
+  "title" : " Second Normal Form ",
+  "img" : "talk-4.jpg",
+  "videoid" : "none",
+  "objectives" : "<p>In this lecture we will look at Second Normal Form.</p>",
+  "folder" : "talk-4",
+  "link" : "talk-4.pdf",
+  "los": [
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "talk",
+  "title" : " Third Normal Form ",
+  "img" : "talk-5.png",
+  "videoid" : "none",
+  "objectives" : "<p>In this lecture we will look at Third Normal Form.</p>",
+  "folder" : "talk-5",
+  "link" : "talk-5.pdf",
+  "los": [
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "talk",
+  "title" : " Exercises ",
+  "img" : "Exercises.jpg",
+  "videoid" : "none",
+  "objectives" : "<p>In your own time complete the questions on Normalisation.</p>",
+  "folder" : "talk-6",
+  "link" : "Exercises.pdf",
+  "los": [
+   ]
+
+    } 
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "unit",
+  "title" : "Data Manipulation ",
+  "img" : "talk-7/talk-7.png",
+  "videoid" : "",
+  "objectives" : "<p>Data Manipulation</p>",
+  "folder" : "unit-2-dml",
+  "link" : "index.html",
+  "los": [
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "talk",
+  "title" : " SQL ",
+  "img" : "talk-7.png",
+  "videoid" : "none",
+  "objectives" : "<p>In this lecture we will look at Data Manipulation statements.</p>",
+  "folder" : "talk-7",
+  "link" : "talk-7.pdf",
+  "los": [
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "lab",
+  "title" : "Lab-01 SQL 5",
+  "img" : "img/main.png",
+  "videoid" : "none",
+  "objectives" : "<p>In this lab, we will look at Data Manipulation.</p>",
+  "folder" : "book-a",
+  "link" : "index.html",
+  "los": [
+   ]
+
+    } 
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "panelvideo",
+  "title" : "05: Normalisation 1 ",
+  "img" : "",
+  "videoid" : "5nLYtvwSTJw",
+  "objectives" : "",
+  "folder" : "panelvideo",
+  "link" : "5nLYtvwSTJw",
+  "los": [
+   ]
+
+    } 
+   ]
+
+  },
+ {
+    
+  
+    "properties" : {"highlightstyle":"railscasts","disable":false,"highlight":false,"slack":"https://wit-hdip-comp-sci.slack.com/messages/CAHE9149Z","moodle":"https://moodle.wit.ie/course/view.php?id=118143&section=6","youtube":"https://www.youtube.com/playlist?list=PLMW4bgOfD3DwK4DR-0huZ57lsNtBgivQe","parent":"https://wit-hdip-comp-sci-2018.github.io/","courseurl":"https://wit-hdip-comp-sci-2018.github.io/database/","credits":"Dr. Rosanne Birney, Mary Lyng, WIT","courseicon":"link database","license":"Unless otherwise stated, this work is licensed under a <a rel=\"license\" href=\"http://creativecommons.org/licenses/by/4.0/\">Creative Commons Attribution 4.0 International License</a>.","ects":5,"faColour":"#FF5714","faPanelicon":"far fa-newspaper"},
+  
+  "type" : "topic",
+  "title" : " 06: Advanced Normalisation ",
+  "img" : "topic.jpg",
+  "videoid" : "",
+  "objectives" : "<p>In this section we will look at the rules for Boyce-Codd, Fourth, and Fifth Normal Form.</p>",
+  "folder" : "topic-06-Normalisation2",
+  "link" : "index.html",
+  "los": [
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "unit",
+  "title" : "Normalisation example ",
+  "img" : "talk-1/talk-1.jpg",
+  "videoid" : "",
+  "objectives" : "<p>Normalisation example</p>",
+  "folder" : "unit-1-example",
+  "link" : "index.html",
+  "los": [
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "talk",
+  "title" : " Normalisation (unnormalised to 3NF) ",
+  "img" : "talk-1.jpg",
+  "videoid" : "none",
+  "objectives" : "<p>In this lecture we will look at converting an unnormalised relation into a set of 3NF tables.</p>",
+  "folder" : "talk-1",
+  "link" : "talk-1.pdf",
+  "los": [
+   ]
+
+    } 
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "unit",
+  "title" : "Normalisation beyond 3NF ",
+  "img" : "talk-2/talk-2.png",
+  "videoid" : "",
+  "objectives" : "<p>Normalisation beyond 3NF</p>",
+  "folder" : "unit-2-beyond3nf",
+  "link" : "index.html",
+  "los": [
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "talk",
+  "title" : " Boyce Codd Normal Form ",
+  "img" : "talk-2.png",
+  "videoid" : "none",
+  "objectives" : "<p>In this lecture we will look at Boyce Codd Normal Form.</p>",
+  "folder" : "talk-2",
+  "link" : "talk-2.pdf",
+  "los": [
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "talk",
+  "title" : " Fourth Normal Form ",
+  "img" : "talk-3.jpg",
+  "videoid" : "none",
+  "objectives" : "<p>In this lecture we will look at Fourth Normal Form.</p>",
+  "folder" : "talk-3",
+  "link" : "talk-3.pdf",
+  "los": [
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "talk",
+  "title" : " Fifth Normal Form ",
+  "img" : "talk-4.jpg",
+  "videoid" : "none",
+  "objectives" : "<p>In this lecture we will look at Fifth Normal Form.</p>",
+  "folder" : "talk-4",
+  "link" : "talk-4.pdf",
+  "los": [
+   ]
+
+    } 
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "unit",
+  "title" : "Data Definition ",
+  "img" : "talk-5/talk-5.png",
+  "videoid" : "",
+  "objectives" : "<p>Data Definition</p>",
+  "folder" : "unit-3-ddl",
+  "link" : "index.html",
+  "los": [
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "talk",
+  "title" : " SQL ",
+  "img" : "talk-5.png",
+  "videoid" : "none",
+  "objectives" : "<p>In this lecture we will look at Data Definition (Create, Alter, and Drop) statements.</p>",
+  "folder" : "talk-5",
+  "link" : "talk-5.pdf",
+  "los": [
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "lab",
+  "title" : "Lab-01 SQL 6",
+  "img" : "img/main.png",
+  "videoid" : "none",
+  "objectives" : "<p>In this lab, we will look at Data Definition.</p>",
+  "folder" : "book-a",
+  "link" : "index.html",
+  "los": [
+   ]
+
+    } 
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "panelvideo",
+  "title" : "06: Normalisation 2 ",
+  "img" : "",
+  "videoid" : "rFMEZG3UZM8",
+  "objectives" : "",
+  "folder" : "panelvideo",
+  "link" : "rFMEZG3UZM8",
+  "los": [
+   ]
+
+    } 
+   ]
+
+  },
+ {
+    
+  
+    "properties" : {"highlightstyle":"railscasts","disable":false,"highlight":false,"slack":"https://wit-hdip-comp-sci.slack.com/messages/CAHE9149Z","moodle":"https://moodle.wit.ie/course/view.php?id=118143&section=6","youtube":"https://www.youtube.com/playlist?list=PLMW4bgOfD3DwK4DR-0huZ57lsNtBgivQe","parent":"https://wit-hdip-comp-sci-2018.github.io/","courseurl":"https://wit-hdip-comp-sci-2018.github.io/database/","credits":"Dr. Rosanne Birney, Mary Lyng, WIT","courseicon":"link database","license":"Unless otherwise stated, this work is licensed under a <a rel=\"license\" href=\"http://creativecommons.org/licenses/by/4.0/\">Creative Commons Attribution 4.0 International License</a>.","ects":5,"faColour":"#FF5714","faPanelicon":"far fa-newspaper"},
+  
+  "type" : "topic",
+  "title" : " 07: Physical Database Design ",
+  "img" : "topic.png",
+  "videoid" : "",
+  "objectives" : "<p>In this section we will look at Physical Database Design.</p>",
+  "folder" : "topic-07-Physical",
+  "link" : "index.html",
+  "los": [
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "unit",
+  "title" : "Conceptual and Logical recap ",
+  "img" : "talk-1/talk-1.jpg",
+  "videoid" : "",
+  "objectives" : "<p>Conceptual and Logical recap</p>",
+  "folder" : "unit-1-recap",
+  "link" : "index.html",
+  "los": [
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "talk",
+  "title" : " Conceptual and Logical Database Design Recap ",
+  "img" : "talk-1.jpg",
+  "videoid" : "none",
+  "objectives" : "<p>In this lecture we will review the work done over the past few weeks.</p>",
+  "folder" : "talk-1",
+  "link" : "talk-1.pdf",
+  "los": [
+   ]
+
+    } 
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "unit",
+  "title" : "Physical database design ",
+  "img" : "talk-2/talk-2.jpg",
+  "videoid" : "",
+  "objectives" : "<p>Physical database design</p>",
+  "folder" : "unit-2-physical",
+  "link" : "index.html",
+  "los": [
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "talk",
+  "title" : " Physical Database Design for Relational Databases ",
+  "img" : "talk-2.jpg",
+  "videoid" : "none",
+  "objectives" : "<p>In this lecture we describe a physical database design methodology for relational databases.</p>",
+  "folder" : "talk-2",
+  "link" : "talk-2.pdf",
+  "los": [
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "talk",
+  "title" : " Monitoring and Tuning the Operational System ",
+  "img" : "talk-3.jpg",
+  "videoid" : "none",
+  "objectives" : "<p>In this lecture we look at denormalisation, monitoring and tuning the operational system, and system efficiency.</p>",
+  "folder" : "talk-3",
+  "link" : "talk-3.pdf",
+  "los": [
+   ]
+
+    } 
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "unit",
+  "title" : "Subqueries and views ",
+  "img" : "talk-4/talk-4.png",
+  "videoid" : "",
+  "objectives" : "<p>Subqueries and views</p>",
+  "folder" : "unit-3-subqueries",
+  "link" : "index.html",
+  "los": [
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "talk",
+  "title" : " SQL ",
+  "img" : "talk-4.png",
+  "videoid" : "none",
+  "objectives" : "<p>In this lecture we will look at creating and manipulating Sub Queries and Views.</p>",
+  "folder" : "talk-4",
+  "link" : "talk-4.pdf",
+  "los": [
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "lab",
+  "title" : "Lab-01 SQL 7",
+  "img" : "img/main.png",
+  "videoid" : "none",
+  "objectives" : "<p>In this lab, we will look at Sub Queries and Views.</p>",
+  "folder" : "book-a",
+  "link" : "index.html",
+  "los": [
+   ]
+
+    } 
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "panelvideo",
+  "title" : "07: Physical Database Design ",
+  "img" : "",
+  "videoid" : "nTWEyZEqPY4?t=10m0s",
+  "objectives" : "",
+  "folder" : "panelvideo",
+  "link" : "nTWEyZEqPY4?t=10m0s",
+  "los": [
+   ]
+
+    } 
+   ]
+
+  },
+ {
+    
+  
+    "properties" : {"highlightstyle":"railscasts","disable":false,"highlight":false,"slack":"https://wit-hdip-comp-sci.slack.com/messages/CAHE9149Z","moodle":"https://moodle.wit.ie/course/view.php?id=118143&section=6","youtube":"https://www.youtube.com/playlist?list=PLMW4bgOfD3DwK4DR-0huZ57lsNtBgivQe","parent":"https://wit-hdip-comp-sci-2018.github.io/","courseurl":"https://wit-hdip-comp-sci-2018.github.io/database/","credits":"Dr. Rosanne Birney, Mary Lyng, WIT","courseicon":"link database","license":"Unless otherwise stated, this work is licensed under a <a rel=\"license\" href=\"http://creativecommons.org/licenses/by/4.0/\">Creative Commons Attribution 4.0 International License</a>.","ects":5,"faColour":"#FF5714","faPanelicon":"far fa-newspaper"},
+  
+  "type" : "topic",
+  "title" : " 08: Security, Indexes and Triggers ",
+  "img" : "topic.jpg",
+  "videoid" : "",
+  "objectives" : "<p>This section examines topics that relate to Database Security, and introduces the concepts of indexes and triggers in the labs.</p>",
+  "folder" : "topic-08-Security",
+  "link" : "index.html",
+  "los": [
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "unit",
+  "title" : "Database Security ",
+  "img" : "talk-1/talk-1.jpg",
+  "videoid" : "",
+  "objectives" : "<p>Database Security</p>",
+  "folder" : "unit-1-security",
+  "link" : "index.html",
+  "los": [
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "talk",
+  "title" : " Database Security ",
+  "img" : "talk-1.jpg",
+  "videoid" : "none",
+  "objectives" : "<p>In this lecture we will examine issues that relate to Database Security.</p>",
+  "folder" : "talk-1",
+  "link" : "talk-1.pdf",
+  "los": [
+   ]
+
+    } 
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "unit",
+  "title" : "Indexes, Triggers, User and Privileges ",
+  "img" : "talk-2/talk-2.jpg",
+  "videoid" : "",
+  "objectives" : "<p>Indexes, Triggers, User and Privileges</p>",
+  "folder" : "unit-2-users-privileges",
+  "link" : "index.html",
+  "los": [
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "talk",
+  "title" : " Indexes and Triggers ",
+  "img" : "talk-2.jpg",
+  "videoid" : "none",
+  "objectives" : "<p>This lecture introduces the concepts of indexes and triggers, and the related SQL syntax.</p>",
+  "folder" : "talk-2",
+  "link" : "talk-2.pdf",
+  "los": [
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "talk",
+  "title" : " Users and Privileges ",
+  "img" : "talk-3.png",
+  "videoid" : "none",
+  "objectives" : "<p>This lecture explains how we can create new users in our MySQL databases, and control those users&#39; privileges.</p>",
+  "folder" : "talk-3",
+  "link" : "talk-3.pdf",
+  "los": [
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "lab",
+  "title" : "Lab-01 SQL 8",
+  "img" : "img/main.png",
+  "videoid" : "none",
+  "objectives" : "<p>In this lab, we will look at creating Indexes, Triggers, and Users. We will also look at granting access to users.</p>",
+  "folder" : "book-a",
+  "link" : "index.html",
+  "los": [
+   ]
+
+    } 
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "panelvideo",
+  "title" : "08: Security, Indexes and Triggers ",
+  "img" : "",
+  "videoid" : "u6hB-rphVjY?t=317",
+  "objectives" : "",
+  "folder" : "panelvideo",
+  "link" : "u6hB-rphVjY?t=317",
+  "los": [
+   ]
+
+    } 
+   ]
+
+  },
+ {
+    
+  
+    "properties" : {"highlightstyle":"railscasts","disable":false,"highlight":false,"slack":"https://wit-hdip-comp-sci.slack.com/messages/CAHE9149Z","moodle":"https://moodle.wit.ie/course/view.php?id=118143&section=6","youtube":"https://www.youtube.com/playlist?list=PLMW4bgOfD3DwK4DR-0huZ57lsNtBgivQe","parent":"https://wit-hdip-comp-sci-2018.github.io/","courseurl":"https://wit-hdip-comp-sci-2018.github.io/database/","credits":"Dr. Rosanne Birney, Mary Lyng, WIT","courseicon":"link database","license":"Unless otherwise stated, this work is licensed under a <a rel=\"license\" href=\"http://creativecommons.org/licenses/by/4.0/\">Creative Commons Attribution 4.0 International License</a>.","ects":5,"faColour":"#FF5714","faPanelicon":"far fa-newspaper"},
+  
+  "type" : "topic",
+  "title" : " 9: Database Concurrency ",
+  "img" : "topic.png",
+  "videoid" : "",
+  "objectives" : "<p>In this section, we will discuss database concurrency and transaction management. In the lab, we will create a backup of a MySQL database.</p>",
+  "folder" : "topic-09-Transactions",
+  "link" : "index.html",
+  "los": [
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "unit",
+  "title" : "Transaction Management ",
+  "img" : "talk-1/talk-1.png",
+  "videoid" : "",
+  "objectives" : "",
+  "folder" : "unit-1-transactions",
+  "link" : "index.html",
+  "los": [
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "talk",
+  "title" : " Transaction Management ",
+  "img" : "talk-1.png",
+  "videoid" : "none",
+  "objectives" : "<p>In this lecture, we will discuss concepts that relate to concurrent database users and transaction management.</p>",
+  "folder" : "talk-1",
+  "link" : "talk-1.pdf",
+  "los": [
+   ]
+
+    } 
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "unit",
+  "title" : "MySQL Backup and Recovery ",
+  "img" : "book-a/img/main.png",
+  "videoid" : "",
+  "objectives" : "<p>MySQL Backup and Recovery</p>",
+  "folder" : "unit-2-mysqlbackup",
+  "link" : "index.html",
+  "los": [
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "lab",
+  "title" : "Backup and Restore",
+  "img" : "img/main.png",
+  "videoid" : "none",
+  "objectives" : "<p>In this lab, we will look at database backup and recovery in MySQL Workbench.</p>",
+  "folder" : "book-a",
+  "link" : "index.html",
+  "los": [
+   ]
+
+    } 
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "panelvideo",
+  "title" : "09: Database Concurrency ",
+  "img" : "",
+  "videoid" : "dH2avf3x4Xg",
+  "objectives" : "<p>09: Database Concurrency</p>",
+  "folder" : "panelvideo",
+  "link" : "dH2avf3x4Xg",
+  "los": [
+   ]
+
+    } 
+   ]
+
+  },
+ {
+    
+  
+    "properties" : {"highlightstyle":"railscasts","disable":false,"highlight":false,"slack":"https://wit-hdip-comp-sci.slack.com/messages/CAHE9149Z","moodle":"https://moodle.wit.ie/course/view.php?id=118143&section=6","youtube":"https://www.youtube.com/playlist?list=PLMW4bgOfD3DwK4DR-0huZ57lsNtBgivQe","parent":"https://wit-hdip-comp-sci-2018.github.io/","courseurl":"https://wit-hdip-comp-sci-2018.github.io/database/","credits":"Dr. Rosanne Birney, Mary Lyng, WIT","courseicon":"link database","license":"Unless otherwise stated, this work is licensed under a <a rel=\"license\" href=\"http://creativecommons.org/licenses/by/4.0/\">Creative Commons Attribution 4.0 International License</a>.","ects":5,"faColour":"#FF5714","faPanelicon":"far fa-newspaper"},
+  
+  "type" : "topic",
+  "title" : " 10: Backup and Recovery ",
+  "img" : "topic.png",
+  "videoid" : "",
+  "objectives" : "<p>In this section we will discuss database backup and recovery. In the labs, we will install MongoDB.</p>",
+  "folder" : "topic-10-Backups",
+  "link" : "index.html",
+  "los": [
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "unit",
+  "title" : "Backup and Recovery ",
+  "img" : "talk-1/talk-1.png",
+  "videoid" : "",
+  "objectives" : "",
+  "folder" : "unit-1-backups",
+  "link" : "index.html",
+  "los": [
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "talk",
+  "title" : " Backup and Recovery ",
+  "img" : "talk-1.png",
+  "videoid" : "none",
+  "objectives" : "<p>In this lecture, we will examine concepts that relate to database backup and recovery.</p>",
+  "folder" : "talk-1",
+  "link" : "talk-1.pdf",
+  "los": [
+   ]
+
+    } 
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "unit",
+  "title" : "Installing MongoDB ",
+  "img" : "talk-2/talk-2.jpg",
+  "videoid" : "",
+  "objectives" : "",
+  "folder" : "unit-2-mongodb",
+  "link" : "index.html",
+  "los": [
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "talk",
+  "title" : " MongoDB installation ",
+  "img" : "talk-2.jpg",
+  "videoid" : "none",
+  "objectives" : "<p>This lecture introduces MongoDB, the NoSQL database that we will use in forthcoming labs.</p>",
+  "folder" : "talk-2",
+  "link" : "talk-2.pdf",
+  "los": [
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "lab",
+  "title" : "Install MongoDB",
+  "img" : "img/main.png",
+  "videoid" : "none",
+  "objectives" : "<p>In this lab, we will install and test MongoDB, a non-relational database.</p>",
+  "folder" : "book-a",
+  "link" : "index.html",
+  "los": [
+   ]
+
+    } 
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "panelvideo",
+  "title" : "10: Backup and Recovery ",
+  "img" : "",
+  "videoid" : "3mZQFDBZ-d4",
+  "objectives" : "<p>10: Backup and Recovery</p>",
+  "folder" : "panelvideo",
+  "link" : "3mZQFDBZ-d4",
+  "los": [
+   ]
+
+    } 
+   ]
+
+  },
+ {
+    
+  
+    "properties" : {"highlightstyle":"railscasts","disable":false,"highlight":false,"slack":"https://wit-hdip-comp-sci.slack.com/messages/CAHE9149Z","moodle":"https://moodle.wit.ie/course/view.php?id=118143&section=6","youtube":"https://www.youtube.com/playlist?list=PLMW4bgOfD3DwK4DR-0huZ57lsNtBgivQe","parent":"https://wit-hdip-comp-sci-2018.github.io/","courseurl":"https://wit-hdip-comp-sci-2018.github.io/database/","credits":"Dr. Rosanne Birney, Mary Lyng, WIT","courseicon":"link database","license":"Unless otherwise stated, this work is licensed under a <a rel=\"license\" href=\"http://creativecommons.org/licenses/by/4.0/\">Creative Commons Attribution 4.0 International License</a>.","ects":5,"faColour":"#FF5714","faPanelicon":"far fa-newspaper"},
+  
+  "type" : "topic",
+  "title" : " 11: NoSQL 1 ",
+  "img" : "topic.jpg",
+  "videoid" : "",
+  "objectives" : "<p>In this section, we introduce the concepts relating to NoSQL (non-relational) databases.</p>",
+  "folder" : "topic-11-NoSQL1",
+  "link" : "index.html",
+  "los": [
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "unit",
+  "title" : "NoSQL Databases ",
+  "img" : "talk-1/talk-1.jpg",
+  "videoid" : "",
+  "objectives" : "",
+  "folder" : "unit-1-nosql",
+  "link" : "index.html",
+  "los": [
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "talk",
+  "title" : " NoSQL Databases ",
+  "img" : "talk-1.jpg",
+  "videoid" : "none",
+  "objectives" : "<p>This lecture discusses concepts that relate to NoSQL (non-relational) databases.</p>",
+  "folder" : "talk-1",
+  "link" : "talk-1.pdf",
+  "los": [
+   ]
+
+    } 
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "unit",
+  "title" : "MongoDB - Create ",
+  "img" : "talk-2/talk-2.png",
+  "videoid" : "",
+  "objectives" : "",
+  "folder" : "unit-2-create",
+  "link" : "index.html",
+  "los": [
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "talk",
+  "title" : " Create in MongoDB ",
+  "img" : "talk-2.png",
+  "videoid" : "none",
+  "objectives" : "<p>In this lecture, we examine the operations used to create documents and collections in MongoDB.</p>",
+  "folder" : "talk-2",
+  "link" : "talk-2.pdf",
+  "los": [
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "lab",
+  "title" : "Create",
+  "img" : "img/main.png",
+  "videoid" : "none",
+  "objectives" : "<p>This lab introduces the CREATE functions in MongoDB.</p>",
+  "folder" : "book-a-create",
+  "link" : "index.html",
+  "los": [
+   ]
+
+    } 
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "unit",
+  "title" : "MongoDB - Read ",
+  "img" : "talk-3/talk-3.png",
+  "videoid" : "",
+  "objectives" : "",
+  "folder" : "unit-3-read",
+  "link" : "index.html",
+  "los": [
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "talk",
+  "title" : " Read in MongoDB ",
+  "img" : "talk-3.png",
+  "videoid" : "none",
+  "objectives" : "<p>This lecture examines the syntax of the find() operation used to read data in MongoDB.</p>",
+  "folder" : "talk-3",
+  "link" : "talk-3.pdf",
+  "los": [
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "lab",
+  "title" : "Read (find)",
+  "img" : "img/main.png",
+  "videoid" : "none",
+  "objectives" : "<p>In this lab, we will explore the find() statement in MongoDB, including a range of operators used to filter query results.</p>",
+  "folder" : "book-b-read",
+  "link" : "index.html",
+  "los": [
+   ]
+
+    } 
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "panelvideo",
+  "title" : "11: NoSQL 1 ",
+  "img" : "",
+  "videoid" : "i7-yTCk8oV8",
+  "objectives" : "<p>11: NoSQL 1</p>",
+  "folder" : "panelvideo",
+  "link" : "i7-yTCk8oV8",
+  "los": [
+   ]
+
+    } 
+   ]
+
+  },
+ {
+    
+  
+    "properties" : {"highlightstyle":"railscasts","slack":"https://wit-hdip-comp-sci.slack.com/messages/CAHE9149Z","moodle":"https://moodle.wit.ie/course/view.php?id=118143&section=6","youtube":"https://www.youtube.com/playlist?list=PLMW4bgOfD3DwK4DR-0huZ57lsNtBgivQe","parent":"https://wit-hdip-comp-sci-2018.github.io/","courseurl":"https://wit-hdip-comp-sci-2018.github.io/database/","credits":"Dr. Rosanne Birney, Mary Lyng, WIT","courseicon":"link database","license":"Unless otherwise stated, this work is licensed under a <a rel=\"license\" href=\"http://creativecommons.org/licenses/by/4.0/\">Creative Commons Attribution 4.0 International License</a>.","ects":5,"faColour":"#FF5714","faPanelicon":"far fa-newspaper"},
+  
+  "type" : "topic",
+  "title" : " 12: NoSQL 2 ",
+  "img" : "topic.png",
+  "videoid" : "",
+  "objectives" : "<p>This section examines document-oriented modelling. In the lab, we continue exploring MongoDB&#39;s CRUD functionality.</p>",
+  "folder" : "topic-12-NoSQL2",
+  "link" : "index.html",
+  "los": [
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "unit",
+  "title" : "Document-oriented modelling ",
+  "img" : "talk-1/talk-1.png",
+  "videoid" : "",
+  "objectives" : "",
+  "folder" : "unit-1-dom",
+  "link" : "index.html",
+  "los": [
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "talk",
+  "title" : " Document-Oriented Modelling ",
+  "img" : "talk-1.png",
+  "videoid" : "U-iW0fuaYMU",
+  "objectives" : "<p>These slides introduce the concept of document-oriented modelling.</p>",
+  "folder" : "talk-1",
+  "link" : "talk-1.pdf",
+  "los": [
+   ]
+
+    } 
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "unit",
+  "title" : "MongoDB - Update ",
+  "img" : "talk-2/talk-2.png",
+  "videoid" : "",
+  "objectives" : "<p>MongoDB - Update</p>",
+  "folder" : "unit-2-update",
+  "link" : "index.html",
+  "los": [
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "talk",
+  "title" : " Update in Mongo DB ",
+  "img" : "talk-2.png",
+  "videoid" : "urRFXl28rSA",
+  "objectives" : "<p>In this lecture, we examine the syntax used for updates in MongoDB.</p>",
+  "folder" : "talk-2",
+  "link" : "talk-2.pdf",
+  "los": [
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "lab",
+  "title" : "Update",
+  "img" : "img/main.png",
+  "videoid" : "none",
+  "objectives" : "<p>This lab examines the methods used for updating documents in MongoDB.</p>",
+  "folder" : "book-a-update",
+  "link" : "index.html",
+  "los": [
+   ]
+
+    } 
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "unit",
+  "title" : "MongoDB - Delete ",
+  "img" : "talk-3/talk-3.png",
+  "videoid" : "",
+  "objectives" : "<p>MongoDB - Delete</p>",
+  "folder" : "unit-3-delete",
+  "link" : "index.html",
+  "los": [
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "talk",
+  "title" : " Delete in MongoDB ",
+  "img" : "talk-3.png",
+  "videoid" : "EyC0k4IVWZs",
+  "objectives" : "<p>This lecture examines the delete operations in MongoDB.</p>",
+  "folder" : "talk-3",
+  "link" : "talk-3.pdf",
+  "los": [
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "lab",
+  "title" : "Delete",
+  "img" : "img/main.png",
+  "videoid" : "none",
+  "objectives" : "<p>In this lab, we examine the MongoDB methods using for deleting documents from a collection.</p>",
+  "folder" : "book-b-delete",
+  "link" : "index.html",
+  "los": [
+   ]
+
+    } 
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "panelvideo",
+  "title" : "12: NoSQL 2 ",
+  "img" : "",
+  "videoid" : "U-iW0fuaYMU",
+  "objectives" : "<p>12: NoSQL 2</p>",
+  "folder" : "panelvideo",
+  "link" : "U-iW0fuaYMU",
+  "los": [
+   ]
+
+    } 
+   ]
+
+  },
+ {
+    
+  
+    "properties" : {"highlightstyle":"railscasts","slack":"https://wit-hdip-comp-sci.slack.com/messages/CAHE9149Z","moodle":"https://moodle.wit.ie/course/view.php?id=118143&section=6","youtube":"https://www.youtube.com/playlist?list=PLMW4bgOfD3DwK4DR-0huZ57lsNtBgivQe","parent":"https://wit-hdip-comp-sci-2018.github.io/","courseurl":"https://wit-hdip-comp-sci-2018.github.io/database/","credits":"Dr. Rosanne Birney, Mary Lyng, WIT","courseicon":"link database","license":"Unless otherwise stated, this work is licensed under a <a rel=\"license\" href=\"http://creativecommons.org/licenses/by/4.0/\">Creative Commons Attribution 4.0 International License</a>.","ects":5,"faColour":"#FF5714","faPanelicon":"far fa-newspaper"},
+  
+  "type" : "topic",
+  "title" : " Review ",
+  "img" : "topic.jpg",
+  "videoid" : "",
+  "objectives" : "<p>In this section, we will recap the database concepts covered in this module.</p>",
+  "folder" : "topic-13-Review",
+  "link" : "index.html",
+  "los": [
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "talk",
+  "title" : " Recap ",
+  "img" : "recap.jpg",
+  "videoid" : "none",
+  "objectives" : "<p>This lecture reviews the database concepts covered in this module, in preparation for the final exam.</p>",
+  "folder" : "talk-1",
+  "link" : "recap.pdf",
+  "los": [
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "talk",
+  "title" : " Sample paper ",
+  "img" : "sample.png",
+  "videoid" : "none",
+  "objectives" : "<p>This sample exam paper reflects the content covered in the final exam.</p>",
+  "folder" : "talk-2",
+  "link" : "sample.pdf",
+  "los": [
+   ]
+
+    } ,
+   {
+    
+  
+    "properties" : {},
+  
+  "type" : "panelvideo",
+  "title" : "Recap ",
+  "img" : "",
+  "videoid" : "V1USk3uHQi0",
+  "objectives" : "<p>Recap</p>",
+  "folder" : "panelvideo",
+  "link" : "V1USk3uHQi0",
+  "los": [
+   ]
+
+    } 
+   ]
+
+  }
+ ]
+  }
+

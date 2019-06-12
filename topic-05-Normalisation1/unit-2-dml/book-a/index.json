@@ -1,0 +1,77 @@
+
+
+
+  {
+  
+  
+    "properties" : {},
+  
+  "type" : "lab",
+  "title" : "Lab-01 SQL 5",
+  "img" : "img/main.png",
+  "videoid" : "none",
+  "objectives" : "<p>In this lab, we will look at Data Manipulation.</p>",
+  "folder" : "book-a",
+  "link" : "index.html",
+  "los": [
+   ]
+,
+  "chapters" : [
+  
+    {
+    "title": "#Objectives",
+    "shortTitle": "Lab-01 SQL 5",
+    "contentMd" : "#Objectives\r\n\r\nIn this lab, we will look at Data Manipulation.\r\n\r\n- Use the Select statement to ascertain the date and format dates.\r\n- Use the Select statement to perform calculations.\r\n- Use the COMMIT statement to explicitly save previous commands.\r\n- Use the ROLLBACK statement to undo the effects of previous commands.\r\n- Use the INSERT statement to add records to tables.\r\n- Use the UPDATE statement to modify records.\r\n- Use the DELETE statement to remove records.\r\n\r\n\r\n"
+    },
+  
+    {
+    "title": "# Date",
+    "shortTitle": "01",
+    "contentMd" : "# Date\r\n\r\nThe following statement will display the current date.\r\n\r\n~~~\r\nSELECT curdate() as 'Todays Date';\r\n~~~\r\n\r\nThe following statement will display the current date and time.\r\n\r\n~~~\r\nSELECT now() as 'Todays Date and Time';\r\n~~~\r\n\r\nIf you wish to format the date and display it in a more readable manner, you can use DATE_FORMAT as follows:\r\n\r\n~~~\r\nSELECT DATE_FORMAT(curdate(),'%d %b %y')  as 'Todays Date';\r\n~~~\r\n\r\n![](img/date.png)\r\n\r\nYou can include commas, - etc in the string as separators.\r\n\r\n~~~\r\nSELECT DATE_FORMAT(curdate(),'%d-%b-%y') as 'Todays Date';\r\n~~~\r\n\r\n##Exercise\r\n\r\n- Output '2018-12-25' as follows:\r\n  - December 25th, 2018\r\n  - Tues 25th December 2018\r\n  - Tuesday 25th December 2018\r\n  - 25 Dec 2018\r\n  - 25 December 18\r\n\r\n\r\n\r\n"
+    },
+  
+    {
+    "title": "#Calculations in our database tables",
+    "shortTitle": "02",
+    "contentMd" : "#Calculations in our database tables\r\n\r\nDATEDIFF calculates the distance (number of days) between  2 dates.\r\n\r\n- If we want to calculate the number of days that a book is overdue we could use DATEDIFF as follows:\r\n\r\n~~~\r\nSELECT loanId, DATEDIFF(curdate(), dateDue) as 'Number of Days Overdue' \r\nFROM loan \r\nWHERE dateback IS NULL;\r\n~~~\r\n\r\nObviously we will need to return the title of the book overdue, and the student who the book is on loan to:\r\n\r\n~~~\r\nSELECT concat(fname, ' ' , lname) as Name, title, DATEDIFF(curdate(),dateDue) as 'Number of Days Overdue' \r\nFROM book JOIN bookcopy ON book.isbn=bookcopy.isbn \r\nJOIN loan ON bookcopy.copyId = loan.copyId \r\nJOIN student ON loan.studentid = student.studentid\r\nWHERE dateback IS NULL;\r\n~~~\r\n\r\nWhat if we want to use SQL to calculate a value that is not stored anywhere in the database? We can just use statements as follows:\r\n\r\n~~~\r\nSELECT 12 + 14;\r\nSELECT 12 - 14;\r\nSELECT 12 * 14;\r\nSELECT 12 / 14;\r\nSELECT 12 % 14;\r\nSELECT 14 % 12;\r\n~~~\r\n\r\n"
+    },
+  
+    {
+    "title": "# Commit and Rollback",
+    "shortTitle": "03",
+    "contentMd" : "# Commit and Rollback\r\n\r\nThe **COMMIT** statement explicitly saves previous commands up until the last *COMMIT* or *ROLLBACK*. \r\n\r\nThe **ROLLBACK** command will undo all statements issued since the last *COMMIT* or *ROLLBACK*.\r\n\r\n**Note:** At present, all commands issued are committed automatically. To prevent this happening:\r\n\r\n- Go to the **Edit** menu, choose **Preferences...**, this opens the *Workbench Preferences* dialog box.\r\n- Select **SQL Execution** and uncheck the *New connections use auto commit mode* checkbox.\r\n- Click **OK**. \r\n- Exit Workbench and open it again.\r\n"
+    },
+  
+    {
+    "title": "# Insert",
+    "shortTitle": "04",
+    "contentMd" : "# Insert\r\n\r\nThe **INSERT** statement is used to add new records to tables, as follows:\r\n\r\n~~~\r\nINSERT INTO Book (ISBN, title, publisher, publishedDate, category, price)\r\nVALUES ('213345432', 'Beginning XML', 'McGraw Hill', '2010-07-13','Computing', 43.00);\r\n~~~\r\n\r\n- Return all the book records (See the newly inserted record by issuing SELECT * FROM book;).\r\n- Undo the above statement.\r\n\r\nBecause the above INSERT statement includes all the attributes of table Book, we could rewrite the statement as follows:\r\n\r\n~~~\r\nINSERT INTO Book VALUES \r\n('213345432', 'Beginning XML', 'McGraw Hill', '2010-07-13','Computing', 43.00);\r\n~~~\r\n\r\n- Again, return all the book records.\r\n- Undo the above statement.\r\n\r\nIf you are only inserting values for a subset off the attributes, then you must specify the attribute by name. The order of the values supplied must match \r\nthe order of the attribute names specified as follows:\r\n\r\n~~~\r\nINSERT INTO Book (ISBN, title, publisher, category)\r\nVALUES ('214562899', 'DOM Scripting', 'Sitepoint', 'Computing');\r\n~~~\r\n\r\n- Again, return all the book records.\r\n- Undo the above statement.\r\n\r\n~~~\r\nINSERT INTO Book (ISBN, title, category, publisher)\r\nVALUES ('214562899', 'DOM Scripting', 'Computing', 'Sitepoint');\r\n~~~\r\n\r\n- Again, return all the book records.\r\n- Undo the above statement.\r\n \r\nIf you are inserting a few records into the one table, then you can do so as follows:\r\n\r\n~~~\r\nINSERT INTO Book VALUES\r\n('133451216', 'Backbone JS', 'Sitepoint', '2012-10-28','Computing', 60.00), \r\n('134562135', 'Sociology in Practice', 'Prentice Hall', '2010-05-08', 'Humanities', 78.00);\r\n\r\ninsert into BookCopy (ISBN, dateAcquired) values\r\n ('133451216','2012-12-10'),\r\n ('133451216','2012-12-10'), \r\n ('134562135','2011-08-01');\r\n~~~\r\n\r\n- Return all the book and bookcopy records. \r\n- Undo the above statements.\r\n\r\n**Notes:**\r\n\r\n- The primary key must have a UNIQUE value entered for it.\r\n- Any values which have been specified as NOT NULL must have a value entered for them. Note: A Primary key is always NOT NULL.\r\n- Any foreign key values must match a primary key value in the related table or else be NULL.\r\n- String values MUST be enclosed in quotes.\r\n- The quotes used are very specific `-` the ones in MS word are not the same as the ones in SQL PLUS Worksheet.\r\n\r\n\r\n"
+    },
+  
+    {
+    "title": "# Update",
+    "shortTitle": "05",
+    "contentMd" : "# Update\r\n\r\n**Note:** At present, we cannot use the *Update* and *Delete* statements without a *WHERE* clause. To prevent this happening:\r\n\r\n- Go to the **Edit** menu, **choose Preferences...**, this opens the *Workbench Preferences* dialog box.\r\n- Select **SQL Editor** and uncheck the *Safe Updates...* checkbox. \r\n- Click **OK**. \r\n- Exit Workbench and open it again.\r\n\r\nThe UPDATE statement is used to modify 0 or more records in a table. If the WHERE clause is omitted, then all records are updated.\r\n\r\n~~~\r\nSELECT * FROM student;\r\n~~~\r\n\r\nNote the different year values for each student. Now enter the following statement and note that all the student year values are set to 1:\r\n\r\n~~~\r\nUPDATE student SET year = 1;\r\n~~~\r\n\r\n- Again, return all the student records.\r\n- Undo the above statement.\r\n\r\nTo update one student record (use the Primary key value in the WHERE clause):\r\n\r\n~~~\r\nUPDATE student \r\nSET year = 1 \r\nWHERE studentId = '20026294';\r\n~~~\r\n\r\n- Again, return all the student records.\r\n- Undo the above statement.\r\n\r\nTo update more than one student record (but not all records):\r\n\r\n~~~\r\nUPDATE student \r\nSET year = 1 \r\nWHERE county = 'Kilkenny';\r\n~~~\r\n\r\n- Again, return all the student records.\r\n- Undo the above statement.\r\n"
+    },
+  
+    {
+    "title": "# Delete",
+    "shortTitle": "06",
+    "contentMd" : "# Delete\r\n\r\nThe **DELETE** statement is used to delete 0 or more records in a table. If the WHERE clause is omitted then all records are deleted (so be careful).\r\n\r\n~~~\r\nDELETE FROM authorship;\r\n~~~\r\n\r\n- Return all the authorship records. Note that the Authorship table is empty!\r\n- Undo the above statement.\r\n\r\nTo delete one Authorship record (use the Primary key value in the WHERE clause):\r\n\r\n~~~\r\nDELETE FROM authorship \r\nWHERE authorId = 1 AND ISBN = '123675432';\r\n~~~\r\n\r\n- Again, return all the authorship records. \r\n- Undo the above statement.\r\n\r\nTo delete more than one Authorship record (but not all records):\r\n\r\n~~~\r\nDELETE FROM authorship \r\nWHERE ISBN = '123675432';\r\n~~~\r\n\r\n- Again, return all the authorship records. \r\n- Undo the above statement.\r\n"
+    },
+  
+    {
+    "title": "#Exercise",
+    "shortTitle": "Exercise",
+    "contentMd" : "#Exercise\r\n\r\n##Insert \r\n\r\n1.\tAdd a new book to the book table: \r\n\r\n  - ISBN:133312345; \r\n  - title: Learning SQL;\r\n  - publisher:O Reilly; \r\n  - publishedDate:2009-05-08, \r\n  - category: Computing; \r\n  - price:25.00.\r\n2. Add 3 bookcopies for this book, with dateAcquired:2018-09-01.\r\n3. Add a new author to the author table:\r\n\r\n - fname:Adam; \r\n - lname:Beauleau.\r\n4. Add a record to the authorship table, for the new author and the new book.\r\n5. Commit the changes.\r\n\r\n##Update\r\n\r\n1. Change the price of the book to 28.00.\r\n2. Change the dateAcquired value to 2018-09-12 for all 3 copies.\r\n3. Commit the changes.\r\n\r\n##Delete\r\n\r\n1.\tDelete the third copy of the book.\r\n2.\tCommit the changes."
+    },
+  
+    {
+    "title": "# Solutions",
+    "shortTitle": "Solutions",
+    "contentMd" : "# Solutions\r\n\r\nSolutions for the exercises in this lab are available here: [Week5.zip](./archives/Week5.zip)\r\n"
+    }
+  
+  ]
+  }
+
